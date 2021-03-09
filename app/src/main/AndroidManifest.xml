@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="com.example.seihekijinrou">
+    <application
+        android:allowBackup="true"
+        android:icon="@mipmap/ic_launcher"
+        android:label="@string/app_name"
+        android:roundIcon="@mipmap/ic_launcher_round"
+        android:supportsRtl="true"
+        android:theme="@style/Theme.Seihekijinrou">
+        <activity android:name=".End2" ></activity>
+        <activity android:name=".End1" />
+        <activity android:name=".trueEnd1" />
+        <activity android:name=".SecondOpenSeiheki" />
+        <activity android:name=".secondtrueResult2" />
+        <activity android:name=".secondtrueResult" />
+        <activity android:name=".secondfalseResult2" />
+        <activity android:name=".secondfalseResult" />
+        <activity android:name=".SecondResultMeeting" />
+        <activity android:name=".SecondMeetingTime" />
+        <activity android:name=".trueResult2" />
+        <activity android:name=".trueResult"/>
+        <activity android:name=".openseiheki" />
+        <activity android:name=".falseResult2" />
+        <activity android:name=".falseResult" />
+        <activity android:name=".ResultMeeting" />
+        <activity android:name=".Meetingtime" />
+        <activity android:name=".Result2" />
+        <activity android:name=".Result" />
+        <activity android:name=".hekientory4" />
+        <activity android:name=".hekientory3" />
+        <activity android:name=".hekientory2" />
+        <activity android:name=".MainActivity" />
+        <activity android:name=".explanation" />
+        <activity android:name=".gamestart">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+    </application>
+
+</manifest>

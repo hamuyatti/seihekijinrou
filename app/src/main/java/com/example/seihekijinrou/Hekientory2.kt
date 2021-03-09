@@ -1,0 +1,60 @@
+package com.example.seihekijinrou
+
+import android.content.Intent
+import android.os.Bundle
+import android.view.View
+import androidx.appcompat.app.AppCompatActivity
+import androidx.core.content.edit
+import androidx.preference.PreferenceManager
+import com.example.seihekijinrou.databinding.ActivityHekientory2Binding
+
+class hekientory2 : AppCompatActivity() {
+    private lateinit var binding: ActivityHekientory2Binding
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        binding = ActivityHekientory2Binding.inflate(layoutInflater)
+        setContentView(binding.root)
+
+        var pref = PreferenceManager.getDefaultSharedPreferences(this)
+        var firstname = pref.getString("name1","").toString()
+        binding.seihekiup2.setOnClickListener {
+
+            /*以下の変数定義はボタンを押してからの処理にしないとずっとnull,0文字になっちゃうよ！*/
+            var heki = binding.heki2.text
+            var hekilength = heki.length
+            var name = binding.getname2.text.toString()
+            var namelength = name.length
+
+            if(name == firstname){
+                binding.seihekiup2.text ="違う名前を使ってください"
+            }
+            else if (hekilength== 0 && namelength == 0){
+                binding.seihekiup2.text = "お名前と性癖を教えてください"
+            }
+            else if (hekilength== 0 ){
+                binding.seihekiup2.text = "性癖を教えてください"
+            }
+            else if(namelength == 0){
+                binding.seihekiup2.text = "お名前を教えてください"
+
+            }
+            else if(hekilength >=1 && namelength >=1){
+                onSeihekiUpTapped(it)
+            }else{
+                onSeihekiUpTapped(it)
+            }
+        }
+
+    }
+    fun onSeihekiUpTapped(view: View?){
+        var intent = Intent(this, hekientory3::class.java)
+        startActivity(intent)
+        var pref = PreferenceManager.getDefaultSharedPreferences(this)
+        pref.edit{
+            putString("seiheki2",binding.heki2.text.toString())
+            putString("name2",binding.getname2.text.toString())
+                    .apply()
+        }
+
+    }
+}
