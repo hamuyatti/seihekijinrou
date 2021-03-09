@@ -13,8 +13,9 @@ class explanation : AppCompatActivity() {
         setContentView(binding.root)
 
         binding.start.setOnClickListener{
-            var intent = Intent(this, MainActivity::class.java)
+            var intent = Intent(this,numberofpeople::class.java)
             startActivity(intent)
+
         }
 
 

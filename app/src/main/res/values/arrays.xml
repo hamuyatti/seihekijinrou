@@ -1,2 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
-<resources></resources>
+<resources>
+    <string-array name="members">
+        <item>３人</item>
+        <item>４人</item>
+        <item>５人</item>
+        <item>６人</item>
+        <item>７人</item>
+        <item>８人</item>
+        <item>９人</item>
+        <item>１０人</item>
+    </string-array>
+</resources>
