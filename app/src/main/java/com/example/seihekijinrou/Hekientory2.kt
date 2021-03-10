@@ -16,7 +16,14 @@ class hekientory2 : AppCompatActivity() {
         setContentView(binding.root)
 
         var pref = PreferenceManager.getDefaultSharedPreferences(this)
-        var firstname = pref.getString("name1","").toString()
+        var firstname =  pref.getString("name10","")
+        var secondname =  pref.getString("name9","")
+        var thirdname = pref.getString("name8","")
+        var forthname = pref.getString("name7","")
+        var fifthname = pref.getString("name6","")
+        var sixthname = pref.getString("name5","")
+        var seventhname =pref.getString("name4","")
+        var eighthname =pref.getString("name3","")
         binding.seihekiup2.setOnClickListener {
 
             /*以下の変数定義はボタンを押してからの処理にしないとずっとnull,0文字になっちゃうよ！*/
@@ -25,7 +32,8 @@ class hekientory2 : AppCompatActivity() {
             var name = binding.getname2.text.toString()
             var namelength = name.length
 
-            if(name == firstname){
+            if(name==firstname ||name==secondname ||name==thirdname ||name ==forthname ||name ==fifthname ||name ==sixthname||name==seventhname
+                ||name ==eighthname) {
                 binding.seihekiup2.text ="違う名前を使ってください"
             }
             else if (hekilength== 0 && namelength == 0){
@@ -47,7 +55,7 @@ class hekientory2 : AppCompatActivity() {
 
     }
     fun onSeihekiUpTapped(view: View?){
-        var intent = Intent(this, hekientory3::class.java)
+        var intent = Intent(this, MainActivity::class.java)
         startActivity(intent)
         var pref = PreferenceManager.getDefaultSharedPreferences(this)
         pref.edit{

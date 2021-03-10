@@ -18,10 +18,12 @@ class hekientory4 : AppCompatActivity() {
         setContentView(binding.root)
 
         var pref = PreferenceManager.getDefaultSharedPreferences(this)
-        var firstname = pref.getString("name1","")
-        var secondname = pref.getString("name2","")
-        var thirdname = pref.getString("name3","")
-
+        var firstname =  pref.getString("name10","")
+        var secondname =  pref.getString("name9","")
+        var thirdname = pref.getString("name8","")
+        var forthname = pref.getString("name7","")
+        var fifthname = pref.getString("name6","")
+        var sixthname = pref.getString("name5","")
 
         binding.seihekiup4.setOnClickListener {
             var heki = binding.heki4.text
@@ -29,7 +31,7 @@ class hekientory4 : AppCompatActivity() {
             var name = binding.getname4.text.toString()
             var namelength = name.length
 
-            if(name == firstname ||name ==secondname ||name==thirdname){
+            if(name==firstname ||name==secondname ||name==thirdname ||name ==forthname ||name ==fifthname ||name ==sixthname){
                 binding.seihekiup4.text = "違う名前を使ってください"
             }
             else if (hekilength== 0 && namelength == 0){
@@ -53,7 +55,7 @@ class hekientory4 : AppCompatActivity() {
     }
 
     fun onSeihekiUpTapped(view: View?) {
-        var intent = Intent(this, Result::class.java)
+        var intent = Intent(this, hekientory3::class.java)
         startActivity(intent)
         var pref = PreferenceManager.getDefaultSharedPreferences(this)
         pref.edit {

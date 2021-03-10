@@ -25,8 +25,8 @@ class numberofpeople : AppCompatActivity() {
                 position: Int,
                 id: Long
             ) {
-                val spinner = parent as? Spinner
-                val item = spinner?.selectedItem as? String
+                var spinner = parent as? Spinner
+                 item = (spinner?.selectedItem as? String).toString()
                 item?.let {
                     if (it.isNotEmpty()) {
                         binding.confirm.text = "$it でよろしいですか？"
@@ -40,39 +40,34 @@ class numberofpeople : AppCompatActivity() {
             }
         }
         binding.gamestart.setOnClickListener {
-            getselectednumber()
-        }
-    }
+            if (item == "３人") {
+                var intent = Intent(this, hekientory3::class.java)
+                startActivity(intent)
+            } else if (item == "４人") {
+                var intent = Intent(this, MainActivity::class.java)
+                startActivity(intent)
+            } else if (item == "５人") {
+                var intent = Intent(this, Hekientry5::class.java)
+                startActivity(intent)
+            } else if (item == "６人") {
+                var intent = Intent(this, Hekientry6::class.java)
+                startActivity(intent)
+            } else if (item == "７人") {
+                var intent = Intent(this, Hekientry7::class.java)
+                startActivity(intent)
+            } else if (item == "８人") {
+                var intent = Intent(this, Hekientry8::class.java)
+                startActivity(intent)
+            } else if (item == "９人") {
+                var intent = Intent(this, Hekientry9::class.java)
+                startActivity(intent)
+            } else {
+                var intent = Intent(this, gamestart::class.java)
+                startActivity(intent)
 
-
-    fun getselectednumber() {
-
-
-        var selectednumber = if (item == "３人") {
-            var intent = Intent(this, MainActivity::class.java)
-            startActivity(intent)
-        } else if (item == "４人") {
-            var intent = Intent(this, MainActivity::class.java)
-            startActivity(intent)
-        } else if (item == "５人") {
-            var intent = Intent(this, MainActivity::class.java)
-            startActivity(intent)
-        } else if (item == "６人") {
-            var intent = Intent(this, MainActivity::class.java)
-            startActivity(intent)
-        } else if (item == "７人") {
-            var intent = Intent(this, MainActivity::class.java)
-            startActivity(intent)
-        } else if (item == "８人") {
-            var intent = Intent(this, MainActivity::class.java)
-            startActivity(intent)
-        } else if (item == "９人") {
-            var intent = Intent(this, MainActivity::class.java)
-            startActivity(intent)
-        } else {
-
-
+            }
         }
     }
 }
+
 

@@ -20,7 +20,7 @@
         app:layout_constraintTop_toBottomOf="@+id/getname" />
 
     <Button
-        android:id="@+id/seihekiup"
+        android:id="@+id/Seihekiup"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="86dp"

@@ -9,8 +9,12 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.Seihekijinrou">
-
-
+        <activity android:name=".Hekientry10"></activity>
+        <activity android:name=".Hekientry9" />
+        <activity android:name=".Hekientry8" />
+        <activity android:name=".Hekientry7" />
+        <activity android:name=".Hekientry6" />
+        <activity android:name=".Hekientry5" />
         <activity android:name=".End2" />
         <activity android:name=".End1" />
         <activity android:name=".trueEnd1" />
@@ -34,7 +38,7 @@
         <activity android:name=".hekientory3" />
         <activity android:name=".hekientory2" />
         <activity android:name=".MainActivity" />
-        <activity android:name=".numberofpeople"/>
+        <activity android:name=".numberofpeople" />
         <activity android:name=".explanation" />
         <activity android:name=".gamestart">
             <intent-filter>
