@@ -11,10 +11,10 @@ import com.example.seihekijinrou.databinding.ActivityHekientry6Binding
 import com.example.seihekijinrou.databinding.ActivityMainBinding
 
 class Hekientry6 : AppCompatActivity() {
-    private lateinit var binding: ActivityHekientry5Binding
+    private lateinit var binding: ActivityHekientry6Binding
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        binding = ActivityHekientry5Binding.inflate(layoutInflater)
+        binding = ActivityHekientry6Binding.inflate(layoutInflater)
         setContentView(binding.root)
 
 

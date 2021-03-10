@@ -7,30 +7,30 @@ import android.view.View
 import androidx.core.content.edit
 import androidx.preference.PreferenceManager
 import com.example.seihekijinrou.databinding.ActivityHekientry10Binding
-import com.example.seihekijinrou.databinding.ActivityHekientry5Binding
+
 
 
 class Hekientry10 : AppCompatActivity() {
-    private lateinit var binding: ActivityHekientry5Binding
+    private lateinit var binding: ActivityHekientry10Binding
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        binding = ActivityHekientry5Binding.inflate(layoutInflater)
+        binding = ActivityHekientry10Binding.inflate(layoutInflater)
         setContentView(binding.root)
 
 
 
-        binding.Seihekiup.setOnClickListener {
-            var heki = binding.Heki.text
+        binding.seihekiup10.setOnClickListener {
+            var heki = binding.heki10.text
             var hekilength = heki.length
-            var name = binding.Getname.text
+            var name = binding.getname10.text
             var namelength = name.length
 
             if (hekilength == 0 && namelength == 0) {
-                binding.Seihekiup.text = "お名前と性癖を教えてください"
+                binding.seihekiup10.text = "お名前と性癖を教えてください"
             } else if (hekilength == 0) {
-                binding.Seihekiup.text = "性癖を教えてください"
+                binding.seihekiup10.text = "性癖を教えてください"
             } else if (namelength == 0) {
-                binding.Seihekiup.text = "お名前を教えてください"
+                binding.seihekiup10.text = "お名前を教えてください"
 
             } else if (hekilength >= 1 && namelength >= 1) {
                 onSeihekiUpTapped(it)
@@ -46,8 +46,8 @@ class Hekientry10 : AppCompatActivity() {
         startActivity(intent)
         var pref = PreferenceManager.getDefaultSharedPreferences(this)
         pref.edit {
-            putString("seiheki10", binding.Heki.text.toString())
-            putString("name10", binding.Getname.text.toString())
+            putString("seiheki10", binding.heki10.text.toString())
+            putString("name10", binding.getname10.text.toString())
                 .apply()
         }
     }
