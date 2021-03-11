@@ -7,12 +7,21 @@ import androidx.core.content.edit
 import androidx.preference.PreferenceManager
 import com.example.seihekijinrou.databinding.ActivityResultMeeting4Binding
 import com.example.seihekijinrou.databinding.ActivityResultMeeting5Binding
+import com.example.seihekijinrou.databinding.ActivityResultMeeting9Binding
 
 class ResultMeeting4 : AppCompatActivity() {
     private lateinit var binding: ActivityResultMeeting4Binding
     private lateinit var Suspect4: String
     private lateinit var remainmembers3: MutableSet<String?>
     private lateinit var members:MutableList<String?>
+    private lateinit var candidate1:String
+    private lateinit var candidate2:String
+    private lateinit var candidate3:String
+    private lateinit var candidate4:String
+
+
+
+
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -26,21 +35,25 @@ class ResultMeeting4 : AppCompatActivity() {
         binding.jinrouseiheki.text = "$jinrou は誰の性癖？？"
 
         var jinrouname = pref.getString("jinrouname", "")
-        var fake: MutableSet<String?> = mutableSetOf("データを取得できていません")
-        members= pref.getStringSet("remainmembers4",fake) as MutableList<String?>
-        /*defvalueのエラーを解決できなかったためfakeを追加して応急処置しました*/
+        var fake= pref.getStringSet("remainmembers3", setOf(""))
+        if (fake != null) {
+            members = fake.toMutableList()
+            candidate1 = members[0].toString()
+            candidate2 = members[1].toString()
+            candidate3 = members[2].toString()
+            candidate4 = members[3].toString()
 
 
 
-        var candidate1 = members[0]
-        var candidate2 = members[1]
-        var candidate3 = members[2]
-        var candidate4 = members[3]
 
-        binding.name4.text = candidate4
-        binding.name3.text = candidate3
-        binding.name2.text = candidate2
-        binding.name1.text = candidate1
+            binding.name1.text = candidate1
+            binding.name2.text = candidate2
+            binding.name3.text = candidate3
+            binding.name4.text = candidate4
+
+
+        }
+
 
 
 

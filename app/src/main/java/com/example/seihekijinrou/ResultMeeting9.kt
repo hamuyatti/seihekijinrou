@@ -43,12 +43,12 @@ class ResultMeeting9 : AppCompatActivity() {
             candidate1 = members[0]
             candidate2 = members[1]
             candidate3 = members[2]
-            candidate1 = members[3]
-            candidate2 = members[4]
-            candidate3 = members[5]
-            candidate1 = members[6]
-            candidate2 = members[7]
-            candidate3 = members[8]
+            candidate4 = members[3]
+            candidate5 = members[4]
+            candidate6 = members[5]
+            candidate7 = members[6]
+            candidate8 = members[7]
+            candidate9 = members[8]
 
 
             binding.name1.text = candidate1
@@ -101,7 +101,7 @@ class ResultMeeting9 : AppCompatActivity() {
                     remainmembers8;members.remove(Suspect9)
                     var pref = PreferenceManager.getDefaultSharedPreferences(this)
                     pref.edit {putStringSet("remainmembers8",remainmembers8)
-                              putString("Suspect9",Suspect9)}
+                              putString("Suspect9",Suspect9)}.apply {  }
                     var intent = Intent(this, trueResult::class.java)
                     startActivity(intent)
                 }
@@ -110,7 +110,7 @@ class ResultMeeting9 : AppCompatActivity() {
                     remainmembers8;members.remove(Suspect9)
                     var pref = PreferenceManager.getDefaultSharedPreferences(this)
                     pref.edit { putStringSet("remainmembers8",remainmembers8)
-                                putString("Suspect9",Suspect9)}
+                                putString("Suspect9",Suspect9)}.apply {  }
                     var intent = Intent(this, falseResult::class.java)
                     startActivity(intent)
                 }

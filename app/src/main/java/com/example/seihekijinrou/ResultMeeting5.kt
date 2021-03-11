@@ -7,12 +7,22 @@ import androidx.core.content.edit
 import androidx.preference.PreferenceManager
 import com.example.seihekijinrou.databinding.ActivityResultMeeting5Binding
 import com.example.seihekijinrou.databinding.ActivityResultMeeting6Binding
+import com.example.seihekijinrou.databinding.ActivityResultMeeting9Binding
 
 class ResultMeeting5 : AppCompatActivity() {
     private lateinit var binding:ActivityResultMeeting5Binding
     private lateinit var Suspect5: String
     private lateinit var remainmembers4: MutableSet<String?>
     private lateinit var members:MutableList<String?>
+    private lateinit var candidate1:String
+    private lateinit var candidate2:String
+    private lateinit var candidate3:String
+    private lateinit var candidate4:String
+    private lateinit var candidate5:String
+
+
+
+
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -26,25 +36,26 @@ class ResultMeeting5 : AppCompatActivity() {
         binding.jinrouseiheki.text = "$jinrou は誰の性癖？？"
 
         var jinrouname = pref.getString("jinrouname", "")
-        var fake: MutableSet<String?> = mutableSetOf("データを取得できていません")
-        members= pref.getStringSet("remainmembers5",fake) as MutableList<String?>
-        /*defvalueのエラーを解決できなかったためfakeを追加して応急処置しました*/
+        var fake= pref.getStringSet("remainmembers3", setOf(""))
+        if (fake != null) {
+            members = fake.toMutableList()
+            candidate1 = members[0].toString()
+            candidate2 = members[1].toString()
+            candidate3 = members[2].toString()
+            candidate4 = members[3].toString()
+            candidate5 = members[4].toString()
 
 
 
-        var candidate1 = members[0]
-        var candidate2 = members[1]
-        var candidate3 = members[2]
-        var candidate4 = members[3]
-        var candidate5 = members[4]
 
-        binding.name5.text = candidate5
-        binding.name4.text = candidate4
-        binding.name3.text = candidate3
-        binding.name2.text = candidate2
-        binding.name1.text = candidate1
+            binding.name1.text = candidate1
+            binding.name2.text = candidate2
+            binding.name3.text = candidate3
+            binding.name4.text = candidate4
+            binding.name5.text = candidate5
 
 
+        }
 
 
         binding.radioGroup.setOnCheckedChangeListener { group, checkedId ->
@@ -77,7 +88,7 @@ class ResultMeeting5 : AppCompatActivity() {
         remainmembers4;members.remove(Suspect5)
         var pref = PreferenceManager.getDefaultSharedPreferences(this)
         pref.edit {putStringSet("remainmembers4",remainmembers4)
-                   putString("Suspect5","")}
+                   putString("Suspect5","")}.apply {  }
         var intent = Intent(this, trueResult::class.java)
         startActivity(intent)
     }
@@ -86,7 +97,7 @@ class ResultMeeting5 : AppCompatActivity() {
         remainmembers4;members.remove(Suspect5)
         var pref = PreferenceManager.getDefaultSharedPreferences(this)
         pref.edit { putStringSet("remainmembers4",remainmembers4)
-                     putString("Suspect5","") }
+                     putString("Suspect5","") }.apply {  }
         var intent = Intent(this, falseResult::class.java)
         startActivity(intent)
     }

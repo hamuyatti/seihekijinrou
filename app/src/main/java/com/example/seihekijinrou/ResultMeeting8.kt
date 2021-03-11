@@ -12,7 +12,18 @@ class ResultMeeting8 : AppCompatActivity() {
     private lateinit var binding: ActivityResultMeeting8Binding
     private lateinit var Suspect8: String
     private lateinit var remainmembers7: MutableSet<String?>
-    private lateinit var members:MutableList<String?>
+    private lateinit var members:MutableList<String>
+    private lateinit var candidate1:String
+    private lateinit var candidate2:String
+    private lateinit var candidate3:String
+    private lateinit var candidate4:String
+    private lateinit var candidate5:String
+    private lateinit var candidate6:String
+    private lateinit var candidate7:String
+    private lateinit var candidate8:String
+
+
+
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -26,32 +37,30 @@ class ResultMeeting8 : AppCompatActivity() {
         binding.jinrouseiheki.text = "$jinrou は誰の性癖？？"
 
         var jinrouname = pref.getString("jinrouname", "")
-        var fake: MutableSet<String?> = mutableSetOf("データを取得できていません")
-        members= pref.getStringSet("remainmembers8",fake) as MutableList<String?>
-        /*defvalueのエラーを解決できなかったためfakeを追加して応急処置しました*/
+        var fake= pref.getStringSet("remainmembers3", setOf(""))
+        if (fake != null) {
+            members = fake.toMutableList()
+            candidate1 = members[0]
+            candidate2 = members[1]
+            candidate3 = members[2]
+            candidate4 = members[3]
+            candidate5 = members[4]
+            candidate6 = members[5]
+            candidate7 = members[6]
+            candidate8 = members[7]
 
 
 
-        var candidate1 = members[0]
-        var candidate2 = members[1]
-        var candidate3 = members[2]
-        var candidate4 = members[3]
-        var candidate5 = members[4]
-        var candidate6 = members[5]
-        var candidate7 = members[6]
-        var candidate8 = members[7]
+            binding.name1.text = candidate1
+            binding.name2.text = candidate2
+            binding.name3.text = candidate3
+            binding.name4.text = candidate4
+            binding.name5.text = candidate5
+            binding.name6.text = candidate6
+            binding.name7.text = candidate7
+            binding.name8.text = candidate8
 
-
-
-        binding.name8.text = candidate8
-        binding.name7.text = candidate7
-        binding.name6.text = candidate6
-        binding.name5.text = candidate5
-        binding.name4.text = candidate4
-        binding.name3.text = candidate3
-        binding.name2.text = candidate2
-        binding.name1.text = candidate1
-
+        }
 
 
 
@@ -74,6 +83,8 @@ class ResultMeeting8 : AppCompatActivity() {
                 R.id.name8 -> Suspect8 = candidate8.toString()
 
 
+
+
             }
         }
         binding.judge.setOnClickListener {
@@ -89,8 +100,8 @@ class ResultMeeting8 : AppCompatActivity() {
     fun truejudgetime() {
         remainmembers7;members.remove(Suspect8)
         var pref = PreferenceManager.getDefaultSharedPreferences(this)
-        pref.edit {putStringSet("remainmembers7",remainmembers7)
-                   putString("Suspect8",Suspect8)}
+        pref.edit {putStringSet("remainmembers8",remainmembers7)
+            putString("Suspect8",Suspect8)}.apply {  }
         var intent = Intent(this, trueResult::class.java)
         startActivity(intent)
     }
@@ -98,8 +109,8 @@ class ResultMeeting8 : AppCompatActivity() {
     fun falsejudgetime() {
         remainmembers7;members.remove(Suspect8)
         var pref = PreferenceManager.getDefaultSharedPreferences(this)
-        pref.edit { putStringSet("remainmembers8",remainmembers7)
-                    putString("Suspect8",Suspect8)}
+        pref.edit { putStringSet("remainmembers7",remainmembers7)
+            putString("Suspect8",Suspect8)}.apply {  }
         var intent = Intent(this, falseResult::class.java)
         startActivity(intent)
     }
