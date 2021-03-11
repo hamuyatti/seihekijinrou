@@ -47,8 +47,6 @@ class ResultMeeting3 : AppCompatActivity() {
                 R.id.name1 -> Suspect3 = candidate1
                 R.id.name2 -> Suspect3 = candidate2
                 R.id.name3 -> Suspect3 = candidate3
-
-
             }
             binding.judge.setOnClickListener {
                 if (Suspect3 == jinrouname) {

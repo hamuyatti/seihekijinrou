@@ -57,7 +57,7 @@ class numberofpeople : AppCompatActivity() {
                 startActivity(intent)
 
             } else if (item == "４人") {
-                var intent = Intent(this, MainActivity::class.java)
+                var intent = Intent(this, hekientory4::class.java)
                 startActivity(intent)
 
             } else if (item == "５人") {

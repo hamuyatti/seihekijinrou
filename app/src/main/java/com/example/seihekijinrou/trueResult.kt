@@ -20,7 +20,6 @@ class trueResult : AppCompatActivity() {
         setContentView(binding.root)
 
         var pref = PreferenceManager.getDefaultSharedPreferences(this)
-        var jinrou = pref.getString("jinrou", "")
 
         var Suspect10= pref.getString("Suspect10","") as String
         var Suspect9 =  pref.getString("Suspect9","") as String
@@ -51,7 +50,7 @@ class trueResult : AppCompatActivity() {
 
 
 
-        binding.trueplayer.text = "{$ThistimeSuspect}さんは、、"
+        binding.trueplayer.text = "$ThistimeSuspect さんは、、"
 
         pref.edit { putString("ThistimeSuspect",ThistimeSuspect) }
         loadingDelay()

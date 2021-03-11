@@ -54,26 +54,26 @@ class Meetingtime : AppCompatActivity() {
 
 
         binding.Meetingstop.setOnClickListener{
-               if(Suspect3.isNotEmpty()&&Suspect4.length == 0){
+               if(Suspect4.isNotEmpty()&&Suspect3.length == 0){
                    var intent = Intent(this, ResultMeeting3::class.java)
                    startActivity(intent)
                }
-              else if(Suspect4.isNotEmpty()&&Suspect5.length ==0){
+              else if(Suspect5.isNotEmpty()&&Suspect4.length ==0){
                    var intent = Intent(this, ResultMeeting4::class.java)
                    startActivity(intent)
-               }else if(Suspect5.isNotEmpty()&&Suspect6.length==0){
+               }else if(Suspect6.isNotEmpty()&&Suspect5.length==0){
                    var intent = Intent(this, ResultMeeting5::class.java)
                    startActivity(intent)
-               }else if(Suspect6.isNotEmpty()&&Suspect7.length==0){
+               }else if(Suspect7.isNotEmpty()&&Suspect6.length==0){
                    var intent = Intent(this, ResultMeeting6::class.java)
                    startActivity(intent)
-               }else if(Suspect7.isNotEmpty()&&Suspect8.length==0){
+               }else if(Suspect8.isNotEmpty()&&Suspect7.length==0){
                    var intent = Intent(this, ResultMeeting7::class.java)
                    startActivity(intent)
-               }else if(Suspect8.isNotEmpty()&&Suspect9.length==0){
+               }else if(Suspect9.isNotEmpty()&&Suspect8.length==0){
                    var intent = Intent(this, ResultMeeting8::class.java)
                    startActivity(intent)
-               }else if(Suspect9.isNotEmpty()&&Suspect10.length==0){
+               }else if(Suspect10.isNotEmpty()&&Suspect9.length==0){
                    var intent = Intent(this, ResultMeeting9::class.java)
                    startActivity(intent)
                }else{

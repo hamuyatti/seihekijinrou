@@ -17,7 +17,8 @@ class OnlyFirstMeetingtime : AppCompatActivity() {
     private lateinit var remainmembers7: Set<String>
     private lateinit var remainmembers8: Set<String>
     private lateinit var remainmembers9: Set<String>
-    private lateinit var remainmembers10: Set<String>
+
+
     inner class MyCountDownTimer(millsInfuture:Long,countDownInterval:Long):
             CountDownTimer(millsInfuture,countDownInterval){
 

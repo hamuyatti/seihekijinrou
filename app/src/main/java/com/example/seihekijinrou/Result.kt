@@ -97,7 +97,7 @@ class Result : AppCompatActivity() {
                 putString("jinrou", jinrou)
                 putString("jinrouname", jinrouname)
 
-        }
+        }.apply {  }
         }
             else if(numberofpeople =="９人") {
 
@@ -152,7 +152,7 @@ class Result : AppCompatActivity() {
                 putString("jinrouname", jinrouname)
 
 
-            }
+            }.apply {  }
         }
                else  if(numberofpeople =="８人") {
 
@@ -202,7 +202,7 @@ class Result : AppCompatActivity() {
                         putString("jinrouname", jinrouname)
 
 
-                    }
+                    }.apply {  }
         } else  if(numberofpeople =="７人") {
 
             var number = (1..7).random()
@@ -247,7 +247,7 @@ class Result : AppCompatActivity() {
                 putString("jinrouname", jinrouname)
 
 
-            }
+            }.apply {  }
         } else  if(numberofpeople =="６人") {
 
             var number = (1..6).random()
@@ -288,7 +288,7 @@ class Result : AppCompatActivity() {
                 putString("jinrouname", jinrouname)
 
 
-            }
+            }.apply {  }
         } else  if(numberofpeople =="５人") {
 
             var number = (1..5).random()
@@ -325,7 +325,7 @@ class Result : AppCompatActivity() {
                 putString("jinrouname", jinrouname)
 
 
-            }
+            }.apply {  }
         } else  if(numberofpeople =="４人") {
 
             var number = (1..4).random()
@@ -358,7 +358,7 @@ class Result : AppCompatActivity() {
                 putString("jinrouname", jinrouname)
 
 
-            }
+            }.apply {  }
         } else  {
 
             var number = (1..3).random()

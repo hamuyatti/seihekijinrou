@@ -34,8 +34,8 @@
         <activity android:name=".openseiheki" />
         <activity android:name=".falseResult2" />
         <activity android:name=".falseResult" />
-        <activity android:name=".ResultMeeting" />
         <activity android:name=".Meetingtime" />
+        <activity android:name=".OnlyFirstMeetingtime"/>
         <activity android:name=".Result2" />
         <activity android:name=".Result" />
         <activity android:name=".MainActivity" />

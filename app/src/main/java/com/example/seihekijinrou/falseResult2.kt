@@ -11,6 +11,7 @@ import com.example.seihekijinrou.databinding.ActivityFalseResult2Binding
 class falseResult2 : AppCompatActivity() {
     private lateinit var binding: ActivityFalseResult2Binding
     private lateinit var ThistimeSuspect:String
+    private lateinit var Suspect3:String
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -50,30 +51,23 @@ class falseResult2 : AppCompatActivity() {
 
 
 
-        binding.check.text = "{$ThistimeSuspect}さんの性癖を公開しますか？"
+        binding.check.text = "$ThistimeSuspect さんの性癖を公開しますか？"
         binding.Yes.setOnClickListener {
-            Yesbutton()
-            }
+            var intent = Intent(this, openseiheki::class.java)
+            startActivity(intent)
+
+        }
 
 
 
         binding.No.setOnClickListener {
-             Nobutton()
+            if(Suspect3.length>0){
+                var intent = Intent(this,End1::class.java)
+                startActivity(intent)}
+            else{
+                var intent = Intent(this, Meetingtime::class.java)
+                startActivity(intent)
+            }
         }
-
-
-    }
-
-
-    fun Yesbutton() {
-        var intent = Intent(this, openseiheki::class.java)
-        startActivity(intent)
-
-    }
-
-    fun Nobutton() {
-
-        var intent = Intent(this, Meetingtime::class.java)
-        startActivity(intent)
     }
 }

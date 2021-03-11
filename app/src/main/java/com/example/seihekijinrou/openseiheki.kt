@@ -92,8 +92,13 @@ class openseiheki : AppCompatActivity() {
         binding.Suspectername1.text = "$ThistimeSuspect さんの性癖は${Suspecterseiheki}でした。"
 
         binding.button2.setOnClickListener{
+                if(Suspect3!=null){
+                    val intent = Intent(this,End1::class.java)
+                    startActivity(intent)
+                }else {
                 val intent = Intent(this,Meetingtime::class.java)
                 startActivity(intent)
+                }
         }
 
     }
