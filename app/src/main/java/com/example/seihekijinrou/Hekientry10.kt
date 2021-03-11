@@ -18,7 +18,7 @@ class Hekientry10 : AppCompatActivity() {
         setContentView(binding.root)
 
 
-
+/*どの人数の時も1~の名前で管理したいため、人数次第で切り捨てる最初の処理程大きい数字を用いています。*/
         binding.seihekiup10.setOnClickListener {
             var heki = binding.heki10.text
             var hekilength = heki.length

@@ -15,12 +15,6 @@ class Result : AppCompatActivity() {
     private lateinit var binding: ActivityResultBinding
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-
-
-
-
-
-
         binding = ActivityResultBinding.inflate(layoutInflater)
         setContentView(binding.root)
         var pref = PreferenceManager.getDefaultSharedPreferences(this)
@@ -101,12 +95,9 @@ class Result : AppCompatActivity() {
 
             pref.edit {
                 putString("jinrou", jinrou)
-            }
-            pref.edit {
                 putString("jinrouname", jinrouname)
 
-
-            }
+        }
         }
             else if(numberofpeople =="９人") {
 
@@ -391,12 +382,11 @@ class Result : AppCompatActivity() {
 
             pref.edit {
                 putString("jinrou", jinrou)
-            }
-            pref.edit {
+
                 putString("jinrouname", jinrouname)
 
 
-            }
+            }.apply {  }
         }
 
 

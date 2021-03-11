@@ -1,19 +1,11 @@
 package com.example.seihekijinrou
 
-
-
-
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.os.Handler
-import android.text.method.TextKeyListener.clear
 import androidx.core.content.edit
 import androidx.preference.PreferenceManager
-import com.example.seihekijinrou.MainActivity
-
-
-import com.example.seihekijinrou.R
 
 class gamestart : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {

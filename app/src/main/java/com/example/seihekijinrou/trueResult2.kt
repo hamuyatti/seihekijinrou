@@ -16,10 +16,10 @@ class trueResult2 : AppCompatActivity() {
         setContentView(binding.root)
 
         var pref = PreferenceManager.getDefaultSharedPreferences(this)
-        var Suspect = pref.getString("Suspect1","")
+        var ThistimeSuspect = pref.getString("ThistimeSuspect","")
         var jinrou = pref.getString("jinrou","")
 
-        binding.textView9.text = "$Suspect さんは性癖「$jinrou 」の持ち主です!"
+        binding.textView9.text = "$ThistimeSuspect さんは性癖「$jinrou 」の持ち主です!"
 
         loadingDelay()
 

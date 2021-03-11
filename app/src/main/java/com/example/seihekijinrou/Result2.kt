@@ -17,12 +17,14 @@ class Result2 : AppCompatActivity() {
 
         var pref = PreferenceManager.getDefaultSharedPreferences(this)
         var jinrou = pref.getString("jinrou", "")
-        binding.gametitel.text =  "「$jinrou」です！"
+        binding.gametitel.text = "「$jinrou」です！"
 
-        binding.button.setOnClickListener{
-            val intent = Intent(this, Meetingtime::class.java)
+        binding.button.setOnClickListener {
+
+            val intent = Intent(this,OnlyFirstMeetingtime::class.java)
             startActivity(intent)
-        }
 
+
+        }
     }
 }

@@ -5,13 +5,12 @@ import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.os.CountDownTimer
+import androidx.core.content.edit
 import androidx.preference.PreferenceManager
 import com.example.seihekijinrou.databinding.ActivityMeetingtimeBinding
 
 class Meetingtime : AppCompatActivity() {
     private lateinit var binding:ActivityMeetingtimeBinding
-
-
     inner class MyCountDownTimer(millsInfuture:Long,countDownInterval:Long):
         CountDownTimer(millsInfuture,countDownInterval){
 
@@ -32,18 +31,58 @@ class Meetingtime : AppCompatActivity() {
         binding = ActivityMeetingtimeBinding.inflate(layoutInflater)
                    setContentView(binding.root)
 
-                   var pref = PreferenceManager.getDefaultSharedPreferences(this)
+        var pref = PreferenceManager.getDefaultSharedPreferences(this)
+           pref.edit{
+               remove("ThistimeSuspect").commit()
+           }
            var jinrou = pref.getString("jinrou", "")
            binding.gametitle.text =  "「$jinrou」"
+           var numberofpeople =pref.getString("numberofpeople","")
 
            binding.timertext.text = "2:00"
            var timer = MyCountDownTimer(2*60*1000,100)
            timer.start()
 
-           binding.Meetingstop.setOnClickListener{
-               val intent = Intent(this, ResultMeeting::class.java)
-           startActivity(intent)
+        var Suspect10= pref.getString("Suspect10","") as String
+        var Suspect9 =  pref.getString("Suspect9","") as String
+        var Suspect8 =  pref.getString("Suspect8","") as String
+        var Suspect7 =  pref.getString("Suspect7","") as String
+        var Suspect6 =  pref.getString("Suspect6","") as String
+        var Suspect5 =  pref.getString("Suspect5","") as String
+        var Suspect4 =  pref.getString("Suspect4","") as String
+        var Suspect3 =  pref.getString("Suspect3","") as String
+
+
+        binding.Meetingstop.setOnClickListener{
+               if(Suspect3.isNotEmpty()&&Suspect4.length == 0){
+                   var intent = Intent(this, ResultMeeting3::class.java)
+                   startActivity(intent)
+               }
+              else if(Suspect4.isNotEmpty()&&Suspect5.length ==0){
+                   var intent = Intent(this, ResultMeeting4::class.java)
+                   startActivity(intent)
+               }else if(Suspect5.isNotEmpty()&&Suspect6.length==0){
+                   var intent = Intent(this, ResultMeeting5::class.java)
+                   startActivity(intent)
+               }else if(Suspect6.isNotEmpty()&&Suspect7.length==0){
+                   var intent = Intent(this, ResultMeeting6::class.java)
+                   startActivity(intent)
+               }else if(Suspect7.isNotEmpty()&&Suspect8.length==0){
+                   var intent = Intent(this, ResultMeeting7::class.java)
+                   startActivity(intent)
+               }else if(Suspect8.isNotEmpty()&&Suspect9.length==0){
+                   var intent = Intent(this, ResultMeeting8::class.java)
+                   startActivity(intent)
+               }else if(Suspect9.isNotEmpty()&&Suspect10.length==0){
+                   var intent = Intent(this, ResultMeeting9::class.java)
+                   startActivity(intent)
+               }else{
+                   var intent = Intent(this, ResultMeeting10::class.java)
+                   startActivity(intent)
+               }
+
+
+           }
        }
 
     }
-}
