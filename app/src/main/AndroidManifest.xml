@@ -9,7 +9,8 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.Seihekijinrou">
-        <activity android:name=".fake"></activity>
+        <activity android:name=".End3"></activity>
+        <activity android:name=".fake" />
         <activity android:name=".OnlyFirstMeetingtime" />
         <activity android:name=".ResultMeeting3" />
         <activity android:name=".ResultMeeting4" />
@@ -35,7 +36,7 @@
         <activity android:name=".falseResult2" />
         <activity android:name=".falseResult" />
         <activity android:name=".Meetingtime" />
-        <activity android:name=".OnlyFirstMeetingtime"/>
+        <activity android:name=".OnlyFirstMeetingtime" />
         <activity android:name=".Result2" />
         <activity android:name=".Result" />
         <activity android:name=".MainActivity" />

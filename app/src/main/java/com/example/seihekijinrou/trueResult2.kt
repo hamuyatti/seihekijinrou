@@ -21,6 +21,8 @@ class trueResult2 : AppCompatActivity() {
 
         binding.textView9.text = "$ThistimeSuspect さんは性癖「$jinrou」の持ち主です!"
 
+
+
         loadingDelay()
 
     }

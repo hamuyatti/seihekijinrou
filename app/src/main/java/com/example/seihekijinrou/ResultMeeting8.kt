@@ -78,26 +78,28 @@ class ResultMeeting8 : AppCompatActivity() {
 
             members.remove(Suspect8)
             remainmembers7 = members.toSet()
-        }
-        binding.judge.setOnClickListener {
-            if (Suspect8 == jinrouname) {
-                var pref = PreferenceManager.getDefaultSharedPreferences(this)
-                pref.edit {
-                    putStringSet("remainmembers7", remainmembers7)
-                    putString("Suspect8", Suspect8)
-                }.apply { }
-                var intent = Intent(this, trueResult::class.java)
-                startActivity(intent)
 
-            } else {
-                var pref = PreferenceManager.getDefaultSharedPreferences(this)
-                pref.edit {
-                    putStringSet("remainmembers7", remainmembers7)
-                    putString("Suspect8", Suspect8)
-                }.apply { }
-                var intent = Intent(this, falseResult::class.java)
-                startActivity(intent)
+            binding.judge.setOnClickListener {
+                if (Suspect8 == jinrouname) {
+                    var pref = PreferenceManager.getDefaultSharedPreferences(this)
+                    pref.edit {
+                        putStringSet("remainmembers7", remainmembers7)
+                        putString("Suspect8", Suspect8)
+                    }.apply { }
+                    var intent = Intent(this, trueResult::class.java)
+                    startActivity(intent)
+
+                } else {
+                    var pref = PreferenceManager.getDefaultSharedPreferences(this)
+                    pref.edit {
+                        putStringSet("remainmembers7", remainmembers7)
+                        putString("Suspect8", Suspect8)
+                    }.apply { }
+                    var intent = Intent(this, falseResult::class.java)
+                    startActivity(intent)
+                }
             }
         }
+
     }
 }

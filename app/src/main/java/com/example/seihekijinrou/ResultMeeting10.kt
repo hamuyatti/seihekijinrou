@@ -11,8 +11,8 @@ import com.example.seihekijinrou.databinding.ActivityResultMeeting10Binding
 class ResultMeeting10 : AppCompatActivity() {
     private lateinit var binding: ActivityResultMeeting10Binding
     private lateinit var Suspect10:String
-    private lateinit var remainmembers9:MutableSet<String>
-    private lateinit var members:MutableSet<String>
+    private lateinit var remainmembers9:Set<String>
+    private lateinit var members:MutableList<String?>
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityResultMeeting10Binding.inflate(layoutInflater)
@@ -21,16 +21,6 @@ class ResultMeeting10 : AppCompatActivity() {
         var pref = PreferenceManager.getDefaultSharedPreferences(this)
         var jinrouname = pref.getString("jinrouname", "")
 
-        binding.name10.text =pref.getString("name10", "")
-        binding.name9.text = pref.getString("name9", "")
-        binding.name8.text = pref.getString("name8", "")
-        binding.name7.text = pref.getString("name7", "")
-        binding.name6.text = pref.getString("name6", "")
-        binding.name5.text = pref.getString("name5", "")
-        binding.name4.text = pref.getString("name4", "")
-        binding.name3.text = pref.getString("name3", "")
-        binding.name2.text = pref.getString("name2", "")
-        binding.name1.text = pref.getString("name1", "")
 
         var candidate1 = pref.getString("name1", "")
         var candidate2 = pref.getString("name2", "")
@@ -43,11 +33,22 @@ class ResultMeeting10 : AppCompatActivity() {
         var candidate9 = pref.getString("name9", "")
         var candidate10 =pref.getString("name10", "")
 
+        binding.name10.text =candidate10.toString()
+        binding.name9.text = candidate9.toString()
+        binding.name8.text = candidate8.toString()
+        binding.name7.text = candidate7.toString()
+        binding.name6.text = candidate6.toString()
+        binding.name5.text = candidate5.toString()
+        binding.name4.text = candidate4.toString()
+        binding.name3.text = candidate3.toString()
+        binding.name2.text = candidate2.toString()
+        binding.name1.text = candidate1.toString()
+
 
         var jinrou = pref.getString("jinrou", "")
         binding.jinrouseiheki.text ="$jinrou は誰の性癖？？"
 
-        members;mutableSetOf(candidate1,candidate2,candidate3,candidate4,candidate5,candidate6,candidate7,candidate8,candidate9,candidate10)
+        members = mutableListOf(candidate1,candidate2,candidate3,candidate4,candidate5,candidate6,candidate7,candidate8,candidate9,candidate10)
 
 
 
@@ -69,7 +70,6 @@ class ResultMeeting10 : AppCompatActivity() {
             remainmembers9;members.remove(Suspect10)
             pref.edit { putStringSet("remainmembers9",remainmembers9)
                 putString("Suspect10",Suspect10)}
-            }
 
             binding.judge.setOnClickListener {
                 if (Suspect10 == jinrouname) {
@@ -79,6 +79,9 @@ class ResultMeeting10 : AppCompatActivity() {
                     falsejudgetime()
                 }
             }
+        }
+
+
 
 
     }
