@@ -10,23 +10,6 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Seihekijinrou">
         <activity android:name=".End3"></activity>
-        <activity android:name=".fake" />
-        <activity android:name=".OnlyFirstMeetingtime" />
-        <activity android:name=".ResultMeeting3" />
-        <activity android:name=".ResultMeeting4" />
-        <activity android:name=".ResultMeeting5" />
-        <activity android:name=".ResultMeeting6" />
-        <activity android:name=".ResultMeeting7" />
-        <activity android:name=".ResultMeeting8" />
-        <activity android:name=".ResultMeeting9" />
-        <activity android:name=".ResultMeeting10" />
-        <activity android:name=".gamestart">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
-        </activity>
         <activity android:name=".End2" />
         <activity android:name=".End1" />
         <activity android:name=".trueEnd1" />
@@ -35,6 +18,14 @@
         <activity android:name=".openseiheki" />
         <activity android:name=".falseResult2" />
         <activity android:name=".falseResult" />
+        <activity android:name=".ResultMeeting3" />
+        <activity android:name=".ResultMeeting4" />
+        <activity android:name=".ResultMeeting5" />
+        <activity android:name=".ResultMeeting6" />
+        <activity android:name=".ResultMeeting7" />
+        <activity android:name=".ResultMeeting8" />
+        <activity android:name=".ResultMeeting9" />
+        <activity android:name=".ResultMeeting10" />
         <activity android:name=".Meetingtime" />
         <activity android:name=".OnlyFirstMeetingtime" />
         <activity android:name=".Result2" />
@@ -51,6 +42,17 @@
         <activity android:name=".Hekientry10" />
         <activity android:name=".numberofpeople" />
         <activity android:name=".explanation" />
+        <activity android:name=".gamestart">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+
+
+
+
     </application>
 
 </manifest>

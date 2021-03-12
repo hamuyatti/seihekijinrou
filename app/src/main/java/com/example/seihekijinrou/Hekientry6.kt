@@ -41,8 +41,6 @@ class Hekientry6 : AppCompatActivity() {
             } else if (namelength == 0) {
                 binding.Seihekiup.text = "お名前を教えてください"
 
-            } else if (hekilength >= 1 && namelength >= 1) {
-                onSeihekiUpTapped(it)
             } else {
                 onSeihekiUpTapped(it)
             }

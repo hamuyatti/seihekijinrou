@@ -18,7 +18,7 @@ class Hekientry10 : AppCompatActivity() {
         setContentView(binding.root)
 
 
-/*どの人数の時も1~の名前で管理したいため、人数次第で切り捨てる最初の処理程大きい数字を用いています。*/
+/*どの人数の時も1~の名前で管理したいため、人数次第で切り捨てる最初（手前）の処理程大きい数字を用いています。*/
         binding.seihekiup10.setOnClickListener {
             var heki = binding.heki10.text
             var hekilength = heki.length
@@ -32,9 +32,7 @@ class Hekientry10 : AppCompatActivity() {
             } else if (namelength == 0) {
                 binding.seihekiup10.text = "お名前を教えてください"
 
-            } else if (hekilength >= 1 && namelength >= 1) {
-                onSeihekiUpTapped(it)
-            } else {
+            }  else {
                 onSeihekiUpTapped(it)
             }
         }

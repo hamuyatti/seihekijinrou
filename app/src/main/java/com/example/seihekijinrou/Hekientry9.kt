@@ -16,8 +16,8 @@ class Hekientry9 : AppCompatActivity() {
         binding = ActivityHekientry9Binding.inflate(layoutInflater)
         setContentView(binding.root)
 
-       var pref = PreferenceManager.getDefaultSharedPreferences(this)
-       var firstname =  pref.getString("name10","").toString()
+        var pref = PreferenceManager.getDefaultSharedPreferences(this)
+        var firstname = pref.getString("name10", "").toString()
 
         binding.Seihekiup.setOnClickListener {
             var heki = binding.Heki.text
@@ -25,23 +25,20 @@ class Hekientry9 : AppCompatActivity() {
             var name = binding.Getname.toString()
             var namelength = name.length
 
-             if (firstname == name){
-            binding.Seihekiup.text = "違う名前を使ってください"
-             }
-             else if (hekilength == 0 && namelength == 0) {
+            if (firstname == name) {
+                binding.Seihekiup.text = "違う名前を使ってください"
+            } else if (hekilength == 0 && namelength == 0) {
                 binding.Seihekiup.text = "お名前と性癖を教えてください"
             } else if (hekilength == 0) {
                 binding.Seihekiup.text = "性癖を教えてください"
             } else if (namelength == 0) {
                 binding.Seihekiup.text = "お名前を教えてください"
-
-            } else if (hekilength >= 1 && namelength >= 1) {
-                onSeihekiUpTapped(it)
             } else {
                 onSeihekiUpTapped(it)
             }
-        }
 
+
+        }
     }
 
     fun onSeihekiUpTapped(view: View?) {

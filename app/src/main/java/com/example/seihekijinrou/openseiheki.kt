@@ -47,6 +47,8 @@ class openseiheki : AppCompatActivity() {
         var Suspect4 =  pref.getString("Suspect4","") as String
         var Suspect3 =  pref.getString("Suspect3","") as String
 
+        var Rustmember= pref.getString("checkforlose","")
+
         /*その回で誰が選ばれたのか、どんな性癖を入力したかを洗い出しています*/
         var ThistimeSuspect=if(Suspect10.isNotEmpty()&&Suspect9.length ==0){
             Suspect10
@@ -92,7 +94,7 @@ class openseiheki : AppCompatActivity() {
         binding.Suspectername1.text = "$ThistimeSuspect さんの性癖は${Suspecterseiheki}でした。"
 
         binding.button2.setOnClickListener{
-                if(Suspect3!=null){
+                if(Rustmember?.isNotEmpty() == true){
                     val intent = Intent(this,End1::class.java)
                     startActivity(intent)
                 }else {

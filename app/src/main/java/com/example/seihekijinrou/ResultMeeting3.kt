@@ -19,6 +19,7 @@ class ResultMeeting3 : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        var checkforlose="残り人数が３人かつ、人狼を当てることができなかった時のみ保存し、判別します。"
         binding = ActivityResultMeeting3Binding.inflate(layoutInflater)
         setContentView(binding.root)
         var pref = PreferenceManager.getDefaultSharedPreferences(this)
@@ -63,6 +64,7 @@ class ResultMeeting3 : AppCompatActivity() {
                     var pref = PreferenceManager.getDefaultSharedPreferences(this)
                     pref.edit {
                         putString("Suspect3", Suspect3)
+                        putString("checkforlose",checkforlose)
                     }.apply { }
                     var intent = Intent(this, falseResult::class.java)
                     startActivity(intent)

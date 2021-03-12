@@ -48,9 +48,7 @@ class hekientory3 : AppCompatActivity() {
                 binding.seihekiup3.text = "お名前を教えてください"
 
             }
-            else if(hekilength >=1 && namelength >=1){
-                onSeihekiUpTapped(it)
-            }else{
+            else{
                 onSeihekiUpTapped(it)
             }
         }

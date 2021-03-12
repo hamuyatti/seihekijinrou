@@ -60,46 +60,46 @@ class OnlyFirstMeetingtime : AppCompatActivity() {
         var name9 = pref.getString("name9","").toString()
         var name10 = pref.getString("name10","").toString()
 
+       var numberofpeople =  pref.getString("numberofpeople","")
+
         binding.Meetingstop.setOnClickListener{
-            if(name10.length==0&&name9.length==0&&name8.length==0&&name7.length==0&&name6.length==0
-                &&name5.length==0&&name4.length ==0){
+            if(numberofpeople=="３人"){
                 remainmembers3 = setOf(name1,name2,name3)
                 pref.edit{putStringSet("remainmembers3",remainmembers3)}.apply {  }
                 var intent = Intent(this, ResultMeeting3::class.java)
                 startActivity(intent)
             }
-            else if(name10.length==0&&name9.length==0&&name8.length==0&&name7.length==0&&name6.length==0
-                    &&name5.length==0) {
+            else if(numberofpeople=="４人") {
                 remainmembers4 = setOf(name1, name2, name3, name4)
                 pref.edit { putStringSet("remainmembers4", remainmembers4) }.apply {  }
                 var intent = Intent(this, ResultMeeting4::class.java)
                 startActivity(intent)
             }
-            else if(name10.length==0&&name9.length==0&&name8.length==0&&name7.length==0&&name6.length==0){
+            else if(numberofpeople=="５人"){
                 remainmembers5 = setOf(name1,name2,name3,name4,name5)
                 pref.edit{putStringSet("remainmembers5",remainmembers5)}.apply {  }
                 var intent = Intent(this, ResultMeeting5::class.java)
                 startActivity(intent)
             }
-            else if(name10.length==0&&name9.length==0&&name8.length==0&&name7.length==0){
+            else if(numberofpeople=="６人"){
                 remainmembers6 = setOf(name1,name2,name3,name4,name5,name6)
                 pref.edit{putStringSet("remainmembers6",remainmembers6)}.apply {  }
                 var intent = Intent(this, ResultMeeting6::class.java)
                 startActivity(intent)
             }
-            else if(name10.length==0&&name9.length==0&&name8.length==0){
+            else if(numberofpeople=="７人"){
                 remainmembers7 = setOf(name1,name2,name3,name4,name5,name6,name7)
                 pref.edit{putStringSet("remainmembers7",remainmembers7)}.apply {  }
                 var intent = Intent(this, ResultMeeting7::class.java)
                 startActivity(intent)
             }
-            else if(name10.length==0&&name9.length==0){
+            else if(numberofpeople=="８人"){
                 remainmembers8 = setOf(name1,name2,name3,name4,name5,name6,name7,name8)
                 pref.edit{putStringSet("remainmembers8",remainmembers8)}.apply {  }
                 var intent = Intent(this, ResultMeeting8::class.java)
                 startActivity(intent)
             }
-            else if(name10.length==0){
+            else if(numberofpeople=="９人"){
                 remainmembers9 = setOf(name1,name2,name3,name4,name5,name6,name7,name8,name9)
                 pref.edit{putStringSet("remainmembers9",remainmembers9)}.apply {  }
                 var intent = Intent(this, ResultMeeting9::class.java)
