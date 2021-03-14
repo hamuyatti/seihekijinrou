@@ -22,7 +22,7 @@
             tools:context=".MainActivity">
 
             <EditText
-                android:id="@+id/heki2"
+                android:id="@+id/heki"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="63dp"
@@ -31,10 +31,10 @@
                 android:inputType="textPersonName"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/getname2" />
+                app:layout_constraintTop_toBottomOf="@+id/getname" />
 
             <EditText
-                android:id="@+id/getname2"
+                android:id="@+id/getname"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="63dp"
@@ -65,7 +65,7 @@
                 android:text="次の人"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/heki2" />
+                app:layout_constraintTop_toBottomOf="@+id/heki" />
 
         </androidx.constraintlayout.widget.ConstraintLayout>
 

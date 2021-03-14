@@ -26,12 +26,13 @@ class hekientory2 : AppCompatActivity() {
         var eighthname =pref.getString("name3","")
         binding.seihekiup2.setOnClickListener {
 
-            /*以下の変数定義はボタンを押してからの処理にしないとずっとnull,0文字になっちゃうよ！*/
-            var heki = binding.heki2.text
+            /*以下の変数定義はボタンを押してからの処理にしないとずっとnull,0文字になっちゃうよ！(自分用)*/
+            var heki = binding.heki.text
             var hekilength = heki.length
-            var name = binding.getname2.text.toString()
+            var name = binding.getname.text.toString()
             var namelength = name.length
 
+            /*バリデーションは性癖については行いません。かぶり表示がでてしまうと前エントリー者の入力内容が予測できてしまうため。*/
             if(name==firstname ||name==secondname ||name==thirdname ||name ==forthname ||name ==fifthname ||name ==sixthname||name==seventhname
                 ||name ==eighthname) {
                 binding.seihekiup2.text ="違う名前を使ってください"
@@ -57,8 +58,8 @@ class hekientory2 : AppCompatActivity() {
         startActivity(intent)
         var pref = PreferenceManager.getDefaultSharedPreferences(this)
         pref.edit{
-            putString("seiheki2",binding.heki2.text.toString())
-            putString("name2",binding.getname2.text.toString())
+            putString("seiheki2",binding.heki.text.toString())
+            putString("name2",binding.getname.text.toString())
                     .apply()
         }
 

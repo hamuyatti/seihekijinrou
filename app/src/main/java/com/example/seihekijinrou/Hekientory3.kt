@@ -30,9 +30,9 @@ class hekientory3 : AppCompatActivity() {
 
 
         binding.seihekiup3.setOnClickListener {
-            var heki = binding.heki3.text
+            var heki = binding.heki.text
             var hekilength = heki.length
-            var name = binding.getname3.text.toString()
+            var name = binding.getname.text.toString()
             var namelength = name.length
 
             if(name==firstname ||name==secondname ||name==thirdname ||name ==forthname ||name ==fifthname ||name ==sixthname||name==seventhname){
@@ -62,8 +62,8 @@ class hekientory3 : AppCompatActivity() {
 
         var pref = PreferenceManager.getDefaultSharedPreferences(this)
         pref.edit{
-            putString("seiheki3",binding.heki3.text.toString())
-            putString("name3",binding.getname3.text.toString())
+            putString("seiheki3",binding.heki.text.toString())
+            putString("name3",binding.getname.text.toString())
                     .apply()
         }
     }

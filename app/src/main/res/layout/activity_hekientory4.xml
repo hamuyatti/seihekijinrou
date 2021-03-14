@@ -44,16 +44,16 @@
                     app:layout_constraintTop_toTopOf="parent" />
 
                 <EditText
-                    android:id="@+id/heki4"
+                    android:id="@+id/heki"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="63dp"
+                    android:layout_marginTop="60dp"
                     android:ems="10"
                     android:hint="性癖"
                     android:inputType="textPersonName"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/getname4" />
+                    app:layout_constraintTop_toBottomOf="@+id/getname" />
 
                 <Button
                     android:id="@+id/seihekiup4"
@@ -65,10 +65,10 @@
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintHorizontal_bias="0.498"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/heki4" />
+                    app:layout_constraintTop_toBottomOf="@+id/heki" />
 
                 <EditText
-                    android:id="@+id/getname4"
+                    android:id="@+id/getname"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="63dp"

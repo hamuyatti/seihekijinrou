@@ -9,7 +9,8 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.Seihekijinrou">
-        <activity android:name=".End3"></activity>
+        <activity android:name=".checkrules"></activity>
+        <activity android:name=".End3" />
         <activity android:name=".End2" />
         <activity android:name=".End1" />
         <activity android:name=".trueEnd1" />
@@ -49,10 +50,6 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-
-
-
-
     </application>
 
 </manifest>

@@ -37,8 +37,6 @@ class Meetingtime : AppCompatActivity() {
            }
            var jinrou = pref.getString("jinrou", "")
            binding.gametitle.text =  "「$jinrou」"
-           var numberofpeople =pref.getString("numberofpeople","")
-
            binding.timertext.text = "2:00"
            var timer = MyCountDownTimer(2*60*1000,100)
            timer.start()
