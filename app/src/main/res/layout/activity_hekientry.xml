@@ -4,22 +4,21 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".Hekientry8">
+    tools:context=".Hekientry10">
 
     <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/tellmeseiheki"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        tools:context=".Hekientry9">
+        tools:context=".MainActivity">
 
         <TextView
-            android:id="@+id/tellme3"
+            android:id="@+id/tellme2"
             android:layout_width="325dp"
             android:layout_height="44dp"
-            android:layout_marginTop="132dp"
+            android:layout_marginTop="128dp"
             android:text="@string/Tellme"
             android:textSize="20dp"
             app:layout_constraintEnd_toEndOf="parent"
@@ -27,7 +26,7 @@
             app:layout_constraintTop_toTopOf="parent" />
 
         <EditText
-            android:id="@+id/Getname"
+            android:id="@+id/getname"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="63dp"
@@ -36,22 +35,22 @@
             android:inputType="textPersonName"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/tellme3" />
+            app:layout_constraintTop_toBottomOf="@+id/tellme2" />
 
         <EditText
-            android:id="@+id/Heki"
+            android:id="@+id/heki"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="63dp"
+            android:layout_marginTop="52dp"
             android:ems="10"
             android:hint="性癖"
             android:inputType="textPersonName"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/Getname" />
+            app:layout_constraintTop_toBottomOf="@+id/getname" />
 
         <Button
-            android:id="@+id/Seihekiup"
+            android:id="@+id/seihekiup"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="84dp"
@@ -59,6 +58,7 @@
             android:text="次の人"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/Heki" />
+            app:layout_constraintTop_toBottomOf="@+id/heki" />
+
     </androidx.constraintlayout.widget.ConstraintLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>
