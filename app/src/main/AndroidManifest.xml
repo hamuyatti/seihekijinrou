@@ -9,10 +9,8 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.Seihekijinrou">
-        <activity android:name=".Result1"></activity>
-        <activity android:name=".Result" />
-        <activity android:name=".test" />
-        <activity android:name=".EndofGame.End3" />
+
+        <activity android:name=".EndofGame.End3" > </activity>
         <activity android:name=".EndofGame.End2" />
         <activity android:name=".EndofGame.End1ofBad" />
         <activity android:name=".EndofGame.End1ofTrue" />
@@ -32,6 +30,7 @@
         <activity android:name=".MeetingandVoting.Meetingtime" />
         <activity android:name=".MeetingandVoting.OnlyFirstMeetingtime" />
         <activity android:name=".Preparation.Result2" />
+        <activity android:name=".Result1"/>
         <activity android:name=".CenterofHekientry" />
         <activity android:name=".Preparation.numberofpeople" />
         <activity android:name=".Start.checkrules" />
