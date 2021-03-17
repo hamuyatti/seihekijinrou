@@ -67,7 +67,7 @@ class Hekientry1 :Fragment() {
                 putString("name1", binding.Heki.text.toString())
                 putString("seiheki1", binding.Getname.text.toString())
                         .apply()
-                var intent = Intent(activity, com.example.seihekijinrou.test::class.java)
+                var intent = Intent(context, Result1::class.java)
                 startActivity(intent)
             }
         }

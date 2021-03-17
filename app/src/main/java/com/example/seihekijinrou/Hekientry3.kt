@@ -65,7 +65,7 @@ class Hekientry3 : Fragment() {
         var pref = PreferenceManager.getDefaultSharedPreferences(context)
         pref.edit {
             putString("name3", binding.Heki.text.toString())
-            putString("seiheki", binding.Getname.text.toString())
+            putString("seiheki3", binding.Getname.text.toString())
                 .apply()
             findNavController().navigate(R.id.action_hekientry3_to_hekientry2)
         }
