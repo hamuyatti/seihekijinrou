@@ -32,7 +32,7 @@ class End1ofBad : AppCompatActivity() {
             }
 
 
-            binding.button.setOnClickListener {
+            binding.backtotitle.setOnClickListener {
                 var intent = Intent(this, gamestart::class.java)
                 startActivity(intent)
             }
