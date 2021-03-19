@@ -5,7 +5,8 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import androidx.core.content.edit
 import androidx.preference.PreferenceManager
-import com.example.seihekijinrou.numberofpeople
+import com.example.seihekijinrou.Preparation.numberofpeople
+
 import com.example.seihekijinrou.databinding.ActivityExplanationBinding
 
 class explanation : AppCompatActivity() {

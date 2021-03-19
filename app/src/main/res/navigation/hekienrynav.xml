@@ -7,7 +7,7 @@
 
     <fragment
         android:id="@+id/hekientry3"
-        android:name="com.example.seihekijinrou.Hekientry3"
+        android:name="com.example.seihekijinrou.Preparation.Hekientry3"
         android:label="fragment_hekientry3"
         tools:layout="@layout/fragment_hekientry3" >
         <action
@@ -17,7 +17,7 @@
     </fragment>
     <fragment
         android:id="@+id/firstbetweenhekientry"
-        android:name="com.example.seihekijinrou.firstbetweenhekientry"
+        android:name="com.example.seihekijinrou.Preparation.firstbetweenhekientry"
         android:label="fragment_firstbetweenhekientry"
         tools:layout="@layout/fragment_firstbetweenhekientry" >
         <action
@@ -47,12 +47,12 @@
     </fragment>
     <fragment
         android:id="@+id/hekientry1"
-        android:name="com.example.seihekijinrou.Hekientry1"
+        android:name="com.example.seihekijinrou.Preparation.Hekientry1"
         android:label="fragment_hekientry1"
         tools:layout="@layout/fragment_hekientry1" />
     <fragment
         android:id="@+id/hekientry9"
-        android:name="com.example.seihekijinrou.Hekientry9"
+        android:name="com.example.seihekijinrou.Preparation.Hekientry9"
         android:label="fragment_hekientry9"
         tools:layout="@layout/fragment_hekientry9" >
         <action
@@ -62,7 +62,7 @@
     </fragment>
     <fragment
         android:id="@+id/hekientry10"
-        android:name="com.example.seihekijinrou.Hekientry10"
+        android:name="com.example.seihekijinrou.Preparation.Hekientry10"
         android:label="fragment_hekientry10"
         tools:layout="@layout/fragment_hekientry10" >
         <action
@@ -72,7 +72,7 @@
     </fragment>
     <fragment
         android:id="@+id/hekientry8"
-        android:name="com.example.seihekijinrou.Hekientry8"
+        android:name="com.example.seihekijinrou.Preparation.Hekientry8"
         android:label="fragment_hekientry8"
         tools:layout="@layout/fragment_hekientry8" >
         <action
@@ -82,7 +82,7 @@
     </fragment>
     <fragment
         android:id="@+id/hekientry2"
-        android:name="com.example.seihekijinrou.Hekientry2"
+        android:name="com.example.seihekijinrou.Preparation.Hekientry2"
         android:label="fragment_hekientry2"
         tools:layout="@layout/fragment_hekientry2" >
         <action
@@ -92,7 +92,7 @@
     </fragment>
     <fragment
         android:id="@+id/hekientry4"
-        android:name="com.example.seihekijinrou.Hekientry4"
+        android:name="com.example.seihekijinrou.Preparation.Hekientry4"
         android:label="fragment_hekientry4"
         tools:layout="@layout/fragment_hekientry4" >
         <action
@@ -102,7 +102,7 @@
     </fragment>
     <fragment
         android:id="@+id/hekientry5"
-        android:name="com.example.seihekijinrou.Hekientry5"
+        android:name="com.example.seihekijinrou.Preparation.Hekientry5"
         android:label="fragment_hekientry5"
         tools:layout="@layout/fragment_hekientry5" >
         <action
@@ -112,7 +112,7 @@
     </fragment>
     <fragment
         android:id="@+id/hekientry6"
-        android:name="com.example.seihekijinrou.Hekientry6"
+        android:name="com.example.seihekijinrou.Preparation.Hekientry6"
         android:label="fragment_hekientry6"
         tools:layout="@layout/fragment_hekientry6" >
         <action
@@ -122,7 +122,7 @@
     </fragment>
     <fragment
         android:id="@+id/hekientry7"
-        android:name="com.example.seihekijinrou.Hekientry7"
+        android:name="com.example.seihekijinrou.Preparation.Hekientry7"
         android:label="fragment_hekientry7"
         tools:layout="@layout/fragment_hekientry7" >
         <action
