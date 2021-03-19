@@ -1,11 +1,11 @@
-package com.example.seihekijinrou.ResultofVoting
+/*package com.example.seihekijinrou.ResultofVoting
 
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import androidx.preference.PreferenceManager
 import com.example.seihekijinrou.EndofGame.End1ofBad
-import com.example.seihekijinrou.MeetingandVoting.Meetingtime
+import com.example.seihekijinrou.Meetingtime
 import com.example.seihekijinrou.databinding.ActivityFalseResult2Binding
 
 class falseResult2 : AppCompatActivity() {
@@ -71,3 +71,4 @@ class falseResult2 : AppCompatActivity() {
         }
     }
 }
+*/

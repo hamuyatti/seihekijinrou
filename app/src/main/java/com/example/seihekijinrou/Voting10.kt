@@ -1,28 +1,27 @@
-package com.example.seihekijinrou.MeetingandVoting.Voting
-
-import android.content.Intent
-import androidx.appcompat.app.AppCompatActivity
+package com.example.seihekijinrou
 import android.os.Bundle
+import androidx.fragment.app.Fragment
+import android.view.LayoutInflater
+import android.view.View
+import android.view.ViewGroup
 import androidx.core.content.edit
+import androidx.navigation.fragment.findNavController
 import androidx.preference.PreferenceManager
-import com.example.seihekijinrou.R
-import com.example.seihekijinrou.ResultofVoting.falseResult
-import com.example.seihekijinrou.ResultofVoting.trueResult
-import com.example.seihekijinrou.databinding.ActivityVoting10Binding
+import com.example.seihekijinrou.databinding.FragmentVoting10Binding
 
-
-
-class Voting10 : AppCompatActivity() {
-    private lateinit var binding:ActivityVoting10Binding
+class Voting10 : Fragment() {
+    private var _binding:FragmentVoting10Binding? = null
+    private val binding get() = _binding!!
     private lateinit var Suspect10:String
     private lateinit var remainmembers9:Set<String>
     private lateinit var members:MutableList<String?>
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        binding = ActivityVoting10Binding.inflate(layoutInflater)
-        setContentView(binding.root)
 
-        var pref = PreferenceManager.getDefaultSharedPreferences(this)
+    override fun onCreateView(
+        inflater: LayoutInflater, container: ViewGroup?,
+        savedInstanceState: Bundle?
+    ): View? {
+        _binding = FragmentVoting10Binding.inflate(inflater, container, false)
+        var pref = PreferenceManager.getDefaultSharedPreferences(context)
         var jinrouname = pref.getString("jinrouname", "")
 
 
@@ -67,36 +66,30 @@ class Voting10 : AppCompatActivity() {
                 R.id.name7 -> Suspect10 = candidate7.toString()
                 R.id.name8 -> Suspect10 = candidate8.toString()
                 R.id.name9 -> Suspect10 = candidate9.toString()
-                R.id.name10 ->Suspect10 = candidate10.toString()
+                R.id.name10 -> Suspect10 = candidate10.toString()
 
 
             }
             remainmembers9;members.remove(Suspect10)
-            pref.edit { putStringSet("remainmembers9",remainmembers9)
-                putString("Suspect10",Suspect10)}
 
             binding.judge.setOnClickListener {
+                pref.edit {
+                    putStringSet("remainmembers9", remainmembers9)
+                    putString("Suspect10", Suspect10)
+                }
                 if (Suspect10 == jinrouname) {
-                    truejudgetime()
+                    findNavController().navigate(R.id.action_voting10_to_trueresult1)
+
+
 
                 } else {
-                    falsejudgetime()
+                    findNavController().navigate(R.id.action_voting10_to_falseresult1)
+
                 }
             }
+
         }
 
-
-
-
-    }
-    fun truejudgetime(){
-
-        var intent = Intent(this, trueResult::class.java)
-        startActivity(intent)
-    }
-    fun falsejudgetime(){
-
-        var intent = Intent(this, falseResult::class.java)
-        startActivity(intent)
+        return binding.root
     }
 }

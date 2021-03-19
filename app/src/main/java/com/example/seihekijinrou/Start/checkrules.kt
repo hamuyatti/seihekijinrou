@@ -9,6 +9,7 @@ import androidx.viewpager2.adapter.FragmentStateAdapter
 import com.example.seihekijinrou.R
 import com.example.seihekijinrou.databinding.ActivityCheckrulesBinding
 
+
 class checkrules : AppCompatActivity() {
     class MyAdapter(fa:FragmentActivity):FragmentStateAdapter(fa){
         private val resources = listOf(R.drawable.slide00, R.drawable.slide01,R.drawable.slide02,R.drawable.slide03,
@@ -21,7 +22,7 @@ class checkrules : AppCompatActivity() {
 
     }
 
-    private lateinit var binding:ActivityCheckrulesBinding
+    private lateinit var binding: ActivityCheckrulesBinding
     override fun onCreate(savedInstanceState: Bundle?) {
         binding = ActivityCheckrulesBinding.inflate(layoutInflater)
         super.onCreate(savedInstanceState)

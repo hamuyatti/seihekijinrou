@@ -3,7 +3,9 @@ package com.example.seihekijinrou.Start
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import com.example.seihekijinrou.Preparation.numberofpeople
+import androidx.core.content.edit
+import androidx.preference.PreferenceManager
+import com.example.seihekijinrou.numberofpeople
 import com.example.seihekijinrou.databinding.ActivityExplanationBinding
 
 class explanation : AppCompatActivity() {
@@ -12,6 +14,12 @@ class explanation : AppCompatActivity() {
         binding = ActivityExplanationBinding.inflate(layoutInflater)
         super.onCreate(savedInstanceState)
         setContentView(binding.root)
+
+        var pref = PreferenceManager.getDefaultSharedPreferences(this)
+        pref.edit{
+            clear()
+                .apply()
+        }
 
         binding.start.setOnClickListener {
             var intent = Intent(this, numberofpeople::class.java)

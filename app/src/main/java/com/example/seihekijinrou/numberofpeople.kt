@@ -1,4 +1,4 @@
-package com.example.seihekijinrou.Preparation
+package com.example.seihekijinrou
 
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
@@ -8,7 +8,6 @@ import android.widget.AdapterView
 import android.widget.Spinner
 import androidx.core.content.edit
 import androidx.preference.PreferenceManager
-import com.example.seihekijinrou.*
 import com.example.seihekijinrou.CenterofHekientry
 import com.example.seihekijinrou.databinding.ActivityNumberofpeopleBinding
 
@@ -49,24 +48,21 @@ class numberofpeople : AppCompatActivity() {
         }
 
         binding.gamestart.setOnClickListener {
-            putnumber()
+
             if (item == "３人") {
                 putnumber()
                 var intent = Intent(this, CenterofHekientry::class.java)
                 startActivity(intent)
-                putnumber()
 
             } else if (item == "４人") {
                 putnumber()
                 var intent = Intent(this, CenterofHekientry::class.java)
                 startActivity(intent)
-                putnumber()
 
             } else if (item == "５人") {
                 putnumber()
                 var intent = Intent(this,CenterofHekientry::class.java)
                 startActivity(intent)
-                putnumber()
 
             } else if (item == "６人") {
                 putnumber()
@@ -78,25 +74,23 @@ class numberofpeople : AppCompatActivity() {
                 putnumber()
                 var intent = Intent(this,CenterofHekientry::class.java)
                 startActivity(intent)
-                putnumber()
 
             } else if (item == "８人") {
                 putnumber()
                 var intent = Intent(this,CenterofHekientry::class.java)
                 startActivity(intent)
-                putnumber()
+
 
             } else if (item == "９人") {
                 putnumber()
                 var intent = Intent(this, CenterofHekientry::class.java)
                 startActivity(intent)
-                putnumber()
+
 
             } else {
                 putnumber()
                 var intent = Intent(this, CenterofHekientry::class.java)
                 startActivity(intent)
-                putnumber()
 
 
             }

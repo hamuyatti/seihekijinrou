@@ -2,7 +2,6 @@ package com.example.seihekijinrou
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import androidx.preference.PreferenceManager
 import com.example.seihekijinrou.R
 
 class CenterofHekientry : AppCompatActivity() {

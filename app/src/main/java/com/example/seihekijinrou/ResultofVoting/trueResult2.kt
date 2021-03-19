@@ -1,4 +1,4 @@
-package com.example.seihekijinrou.ResultofVoting
+/*package com.example.seihekijinrou.ResultofVoting
 
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
@@ -38,3 +38,4 @@ class trueResult2 : AppCompatActivity() {
         )
     }
 }
+*/

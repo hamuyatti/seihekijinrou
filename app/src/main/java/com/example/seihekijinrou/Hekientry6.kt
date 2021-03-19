@@ -20,16 +20,10 @@ class Hekientry6 : Fragment() {
     ): View? {
         _binding = FragmentHekientry6Binding.inflate(inflater,container,false)
         var pref = PreferenceManager.getDefaultSharedPreferences(context)
-        var firstname = pref.getString("name10", "")
-        var secondname = pref.getString("name9", "")
-        var thirdname = pref.getString("name8", "")
-        var forthname = pref.getString("name7", "")
-        var fifthname = pref.getString("name6", "")
-        var sixthname = pref.getString("name5", "")
-        var seventhname = pref.getString("name4", "")
-        var eighthname = pref.getString("name3", "")
-        var ninethname = pref.getString("name2", "")
-
+        var name10 = pref.getString("name10", "")
+        var name9 = pref.getString("name9", "")
+        var name8 = pref.getString("name8", "")
+        var name7 = pref.getString("name7", "")
         binding.Seihekiup.setOnClickListener {
             /*以下の変数定義はボタンを押してからの処理にしないとずっとnull,0文字になっちゃうよ！(自分用)*/
             var heki = binding.Heki.text
@@ -39,8 +33,7 @@ class Hekientry6 : Fragment() {
 
             /*バリデーションは性癖については行いません。かぶり表示がでてしまうと前エントリー者の入力内容が予測できてしまうため。*/
 
-            if (name == firstname || name == secondname || name == thirdname || name == forthname || name == fifthname || name == sixthname || name == seventhname
-                || name == eighthname || name == ninethname) {
+            if (name == name10 || name == name7 || name == name8 || name == name9||name == name10) {
                 binding.Seihekiup.text = "違う名前を使ってください"
             } else if (hekilength == 0 && namelength == 0) {
                 binding.Seihekiup.text = "お名前と性癖を教えてください"
@@ -61,10 +54,9 @@ class Hekientry6 : Fragment() {
     fun onSeihekiUpTapped() {
         var pref = PreferenceManager.getDefaultSharedPreferences(context)
         pref.edit {
-            putString("name6", binding.Heki.text.toString())
-            putString("seiheki6", binding.Getname.text.toString())
-                .apply()
-            findNavController().navigate(R.id.action_hekientry6_to_hekientry5)
+            putString("name6", binding.Heki.text.toString()).apply()
+            putString("seiheki6", binding.Getname.text.toString()).apply()
         }
+        findNavController().navigate(R.id.action_hekientry6_to_hekientry5)
     }
 }

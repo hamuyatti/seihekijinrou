@@ -1,0 +1,233 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/nav__graph2"
+    app:startDestination="@id/onlyFirstMeetingTime">
+
+    <fragment
+        android:id="@+id/voting10"
+        android:name="com.example.seihekijinrou.Voting10"
+        android:label="fragment_voting10"
+        tools:layout="@layout/fragment_voting10" >
+        <action
+            android:id="@+id/action_voting10_to_meetingtime"
+            app:destination="@id/meetingtime" />
+        <action
+            android:id="@+id/action_voting10_to_falseresult1"
+            app:destination="@id/falseresult1" />
+        <action
+            android:id="@+id/action_voting10_to_trueresult1"
+            app:destination="@id/trueresult1" />
+    </fragment>
+    <fragment
+        android:id="@+id/voting9"
+        android:name="com.example.seihekijinrou.Voting9"
+        android:label="fragment_voting9"
+        tools:layout="@layout/fragment_voting9" >
+        <action
+            android:id="@+id/action_voting9_to_meetingtime"
+            app:destination="@id/meetingtime" />
+        <action
+            android:id="@+id/action_voting9_to_falseresult1"
+            app:destination="@id/falseresult1" />
+        <action
+            android:id="@+id/action_voting9_to_trueresult1"
+            app:destination="@id/trueresult1" />
+    </fragment>
+    <fragment
+        android:id="@+id/voting8"
+        android:name="com.example.seihekijinrou.Voting8"
+        android:label="fragment_voting8"
+        tools:layout="@layout/fragment_voting8" >
+        <action
+            android:id="@+id/action_voting8_to_meetingtime"
+            app:destination="@id/meetingtime" />
+        <action
+            android:id="@+id/action_voting8_to_falseresult1"
+            app:destination="@id/falseresult1" />
+        <action
+            android:id="@+id/action_voting8_to_trueresult1"
+            app:destination="@id/trueresult1" />
+    </fragment>
+    <fragment
+        android:id="@+id/voting7"
+        android:name="com.example.seihekijinrou.Voting7"
+        android:label="fragment_voting7"
+        tools:layout="@layout/fragment_voting7" >
+        <action
+            android:id="@+id/action_voting7_to_meetingtime"
+            app:destination="@id/meetingtime" />
+        <action
+            android:id="@+id/action_voting7_to_falseresult1"
+            app:destination="@id/falseresult1" />
+        <action
+            android:id="@+id/action_voting7_to_trueresult1"
+            app:destination="@id/trueresult1" />
+    </fragment>
+    <fragment
+        android:id="@+id/voting6"
+        android:name="com.example.seihekijinrou.Voting6"
+        android:label="fragment_voting6"
+        tools:layout="@layout/fragment_voting6" >
+        <action
+            android:id="@+id/action_voting6_to_meetingtime"
+            app:destination="@id/meetingtime" />
+        <action
+            android:id="@+id/action_voting6_to_falseresult1"
+            app:destination="@id/falseresult1" />
+        <action
+            android:id="@+id/action_voting6_to_trueresult1"
+            app:destination="@id/trueresult1" />
+    </fragment>
+    <fragment
+        android:id="@+id/voting5"
+        android:name="com.example.seihekijinrou.Voting5"
+        android:label="fragment_voting5"
+        tools:layout="@layout/fragment_voting5" >
+        <action
+            android:id="@+id/action_voting5_to_meetingtime"
+            app:destination="@id/meetingtime" />
+        <action
+            android:id="@+id/action_voting5_to_falseresult1"
+            app:destination="@id/falseresult1" />
+        <action
+            android:id="@+id/action_voting5_to_trueresult1"
+            app:destination="@id/trueresult1" />
+    </fragment>
+    <fragment
+        android:id="@+id/voting4"
+        android:name="com.example.seihekijinrou.Voting4"
+        android:label="fragment_voting4"
+        tools:layout="@layout/fragment_voting4" >
+        <action
+            android:id="@+id/action_voting4_to_meetingtime"
+            app:destination="@id/meetingtime" />
+        <action
+            android:id="@+id/action_voting4_to_falseresult1"
+            app:destination="@id/falseresult1" />
+        <action
+            android:id="@+id/action_voting4_to_trueresult1"
+            app:destination="@id/trueresult1" />
+    </fragment>
+    <fragment
+        android:id="@+id/voting3"
+        android:name="com.example.seihekijinrou.Voting3"
+        android:label="fragment_voting3"
+        tools:layout="@layout/fragment_voting3" >
+        <action
+            android:id="@+id/action_voting3_to_falseresult1"
+            app:destination="@id/falseresult1" />
+        <action
+            android:id="@+id/action_voting3_to_trueresult1"
+            app:destination="@id/trueresult1" />
+    </fragment>
+    <fragment
+        android:id="@+id/meetingtime"
+        android:name="com.example.seihekijinrou.Meetingtime"
+        android:label="fragment_meetingtime"
+        tools:layout="@layout/fragment_meetingtime" >
+        <action
+            android:id="@+id/action_meetingtime_to_voting3"
+            app:destination="@id/voting3" />
+        <action
+            android:id="@+id/action_meetingtime_to_voting4"
+            app:destination="@id/voting4" />
+        <action
+            android:id="@+id/action_meetingtime_to_voting5"
+            app:destination="@id/voting5" />
+        <action
+            android:id="@+id/action_meetingtime_to_voting6"
+            app:destination="@id/voting6" />
+        <action
+            android:id="@+id/action_meetingtime_to_voting7"
+            app:destination="@id/voting7" />
+        <action
+            android:id="@+id/action_meetingtime_to_voting8"
+            app:destination="@id/voting8" />
+        <action
+            android:id="@+id/action_meetingtime_to_voting9"
+            app:destination="@id/voting9" />
+        <action
+            android:id="@+id/action_meetingtime_to_voting10"
+            app:destination="@id/voting10" />
+    </fragment>
+    <fragment
+        android:id="@+id/onlyFirstMeetingTime"
+        android:name="com.example.seihekijinrou.OnlyFirstMeetingTime"
+        android:label="fragment_only_first_meeting_time"
+        tools:layout="@layout/fragment_only_first_meeting_time" >
+        <action
+            android:id="@+id/action_onlyFirstMeetingTime_to_voting10"
+            app:destination="@id/voting10" />
+        <action
+            android:id="@+id/action_onlyFirstMeetingTime_to_voting9"
+            app:destination="@id/voting9" />
+        <action
+            android:id="@+id/action_onlyFirstMeetingTime_to_voting8"
+            app:destination="@id/voting8" />
+        <action
+            android:id="@+id/action_onlyFirstMeetingTime_to_voting7"
+            app:destination="@id/voting7" />
+        <action
+            android:id="@+id/action_onlyFirstMeetingTime_to_voting6"
+            app:destination="@id/voting6" />
+        <action
+            android:id="@+id/action_onlyFirstMeetingTime_to_voting5"
+            app:destination="@id/voting5" />
+        <action
+            android:id="@+id/action_onlyFirstMeetingTime_to_voting4"
+            app:destination="@id/voting4" />
+        <action
+            android:id="@+id/action_onlyFirstMeetingTime_to_voting3"
+            app:destination="@id/voting3" />
+    </fragment>
+    <fragment
+        android:id="@+id/falseresult1"
+        android:name="com.example.seihekijinrou.falseresult1"
+        android:label="fragment_falseresult1"
+        tools:layout="@layout/fragment_falseresult1" >
+        <action
+            android:id="@+id/action_falseresult1_to_falseresult2"
+            app:destination="@id/falseresult2" />
+    </fragment>
+    <fragment
+        android:id="@+id/falseresult2"
+        android:name="com.example.seihekijinrou.falseresult2"
+        android:label="fragment_falseresult2"
+        tools:layout="@layout/fragment_falseresult2" >
+        <action
+            android:id="@+id/action_falseresult2_to_openseiheki"
+            app:destination="@id/openseiheki" />
+        <action
+            android:id="@+id/action_falseresult2_to_meetingtime"
+            app:destination="@id/meetingtime" />
+    </fragment>
+    <fragment
+        android:id="@+id/trueresult1"
+        android:name="com.example.seihekijinrou.trueresult1"
+        android:label="fragment_trueresult1"
+        tools:layout="@layout/fragment_trueresult1" >
+        <action
+            android:id="@+id/action_trueresult1_to_trueresult2"
+            app:destination="@id/trueresult2" />
+    </fragment>
+    <fragment
+        android:id="@+id/trueresult2"
+        android:name="com.example.seihekijinrou.trueresult2"
+        android:label="fragment_trueresult2"
+        tools:layout="@layout/fragment_trueresult2" >
+        <action
+            android:id="@+id/action_trueresult2_to_meetingtime"
+            app:destination="@id/meetingtime" />
+    </fragment>
+    <fragment
+        android:id="@+id/openseiheki"
+        android:name="com.example.seihekijinrou.openseiheki"
+        android:label="fragment_openseiheki"
+        tools:layout="@layout/fragment_openseiheki" >
+        <action
+            android:id="@+id/action_openseiheki_to_meetingtime"
+            app:destination="@id/meetingtime" />
+    </fragment>
+</navigation>

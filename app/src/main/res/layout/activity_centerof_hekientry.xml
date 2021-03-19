@@ -12,7 +12,7 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         app:defaultNavHost="true"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:navGraph="@navigation/nav__graph" />
+        app:navGraph="@navigation/hekienrynav"
+        tools:layout_editor_absoluteX="56dp"
+        tools:layout_editor_absoluteY="306dp" />
 </androidx.constraintlayout.widget.ConstraintLayout>

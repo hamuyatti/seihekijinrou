@@ -1,18 +1,19 @@
-package com.example.seihekijinrou.MeetingandVoting.Voting
+package com.example.seihekijinrou
 
 import android.content.Intent
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import androidx.fragment.app.Fragment
+import android.view.LayoutInflater
+import android.view.View
+import android.view.ViewGroup
 import androidx.core.content.edit
+import androidx.navigation.fragment.findNavController
 import androidx.preference.PreferenceManager
-import com.example.seihekijinrou.R
-import com.example.seihekijinrou.ResultofVoting.falseResult
-import com.example.seihekijinrou.ResultofVoting.trueResult
-import com.example.seihekijinrou.databinding.ActivityVoting8Binding
+import com.example.seihekijinrou.databinding.FragmentVoting10Binding
+import com.example.seihekijinrou.databinding.FragmentVoting8Binding
 
 
-class Voting8 : AppCompatActivity() {
-    private lateinit var binding: ActivityVoting8Binding
+class Voting8 : Fragment() {
     private lateinit var Suspect8: String
     private lateinit var remainmembers7: Set<String>
     private lateinit var members: MutableList<String>
@@ -25,18 +26,22 @@ class Voting8 : AppCompatActivity() {
     private lateinit var candidate7: String
     private lateinit var candidate8: String
 
+    private var _binding: FragmentVoting8Binding? = null
+    private val binding get() = _binding!!
 
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        binding = ActivityVoting8Binding.inflate(layoutInflater)
-        setContentView(binding.root)
-        var pref = PreferenceManager.getDefaultSharedPreferences(this)
+
+    override fun onCreateView(
+        inflater: LayoutInflater, container: ViewGroup?,
+        savedInstanceState: Bundle?
+    ): View? {
+        _binding = FragmentVoting8Binding.inflate(inflater, container, false)
+        var pref = PreferenceManager.getDefaultSharedPreferences(context)
         var jinrou = pref.getString("jinrou", "")
         binding.jinrouseiheki.text = "$jinrou は誰の性癖？？"
 
         var jinrouname = pref.getString("jinrouname", "")
 
-        var fake = pref.getStringSet("remainmembers9", setOf(""))
+        var fake = pref.getStringSet("remainmembers8", setOf(""))
         if (fake != null) {
             members = fake.toMutableList()
             candidate1 = members[0]
@@ -58,7 +63,6 @@ class Voting8 : AppCompatActivity() {
             binding.name7.text = candidate7
             binding.name8.text = candidate8
 
-
         }
         binding.radioGroup.setOnCheckedChangeListener { group, checkedId ->
             when (checkedId) {
@@ -70,39 +74,39 @@ class Voting8 : AppCompatActivity() {
 
                 R.id.name4 -> Suspect8 = candidate4
 
-                R.id.name5 -> Suspect8 = candidate5
+                R.id.name5 -> Suspect8= candidate5
 
                 R.id.name6 -> Suspect8 = candidate6
 
                 R.id.name7 -> Suspect8 = candidate7
 
                 R.id.name8 -> Suspect8 = candidate8
+
+
             }
 
             members.remove(Suspect8)
             remainmembers7 = members.toSet()
 
             binding.judge.setOnClickListener {
+                pref.edit {
+                    putStringSet("remainmembers7", remainmembers7)
+                    putString("Suspect8", Suspect8)
+                }.apply { }
                 if (Suspect8 == jinrouname) {
-                    var pref = PreferenceManager.getDefaultSharedPreferences(this)
-                    pref.edit {
-                        putStringSet("remainmembers7", remainmembers7)
-                        putString("Suspect8", Suspect8)
-                    }.apply { }
-                    var intent = Intent(this, trueResult::class.java)
-                    startActivity(intent)
+                    var pref = PreferenceManager.getDefaultSharedPreferences(context)
+
+                    findNavController().navigate(R.id.action_voting8_to_trueresult1)
 
                 } else {
-                    var pref = PreferenceManager.getDefaultSharedPreferences(this)
-                    pref.edit {
-                        putStringSet("remainmembers7", remainmembers7)
-                        putString("Suspect8", Suspect8)
-                    }.apply { }
-                    var intent = Intent(this, falseResult::class.java)
-                    startActivity(intent)
+                    var pref = PreferenceManager.getDefaultSharedPreferences(context)
+
+                    findNavController().navigate(R.id.action_voting8_to_falseresult1)
                 }
             }
+
         }
 
+        return binding.root
     }
 }

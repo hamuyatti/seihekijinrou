@@ -6,7 +6,7 @@ import android.os.Bundle
 import android.os.Handler
 import androidx.core.content.edit
 import androidx.preference.PreferenceManager
-import com.example.seihekijinrou.MeetingandVoting.OnlyFirstMeetingtime
+import com.example.seihekijinrou.MeetingandVoting.CenterofMeetingandVoting
 import com.example.seihekijinrou.databinding.ActivityResult2Binding
 
 
@@ -146,10 +146,7 @@ class Result2 : AppCompatActivity() {
 
             pref.edit {
                 putString("jinrou", jinrou)
-            }
-            pref.edit {
                 putString("jinrouname", jinrouname)
-
 
             }.apply { }
         } else if (numberofpeople == "８人") {
@@ -195,8 +192,7 @@ class Result2 : AppCompatActivity() {
 
             pref.edit {
                 putString("jinrou", jinrou)
-            }
-            pref.edit {
+
                 putString("jinrouname", jinrouname)
 
 
@@ -240,11 +236,7 @@ class Result2 : AppCompatActivity() {
 
             pref.edit {
                 putString("jinrou", jinrou)
-            }
-            pref.edit {
                 putString("jinrouname", jinrouname)
-
-
             }.apply { }
         } else if (numberofpeople == "６人") {
 
@@ -281,12 +273,10 @@ class Result2 : AppCompatActivity() {
 
             pref.edit {
                 putString("jinrou", jinrou)
-            }
-            pref.edit {
                 putString("jinrouname", jinrouname)
-
-
             }.apply { }
+
+
         } else if (numberofpeople == "５人") {
 
             var number = (1..5).random()
@@ -318,12 +308,10 @@ class Result2 : AppCompatActivity() {
 
             pref.edit {
                 putString("jinrou", jinrou)
-            }
-            pref.edit {
+
                 putString("jinrouname", jinrouname)
-
-
             }.apply { }
+
         } else if (numberofpeople == "４人") {
 
             var number = (1..4).random()
@@ -351,12 +339,9 @@ class Result2 : AppCompatActivity() {
 
             pref.edit {
                 putString("jinrou", jinrou)
-            }
-            pref.edit {
                 putString("jinrouname", jinrouname)
-
-
             }.apply { }
+
         } else {
 
             var number = (1..3).random()
@@ -380,9 +365,7 @@ class Result2 : AppCompatActivity() {
 
             pref.edit {
                 putString("jinrou", jinrou)
-
                 putString("jinrouname", jinrouname)
-
 
             }.apply { }
         }
@@ -392,13 +375,16 @@ class Result2 : AppCompatActivity() {
         binding.gametitel.text = "「$jinrou」です！"
 
 
-        binding.button.setOnClickListener {
-
-            val intent = Intent(this, OnlyFirstMeetingtime::class.java)
-            startActivity(intent)
-
-
-        }
+        loadingDelay()
+    }
+    fun loadingDelay(){
+        Handler().postDelayed(
+                {
+                    var intent = Intent(this, CenterofMeetingandVoting::class.java)
+                    startActivity(intent)
+                },
+                2000,
+        )
     }
 }
 

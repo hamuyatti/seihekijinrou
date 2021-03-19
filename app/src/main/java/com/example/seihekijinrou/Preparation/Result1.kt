@@ -1,10 +1,11 @@
-package com.example.seihekijinrou
+package com.example.seihekijinrou.Preparation
 
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.os.Handler
 import com.example.seihekijinrou.Preparation.Result2
+import com.example.seihekijinrou.R
 
 class Result1 : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {

@@ -1,19 +1,19 @@
-package com.example.seihekijinrou.MeetingandVoting.Voting
+package com.example.seihekijinrou
 
 import android.content.Intent
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import androidx.fragment.app.Fragment
+import android.view.LayoutInflater
+import android.view.View
+import android.view.ViewGroup
 import androidx.core.content.edit
+import androidx.navigation.fragment.findNavController
 import androidx.preference.PreferenceManager
-import com.example.seihekijinrou.R
-import com.example.seihekijinrou.ResultofVoting.falseResult
-import com.example.seihekijinrou.ResultofVoting.trueResult
-import com.example.seihekijinrou.databinding.ActivityVoting7Binding
+import com.example.seihekijinrou.databinding.FragmentVoting10Binding
+import com.example.seihekijinrou.databinding.FragmentVoting7Binding
 
 
-
-class Voting7 : AppCompatActivity() {
-    private lateinit var binding: ActivityVoting7Binding
+class Voting7 : Fragment() {
     private lateinit var Suspect7: String
     private lateinit var remainmembers6: Set<String>
     private lateinit var members: MutableList<String>
@@ -25,11 +25,17 @@ class Voting7 : AppCompatActivity() {
     private lateinit var candidate6: String
     private lateinit var candidate7: String
 
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        binding = ActivityVoting7Binding.inflate(layoutInflater)
-        setContentView(binding.root)
-        var pref = PreferenceManager.getDefaultSharedPreferences(this)
+
+    private var _binding: FragmentVoting7Binding? = null
+    private val binding get() = _binding!!
+
+
+    override fun onCreateView(
+        inflater: LayoutInflater, container: ViewGroup?,
+        savedInstanceState: Bundle?
+    ): View? {
+        _binding = FragmentVoting7Binding.inflate(inflater, container, false)
+        var pref = PreferenceManager.getDefaultSharedPreferences(context)
         var jinrou = pref.getString("jinrou", "")
         binding.jinrouseiheki.text = "$jinrou は誰の性癖？？"
 
@@ -65,11 +71,13 @@ class Voting7 : AppCompatActivity() {
 
                 R.id.name4 -> Suspect7 = candidate4
 
-                R.id.name5 -> Suspect7 = candidate5
+                R.id.name5 -> Suspect7= candidate5
 
                 R.id.name6 -> Suspect7 = candidate6
 
                 R.id.name7 -> Suspect7 = candidate7
+
+
 
             }
 
@@ -77,26 +85,24 @@ class Voting7 : AppCompatActivity() {
             remainmembers6 = members.toSet()
 
             binding.judge.setOnClickListener {
+                pref.edit {
+                    putStringSet("remainmembers6", remainmembers6)
+                    putString("Suspect7", Suspect7)
+                }.apply { }
                 if (Suspect7 == jinrouname) {
-                    var pref = PreferenceManager.getDefaultSharedPreferences(this)
-                    pref.edit {
-                        putStringSet("remainmembers6", remainmembers6)
-                        putString("Suspect7", Suspect7)
-                    }.apply { }
-                    var intent = Intent(this, trueResult::class.java)
-                    startActivity(intent)
+                    var pref = PreferenceManager.getDefaultSharedPreferences(context)
+
+                    findNavController().navigate(R.id.action_voting7_to_trueresult1)
 
                 } else {
-                    var pref = PreferenceManager.getDefaultSharedPreferences(this)
-                    pref.edit {
-                        putStringSet("remainmembers6", remainmembers6)
-                        putString("Suspect7", Suspect7)
-                    }.apply { }
-                    var intent = Intent(this, falseResult::class.java)
-                    startActivity(intent)
+                    var pref = PreferenceManager.getDefaultSharedPreferences(context)
+
+                    findNavController().navigate(R.id.action_voting7_to_falseresult1)
                 }
             }
+
         }
 
+        return binding.root
     }
 }

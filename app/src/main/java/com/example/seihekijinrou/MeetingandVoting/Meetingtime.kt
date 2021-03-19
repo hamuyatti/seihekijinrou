@@ -1,4 +1,4 @@
-package com.example.seihekijinrou.MeetingandVoting
+/*package com.example.seihekijinrou.MeetingandVoting
 
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
@@ -85,3 +85,4 @@ class Meetingtime : AppCompatActivity() {
        }
 
     }
+*/

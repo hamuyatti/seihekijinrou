@@ -18,22 +18,14 @@ import com.example.seihekijinrou.databinding.FragmentHekientry9Binding
 
 class Hekientry9 : Fragment() {
     private var _binding: FragmentHekientry9Binding? = null
-    private val binding get()=_binding!!
+    private val binding get() = _binding!!
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        _binding = FragmentHekientry9Binding.inflate(inflater,container,false)
+        _binding = FragmentHekientry9Binding.inflate(inflater, container, false)
         var pref = PreferenceManager.getDefaultSharedPreferences(context)
-        var firstname = pref.getString("name10", "")
-        var secondname = pref.getString("name9", "")
-        var thirdname = pref.getString("name8", "")
-        var forthname = pref.getString("name7", "")
-        var fifthname = pref.getString("name6", "")
-        var sixthname = pref.getString("name5", "")
-        var seventhname = pref.getString("name4", "")
-        var eighthname = pref.getString("name3", "")
-        var ninethname = pref.getString("name2", "")
+        var name10 = pref.getString("name10", "")
 
         binding.Seihekiup.setOnClickListener {
             /*以下の変数定義はボタンを押してからの処理にしないとずっとnull,0文字になっちゃうよ！(自分用)*/
@@ -44,8 +36,7 @@ class Hekientry9 : Fragment() {
 
             /*バリデーションは性癖については行いません。かぶり表示がでてしまうと前エントリー者の入力内容が予測できてしまうため。*/
 
-            if (name == firstname || name == secondname || name == thirdname || name == forthname || name == fifthname || name == sixthname || name == seventhname
-                    || name == eighthname || name == ninethname) {
+            if (name == name10) {
                 binding.Seihekiup.text = "違う名前を使ってください"
             } else if (hekilength == 0 && namelength == 0) {
                 binding.Seihekiup.text = "お名前と性癖を教えてください"
@@ -58,7 +49,6 @@ class Hekientry9 : Fragment() {
                 onSeihekiUpTapped()
 
             }
-
         }
         return binding.root
     }
@@ -66,10 +56,11 @@ class Hekientry9 : Fragment() {
     fun onSeihekiUpTapped() {
         var pref = PreferenceManager.getDefaultSharedPreferences(context)
         pref.edit {
-            putString("name9", binding.Heki.text.toString())
-            putString("seiheki9", binding.Getname.text.toString())
-                    .apply()
-            findNavController().navigate(R.id.action_hekientry9_to_hekientry8)
+            putString("name9", binding.Heki.text.toString()).commit()
+            putString("seiheki9", binding.Getname.text.toString()).commit()
         }
+        findNavController().navigate(R.id.action_hekientry9_to_hekientry8)
     }
 }
+
+

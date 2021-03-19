@@ -1,4 +1,4 @@
-package com.example.seihekijinrou.ResultofVoting
+/*package com.example.seihekijinrou.ResultofVoting
 
 import android.content.Intent
 import android.media.AudioAttributes
@@ -104,3 +104,4 @@ class trueResult : AppCompatActivity() {
     }
 }
 
+*/

@@ -26,15 +26,15 @@ class Hekientry10 : Fragment() {
        _binding = FragmentHekientry10Binding.inflate(inflater,container,false)
 
         var pref = PreferenceManager.getDefaultSharedPreferences(context)
-        var firstname = pref.getString("name10", "")
-        var secondname = pref.getString("name9", "")
-        var thirdname = pref.getString("name8", "")
-        var forthname = pref.getString("name7", "")
-        var fifthname = pref.getString("name6", "")
-        var sixthname = pref.getString("name5", "")
-        var seventhname = pref.getString("name4", "")
-        var eighthname = pref.getString("name3", "")
-        var ninethname = pref.getString("name2", "")
+        var name10 = pref.getString("name10", "")
+        var name9 = pref.getString("name9", "")
+        var name8 = pref.getString("name8", "")
+        var name7 = pref.getString("name7", "")
+        var name6 = pref.getString("name6", "")
+        var name5 = pref.getString("name5", "")
+        var name4 = pref.getString("name4", "")
+        var name3 = pref.getString("name3", "")
+        var name2 = pref.getString("name2", "")
 
         binding.Seihekiup.setOnClickListener {
             /*以下の変数定義はボタンを押してからの処理にしないとずっとnull,0文字になっちゃうよ！(自分用)*/
@@ -45,10 +45,7 @@ class Hekientry10 : Fragment() {
 
             /*バリデーションは性癖については行いません。かぶり表示がでてしまうと前エントリー者の入力内容が予測できてしまうため。*/
 
-            if (name == firstname || name == secondname || name == thirdname || name == forthname || name == fifthname || name == sixthname || name == seventhname
-                    || name == eighthname || name == ninethname) {
-                binding.Seihekiup.text = "違う名前を使ってください"
-            } else if (hekilength == 0 && namelength == 0) {
+             if (hekilength == 0 && namelength == 0) {
                 binding.Seihekiup.text = "お名前と性癖を教えてください"
             } else if (hekilength == 0) {
                 binding.Seihekiup.text = "性癖を教えてください"
@@ -56,9 +53,9 @@ class Hekientry10 : Fragment() {
                 binding.Seihekiup.text = "お名前を教えてください"
 
             } else {
-               onSeihekiUpTapped()
+                onSeihekiUpTapped()
 
-                }
+            }
 
         }
         return binding.root
@@ -67,11 +64,10 @@ class Hekientry10 : Fragment() {
     fun onSeihekiUpTapped (){
         var pref = PreferenceManager.getDefaultSharedPreferences(context)
         pref.edit {
-            putString("name10", binding.Heki.text.toString())
-            putString("seiheki10", binding.Getname.text.toString())
-                    .apply()
-            findNavController().navigate(R.id.action_hekientry10_to_hekientry9)
+            putString("name10", binding.Heki.text.toString()).apply()
+            putString("seiheki10", binding.Getname.text.toString()).apply()
         }
+        findNavController().navigate(R.id.action_hekientry10_to_hekientry9)
     }
 }
 

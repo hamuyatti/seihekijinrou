@@ -1,18 +1,18 @@
-package com.example.seihekijinrou.MeetingandVoting.Voting
+package com.example.seihekijinrou
 
-import android.content.Intent
-import androidx.appcompat.app.AppCompatActivity
+
 import android.os.Bundle
+import androidx.fragment.app.Fragment
+import android.view.LayoutInflater
+import android.view.View
+import android.view.ViewGroup
 import androidx.core.content.edit
+import androidx.navigation.fragment.findNavController
 import androidx.preference.PreferenceManager
-import com.example.seihekijinrou.R
-import com.example.seihekijinrou.ResultofVoting.falseResult
-import com.example.seihekijinrou.ResultofVoting.trueResult
-import com.example.seihekijinrou.databinding.ActivityVoting4Binding
+import com.example.seihekijinrou.databinding.FragmentVoting4Binding
 
 
-class Voting4 : AppCompatActivity() {
-    private lateinit var binding: ActivityVoting4Binding
+class Voting4 : Fragment() {
     private lateinit var Suspect4: String
     private lateinit var remainmembers3: Set<String>
     private lateinit var members: MutableList<String>
@@ -21,17 +21,21 @@ class Voting4 : AppCompatActivity() {
     private lateinit var candidate3: String
     private lateinit var candidate4: String
 
+    private var _binding: FragmentVoting4Binding? = null
+    private val binding get() = _binding!!
 
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        binding =ActivityVoting4Binding.inflate(layoutInflater)
-        setContentView(binding.root)
-        var pref = PreferenceManager.getDefaultSharedPreferences(this)
+
+    override fun onCreateView(
+        inflater: LayoutInflater, container: ViewGroup?,
+        savedInstanceState: Bundle?
+    ): View? {
+        _binding = FragmentVoting4Binding.inflate(inflater, container, false)
+        var pref = PreferenceManager.getDefaultSharedPreferences(context)
         var jinrou = pref.getString("jinrou", "")
-
         binding.jinrouseiheki.text = "$jinrou は誰の性癖？？"
 
         var jinrouname = pref.getString("jinrouname", "")
+
         var fake = pref.getStringSet("remainmembers4", setOf(""))
         if (fake != null) {
             members = fake.toMutableList()
@@ -44,8 +48,6 @@ class Voting4 : AppCompatActivity() {
             binding.name2.text = candidate2
             binding.name3.text = candidate3
             binding.name4.text = candidate4
-
-
         }
         binding.radioGroup.setOnCheckedChangeListener { group, checkedId ->
             when (checkedId) {
@@ -57,33 +59,33 @@ class Voting4 : AppCompatActivity() {
 
                 R.id.name4 -> Suspect4 = candidate4
 
-
             }
 
             members.remove(Suspect4)
             remainmembers3 = members.toSet()
 
             binding.judge.setOnClickListener {
+                pref.edit {
+                    putStringSet("remainmembers3", remainmembers3)
+                    putString("Suspect4", Suspect4)
+                }.apply { }
                 if (Suspect4 == jinrouname) {
-                    var pref = PreferenceManager.getDefaultSharedPreferences(this)
-                    pref.edit {
-                        putStringSet("remainmembers3", remainmembers3)
-                        putString("Suspect4", Suspect4)
-                    }.apply { }
-                    var intent = Intent(this, trueResult::class.java)
-                    startActivity(intent)
+                    var pref = PreferenceManager.getDefaultSharedPreferences(context)
+
+                    findNavController().navigate(R.id.action_voting4_to_trueresult1)
+
 
                 } else {
-                    var pref = PreferenceManager.getDefaultSharedPreferences(this)
-                    pref.edit {
-                        putStringSet("remainmembers3", remainmembers3)
-                        putString("Suspect4", Suspect4)
-                    }.apply { }
-                    var intent = Intent(this, falseResult::class.java)
-                    startActivity(intent)
+                    var pref = PreferenceManager.getDefaultSharedPreferences(context)
+
+                    findNavController().navigate(R.id.action_voting4_to_falseresult1)
+
                 }
             }
+
         }
 
+        return binding.root
     }
 }
+

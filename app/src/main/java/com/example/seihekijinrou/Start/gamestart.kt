@@ -12,13 +12,17 @@ class gamestart : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_gamestart)
-
-        loadingDelay()
-
         var pref = PreferenceManager.getDefaultSharedPreferences(this)
         pref.edit{
             clear()
+            .apply()
         }
+
+        loadingDelay()
+
+
+
+
     }
 
     fun loadingDelay(){
