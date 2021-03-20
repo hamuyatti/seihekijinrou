@@ -12,22 +12,13 @@ import com.example.seihekijinrou.R
 import com.example.seihekijinrou.databinding.FragmentVoting9Binding
 
 
-class Voting9 : Fragment() {
-    private lateinit var Suspect9: String
-    private lateinit var remainmembers8: Set<String>
-    private lateinit var members: MutableList<String>
-    private lateinit var candidate1: String
-    private lateinit var candidate2: String
-    private lateinit var candidate3: String
-    private lateinit var candidate4: String
-    private lateinit var candidate5: String
-    private lateinit var candidate6: String
-    private lateinit var candidate7: String
-    private lateinit var candidate8: String
-    private lateinit var candidate9: String
+class Voting9 : abstractVoting() {
     private var _binding: FragmentVoting9Binding? = null
     private val binding get() = _binding!!
-
+    lateinit var jinrouname:String
+    lateinit var members:MutableList<String?>
+    private lateinit var Suspect9: String
+    private lateinit var remainmembers8: Set<String>
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -38,20 +29,19 @@ class Voting9 : Fragment() {
         var jinrou = pref.getString("jinrou", "")
         binding.jinrouseiheki.text = "$jinrou は誰の性癖？？"
 
-        var jinrouname = pref.getString("jinrouname", "")
 
         var fake = pref.getStringSet("remainmembers9", setOf(""))
         if (fake != null) {
             members = fake.toMutableList()
-            candidate1 = members[0]
-            candidate2 = members[1]
-            candidate3 = members[2]
-            candidate4 = members[3]
-            candidate5 = members[4]
-            candidate6 = members[5]
-            candidate7 = members[6]
-            candidate8 = members[7]
-            candidate9 = members[8]
+            candidate1 = members[0].toString()
+            candidate2 = members[1].toString()
+            candidate3 = members[2].toString()
+            candidate4 = members[3].toString()
+            candidate5 = members[4].toString()
+            candidate6 = members[5].toString()
+            candidate7 = members[6].toString()
+            candidate8 = members[7].toString()
+            candidate9 = members[8].toString()
 
             binding.name1.text = candidate1
             binding.name2.text = candidate2
@@ -83,28 +73,31 @@ class Voting9 : Fragment() {
                 R.id.name8 -> Suspect9 = candidate8
 
                 R.id.name9 -> Suspect9 = candidate9
-
             }
 
+            }
+        binding.judge.setOnClickListener {
             members.remove(Suspect9)
-            remainmembers8 = members.toSet()
-
-            binding.judge.setOnClickListener {
-                var pref = PreferenceManager.getDefaultSharedPreferences(context)
-                pref.edit {
-                    putStringSet("remainmembers8", remainmembers8)
-                    putString("Suspect9", Suspect9)
-                    putString("ThistimeSuspect",Suspect9)}.apply {  }
-                    if (Suspect9 == jinrouname) {
-                        findNavController().navigate(R.id.action_voting9_to_trueresult1)
-
-                    } else {
-                        findNavController().navigate(R.id.action_voting9_to_falseresult1)
-                    }
-                }
-
-            }
+            remainmembers8 = members.toSet() as Set<String>
+            judge()
+        }
 
         return binding.root
     }
+
+    override fun judge() {
+        var pref = PreferenceManager.getDefaultSharedPreferences(context)
+        var jinrouname = pref.getString("jinrouname", "")
+        pref.edit {
+            putStringSet("remainmembers8", remainmembers8)
+            putString("Suspect9", Suspect9)
+            putString("ThistimeSuspect",Suspect9)}.apply {  }
+        if (Suspect9 == jinrouname) {
+            findNavController().navigate(R.id.action_voting9_to_trueresult1)
+
+        } else {
+            findNavController().navigate(R.id.action_voting9_to_falseresult1)
+        }
+    }
+
 }

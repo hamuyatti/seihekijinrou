@@ -1,6 +1,7 @@
 package com.example.seihekijinrou.MeetingandVotingandResult
 
 import android.os.Bundle
+import android.provider.Settings.Global.putString
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
@@ -12,19 +13,10 @@ import com.example.seihekijinrou.R
 import com.example.seihekijinrou.databinding.FragmentVoting7Binding
 
 
-class Voting7 : Fragment() {
+class Voting7 : abstractVoting() {
     private lateinit var Suspect7: String
     private lateinit var remainmembers6: Set<String>
     private lateinit var members: MutableList<String>
-    private lateinit var candidate1: String
-    private lateinit var candidate2: String
-    private lateinit var candidate3: String
-    private lateinit var candidate4: String
-    private lateinit var candidate5: String
-    private lateinit var candidate6: String
-    private lateinit var candidate7: String
-
-
     private var _binding: FragmentVoting7Binding? = null
     private val binding get() = _binding!!
 
@@ -37,8 +29,6 @@ class Voting7 : Fragment() {
         var pref = PreferenceManager.getDefaultSharedPreferences(context)
         var jinrou = pref.getString("jinrou", "")
         binding.jinrouseiheki.text = "$jinrou は誰の性癖？？"
-
-        var jinrouname = pref.getString("jinrouname", "")
 
         var fake = pref.getStringSet("remainmembers7", setOf(""))
         if (fake != null) {
@@ -70,39 +60,44 @@ class Voting7 : Fragment() {
 
                 R.id.name4 -> Suspect7 = candidate4
 
-                R.id.name5 -> Suspect7= candidate5
+                R.id.name5 -> Suspect7 = candidate5
 
                 R.id.name6 -> Suspect7 = candidate6
 
                 R.id.name7 -> Suspect7 = candidate7
 
 
-
             }
-
-            members.remove(Suspect7)
-            remainmembers6 = members.toSet()
-
-            binding.judge.setOnClickListener {
-                pref.edit {
-                    putStringSet("remainmembers6", remainmembers6)
-                    putString("Suspect7", Suspect7)
-                    putString("ThistimeSuspect",Suspect7)
-                }.apply { }
-                if (Suspect7 == jinrouname) {
-                    var pref = PreferenceManager.getDefaultSharedPreferences(context)
-
-                    findNavController().navigate(R.id.action_voting7_to_trueresult1)
-
-                } else {
-                    var pref = PreferenceManager.getDefaultSharedPreferences(context)
-
-                    findNavController().navigate(R.id.action_voting7_to_falseresult1)
-                }
-            }
-
         }
 
+
+
+            binding.judge.setOnClickListener {
+                members.remove(Suspect7)
+                remainmembers6 = members.toSet()
+                judge()
+            }
+
+
+
         return binding.root
+    }
+
+    override fun judge() {
+        var pref = PreferenceManager.getDefaultSharedPreferences(context)
+        var jinrouname = pref.getString("jinrouname", "")
+        pref.edit {
+            putStringSet("remainmembers6", remainmembers6)
+            putString("Suspect7", Suspect7)
+            putString("ThistimeSuspect",Suspect7)
+        }.apply { }
+        if (Suspect7 == jinrouname) {
+
+            findNavController().navigate(R.id.action_voting7_to_trueresult1)
+
+        } else {
+
+            findNavController().navigate(R.id.action_voting7_to_falseresult1)
+        }
     }
 }

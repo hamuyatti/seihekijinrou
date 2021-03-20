@@ -1,6 +1,7 @@
 package com.example.seihekijinrou.MeetingandVotingandResult
 
 import android.os.Bundle
+import android.provider.Settings.Global.putString
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
@@ -12,45 +13,35 @@ import com.example.seihekijinrou.R
 import com.example.seihekijinrou.databinding.FragmentVoting8Binding
 
 
-class Voting8 : Fragment() {
+class Voting8 : abstractVoting() {
     private lateinit var Suspect8: String
     private lateinit var remainmembers7: Set<String>
-    private lateinit var members: MutableList<String>
-    private lateinit var candidate1: String
-    private lateinit var candidate2: String
-    private lateinit var candidate3: String
-    private lateinit var candidate4: String
-    private lateinit var candidate5: String
-    private lateinit var candidate6: String
-    private lateinit var candidate7: String
-    private lateinit var candidate8: String
-
+    lateinit var members:MutableList<String?>
     private var _binding: FragmentVoting8Binding? = null
     private val binding get() = _binding!!
 
 
     override fun onCreateView(
-        inflater: LayoutInflater, container: ViewGroup?,
-        savedInstanceState: Bundle?
+            inflater: LayoutInflater, container: ViewGroup?,
+            savedInstanceState: Bundle?
     ): View? {
         _binding = FragmentVoting8Binding.inflate(inflater, container, false)
         var pref = PreferenceManager.getDefaultSharedPreferences(context)
         var jinrou = pref.getString("jinrou", "")
         binding.jinrouseiheki.text = "$jinrou は誰の性癖？？"
 
-        var jinrouname = pref.getString("jinrouname", "")
 
         var fake = pref.getStringSet("remainmembers8", setOf(""))
         if (fake != null) {
             members = fake.toMutableList()
-            candidate1 = members[0]
-            candidate2 = members[1]
-            candidate3 = members[2]
-            candidate4 = members[3]
-            candidate5 = members[4]
-            candidate6 = members[5]
-            candidate7 = members[6]
-            candidate8 = members[7]
+            candidate1 = members[0].toString()
+            candidate2 = members[1].toString()
+            candidate3 = members[2].toString()
+            candidate4 = members[3].toString()
+            candidate5 = members[4].toString()
+            candidate6 = members[5].toString()
+            candidate7 = members[6].toString()
+            candidate8 = members[7].toString()
 
 
             binding.name1.text = candidate1
@@ -73,7 +64,7 @@ class Voting8 : Fragment() {
 
                 R.id.name4 -> Suspect8 = candidate4
 
-                R.id.name5 -> Suspect8= candidate5
+                R.id.name5 -> Suspect8 = candidate5
 
                 R.id.name6 -> Suspect8 = candidate6
 
@@ -84,29 +75,34 @@ class Voting8 : Fragment() {
 
             }
 
+        }
+        binding.judge.setOnClickListener {
             members.remove(Suspect8)
-            remainmembers7 = members.toSet()
-
-            binding.judge.setOnClickListener {
-                pref.edit {
-                    putStringSet("remainmembers7", remainmembers7)
-                    putString("Suspect8", Suspect8)
-                    putString("ThistimeSuspect",Suspect8)
-                }.apply { }
-                if (Suspect8 == jinrouname) {
-                    var pref = PreferenceManager.getDefaultSharedPreferences(context)
-
-                    findNavController().navigate(R.id.action_voting8_to_trueresult1)
-
-                } else {
-                    var pref = PreferenceManager.getDefaultSharedPreferences(context)
-
-                    findNavController().navigate(R.id.action_voting8_to_falseresult1)
-                }
-            }
+            remainmembers7 = members.toSet() as Set<String>
+            judge()
 
         }
 
         return binding.root
     }
-}
+
+
+        override fun judge() {
+            var pref = PreferenceManager.getDefaultSharedPreferences(context)
+            var jinrouname = pref.getString("jinrouname", "")
+            pref.edit {
+                putStringSet("remainmembers7", remainmembers7)
+                putString("Suspect8", Suspect8)
+                putString("ThistimeSuspect", Suspect8)
+            }.apply { }
+            if (Suspect8 == jinrouname) {
+
+                findNavController().navigate(R.id.action_voting8_to_trueresult1)
+
+            } else {
+
+                findNavController().navigate(R.id.action_voting8_to_falseresult1)
+            }
+        }
+    }
+

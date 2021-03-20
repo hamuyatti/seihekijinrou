@@ -12,12 +12,9 @@ import com.example.seihekijinrou.R
 import com.example.seihekijinrou.databinding.FragmentVoting3Binding
 
 
-class Voting3 : Fragment() {
+class Voting3 : abstractVoting() {
     private lateinit var Suspect3: String
     private lateinit var members: MutableList<String>
-    private lateinit var candidate1: String
-    private lateinit var candidate2: String
-    private lateinit var candidate3: String
 
     private var _binding: FragmentVoting3Binding? = null
     private val binding get() = _binding!!
@@ -33,7 +30,6 @@ class Voting3 : Fragment() {
         var jinrou = pref.getString("jinrou", "")
         binding.jinrouseiheki.text = "$jinrou は誰の性癖？？"
 
-        var jinrouname = pref.getString("jinrouname", "")
 
         var fake = pref.getStringSet("remainmembers3", setOf(""))
         if (fake != null) {
@@ -58,31 +54,35 @@ class Voting3 : Fragment() {
 
             }
 
-            members.remove(Suspect3)
-
-            binding.judge.setOnClickListener {
-                pref.edit {
-                    putString("Suspect3",Suspect3)
-                    putString("ThistimeSuspect",Suspect3)
-                }.apply {  }
-                if (Suspect3 == jinrouname) {
-
-                    findNavController().navigate(R.id.action_voting3_to_trueresult1)
-
-
-                } else {
-                    pref.edit {
-                        putString("LOSE","負けた時の判別用です。")
-                    }.apply {  }
-
-                    findNavController().navigate(R.id.action_voting3_to_falseresult1)
-
-                }
-            }
-
         }
+        binding.judge.setOnClickListener {
+            members.remove(Suspect3)
+            judge()
+      }
 
         return binding.root
+    }
+
+    override fun judge() {
+        var pref = PreferenceManager.getDefaultSharedPreferences(context)
+        var jinrouname = pref.getString("jinrouname", "")
+        pref.edit {
+            putString("Suspect3",Suspect3)
+            putString("ThistimeSuspect",Suspect3)
+        }.apply {  }
+        if (Suspect3 == jinrouname) {
+
+            findNavController().navigate(R.id.action_voting3_to_trueresult1)
+
+
+        } else {
+            pref.edit {
+                putString("LOSE","負けた時の判別用です。")
+            }.apply {  }
+
+            findNavController().navigate(R.id.action_voting3_to_falseresult1)
+
+        }
     }
 }
 

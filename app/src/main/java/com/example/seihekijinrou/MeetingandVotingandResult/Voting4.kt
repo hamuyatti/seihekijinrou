@@ -13,14 +13,10 @@ import com.example.seihekijinrou.R
 import com.example.seihekijinrou.databinding.FragmentVoting4Binding
 
 
-class Voting4 : Fragment() {
+class Voting4 : abstractVoting() {
     private lateinit var Suspect4: String
     private lateinit var remainmembers3: Set<String>
     private lateinit var members: MutableList<String>
-    private lateinit var candidate1: String
-    private lateinit var candidate2: String
-    private lateinit var candidate3: String
-    private lateinit var candidate4: String
 
     private var _binding: FragmentVoting4Binding? = null
     private val binding get() = _binding!!
@@ -35,7 +31,6 @@ class Voting4 : Fragment() {
         var jinrou = pref.getString("jinrou", "")
         binding.jinrouseiheki.text = "$jinrou は誰の性癖？？"
 
-        var jinrouname = pref.getString("jinrouname", "")
 
         var fake = pref.getStringSet("remainmembers4", setOf(""))
         if (fake != null) {
@@ -62,32 +57,37 @@ class Voting4 : Fragment() {
 
             }
 
-            members.remove(Suspect4)
-            remainmembers3 = members.toSet()
 
             binding.judge.setOnClickListener {
-                pref.edit {
-                    putStringSet("remainmembers3", remainmembers3)
-                    putString("Suspect4", Suspect4)
-                    putString("ThistimeSuspect",Suspect4)
-                }.apply { }
-                if (Suspect4 == jinrouname) {
-                    var pref = PreferenceManager.getDefaultSharedPreferences(context)
-
-                    findNavController().navigate(R.id.action_voting4_to_trueresult1)
-
-
-                } else {
-                    var pref = PreferenceManager.getDefaultSharedPreferences(context)
-
-                    findNavController().navigate(R.id.action_voting4_to_falseresult1)
-
-                }
+                members.remove(Suspect4)
+                remainmembers3 = members.toSet()
+                judge()
             }
 
         }
 
         return binding.root
+    }
+
+    override fun judge() {
+        var pref = PreferenceManager.getDefaultSharedPreferences(context)
+        var jinrouname = pref.getString("jinrouname", "")
+        pref.edit {
+            putStringSet("remainmembers3", remainmembers3)
+            putString("Suspect4", Suspect4)
+            putString("ThistimeSuspect",Suspect4)
+        }.apply { }
+        if (Suspect4 == jinrouname) {
+
+
+            findNavController().navigate(R.id.action_voting4_to_trueresult1)
+
+
+        } else {
+
+            findNavController().navigate(R.id.action_voting4_to_falseresult1)
+
+        }
     }
 }
 
