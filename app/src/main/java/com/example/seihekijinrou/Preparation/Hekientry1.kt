@@ -74,37 +74,6 @@ class Hekientry1 :Fragment() {
             startActivity(intent)
         }
     }
-/*abstract class abstractHekientry : Fragment() {
-    private var _binding: FragmentHekientry1Binding?=null
-    private val binding get() = _binding!!
-    override fun onCreateView(
-            inflater: LayoutInflater, container: ViewGroup?,
-            savedInstanceState: Bundle?
-    ): View? {
-        _binding = FragmentHekientry1Binding.inflate(inflater, container, false)
-        var pref = PreferenceManager.getDefaultSharedPreferences(context)
-        var firstname = pref.getString("name10", "")
-        var secondname = pref.getString("name9", "")
-        var thirdname = pref.getString("name8", "")
-        var forthname = pref.getString("name7", "")
-        var fifthname = pref.getString("name6", "")
-        var sixthname = pref.getString("name5", "")
-        var seventhname = pref.getString("name4", "")
-        var eighthname = pref.getString("name3", "")
-        var ninethname = pref.getString("name2", "")
-
-        binding.Seihekiup.setOnClickListener {
-            /*以下の変数定義はボタンを押してからの処理にしないとずっとnull,0文字になっちゃうよ！(自分用)*/
-            var heki = binding.Heki.text
-            var hekilength = heki.length
-            var name = binding.Getname.text.toString()
-            var namelength = name.length
-
-
-            fun checkandseihekiup() {}
-        }
-        return binding.root
-    }*/
 
 
 
