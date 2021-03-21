@@ -1,4 +1,4 @@
-package com.example.seihekijinrou.MeetingandVotingandResult
+package com.example.seihekijinrou.MeetingandVotingandResult.ResultofVoting
 
 import android.content.Intent
 import android.os.Bundle
@@ -24,7 +24,9 @@ class trueresult2 : Fragment() {
         var ThistimeSuspect = pref.getString("ThistimeSuspect","")
         var jinrou = pref.getString("jinrou","")
 
-        binding.textView9.text = "$ThistimeSuspect さんは性癖「$jinrou」の持ち主です!"
+        binding.textView9.text = "$ThistimeSuspect さんは性癖"
+
+        binding.textView8.text = "「$jinrou」"
 
 
 

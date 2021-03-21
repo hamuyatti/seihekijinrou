@@ -1,4 +1,4 @@
-package com.example.seihekijinrou.MeetingandVotingandResult
+package com.example.seihekijinrou.MeetingandVotingandResult.Voting
 
 import android.os.Bundle
 import androidx.fragment.app.Fragment

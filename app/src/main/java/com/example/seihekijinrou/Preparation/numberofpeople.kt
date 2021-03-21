@@ -8,6 +8,7 @@ import android.widget.Spinner
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.content.edit
 import androidx.preference.PreferenceManager
+import com.example.seihekijinrou.Preparation.SeiHekientry.CenterofHekientry
 import com.example.seihekijinrou.databinding.ActivityNumberofpeopleBinding
 
 

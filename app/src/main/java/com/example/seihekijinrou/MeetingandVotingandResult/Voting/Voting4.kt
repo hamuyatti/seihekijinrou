@@ -1,4 +1,5 @@
-package com.example.seihekijinrou.MeetingandVotingandResult
+package com.example.seihekijinrou.MeetingandVotingandResult.Voting
+
 
 import android.os.Bundle
 import androidx.fragment.app.Fragment
@@ -9,14 +10,15 @@ import androidx.core.content.edit
 import androidx.navigation.fragment.findNavController
 import androidx.preference.PreferenceManager
 import com.example.seihekijinrou.R
-import com.example.seihekijinrou.databinding.FragmentVoting3Binding
+import com.example.seihekijinrou.databinding.FragmentVoting4Binding
 
 
-class Voting3 : abstractVoting() {
-    private lateinit var Suspect3: String
+class Voting4 : abstractVoting() {
+    private lateinit var Suspect4: String
+    private lateinit var remainmembers3: Set<String>
     private lateinit var members: MutableList<String>
 
-    private var _binding: FragmentVoting3Binding? = null
+    private var _binding: FragmentVoting4Binding? = null
     private val binding get() = _binding!!
 
 
@@ -24,41 +26,45 @@ class Voting3 : abstractVoting() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        _binding = FragmentVoting3Binding.inflate(inflater, container, false)
+        _binding = FragmentVoting4Binding.inflate(inflater, container, false)
         var pref = PreferenceManager.getDefaultSharedPreferences(context)
-
         var jinrou = pref.getString("jinrou", "")
         binding.jinrouseiheki.text = "$jinrou は誰の性癖？？"
 
 
-        var fake = pref.getStringSet("remainmembers3", setOf(""))
+        var fake = pref.getStringSet("remainmembers4", setOf(""))
         if (fake != null) {
             members = fake.toMutableList()
             candidate1 = members[0]
             candidate2 = members[1]
             candidate3 = members[2]
+            candidate4 = members[3]
 
             binding.name1.text = candidate1
             binding.name2.text = candidate2
             binding.name3.text = candidate3
-
+            binding.name4.text = candidate4
         }
         binding.radioGroup.setOnCheckedChangeListener { group, checkedId ->
             when (checkedId) {
-                R.id.name1 -> Suspect3 = candidate1
+                R.id.name1 -> Suspect4 = candidate1
 
-                R.id.name2 -> Suspect3 = candidate2
+                R.id.name2 -> Suspect4 = candidate2
 
-                R.id.name3 -> Suspect3 = candidate3
+                R.id.name3 -> Suspect4 = candidate3
 
+                R.id.name4 -> Suspect4 = candidate4
 
             }
 
+
+            binding.judge.setOnClickListener {
+                members.remove(Suspect4)
+                remainmembers3 = members.toSet()
+                judge()
+            }
+
         }
-        binding.judge.setOnClickListener {
-            members.remove(Suspect3)
-            judge()
-      }
 
         return binding.root
     }
@@ -67,20 +73,19 @@ class Voting3 : abstractVoting() {
         var pref = PreferenceManager.getDefaultSharedPreferences(context)
         var jinrouname = pref.getString("jinrouname", "")
         pref.edit {
-            putString("Suspect3",Suspect3)
-            putString("ThistimeSuspect",Suspect3)
-        }.apply {  }
-        if (Suspect3 == jinrouname) {
+            putStringSet("remainmembers3", remainmembers3)
+            putString("Suspect4", Suspect4)
+            putString("ThistimeSuspect",Suspect4)
+        }.apply { }
+        if (Suspect4 == jinrouname) {
 
-            findNavController().navigate(R.id.action_voting3_to_trueresult1)
+
+            findNavController().navigate(R.id.action_voting4_to_trueresult1)
 
 
         } else {
-            pref.edit {
-                putString("LOSE","負けた時の判別用です。")
-            }.apply {  }
 
-            findNavController().navigate(R.id.action_voting3_to_falseresult1)
+            findNavController().navigate(R.id.action_voting4_to_falseresult1)
 
         }
     }

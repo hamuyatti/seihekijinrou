@@ -1,4 +1,4 @@
-package com.example.seihekijinrou.MeetingandVotingandResult
+package com.example.seihekijinrou.MeetingandVotingandResult.Meeting
 
 import android.os.Bundle
 import android.os.CountDownTimer

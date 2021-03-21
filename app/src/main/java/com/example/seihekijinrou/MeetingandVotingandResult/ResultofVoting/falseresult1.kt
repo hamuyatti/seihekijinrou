@@ -1,4 +1,4 @@
-package com.example.seihekijinrou.MeetingandVotingandResult
+package com.example.seihekijinrou.MeetingandVotingandResult.ResultofVoting
 
 import android.media.AudioAttributes
 import android.media.SoundPool

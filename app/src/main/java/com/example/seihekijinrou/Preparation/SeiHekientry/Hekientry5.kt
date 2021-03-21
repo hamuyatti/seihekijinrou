@@ -1,29 +1,31 @@
-package com.example.seihekijinrou.Preparation
+package com.example.seihekijinrou.Preparation.SeiHekientry
 
 import android.os.Bundle
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.core.content.edit
-import androidx.navigation.Navigation.findNavController
 import androidx.navigation.fragment.findNavController
 import androidx.preference.PreferenceManager
 import com.example.seihekijinrou.R
-import com.example.seihekijinrou.databinding.FragmentHekientry10Binding
+import com.example.seihekijinrou.databinding.FragmentHekientry5Binding
 
 
-class Hekientry10 :abstractHekientry() {
-   private var _binding:FragmentHekientry10Binding? = null
+
+class Hekientry5 : abstractHekientry() {
+    private var _binding: FragmentHekientry5Binding? = null
     private val binding get()=_binding!!
-
-
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-
-       _binding = FragmentHekientry10Binding.inflate(inflater,container,false)
+        _binding = FragmentHekientry5Binding.inflate(inflater,container,false)
+        var pref = PreferenceManager.getDefaultSharedPreferences(context)
+        name10 = pref.getString("name10", "").toString()
+        name9 = pref.getString("name9", "").toString()
+        name8 = pref.getString("name8", "").toString()
+        name7 = pref.getString("name7", "").toString()
+        name6 = pref.getString("name6", "").toString()
 
         binding.Seihekiup.setOnClickListener {
             /*以下の変数定義はボタンを押してからの処理にしないとずっとnull,0文字になっちゃうよ！(自分用)*/
@@ -34,7 +36,9 @@ class Hekientry10 :abstractHekientry() {
 
             /*バリデーションは性癖については行いません。かぶり表示がでてしまうと前エントリー者の入力内容が予測できてしまうため。*/
 
-             if (hekilength == 0 && namelength == 0) {
+            if (name == name6 || name == name7 || name == name8 || name == name9 ||name == name10) {
+                binding.Seihekiup.text = "違う名前を使ってください"
+            } else if (hekilength == 0 && namelength == 0) {
                 binding.Seihekiup.text = "お名前と性癖を教えてください"
             } else if (hekilength == 0) {
                 binding.Seihekiup.text = "性癖を教えてください"
@@ -50,34 +54,14 @@ class Hekientry10 :abstractHekientry() {
         return binding.root
     }
 
-   override  fun onSeihekiUpTapped (){
+   override  fun onSeihekiUpTapped() {
         var pref = PreferenceManager.getDefaultSharedPreferences(context)
         pref.edit {
-            putString("name10", binding.Getname.text.toString()).apply()
-            putString("seiheki10", binding.Heki.text.toString()).apply()
+            putString("name5", binding.Getname.text.toString()).apply()
+            putString("seiheki5", binding.Heki.text.toString()).apply()
         }
-        findNavController().navigate(R.id.action_hekientry10_to_hekientry9)
+
+            findNavController().navigate(R.id.action_hekientry5_to_hekientry4)
+
     }
 }
-abstract  class abstractHekientry: Fragment() {
-    lateinit var name1:String
-    lateinit var name2:String
-    lateinit var name3:String
-    lateinit var name4:String
-    lateinit var name5:String
-    lateinit var name6:String
-    lateinit var name7:String
-    lateinit var name8:String
-    lateinit var name9:String
-    lateinit var name10:String
-
-    abstract  fun onSeihekiUpTapped()
-
-
-
-
-
-}
-
-
-

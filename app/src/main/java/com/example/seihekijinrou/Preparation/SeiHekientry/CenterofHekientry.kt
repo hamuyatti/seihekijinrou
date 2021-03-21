@@ -1,4 +1,4 @@
-package com.example.seihekijinrou.Preparation
+package com.example.seihekijinrou.Preparation.SeiHekientry
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle

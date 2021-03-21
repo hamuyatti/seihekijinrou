@@ -1,4 +1,4 @@
-package com.example.seihekijinrou.MeetingandVotingandResult
+package com.example.seihekijinrou.MeetingandVotingandResult.ResultofVoting
 
 import android.content.Intent
 import android.os.Bundle
