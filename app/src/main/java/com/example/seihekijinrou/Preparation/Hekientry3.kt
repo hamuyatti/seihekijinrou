@@ -68,4 +68,5 @@ class Hekientry3 : Fragment() {
         }
         findNavController().navigate(R.id.action_hekientry3_to_hekientry2)
     }
+
 }

@@ -30,12 +30,13 @@ class End1ofBad : AppCompatActivity() {
                 var intent = Intent(this, End2::class.java)
                 startActivity(intent)
             }
+        }
 
 
             binding.backtotitle.setOnClickListener {
                 var intent = Intent(this, gamestart::class.java)
                 startActivity(intent)
             }
-        }
+
     }
 }
