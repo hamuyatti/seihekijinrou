@@ -13,7 +13,7 @@ import com.example.seihekijinrou.R
 import com.example.seihekijinrou.databinding.FragmentHekientry10Binding
 
 
-class Hekientry10 : Fragment() {
+class Hekientry10 :abstractHekientry() {
    private var _binding:FragmentHekientry10Binding? = null
     private val binding get()=_binding!!
 
@@ -24,17 +24,6 @@ class Hekientry10 : Fragment() {
     ): View? {
 
        _binding = FragmentHekientry10Binding.inflate(inflater,container,false)
-
-        var pref = PreferenceManager.getDefaultSharedPreferences(context)
-        var name10 = pref.getString("name10", "")
-        var name9 = pref.getString("name9", "")
-        var name8 = pref.getString("name8", "")
-        var name7 = pref.getString("name7", "")
-        var name6 = pref.getString("name6", "")
-        var name5 = pref.getString("name5", "")
-        var name4 = pref.getString("name4", "")
-        var name3 = pref.getString("name3", "")
-        var name2 = pref.getString("name2", "")
 
         binding.Seihekiup.setOnClickListener {
             /*以下の変数定義はボタンを押してからの処理にしないとずっとnull,0文字になっちゃうよ！(自分用)*/
@@ -61,7 +50,7 @@ class Hekientry10 : Fragment() {
         return binding.root
     }
 
-    fun onSeihekiUpTapped (){
+   override  fun onSeihekiUpTapped (){
         var pref = PreferenceManager.getDefaultSharedPreferences(context)
         pref.edit {
             putString("name10", binding.Getname.text.toString()).apply()
@@ -70,8 +59,25 @@ class Hekientry10 : Fragment() {
         findNavController().navigate(R.id.action_hekientry10_to_hekientry9)
     }
 }
+abstract  class abstractHekientry: Fragment() {
+    lateinit var name1:String
+    lateinit var name2:String
+    lateinit var name3:String
+    lateinit var name4:String
+    lateinit var name5:String
+    lateinit var name6:String
+    lateinit var name7:String
+    lateinit var name8:String
+    lateinit var name9:String
+    lateinit var name10:String
+
+    abstract  fun onSeihekiUpTapped()
 
 
+
+
+
+}
 
 
 

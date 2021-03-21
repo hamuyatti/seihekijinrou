@@ -11,7 +11,7 @@ import androidx.preference.PreferenceManager
 import com.example.seihekijinrou.R
 import com.example.seihekijinrou.databinding.FragmentHekientry6Binding
 
-class Hekientry6 : Fragment() {
+class Hekientry6 : abstractHekientry() {
     private var _binding: FragmentHekientry6Binding? = null
     private val binding get()=_binding!!
     override fun onCreateView(
@@ -20,10 +20,10 @@ class Hekientry6 : Fragment() {
     ): View? {
         _binding = FragmentHekientry6Binding.inflate(inflater,container,false)
         var pref = PreferenceManager.getDefaultSharedPreferences(context)
-        var name10 = pref.getString("name10", "")
-        var name9 = pref.getString("name9", "")
-        var name8 = pref.getString("name8", "")
-        var name7 = pref.getString("name7", "")
+        name10 = pref.getString("name10", "").toString()
+        name9 = pref.getString("name9", "").toString()
+        name8 = pref.getString("name8", "").toString()
+        name7 = pref.getString("name7", "").toString()
         binding.Seihekiup.setOnClickListener {
             /*以下の変数定義はボタンを押してからの処理にしないとずっとnull,0文字になっちゃうよ！(自分用)*/
             var heki = binding.Heki.text
@@ -51,7 +51,7 @@ class Hekientry6 : Fragment() {
         return binding.root
     }
 
-    fun onSeihekiUpTapped() {
+    override  fun onSeihekiUpTapped() {
         var pref = PreferenceManager.getDefaultSharedPreferences(context)
         pref.edit {
             putString("name6", binding.Getname.text.toString()).apply()

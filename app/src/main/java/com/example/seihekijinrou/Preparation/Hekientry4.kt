@@ -12,7 +12,7 @@ import com.example.seihekijinrou.R
 import com.example.seihekijinrou.databinding.FragmentHekientry4Binding
 
 
-class Hekientry4 : Fragment() {
+class Hekientry4 : abstractHekientry() {
     private var _binding: FragmentHekientry4Binding? = null
     private val binding get()=_binding!!
     override fun onCreateView(
@@ -21,12 +21,12 @@ class Hekientry4 : Fragment() {
     ): View? {
         _binding = FragmentHekientry4Binding.inflate(inflater,container,false)
         var pref = PreferenceManager.getDefaultSharedPreferences(context)
-        var name10 = pref.getString("name10", "")
-        var name9 = pref.getString("name9", "")
-        var name8 = pref.getString("name8", "")
-        var name7 = pref.getString("name7", "")
-        var name6 = pref.getString("name6", "")
-        var name5 = pref.getString("name5", "")
+        name10 = pref.getString("name10", "").toString()
+        name9 = pref.getString("name9", "").toString()
+        name8 = pref.getString("name8", "").toString()
+        name7 = pref.getString("name7", "").toString()
+        name6 = pref.getString("name6", "").toString()
+        name5 = pref.getString("name5", "").toString()
 
 
         binding.Seihekiup.setOnClickListener {
@@ -59,7 +59,7 @@ class Hekientry4 : Fragment() {
         return binding.root
     }
 
-    fun onSeihekiUpTapped() {
+    override fun onSeihekiUpTapped() {
         var pref = PreferenceManager.getDefaultSharedPreferences(context)
         pref.edit {
             putString("name4", binding.Getname.text.toString()).commit()
