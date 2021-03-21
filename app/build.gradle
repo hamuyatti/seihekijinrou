@@ -39,6 +39,9 @@ android {
             assets {
                 srcDirs 'src\\main\\assets', 'app\\res'
             }
+            res {
+                srcDirs 'src\\main\\res', 'src\\main\\res\\gamestart', 'src\\main\\res\\layouts\\gamestart', 'src\\main\\res\\layouts\\Voting', 'src\\main\\res\\layouts\\Meeting', 'src\\main\\res\\layouts\\Preparation', 'src\\main\\res\\layouts\\Endofgame', 'src\\main\\res\\layouts\\ResultofVoting'
+            }
         }
     }
 }

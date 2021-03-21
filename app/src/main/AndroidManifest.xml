@@ -9,14 +9,14 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.Seihekijinrou">
-        <activity android:name=".Preparation.SeiHekientry.CenterofHekientry"></activity>
+        <activity android:name=".Preparation.SeiHekientry.CenterofHekientry" ></activity>
         <activity android:name=".MeetingandVotingandResult.CenterofMeetingandVoting" />
         <activity android:name=".EndofGame.End3" />
         <activity android:name=".EndofGame.End2" />
         <activity android:name=".EndofGame.End1ofBad" />
         <activity android:name=".EndofGame.End1ofTrue" />
-        <activity android:name=".Preparation.Result2" />
-        <activity android:name=".Preparation.Result1" />
+        <activity android:name=".Preparation.openjinrou2" />
+        <activity android:name=".Preparation.openjinrou1" />
         <activity android:name=".Preparation.numberofpeople" />
         <activity android:name=".Start.checkrules" />
         <activity android:name=".Start.explanation" />

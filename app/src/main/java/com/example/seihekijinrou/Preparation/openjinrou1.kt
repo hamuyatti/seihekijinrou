@@ -8,11 +8,10 @@ import androidx.core.content.edit
 import androidx.preference.PreferenceManager
 import com.example.seihekijinrou.R
 
-
-class Result1 : AppCompatActivity() {
+class openjinrou1 : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_result1)
+        setContentView(R.layout.activity_openjinrou1)
         var pref = PreferenceManager.getDefaultSharedPreferences(this)
         var numberofpeople = pref.getString("numberofpeople", "")
 
@@ -369,7 +368,7 @@ class Result1 : AppCompatActivity() {
     fun loadingDelay(){
         Handler().postDelayed(
             {
-                var intent = Intent(this, Result2::class.java)
+                var intent = Intent(this, openjinrou2::class.java)
                 startActivity(intent)
             },
             1000,

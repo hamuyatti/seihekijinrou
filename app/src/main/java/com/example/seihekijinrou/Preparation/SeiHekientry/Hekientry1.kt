@@ -7,7 +7,8 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.core.content.edit
 import androidx.preference.PreferenceManager
-import com.example.seihekijinrou.Preparation.Result1
+import com.example.seihekijinrou.Preparation.openjinrou1
+import com.example.seihekijinrou.Preparation.openjinrou2
 import com.example.seihekijinrou.databinding.FragmentHekientry1Binding
 
 
@@ -67,7 +68,7 @@ class Hekientry1 :abstractHekientry() {
                 putString("name1", binding.Getname.text.toString()).apply()
                 putString("seiheki1", binding.Heki.text.toString()).apply()
             }
-            var intent = Intent(context, Result1::class.java)
+            var intent = Intent(context, openjinrou1::class.java)
             startActivity(intent)
         }
     }

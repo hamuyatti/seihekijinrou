@@ -4,18 +4,16 @@ import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.os.Handler
-import androidx.core.content.edit
 import androidx.preference.PreferenceManager
 import com.example.seihekijinrou.MeetingandVotingandResult.CenterofMeetingandVoting
-import com.example.seihekijinrou.databinding.ActivityResult2Binding
+import com.example.seihekijinrou.R
+import com.example.seihekijinrou.databinding.ActivityOpenjinrou2Binding
 
-
-
-class Result2 : AppCompatActivity() {
-    private lateinit var binding: ActivityResult2Binding
+class openjinrou2 : AppCompatActivity() {
+    private lateinit var binding: ActivityOpenjinrou2Binding
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        binding = ActivityResult2Binding.inflate(layoutInflater)
+        binding = ActivityOpenjinrou2Binding.inflate(layoutInflater)
         setContentView(binding.root)
 
         var pref = PreferenceManager.getDefaultSharedPreferences(this)
@@ -28,14 +26,12 @@ class Result2 : AppCompatActivity() {
     }
     fun loadingDelay(){
         Handler().postDelayed(
-                {
-                    var intent = Intent(this, CenterofMeetingandVoting::class.java)
-                    startActivity(intent)
-                },
-                2000,
+            {
+                var intent = Intent(this, CenterofMeetingandVoting::class.java)
+                startActivity(intent)
+            },
+            2000,
         )
     }
 }
-
-
 
