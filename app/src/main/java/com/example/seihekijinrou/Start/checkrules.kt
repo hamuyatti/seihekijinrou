@@ -13,7 +13,7 @@ import com.example.seihekijinrou.databinding.ActivityCheckrulesBinding
 class checkrules : AppCompatActivity() {
     class MyAdapter(fa:FragmentActivity):FragmentStateAdapter(fa){
         private val resources = listOf(R.drawable.slide00, R.drawable.slide01,R.drawable.slide02,R.drawable.slide03,
-        R.drawable.slide04,R.drawable.slide05,R.drawable.slide06,R.drawable.slide07,R.drawable.slide08,R.drawable.slide09)
+        R.drawable.slide04,R.drawable.slide05,R.drawable.slide06,R.drawable.slide07,R.drawable.slide08)
         override fun getItemCount(): Int =resources.size
 
         override fun createFragment(position: Int): Fragment
