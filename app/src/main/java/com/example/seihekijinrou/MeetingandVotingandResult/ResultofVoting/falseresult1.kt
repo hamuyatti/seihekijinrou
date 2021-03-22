@@ -34,10 +34,8 @@ class falseresult1 : Fragment() {
 
         binding.falseplayer.text = "$ThistimeSuspect さんは、、"
 
-
         loadingDelay()
         loadingDelay2()
-
 
         return binding.root
     }

@@ -61,15 +61,13 @@ class Voting5 : abstractVoting() {
 
 
             }
-
-
-
+            binding.judge.setOnClickListener {
+                members.remove(Suspect5)
+                remainmembers4 = members.toSet()
+                judge()
+            }
         }
-        binding.judge.setOnClickListener {
-            members.remove(Suspect5)
-            remainmembers4 = members.toSet()
-            judge()
-        }
+
         return binding.root
     }
 

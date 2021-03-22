@@ -53,12 +53,13 @@ class Voting3 : abstractVoting() {
 
 
             }
+            binding.judge.setOnClickListener {
+                members.remove(Suspect3)
+                judge()
+            }
 
         }
-        binding.judge.setOnClickListener {
-            members.remove(Suspect3)
-            judge()
-      }
+
 
         return binding.root
     }
