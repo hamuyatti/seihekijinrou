@@ -3,13 +3,15 @@
     package="com.example.seihekijinrou">
 
     <application
+        android:name=".Start.realmInit"
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.Seihekijinrou">
-        <activity android:name=".Preparation.SeiHekientry.CenterofHekientry" ></activity>
+        <activity android:name=".Start.SeihekiofPast"></activity>
+        <activity android:name=".Preparation.SeiHekientry.CenterofHekientry" />
         <activity android:name=".MeetingandVotingandResult.CenterofMeetingandVoting" />
         <activity android:name=".EndofGame.End3" />
         <activity android:name=".EndofGame.End2" />
