@@ -50,9 +50,7 @@ class Hekientry10 :abstractHekientry() {
                 binding.Seihekiup.text = "お名前を教えてください"
 
             } else {
-
-
-                 realm.executeTransaction {
+                realm.executeTransaction {
                      db:Realm->
                      var Seihekidata = db.createObject<seihekidata>()
                      Seihekidata.seiheki = heki

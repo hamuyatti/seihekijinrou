@@ -9,7 +9,6 @@ import androidx.navigation.fragment.findNavController
 import androidx.preference.PreferenceManager
 import com.example.seihekijinrou.R
 import com.example.seihekijinrou.Start.seihekidata
-
 import com.example.seihekijinrou.databinding.FragmentHekientry3Binding
 import io.realm.Realm
 import io.realm.kotlin.createObject
@@ -19,7 +18,6 @@ class Hekientry3 :abstractHekientry() {
     private var _binding: FragmentHekientry3Binding? = null
     private val binding get()=_binding!!
     private lateinit var realm: Realm
-
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -63,7 +61,6 @@ class Hekientry3 :abstractHekientry() {
             } else {
                 realm.executeTransaction {
                         db: Realm ->
-
                     var Seihekidata = db.createObject<seihekidata>()
                     Seihekidata.seiheki = heki
 

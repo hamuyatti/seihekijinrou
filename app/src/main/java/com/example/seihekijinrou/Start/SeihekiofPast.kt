@@ -1,5 +1,6 @@
 package com.example.seihekijinrou.Start
 
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -21,6 +22,11 @@ class SeihekiofPast : AppCompatActivity() {
         val Replacement = realm.where<seihekidata>().findAll()
         val adapter = Seihekiadapter(Replacement)
         binding.list.adapter = adapter
+
+        binding.button3.setOnClickListener {
+            var intent = Intent(this, gamestart::class.java)
+            startActivity(intent)
+        }
 
     }
 

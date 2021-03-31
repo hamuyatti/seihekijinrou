@@ -17,6 +17,12 @@ class Hekientry6 : abstractHekientry() {
     private var _binding: FragmentHekientry6Binding? = null
     private val binding get()=_binding!!
     private lateinit var realm: Realm
+
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        realm = Realm.getDefaultInstance()
+    }
+
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
@@ -55,7 +61,6 @@ class Hekientry6 : abstractHekientry() {
 
                 Snackbar()
                 onSeihekiUpTapped()
-
             }
 
         }

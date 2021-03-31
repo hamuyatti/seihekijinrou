@@ -18,6 +18,12 @@ class Hekientry5 : abstractHekientry() {
     private var _binding: FragmentHekientry5Binding? = null
     private val binding get()=_binding!!
     private lateinit var realm: Realm
+
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        realm = Realm.getDefaultInstance()
+    }
+
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
