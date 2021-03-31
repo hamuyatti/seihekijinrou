@@ -13,6 +13,7 @@ import com.example.seihekijinrou.R
 import com.example.seihekijinrou.Start.seihekidata
 import com.example.seihekijinrou.databinding.FragmentHekientry10Binding
 import io.realm.Realm
+import io.realm.kotlin.createObject
 
 
 class Hekientry10 :abstractHekientry() {
@@ -53,12 +54,10 @@ class Hekientry10 :abstractHekientry() {
 
                  realm.executeTransaction {
                      db:Realm->
-                     var seiheki =seihekidata(heki)
-                     realm.insert(seiheki)
-                     realm.commitTransaction()
+                     var Seihekidata = db.createObject<seihekidata>()
+                     Seihekidata.seiheki = heki
 
                  }
-
                  Snackbar()
                  onSeihekiUpTapped()
             }

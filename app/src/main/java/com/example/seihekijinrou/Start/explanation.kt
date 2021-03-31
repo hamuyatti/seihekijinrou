@@ -31,9 +31,11 @@ class explanation : AppCompatActivity() {
             var intent = Intent(this, checkrules::class.java)
             startActivity(intent)
         }
-        binding.button.setOnClickListener {
+            binding.button.setOnClickListener {
             var intent = Intent(this, SeihekiofPast::class.java)
             startActivity(intent)
         }
+
+
     }
 }

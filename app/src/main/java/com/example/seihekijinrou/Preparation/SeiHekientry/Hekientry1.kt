@@ -11,6 +11,7 @@ import com.example.seihekijinrou.Preparation.openjinrou1
 import com.example.seihekijinrou.Start.seihekidata
 import com.example.seihekijinrou.databinding.FragmentHekientry1Binding
 import io.realm.Realm
+import io.realm.kotlin.createObject
 
 
 class Hekientry1 :abstractHekientry() {
@@ -24,8 +25,8 @@ class Hekientry1 :abstractHekientry() {
     }
 
     override fun onCreateView(
-            inflater: LayoutInflater, container: ViewGroup?,
-            savedInstanceState: Bundle?
+        inflater: LayoutInflater, container: ViewGroup?,
+        savedInstanceState: Bundle?
     ): View? {
         _binding = FragmentHekientry1Binding.inflate(inflater, container, false)
         var pref = PreferenceManager.getDefaultSharedPreferences(context)
@@ -48,9 +49,9 @@ class Hekientry1 :abstractHekientry() {
 
             /*バリデーションは性癖については行いません。かぶり表示がでてしまうと前エントリー者の入力内容が予測できてしまうため。*/
 
-            if ( name == name2 || name == name3 || name == name4 || name == name5 || name == name6 || name == name7
-                || name == name8 || name == name9||name == name10)
-                {
+            if (name == name2 || name == name3 || name == name4 || name == name5 || name == name6 || name == name7
+                || name == name8 || name == name9 || name == name10
+            ) {
                 binding.Seihekiup.text = "違う名前を使ってください"
             } else if (hekilength == 0 && namelength == 0) {
                 binding.Seihekiup.text = "お名前と性癖を教えてください"
@@ -60,31 +61,27 @@ class Hekientry1 :abstractHekientry() {
                 binding.Seihekiup.text = "お名前を教えてください"
 
             } else {
-                realm.executeTransaction {
-                        db: Realm ->
-                    var seiheki = seihekidata(heki)
-                    realm.insert(seiheki)
-                    realm.commitTransaction()
+                realm.executeTransaction { db: Realm ->
+                    var Seihekidata = db.createObject<seihekidata>()
+                    Seihekidata.seiheki = heki
 
                 }
                 Snackbar()
                 onSeihekiUpTapped()
-
             }
 
-
+            }
+            return binding.root
         }
-        return binding.root
-    }
-    override fun onDestroyView() {
-        super.onDestroyView()
-        _binding = null
-    }
+        override fun onDestroyView() {
+            super.onDestroyView()
+            _binding = null
+        }
 
-    override fun onDestroy() {
-        super.onDestroy()
-        realm.close()
-    }
+        override fun onDestroy() {
+            super.onDestroy()
+            realm.close()
+        }
 
         override fun onSeihekiUpTapped() {
             var pref = PreferenceManager.getDefaultSharedPreferences(context)
@@ -95,7 +92,8 @@ class Hekientry1 :abstractHekientry() {
             var intent = Intent(context, openjinrou1::class.java)
             startActivity(intent)
         }
-    }
+
+}
 
 
 

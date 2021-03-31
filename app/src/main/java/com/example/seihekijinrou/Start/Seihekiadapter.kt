@@ -11,10 +11,6 @@ import io.realm.RealmRecyclerViewAdapter
 class Seihekiadapter(data: OrderedRealmCollection<seihekidata>)
     :RealmRecyclerViewAdapter<seihekidata,Seihekiadapter.ViewHolder>(data,true) {
 
-        init {
-            setHasStableIds(true)
-        }
-
     class ViewHolder(cell: View):RecyclerView.ViewHolder(cell){
         val seiheki: TextView = cell.findViewById(android.R.id.text1)
     }
@@ -30,4 +26,6 @@ class Seihekiadapter(data: OrderedRealmCollection<seihekidata>)
         holder.seiheki.text = seihekidata?.seiheki
     }
 
+
 }
+
