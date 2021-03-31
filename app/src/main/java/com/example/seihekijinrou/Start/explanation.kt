@@ -30,8 +30,10 @@ class explanation : AppCompatActivity() {
         binding.checkrules.setOnClickListener {
             var intent = Intent(this, checkrules::class.java)
             startActivity(intent)
-
-
+        }
+        binding.button.setOnClickListener {
+            var intent = Intent(this, SeihekiofPast::class.java)
+            startActivity(intent)
         }
     }
 }
