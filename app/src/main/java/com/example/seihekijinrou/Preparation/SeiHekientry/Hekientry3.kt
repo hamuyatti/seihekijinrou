@@ -4,6 +4,7 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.activity.addCallback
 import androidx.core.content.edit
 import androidx.navigation.fragment.findNavController
 import androidx.preference.PreferenceManager
@@ -94,4 +95,9 @@ class Hekientry3 :abstractHekientry() {
         findNavController().navigate(R.id.action_hekientry3_to_hekientry2)
     }
 
+    fun OnBacktapped(){
+        requireActivity().onBackPressedDispatcher.addCallback(this) {
+            val dialog = ConfirmDialogs("前の人の登録に戻りますか？","はい",)
+         }
+    }
 }
