@@ -94,10 +94,4 @@ class Hekientry3 :abstractHekientry() {
         }
         findNavController().navigate(R.id.action_hekientry3_to_hekientry2)
     }
-
-    fun OnBacktapped(){
-        requireActivity().onBackPressedDispatcher.addCallback(this) {
-            val dialog = ConfirmDialogs("前の人の登録に戻りますか？","はい",)
-         }
-    }
 }
