@@ -4,6 +4,7 @@ plugins {
     id "androidx.navigation.safeargs.kotlin"
     id 'kotlin-kapt'
     id 'realm-android'
+    id 'com.google.gms.google-services'
 }
 
 android {
@@ -61,14 +62,20 @@ dependencies {
     implementation 'androidx.navigation:navigation-ui-ktx:2.3.2'
     implementation "com.airbnb.android:lottie:3.6.1"
     implementation  'io.realm:android-adapters:2.1.1'
+    implementation 'com.google.firebase:firebase-firestore:22.1.2'
     testImplementation 'junit:junit:4.+'
     androidTestImplementation 'androidx.test.ext:junit:1.1.2'
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.3.0'
+    implementation platform('com.google.firebase:firebase-bom:26.8.0')
+    implementation 'com.google.firebase:firebase-analytics-ktx'
+    implementation 'com.google.firebase:firebase-firestore-ktx'
+    implementation 'com.firebaseui:firebase-ui-auth:6.4.0'
+    implementation 'com.firebaseui:firebase-ui-firestore:7.1.1'
 
 
 
 
-        def nav_version = "2.3.3"
+    def nav_version = "2.3.3"
 
         // Java language implementation
         implementation "androidx.navigation:navigation-fragment:$nav_version"

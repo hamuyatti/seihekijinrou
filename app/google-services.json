@@ -1,0 +1,69 @@
+{
+  "project_info": {
+    "project_number": "57921898331",
+    "firebase_url": "https://seihekijinrou-default-rtdb.firebaseio.com",
+    "project_id": "seihekijinrou",
+    "storage_bucket": "seihekijinrou.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:57921898331:android:aabea0e18e878c68527c7e",
+        "android_client_info": {
+          "package_name": "com.hamu.seihekijinrou"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "57921898331-18g726tllpvhidi85sl64q502jc2q3o3.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCPH-N4Km2MwkoNUNgddJiQ_l029XV9wMg"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "57921898331-18g726tllpvhidi85sl64q502jc2q3o3.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:57921898331:android:e13ea9df54e11083527c7e",
+        "android_client_info": {
+          "package_name": "com.hamu.storetest"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "57921898331-18g726tllpvhidi85sl64q502jc2q3o3.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCPH-N4Km2MwkoNUNgddJiQ_l029XV9wMg"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "57921898331-18g726tllpvhidi85sl64q502jc2q3o3.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
