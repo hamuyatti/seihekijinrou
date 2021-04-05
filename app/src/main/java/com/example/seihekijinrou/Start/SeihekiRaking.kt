@@ -30,7 +30,8 @@ class SeihekiRaking : AppCompatActivity() {
 
 
     fun setupRecyclerview(){
-       val query:Query = collection
+       val query0:Query = collection
+       var query =  query0.orderBy("seiheki",Query.Direction.DESCENDING).limit(10)
        val firestoreRecycleroption:FirestoreRecyclerOptions<Model> = FirestoreRecyclerOptions.Builder<Model>().setQuery(query,Model::class.java).build()
 
        adapter = Adapter(firestoreRecycleroption)
