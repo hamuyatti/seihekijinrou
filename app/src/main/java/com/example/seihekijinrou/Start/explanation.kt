@@ -32,9 +32,10 @@ class explanation : AppCompatActivity() {
             startActivity(intent)
         }
             binding.button.setOnClickListener {
-            var intent = Intent(this, SeihekiofPast::class.java)
+            var intent = Intent(this, PastSeiheki::class.java)
             startActivity(intent)
         }
+
 
 
     }

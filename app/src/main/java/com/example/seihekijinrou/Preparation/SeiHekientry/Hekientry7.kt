@@ -8,21 +8,12 @@ import androidx.core.content.edit
 import androidx.navigation.fragment.findNavController
 import androidx.preference.PreferenceManager
 import com.example.seihekijinrou.R
-import com.example.seihekijinrou.Start.seihekidata
 import com.example.seihekijinrou.databinding.FragmentHekientry7Binding
-import io.realm.Realm
-import io.realm.kotlin.createObject
 
 class Hekientry7 : abstractHekientry() {
 
     private var _binding: FragmentHekientry7Binding? = null
     private val binding get()=_binding!!
-    private lateinit var realm: Realm
-
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        realm = Realm.getDefaultInstance()
-    }
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -36,7 +27,7 @@ class Hekientry7 : abstractHekientry() {
 
         binding.Seihekiup.setOnClickListener {
             /*以下の変数定義はボタンを押してからの処理にしないとずっとnull,0文字になっちゃうよ！(自分用)*/
-            var heki = binding.Heki.text.toString()
+            heki = binding.Heki.text.toString()
             var hekilength = heki.length
             var name = binding.Getname.text.toString()
             var namelength = name.length
@@ -53,13 +44,8 @@ class Hekientry7 : abstractHekientry() {
                 binding.Seihekiup.text = "お名前を教えてください"
 
             } else {
-                realm.executeTransaction {
-                        db: Realm ->
-                    var Seihekidata = db.createObject<seihekidata>()
-                    Seihekidata.seiheki = heki
-                }
-
                 Snackbar()
+                firestoreup()
                 onSeihekiUpTapped()
 
             }
@@ -69,11 +55,6 @@ class Hekientry7 : abstractHekientry() {
     override fun onDestroyView() {
         super.onDestroyView()
         _binding = null
-    }
-
-    override fun onDestroy() {
-        super.onDestroy()
-        realm.close()
     }
 
    override fun onSeihekiUpTapped() {

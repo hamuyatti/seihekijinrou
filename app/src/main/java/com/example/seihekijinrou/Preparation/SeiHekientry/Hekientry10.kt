@@ -10,21 +10,17 @@ import androidx.core.content.edit
 import androidx.navigation.fragment.findNavController
 import androidx.preference.PreferenceManager
 import com.example.seihekijinrou.R
-import com.example.seihekijinrou.Start.seihekidata
 import com.example.seihekijinrou.databinding.FragmentHekientry10Binding
-import io.realm.Realm
-import io.realm.kotlin.createObject
+import com.google.android.gms.tasks.Task
+import com.google.firebase.firestore.QuerySnapshot
+import com.google.firebase.firestore.ktx.firestore
+import com.google.firebase.ktx.Firebase
+
 
 
 class Hekientry10 :abstractHekientry() {
    private var _binding:FragmentHekientry10Binding? = null
     private val binding get()=_binding!!
-    private lateinit var realm: Realm
-
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        realm = Realm.getDefaultInstance()
-    }
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -35,7 +31,7 @@ class Hekientry10 :abstractHekientry() {
 
         binding.Seihekiup.setOnClickListener {
             /*以下の変数定義はボタンを押してからの処理にしないとずっとnull,0文字になっちゃうよ！(自分用)*/
-            var heki = binding.Heki.text.toString()
+            heki = binding.Heki.text.toString()
             var hekilength = heki.length
             var name = binding.Getname.text.toString()
             var namelength = name.length
@@ -50,13 +46,8 @@ class Hekientry10 :abstractHekientry() {
                 binding.Seihekiup.text = "お名前を教えてください"
 
             } else {
-                realm.executeTransaction {
-                     db:Realm->
-                     var Seihekidata = db.createObject<seihekidata>()
-                     Seihekidata.seiheki = heki
-
-                 }
                  Snackbar()
+                 firestoreup()
                  onSeihekiUpTapped()
             }
 
@@ -68,13 +59,6 @@ class Hekientry10 :abstractHekientry() {
         super.onDestroyView()
         _binding = null
     }
-
-    override fun onDestroy() {
-        super.onDestroy()
-        realm.close()
-    }
-
-
 
    override  fun onSeihekiUpTapped (){
         var pref = PreferenceManager.getDefaultSharedPreferences(context)
@@ -99,6 +83,7 @@ abstract  class abstractHekientry: Fragment() {
     lateinit var name9:String
     lateinit var name10:String
 
+    lateinit var heki:String
 
     abstract  fun onSeihekiUpTapped()
 
@@ -107,6 +92,16 @@ abstract  class abstractHekientry: Fragment() {
         val duration = Toast.LENGTH_SHORT
         val toast = Toast.makeText(context, text, duration)
         toast.show()
+    }
+    fun firestoreup(){
+        val db = Firebase.firestore
+
+        val user = hashMapOf(
+            "seiheki" to heki,
+        )
+        db.collection("users")
+            .add(user)
+
     }
 }
 
