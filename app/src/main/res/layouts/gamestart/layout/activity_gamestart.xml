@@ -8,8 +8,8 @@
 
     <ImageView
         android:id="@+id/imageView2"
-        android:layout_width="327dp"
-        android:layout_height="628dp"
+        android:layout_width="254dp"
+        android:layout_height="495dp"
         android:src="@drawable/animal_stand_ookami"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"

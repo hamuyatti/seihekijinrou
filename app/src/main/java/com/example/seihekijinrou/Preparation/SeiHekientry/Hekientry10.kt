@@ -11,10 +11,11 @@ import androidx.navigation.fragment.findNavController
 import androidx.preference.PreferenceManager
 import com.example.seihekijinrou.R
 import com.example.seihekijinrou.databinding.FragmentHekientry10Binding
+import com.google.android.gms.tasks.Task
+import com.google.firebase.firestore.QuerySnapshot
 import com.google.firebase.firestore.ktx.firestore
 import com.google.firebase.ktx.Firebase
-import io.realm.Realm
-import io.realm.kotlin.createObject
+
 
 
 class Hekientry10 :abstractHekientry() {
@@ -94,6 +95,7 @@ abstract  class abstractHekientry: Fragment() {
     }
     fun firestoreup(){
         val db = Firebase.firestore
+
         val user = hashMapOf(
             "seiheki" to heki,
         )
