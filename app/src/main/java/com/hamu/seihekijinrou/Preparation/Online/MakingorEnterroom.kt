@@ -28,6 +28,7 @@ class MakingorEnterroom : AppCompatActivity() {
         binding = ActivityMakingorEnterroomBinding.inflate(layoutInflater)
         super.onCreate(savedInstanceState)
         setContentView(binding.root)
+        binding.loading.visibility = View.INVISIBLE
 
         binding.makebutton.setOnClickListener {
             var password = binding.passwordtext.text
@@ -40,8 +41,7 @@ class MakingorEnterroom : AppCompatActivity() {
                         AlertDialog.Builder(this)
                             .setMessage("違う合言葉を使ってください")
                             .setPositiveButton("OK") { dialog, which ->
-                            }
-                                .show()
+                            }.show()
                     }else{
                             val information = hashMapOf(
                                     "人数" to item,
@@ -58,6 +58,7 @@ class MakingorEnterroom : AppCompatActivity() {
             }
 
         binding.searchbutton.setOnClickListener {
+            binding.loading.visibility = View.VISIBLE
         var searchtext = binding.searchtext.text
             var collection: CollectionReference = db.collection("$searchtext")
             val docRef = collection.document("$searchtext")
@@ -68,7 +69,8 @@ class MakingorEnterroom : AppCompatActivity() {
                                 .whereEqualTo("主催",true)
                                 .get()
                                 .addOnSuccessListener { document ->
-                                   var hostname = document.documentChanges.toString()
+                                   var hostname = document.documents.toString()
+                                    binding.loading.visibility = View.INVISIBLE
                                     AlertDialog.Builder(this)
                                             .setMessage("$hostname さんの部屋が見つかりました")
                                             .setPositiveButton("参加する") { dialog, which ->
@@ -76,6 +78,13 @@ class MakingorEnterroom : AppCompatActivity() {
                                                         "参加人数確認" to "参加しました"
                                                 )
                                                 docRef.set(information)
+                                                var pref = androidx.preference.PreferenceManager.getDefaultSharedPreferences(this)
+                                                /*pref.edit {
+                                                    putString("", )
+                                                            .apply()
+                                                }
+
+                                                 */
                                                 startActivity(Intent(this, Waitingentry::class.java))
                                             }
                                             .setNegativeButton("やり直す") { dialog, which ->
@@ -85,6 +94,7 @@ class MakingorEnterroom : AppCompatActivity() {
                                     }
 
                         }else{
+                            binding.loading.visibility = View.INVISIBLE
                             AlertDialog.Builder(this)
                                     .setMessage("部屋が見つかりませんでした。")
                                     .setPositiveButton("OK") { dialog, which ->

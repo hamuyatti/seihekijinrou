@@ -76,10 +76,10 @@
 
     <Spinner
         android:id="@+id/spinner"
-        android:layout_width="128dp"
-        android:layout_height="31dp"
-        android:layout_marginStart="48dp"
-        android:layout_marginTop="176dp"
+        android:layout_width="88dp"
+        android:layout_height="39dp"
+        android:layout_marginStart="60dp"
+        android:layout_marginTop="168dp"
         android:entries="@array/members"
         app:layout_constraintStart_toEndOf="@+id/passwordtext"
         app:layout_constraintTop_toTopOf="parent" />
@@ -95,5 +95,18 @@
         android:inputType="textPersonName"
         app:layout_constraintBottom_toTopOf="@+id/textView15"
         app:layout_constraintStart_toStartOf="parent" />
+
+    <com.airbnb.lottie.LottieAnimationView
+        android:id="@+id/loading"
+        android:layout_width="537dp"
+        android:layout_height="303dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:lottie_autoPlay="true"
+        app:lottie_loop="true"
+        app:lottie_rawRes="@raw/loading2" />
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>

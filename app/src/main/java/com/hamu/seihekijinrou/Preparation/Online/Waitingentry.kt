@@ -18,8 +18,9 @@ class Waitingentry : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_waitingentry)
 
-        var pref = androidx.preference.PreferenceManager.getDefaultSharedPreferences(this)
-        var settingedplayernumber = pref.getString("numberofpeople","")
-        binding.settingedplayernumber.text = settingedplayernumber
+
+        /*binding.settingedplayernumber.text =
+
+         */
     }
 }

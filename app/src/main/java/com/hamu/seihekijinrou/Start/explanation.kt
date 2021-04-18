@@ -34,8 +34,8 @@ class explanation : AppCompatActivity() {
             /*binding.start.visibility = View.INVISIBLE
             binding.button.visibility = View.INVISIBLE
              */
-            val strList = arrayOf("この携帯で皆と遊ぶ","複数の携帯で遊ぶ（オフライン）","オンラインで合言葉を決めて遊ぶ")
-            AlertDialog.Builder(this) // FragmentではActivityを取得して生成
+            val strList = arrayOf("この携帯で皆と遊ぶ","対面で複数の携帯を使う","オンラインで通話して遊ぶ")
+            AlertDialog.Builder(this)
                     .setTitle("遊び方")
                     .setSingleChoiceItems(strList, 0) { dialog, which:Int ->
                         when(which) {
