@@ -3,15 +3,12 @@ package com.hamu.seihekijinrou.Start
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.view.View
 import androidx.appcompat.app.AlertDialog
 import androidx.core.content.edit
-import androidx.core.view.isVisible
 import com.hamu.seihekijinrou.Preparation.Online.MakingorEnterroom
 import com.hamu.seihekijinrou.Preparation.numberofpeople
-import com.hamu.seihekijinrou.R
 import com.hamu.seihekijinrou.databinding.ActivityExplanationBinding
-import kotlin.properties.Delegates
+
 
 class explanation : AppCompatActivity() {
     private lateinit var binding: ActivityExplanationBinding
@@ -57,12 +54,5 @@ class explanation : AppCompatActivity() {
             var intent = Intent(this, checkrules::class.java)
             startActivity(intent)
         }
-            binding.button.setOnClickListener {
-            var intent = Intent(this, PastSeiheki::class.java)
-            startActivity(intent)
-        }
-
-
-
     }
 }

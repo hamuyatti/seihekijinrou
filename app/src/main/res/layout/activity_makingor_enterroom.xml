@@ -4,52 +4,53 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".Preparation.MakingorEnterroom">
+    tools:context=".Preparation.Online.MakingorEnterroom">
 
     <EditText
         android:id="@+id/passwordtext"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="4dp"
-        android:layout_marginBottom="26dp"
+        android:layout_marginTop="24dp"
+        android:layout_marginEnd="60dp"
         android:ems="10"
         android:hint="合言葉"
         android:inputType="textPersonName"
-        app:layout_constraintBottom_toTopOf="@+id/hostname"
-        app:layout_constraintStart_toStartOf="parent" />
+        app:layout_constraintEnd_toStartOf="@+id/spinner"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView13" />
 
     <EditText
         android:id="@+id/searchtext"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="168dp"
+        android:layout_marginStart="4dp"
+        android:layout_marginTop="9dp"
         android:ems="10"
+        android:hint="合言葉"
         android:inputType="textPersonName"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.217"
-        app:layout_constraintStart_toStartOf="parent" />
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView15" />
 
     <TextView
         android:id="@+id/textView13"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="48dp"
+        android:layout_marginStart="159dp"
+        android:layout_marginTop="121dp"
         android:text="部屋を作る"
-        app:layout_constraintBottom_toTopOf="@+id/passwordtext"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.466"
-        app:layout_constraintStart_toStartOf="parent" />
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
         android:id="@+id/textView15"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginEnd="214dp"
-        android:layout_marginBottom="20dp"
-        android:text="合言葉を入力する"
-        app:layout_constraintBottom_toTopOf="@+id/searchtext"
-        app:layout_constraintEnd_toEndOf="parent" />
+        android:layout_marginStart="170dp"
+        android:layout_marginTop="126dp"
+        android:text="部屋に入る"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/hostseiheki" />
 
     <Button
         android:id="@+id/makebutton"
@@ -68,16 +69,16 @@
         android:id="@+id/searchbutton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginEnd="17dp"
-        android:layout_marginBottom="168dp"
+        android:layout_marginEnd="32dp"
+        android:layout_marginBottom="160dp"
         android:text="検索"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent" />
 
     <Spinner
         android:id="@+id/spinner"
-        android:layout_width="88dp"
-        android:layout_height="39dp"
+        android:layout_width="117dp"
+        android:layout_height="50dp"
         android:layout_marginStart="60dp"
         android:layout_marginTop="168dp"
         android:entries="@array/members"
@@ -89,17 +90,17 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="4dp"
-        android:layout_marginBottom="190dp"
+        android:layout_marginTop="25dp"
         android:ems="10"
         android:hint="自分の名前"
         android:inputType="textPersonName"
-        app:layout_constraintBottom_toTopOf="@+id/textView15"
-        app:layout_constraintStart_toStartOf="parent" />
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/passwordtext" />
 
     <com.airbnb.lottie.LottieAnimationView
         android:id="@+id/loading"
-        android:layout_width="537dp"
-        android:layout_height="303dp"
+        android:layout_width="392dp"
+        android:layout_height="281dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -107,6 +108,42 @@
         app:lottie_autoPlay="true"
         app:lottie_loop="true"
         app:lottie_rawRes="@raw/loading2" />
+
+    <EditText
+        android:id="@+id/hostseiheki"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="4dp"
+        android:layout_marginTop="15dp"
+        android:ems="10"
+        android:hint="性癖"
+        android:inputType="textPersonName"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/hostname" />
+
+    <EditText
+        android:id="@+id/guestseiheki"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="4dp"
+        android:layout_marginTop="16dp"
+        android:ems="10"
+        android:hint="性癖"
+        android:inputType="textPersonName"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/guestname" />
+
+    <EditText
+        android:id="@+id/guestname"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="4dp"
+        android:layout_marginTop="23dp"
+        android:ems="10"
+        android:hint="自分の名前"
+        android:inputType="textPersonName"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/searchtext" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

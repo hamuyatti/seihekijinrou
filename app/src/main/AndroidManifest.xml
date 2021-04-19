@@ -9,18 +9,20 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.Seihekijinrou">
-        <activity android:name=".Preparation.Online.Waitingentry"></activity>
+        <activity android:name=".Preparation.openjinrou2"></activity>
+        <activity android:name=".Preparation.openseiheki2" />
+        <activity android:name=".MeetingandVotingandResult.CenterofMeetingandVoting" />
+        <activity android:name=".MeetingandVotingandResult.Online.CentrerofOnlineMeetinrgvotingResult" />
+        <activity android:name=".Preparation.Online.Waitingentry" />
         <activity android:name=".Preparation.Online.MakingorEnterroom" />
         <activity
             android:name=".Start.PastSeiheki"
             android:windowSoftInputMode="adjustPan" />
         <activity android:name=".Preparation.SeiHekientry.CenterofHekientry" />
-        <activity android:name=".MeetingandVotingandResult.CenterofMeetingandVoting" />
         <activity android:name=".EndofGame.End3" />
         <activity android:name=".EndofGame.End2" />
         <activity android:name=".EndofGame.End1ofBad" />
         <activity android:name=".EndofGame.End1ofTrue" />
-        <activity android:name=".Preparation.openjinrou2" />
         <activity android:name=".Preparation.openjinrou1" />
         <activity android:name=".Preparation.numberofpeople" />
         <activity android:name=".Start.checkrules" />

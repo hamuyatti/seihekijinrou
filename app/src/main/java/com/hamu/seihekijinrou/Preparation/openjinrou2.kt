@@ -6,10 +6,12 @@ import android.os.Bundle
 import android.os.Handler
 import androidx.preference.PreferenceManager
 import com.hamu.seihekijinrou.MeetingandVotingandResult.CenterofMeetingandVoting
+import com.hamu.seihekijinrou.R
 import com.hamu.seihekijinrou.databinding.ActivityOpenjinrou2Binding
 
+
 class openjinrou2 : AppCompatActivity() {
-    private lateinit var binding: ActivityOpenjinrou2Binding
+    private lateinit var binding:ActivityOpenjinrou2Binding
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityOpenjinrou2Binding.inflate(layoutInflater)
@@ -33,4 +35,3 @@ class openjinrou2 : AppCompatActivity() {
         )
     }
 }
-
