@@ -12,11 +12,9 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="4dp"
         android:layout_marginTop="24dp"
-        android:layout_marginEnd="60dp"
         android:ems="10"
         android:hint="合言葉"
         android:inputType="textPersonName"
-        app:layout_constraintEnd_toStartOf="@+id/spinner"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textView13" />
 
@@ -74,16 +72,6 @@
         android:text="検索"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent" />
-
-    <Spinner
-        android:id="@+id/spinner"
-        android:layout_width="117dp"
-        android:layout_height="50dp"
-        android:layout_marginStart="60dp"
-        android:layout_marginTop="168dp"
-        android:entries="@array/members"
-        app:layout_constraintStart_toEndOf="@+id/passwordtext"
-        app:layout_constraintTop_toTopOf="parent" />
 
     <EditText
         android:id="@+id/hostname"

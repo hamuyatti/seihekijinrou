@@ -31,17 +31,20 @@ class MakingorEnterroom : AppCompatActivity() {
         binding.loading.visibility = View.INVISIBLE
 
         binding.makebutton.setOnClickListener {
-            var password = binding.passwordtext.text.toString()
-            var hostname = binding.hostname.text.toString()
-            var hostheki = binding.hostseiheki.text.toString()
-            var collection: CollectionReference = db.collection("$password")
-            val docRef = collection.document("gameinfo")
-           /* if (password.isEmpty() || hostname.isEmpty() || hostheki.isEmpty()) {
+            if (binding.passwordtext.text.isEmpty()|| binding.hostname.text.isEmpty() || binding.hostseiheki.text.isEmpty()) {
                 AlertDialog.Builder(this)
                         .setMessage("入力が完了していません。")
                         .setPositiveButton("もどる") { dialog, which ->
                         }.show()
-            } else {*/
+            }
+            else {
+                var password = binding.passwordtext.text.toString()
+                var hostname = binding.hostname.text.toString()
+                var hostheki = binding.hostseiheki.text.toString()
+
+                var collection: CollectionReference = db.collection("$password")
+                val docRef = collection.document("gameinfo")
+
                 binding.loading.visibility = View.VISIBLE
                 docRef.get()
                         .addOnSuccessListener { document ->
@@ -53,7 +56,6 @@ class MakingorEnterroom : AppCompatActivity() {
                                         }.show()
                             } else {
                                 val gameinfo = hashMapOf(
-                                        "人数" to item,
                                         "主催" to hostname,
                                 )
 
@@ -80,6 +82,7 @@ class MakingorEnterroom : AppCompatActivity() {
 
 
                         }
+            }
             }
 
             binding.searchbutton.setOnClickListener {
@@ -161,27 +164,8 @@ class MakingorEnterroom : AppCompatActivity() {
             }
 
 
-            binding.spinner.onItemSelectedListener = object : AdapterView.OnItemSelectedListener {
-
-                override fun onItemSelected(
-                        parent: AdapterView<*>?,
-                        view: View?,
-                        position: Int,
-                        id: Long
-                ) {
-                    var spinner = parent as? Spinner
-                    item = (spinner?.selectedItem as? String).toString()
-
-                }
-
-                override fun onNothingSelected(parent: AdapterView<*>?) {
-                    item = "３人"
-                }
-            }
-
-
         }
-
     }
+
 
 
