@@ -6,4 +6,13 @@
     android:layout_height="match_parent"
     tools:context=".MeetingandVotingandResult.Online.CenterofOnlinegameprocess">
 
+    <fragment
+        android:id="@+id/fragment4"
+        android:name="androidx.navigation.fragment.NavHostFragment"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        app:defaultNavHost="true"
+        app:navGraph="@navigation/onlinegamepartnav"
+        tools:layout_editor_absoluteX="202dp"
+        tools:layout_editor_absoluteY="262dp" />
 </androidx.constraintlayout.widget.ConstraintLayout>

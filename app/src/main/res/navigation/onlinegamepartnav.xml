@@ -1,5 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
 <navigation xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto" android:id="@+id/onlinegamepartnav">
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/onlinegamepartnav"
+    app:startDestination="@id/selectjinrou">
 
+    <fragment
+        android:id="@+id/selectjinrou"
+        android:name="com.hamu.seihekijinrou.selectjinrou"
+        android:label="fragment_selectjinrou"
+        tools:layout="@layout/fragment_selectjinrou" />
 </navigation>

@@ -98,7 +98,7 @@ class MakingorEnterroom : AppCompatActivity() {
                 } else {
                     binding.loading.visibility = View.VISIBLE
                     var collection: CollectionReference = db.collection("$searchtext")
-                    val docRef = collection.document("$searchtext")
+                    val docRef = collection.document("gameinfo")
                     docRef.get()
                             .addOnSuccessListener { tmp ->
                                 if (tmp.exists() == false) {
