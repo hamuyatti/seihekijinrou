@@ -41,8 +41,11 @@ class Waitingentry : AppCompatActivity() {
         }
 
         collection2.addSnapshotListener { it, tmp ->
+            if(it?.isEmpty == false)
             startActivity(Intent(this, CenterofOnlinegameprocess::class.java))
         }
+
+
         binding.gotogame.setOnClickListener {
             AlertDialog.Builder(this)
                     .setMessage("進むとメンバーの変更が出来ません。よろしいですか？")
