@@ -72,6 +72,7 @@ dependencies {
     implementation 'com.firebaseui:firebase-ui-auth:6.4.0'
     implementation 'com.firebaseui:firebase-ui-firestore:7.1.1'
     implementation 'com.algolia:algoliasearch-android:3.+'
+    implementation 'com.github.agorabuilder:native-full-sdk:3.4.0'
 
 
 
@@ -94,6 +95,11 @@ dependencies {
         // Jetpack Compose Integration
         implementation "androidx.navigation:navigation-compose:1.0.0-alpha07"
 
+}
+allprojects {
+    repositories {
+        maven { url 'https://www.jitpack.io' }
+    }
 }
 configurations.all {
     resolutionStrategy {

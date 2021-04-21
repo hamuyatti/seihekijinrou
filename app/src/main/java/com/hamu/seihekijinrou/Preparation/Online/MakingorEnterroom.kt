@@ -14,6 +14,7 @@ import androidx.core.content.edit
 import com.google.firebase.firestore.CollectionReference
 import com.google.firebase.firestore.SetOptions
 import com.google.firebase.firestore.ktx.firestore
+import com.google.firebase.firestore.ktx.toObjects
 import com.google.firebase.ktx.Firebase
 import com.hamu.seihekijinrou.databinding.ActivityMakingorEnterroomBinding
 import java.time.LocalDate
@@ -22,12 +23,14 @@ import java.time.LocalDateTime
 class MakingorEnterroom : AppCompatActivity() {
     private lateinit var binding: ActivityMakingorEnterroomBinding
     var db = Firebase.firestore
-    private lateinit var item: String
 
     override fun onCreate(savedInstanceState: Bundle?) {
         binding = ActivityMakingorEnterroomBinding.inflate(layoutInflater)
         super.onCreate(savedInstanceState)
         setContentView(binding.root)
+        data class hostnameobject(
+                val name: String = ""
+        )
         binding.loading.visibility = View.INVISIBLE
 
         binding.makebutton.setOnClickListener {
@@ -48,7 +51,7 @@ class MakingorEnterroom : AppCompatActivity() {
                 binding.loading.visibility = View.VISIBLE
                 docRef.get()
                         .addOnSuccessListener { document ->
-                            if (document.exists() == true) {
+                            if (document.exists()) {
                                 binding.loading.visibility = View.INVISIBLE
                                 AlertDialog.Builder(this)
                                         .setMessage("違う合言葉を使ってください。")
@@ -63,12 +66,12 @@ class MakingorEnterroom : AppCompatActivity() {
                                         "名前" to hostname,
                                         "性癖" to hostheki
                                 )
-                                val tmp = hashMapOf(
+                                val countmember = hashMapOf(
                                         "参加人数" to "参加しました"
                                 )
 
                                 docRef.set(gameinfo)
-                                docRef.collection("参加人数").add(tmp)
+                                docRef.collection("参加人数").add(countmember)
                                 collection.document("$hostname").set(memberinfo)
 
 
@@ -100,8 +103,8 @@ class MakingorEnterroom : AppCompatActivity() {
                     var collection: CollectionReference = db.collection("$searchtext")
                     val docRef = collection.document("gameinfo")
                     docRef.get()
-                            .addOnSuccessListener { tmp ->
-                                if (tmp.exists() == false) {
+                            .addOnSuccessListener {
+                                if (!it.exists()) {
                                     binding.loading.visibility = View.INVISIBLE
                                     AlertDialog.Builder(this)
                                             .setMessage("部屋が見つかりませんでした。")
@@ -109,49 +112,56 @@ class MakingorEnterroom : AppCompatActivity() {
 
                                             }
                                             .show()
-                                } else if (tmp.exists() == true) {
+                                } else if (it.exists()) {
                                     collection.document("$guestname").get()
-                                            .addOnSuccessListener { tmp2 ->
-                                                if (tmp2.exists() == true) {
+                                            .addOnSuccessListener { it ->
+                                                if (it.exists()) {
                                                     binding.loading.visibility = View.INVISIBLE
                                                     AlertDialog.Builder(this)
                                                             .setMessage("違う名前を使ってください。")
                                                             .setPositiveButton("もどる") { dialog, which ->
                                                             }.show()
                                                 } else {
-                                                    collection
-                                                            .whereEqualTo("主催", true)
-                                                            .get()
-                                                            .addOnSuccessListener { document ->
-                                                                var hostname = document.documents.toString()
-                                                                binding.loading.visibility = View.INVISIBLE
-                                                                AlertDialog.Builder(this)
-                                                                        .setMessage("$hostname さんの部屋が見つかりました")
-                                                                        .setPositiveButton("参加する") { dialog, which ->
-                                                                            val gameinfo = hashMapOf(
-                                                                                    "参加人数確認" to "参加しました"
-                                                                            )
-                                                                            val memberinfo = hashMapOf(
-                                                                                    "名前" to "$guestname",
-                                                                                    "性癖" to "$guestheki"
-                                                                            )
-                                                                            collection.document("gameinfo")
-                                                                                    .collection("参加人数").add(gameinfo)
-                                                                            collection.document("$guestname").set(memberinfo)
+                                                    docRef
+                                                         .get()
+                                                         .addOnSuccessListener {
+                                                                   var hostname = it.data?.get("主催")!!
+                                                                   binding.loading.visibility = View.INVISIBLE
+                                                                    AlertDialog.Builder(this)
+                                                                            .setMessage("${hostname}さんの部屋が見つかりました")
+                                                                            .setPositiveButton("参加する") { dialog, which ->
+                                                                                val countmember = hashMapOf(
+                                                                                        "参加人数確認" to "参加しました"
+                                                                                )
+                                                                                val memberinfo = hashMapOf(
+                                                                                        "名前" to "$guestname",
+                                                                                        "性癖" to "$guestheki"
+                                                                                )
+                                                                                collection.document("gameinfo")
+                                                                                        .collection("参加人数").add(countmember)
+                                                                                collection.document("$guestname").set(memberinfo)
 
-                                                                            var pref = androidx.preference.PreferenceManager.getDefaultSharedPreferences(this)
-                                                                            pref.edit {
-                                                                                putString("roomname", searchtext.toString())
-                                                                                        .commit()
+                                                                                var pref = androidx.preference.PreferenceManager.getDefaultSharedPreferences(this)
+                                                                                pref.edit {
+                                                                                    putString("roomname", searchtext.toString())
+                                                                                            .commit()
+                                                                                }
+
+
+                                                                                startActivity(Intent(this, Waitingentry::class.java))
                                                                             }
+                                                                            .setNegativeButton("やり直す") { dialog, which ->
+
+                                                                            }
+                                                                            .show()
 
 
-                                                                            startActivity(Intent(this, Waitingentry::class.java))
-                                                                        }
-                                                                        .setNegativeButton("やり直す") { dialog, which ->
 
-                                                                        }
-                                                                        .show()
+                                                                }
+
+
+                                                            }
+
                                                             }
                                                 }
                                             }
@@ -164,8 +174,7 @@ class MakingorEnterroom : AppCompatActivity() {
             }
 
 
-        }
-    }
+
 
 
 

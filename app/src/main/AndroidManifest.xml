@@ -2,6 +2,13 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.hamu.seihekijinrou">
 
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.RECORD_AUDIO" />
+    <uses-permission android:name="android.permission.MODIFY_AUDIO_SETTINGS" />
+    <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+    <uses-permission android:name="android.permission.BLUETOOTH" />
+
     <application
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
@@ -10,11 +17,8 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Seihekijinrou">
         <activity android:name=".MeetingandVotingandResult.Online.CenterofOnlinegameprocess"></activity>
-        <activity android:name=".MeetingandVotingandResult.Online.CenterofOmlinegameProcess" />
         <activity android:name=".Preparation.openjinrou2" />
-        <activity android:name=".Preparation.openseiheki2" />
         <activity android:name=".MeetingandVotingandResult.CenterofMeetingandVoting" />
-        <activity android:name=".MeetingandVotingandResult.Online.CentrerofOnlineMeetinrgvotingResult" />
         <activity android:name=".Preparation.Online.Waitingentry" />
         <activity android:name=".Preparation.Online.MakingorEnterroom" />
         <activity
