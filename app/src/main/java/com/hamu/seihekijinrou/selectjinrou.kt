@@ -1,57 +1,106 @@
 package com.hamu.seihekijinrou
 
-import android.content.pm.PackageManager
+
 import android.os.Bundle
-import android.util.Log
+import android.os.Handler
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import androidx.core.app.ActivityCompat
-import androidx.core.content.ContextCompat
+import androidx.core.content.edit
+import androidx.navigation.fragment.findNavController
 import androidx.preference.PreferenceManager
 import com.google.firebase.firestore.ktx.firestore
-import com.google.firebase.firestore.ktx.toObjects
 import com.google.firebase.ktx.Firebase
 import com.hamu.seihekijinrou.databinding.FragmentSelectjinrouBinding
-import io.agora.rtc.IRtcEngineEventHandler
-import io.agora.rtc.RtcEngine
-import java.util.jar.Manifest
+
 
 class selectjinrou : Fragment() {
     private var _binding: FragmentSelectjinrouBinding? = null
     private val binding get() = _binding!!
     var db = Firebase.firestore
+    lateinit var tmp:String
 
     override fun onCreateView(
             inflater: LayoutInflater, container: ViewGroup?,
             savedInstanceState: Bundle?,
     ): View? {
-        _binding = FragmentSelectjinrouBinding.inflate(layoutInflater,container,false)
+        _binding = FragmentSelectjinrouBinding.inflate(layoutInflater, container, false)
         var pref = PreferenceManager.getDefaultSharedPreferences(context)
-        var roomname = pref.getString("roomname" ,"")
+        var roomname = pref.getString("roomname", "")
         var collection = db.collection("$roomname")
+        var collection1 = db.collection("$roomname").document("gameinfo").collection("参加人数")
 
-        data class seihekicollection(
-                val heki1: String? = null,
-                val heki2: String? = null,
-                val heki3: String? = null,
-                val heki4: String? = null,
-                val heki5: String? = null,
-                val heki6: String? = null,
-                val heki7: String? = null,
-                val heki8: String? = null,
-                val heki9: String? = null,
-                val heki10: String? = null
-        )
-        collection
-                .whereEqualTo("性癖", true)
+        collection.document("性癖情報")
                 .get()
-                .addOnSuccessListener { documents ->
-                    for (document in documents){
-                       binding.jinrou.text = document.data.get("性癖").toString()
+                .addOnSuccessListener {
+                    var heki1 = it.data?.get("性癖1")
+                    var heki2 = it.data?.get("性癖2")
+                    var heki3 = it.data?.get("性癖3")
+                    var heki4 = it.data?.get("性癖4")
+                    var heki5 = it.data?.get("性癖5")
+                    var heki6 = it.data?.get("性癖6")
+                    var heki7 = it.data?.get("性癖7")
+                    var heki8 = it.data?.get("性癖8")
+                    var heki9 = it.data?.get("性癖9")
+                    var heki10 = it.data?.get("性癖10")
+
+                    binding.jinrou.text = "${heki6}"
+
+
+                    pref.edit {
+                        putString("heki1", heki1 as String?);putString("heki2", heki2 as String?)
+                        putString("heki3", heki3 as String?);putString("heki4", heki4 as String?)
+                        putString("heki5", heki5 as String?);putString("heki6", heki6 as String?)
+                        putString("heki7", heki7 as String?);putString("heki8", heki8 as String?)
+                        putString("heki9", heki9 as String?);putString("heki10", heki10 as String?)
+                        putString("jinrouseiheki",heki1 )
+
                     }
                 }
+        collection.document("名前情報")
+                .get()
+                .addOnSuccessListener {
+                    var name1 = it.data?.get("名前1")
+                    var name2 = it.data?.get("名前2")
+                    var name3 = it.data?.get("名前3")
+                    var name4 = it.data?.get("名前4")
+                    var name5 = it.data?.get("名前5")
+                    var name6 = it.data?.get("名前6")
+                    var name7 = it.data?.get("名前7")
+                    var name8 = it.data?.get("名前8")
+                    var name9 = it.data?.get("名前9")
+                    var name10 = it.data?.get("名前10")
+
+                    binding.textView5.text = "${name6}"
+
+                    pref.edit {
+                        putString("name1", name1 as String?);putString("name2", name2 as String?)
+                        putString("name3", name3 as String?);putString("name4", name4 as String?)
+                        putString("name5", name5 as String?);putString("name6", name6 as String?)
+                        putString("name7", name7 as String?);putString("name8", name8 as String?)
+                        putString("name9", name9 as String?);putString("name10", name10 as String?)
+                        putString("jinrou",name1 )
+                    }
+                }
+        binding.stop.setOnClickListener {
+            tmp = "押されました"
+            findNavController().navigate(R.id.action_selectjinrou_to_onlinefirstMeeting)
+        }
+
+
+        /*while(tmp.isEmpty()){
+            Handler().postDelayed(
+                    {
+                        jinrou =
+                    },
+                    1000,
+
+         */
+
+
+
         return binding.root
     }
 }
+

@@ -9,5 +9,190 @@
         android:id="@+id/selectjinrou"
         android:name="com.hamu.seihekijinrou.selectjinrou"
         android:label="fragment_selectjinrou"
-        tools:layout="@layout/fragment_selectjinrou" />
+        tools:layout="@layout/fragment_selectjinrou"
+        app:startDestination="@id/action_selectjinrou_to_onlinefirstMeeting">
+        <action
+            android:id="@+id/action_selectjinrou_to_onlinefirstMeeting"
+            app:destination="@id/onlinefirstMeeting" />
+    </fragment>
+    <fragment
+        android:id="@+id/onlinefirstMeeting"
+        android:name="com.hamu.seihekijinrou.OnlinefirstMeeting"
+        android:label="fragment_onlinefirst_meeting"
+        tools:layout="@layout/fragment_onlinefirst_meeting"
+        app:startDestination="@id/action_onlinefirstMeeting_to_onlineVoting10">
+        <action
+            android:id="@+id/action_onlinefirstMeeting_to_onlineVoting10"
+            app:destination="@id/onlineVoting10" />
+        <action
+            android:id="@+id/action_onlinefirstMeeting_to_onlineVoting9"
+            app:destination="@id/onlineVoting9" />
+        <action
+            android:id="@+id/action_onlinefirstMeeting_to_onlineVoting8"
+            app:destination="@id/onlineVoting8" />
+        <action
+            android:id="@+id/action_onlinefirstMeeting_to_onlineVoting7"
+            app:destination="@id/onlineVoting7" />
+        <action
+            android:id="@+id/action_onlinefirstMeeting_to_onlineVoting6"
+            app:destination="@id/onlineVoting6" />
+        <action
+            android:id="@+id/action_onlinefirstMeeting_to_onlineVoting5"
+            app:destination="@id/onlineVoting5" />
+        <action
+            android:id="@+id/action_onlinefirstMeeting_to_onlineVoting4"
+            app:destination="@id/onlineVoting4" />
+        <action
+            android:id="@+id/action_onlinefirstMeeting_to_onlineVoting3"
+            app:destination="@id/onlineVoting3" />
+    </fragment>
+    <fragment
+        android:id="@+id/onlineMeetingtime"
+        android:name="com.hamu.seihekijinrou.onlineMeetingtime"
+        android:label="fragment_online_meetingtime"
+        tools:layout="@layout/fragment_online_meetingtime" >
+        <action
+            android:id="@+id/action_onlineMeetingtime_to_onlineVoting10"
+            app:destination="@id/onlineVoting10" />
+        <action
+            android:id="@+id/action_onlineMeetingtime_to_onlineVoting9"
+            app:destination="@id/onlineVoting9" />
+        <action
+            android:id="@+id/action_onlineMeetingtime_to_onlineVoting8"
+            app:destination="@id/onlineVoting8" />
+        <action
+            android:id="@+id/action_onlineMeetingtime_to_onlineVoting7"
+            app:destination="@id/onlineVoting7" />
+        <action
+            android:id="@+id/action_onlineMeetingtime_to_onlineVoting6"
+            app:destination="@id/onlineVoting6" />
+        <action
+            android:id="@+id/action_onlineMeetingtime_to_onlineVoting5"
+            app:destination="@id/onlineVoting5" />
+        <action
+            android:id="@+id/action_onlineMeetingtime_to_onlineVoting4"
+            app:destination="@id/onlineVoting4" />
+        <action
+            android:id="@+id/action_onlineMeetingtime_to_onlineVoting3"
+            app:destination="@id/onlineVoting3" />
+    </fragment>
+    <fragment
+        android:id="@+id/onlineVoting10"
+        android:name="com.hamu.seihekijinrou.OnlineVoting10"
+        android:label="fragment_online_voting10"
+        tools:layout="@layout/fragment_online_voting10" >
+        <action
+            android:id="@+id/action_onlineVoting10_to_whendisagree"
+            app:destination="@id/whendisagree" />
+        <action
+            android:id="@+id/action_onlineVoting10_to_whenOpinionsAreUited"
+            app:destination="@id/whenOpinionsAreUited" />
+    </fragment>
+    <fragment
+        android:id="@+id/whendisagree"
+        android:name="com.hamu.seihekijinrou.Whendisagree"
+        android:label="fragment_whendisagree"
+        tools:layout="@layout/fragment_whendisagree" >
+        <action
+            android:id="@+id/action_whendisagree_to_whenOpinionsAreUited"
+            app:destination="@id/whenOpinionsAreUited" />
+    </fragment>
+    <fragment
+        android:id="@+id/whenOpinionsAreUited"
+        android:name="com.hamu.seihekijinrou.WhenOpinionsAreUited"
+        android:label="fragment_when_opinions_are_uited"
+        tools:layout="@layout/fragment_when_opinions_are_uited" >
+        <action
+            android:id="@+id/action_whenOpinionsAreUited_to_onlineMeetingtime"
+            app:destination="@id/onlineMeetingtime" />
+        <action
+            android:id="@+id/action_whenOpinionsAreUited_to_result"
+            app:destination="@id/result" />
+    </fragment>
+    <fragment
+        android:id="@+id/result"
+        android:name="com.hamu.seihekijinrou.Result"
+        android:label="fragment_result"
+        tools:layout="@layout/fragment_result" />
+    <fragment
+        android:id="@+id/onlineVoting9"
+        android:name="com.hamu.seihekijinrou.onlineVoting9"
+        android:label="fragment_online_voting9"
+        tools:layout="@layout/fragment_online_voting9" >
+        <action
+            android:id="@+id/action_onlineVoting9_to_whendisagree"
+            app:destination="@id/whendisagree" />
+        <action
+            android:id="@+id/action_onlineVoting9_to_whenOpinionsAreUited"
+            app:destination="@id/whenOpinionsAreUited" />
+    </fragment>
+    <fragment
+        android:id="@+id/onlineVoting8"
+        android:name="com.hamu.seihekijinrou.onlineVoting8"
+        android:label="fragment_online_voting8"
+        tools:layout="@layout/fragment_online_voting8" >
+        <action
+            android:id="@+id/action_onlineVoting8_to_whendisagree"
+            app:destination="@id/whendisagree" />
+        <action
+            android:id="@+id/action_onlineVoting8_to_whenOpinionsAreUited"
+            app:destination="@id/whenOpinionsAreUited" />
+    </fragment>
+    <fragment
+        android:id="@+id/onlineVoting7"
+        android:name="com.hamu.seihekijinrou.onlineVoting7"
+        android:label="fragment_online_voting7"
+        tools:layout="@layout/fragment_online_voting7" >
+        <action
+            android:id="@+id/action_onlineVoting7_to_whendisagree"
+            app:destination="@id/whendisagree" />
+        <action
+            android:id="@+id/action_onlineVoting7_to_whenOpinionsAreUited"
+            app:destination="@id/whenOpinionsAreUited" />
+    </fragment>
+    <fragment
+        android:id="@+id/onlineVoting6"
+        android:name="com.hamu.seihekijinrou.onlineVoting6"
+        android:label="fragment_online_voting6"
+        tools:layout="@layout/fragment_online_voting6" >
+        <action
+            android:id="@+id/action_onlineVoting6_to_whenOpinionsAreUited"
+            app:destination="@id/whenOpinionsAreUited" />
+    </fragment>
+    <fragment
+        android:id="@+id/onlineVoting5"
+        android:name="com.hamu.seihekijinrou.onlineVoting5"
+        android:label="fragment_online_voting5"
+        tools:layout="@layout/fragment_online_voting5" >
+        <action
+            android:id="@+id/action_onlineVoting5_to_whendisagree"
+            app:destination="@id/whendisagree" />
+        <action
+            android:id="@+id/action_onlineVoting5_to_whenOpinionsAreUited"
+            app:destination="@id/whenOpinionsAreUited" />
+    </fragment>
+    <fragment
+        android:id="@+id/onlineVoting4"
+        android:name="com.hamu.seihekijinrou.onlineVoting4"
+        android:label="fragment_online_voting4"
+        tools:layout="@layout/fragment_online_voting4" >
+        <action
+            android:id="@+id/action_onlineVoting4_to_whendisagree"
+            app:destination="@id/whendisagree" />
+        <action
+            android:id="@+id/action_onlineVoting4_to_whenOpinionsAreUited"
+            app:destination="@id/whenOpinionsAreUited" />
+    </fragment>
+    <fragment
+        android:id="@+id/onlineVoting3"
+        android:name="com.hamu.seihekijinrou.onlineVoting3"
+        android:label="fragment_online_voting3"
+        tools:layout="@layout/fragment_online_voting3" >
+        <action
+            android:id="@+id/action_onlineVoting3_to_whendisagree"
+            app:destination="@id/whendisagree" />
+        <action
+            android:id="@+id/action_onlineVoting3_to_whenOpinionsAreUited"
+            app:destination="@id/whenOpinionsAreUited" />
+    </fragment>
 </navigation>

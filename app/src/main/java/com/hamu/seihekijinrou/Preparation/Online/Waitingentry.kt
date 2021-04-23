@@ -31,35 +31,51 @@ class Waitingentry : AppCompatActivity() {
         var collection2 = db.collection("$roomname").document("gameinfo").collection("ゲーム状況")
         var docref = db.collection("$roomname").document("gameinfo")
 
-        collection1.addSnapshotListener{it,tmp->
-                    collection1
-                            .get()
-                            .addOnSuccessListener {
-                                var nownumberofmenber = it.size().toString()
-                                binding.nownumberfmember.text = "$nownumberofmenber 人参加しています。"
-                    }
+        collection1.addSnapshotListener { it, tmp ->
+            collection1
+                .get()
+                .addOnSuccessListener {
+                    var nownumberofmenber = it.size().toString()
+                    binding.nownumberfmember.text = "$nownumberofmenber 人参加しています。"
+                }
         }
 
         collection2.addSnapshotListener { it, tmp ->
-            if(it?.isEmpty == false)
-            startActivity(Intent(this, CenterofOnlinegameprocess::class.java))
+            if (it?.isEmpty == false)
+                startActivity(Intent(this, CenterofOnlinegameprocess::class.java))
         }
 
 
         binding.gotogame.setOnClickListener {
-            AlertDialog.Builder(this)
-                    .setMessage("進むとメンバーの変更が出来ません。よろしいですか？")
-                    .setPositiveButton("進む") { dialog, which ->
-                        val gamesituation = hashMapOf(
-                                "ゲーム状況" to "開始"
-                        )
-                        docref.collection("ゲーム状況").add(gamesituation)
-                        startActivity(Intent(this, CenterofOnlinegameprocess::class.java))
-                    }
-                    .setNegativeButton("もどる"){ dialog, which ->
+            collection1
+                .get()
+                .addOnSuccessListener {
+                    if (it.size() == 2 || it.size() == 1) {
+                        AlertDialog.Builder(this)
+                            .setMessage("３人必要です。")
+                            .setPositiveButton("戻る") { dialog, which ->
+                            }.show()
+                    } else {
+                        AlertDialog.Builder(this)
+                            .setMessage("進むとメンバーの変更が出来ません。よろしいですか？")
+                            .setPositiveButton("進む") { dialog, which ->
+                                pref.edit{
+                                    putString("numberofpeople",it.size().toString())
+                                }
+                                val gamesituation = hashMapOf(
+                                    "ゲーム状況" to "開始"
+                                )
+                                docref.collection("ゲーム状況").add(gamesituation)
+                                startActivity(Intent(this, CenterofOnlinegameprocess::class.java))
+                            }
+                            .setNegativeButton("もどる") { dialog, which ->
 
-                    }.show()
+                            }.show()
+                    }
+
+                }
 
         }
     }
 }
+

@@ -1,4 +1,5 @@
-package com.hamu.seihekijinrou.MeetingandVotingandResult.Voting
+package com.hamu.seihekijinrou
+
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
@@ -7,18 +8,21 @@ import android.view.ViewGroup
 import androidx.core.content.edit
 import androidx.navigation.fragment.findNavController
 import androidx.preference.PreferenceManager
-import com.hamu.seihekijinrou.R
-import com.hamu.seihekijinrou.databinding.FragmentVoting10Binding
+import com.google.firebase.firestore.ktx.firestore
+import com.google.firebase.ktx.Firebase
+import com.hamu.seihekijinrou.databinding.FragmentOnlineVoting10Binding
 
-class Voting10 : abstractVoting() {
-    private var _binding:FragmentVoting10Binding? = null
+class OnlineVoting10 : OnlineabstractVoting() {
+    private var _binding:FragmentOnlineVoting10Binding? = null
     private val binding get() = _binding!!
     private lateinit var Suspect10:String
     private lateinit var remainmembers9:Set<String>
-    lateinit var jinrouname:String
-    lateinit var members:MutableList<String?>
+    var pref = PreferenceManager.getDefaultSharedPreferences(context)
+    var roomname = pref.getString("roomname", "")
 
-
+    var db = Firebase.firestore
+    var collection = db.collection("$roomname")
+    var Voting = collection.document("gameinfo").collection("投票10")
 
 
     override fun onCreateView(
@@ -26,7 +30,7 @@ class Voting10 : abstractVoting() {
         savedInstanceState: Bundle?
     ): View? {
         var pref = PreferenceManager.getDefaultSharedPreferences(context)
-        _binding = FragmentVoting10Binding.inflate(inflater, container, false)
+        _binding = FragmentOnlineVoting10Binding.inflate(inflater, container, false)
 
         candidate1 = pref.getString("name1", "").toString()
         candidate2 = pref.getString("name2", "").toString()
@@ -76,6 +80,8 @@ class Voting10 : abstractVoting() {
             binding.judge.setOnClickListener {
                 members.remove(Suspect10)
                 remainmembers9 = members.toSet() as Set<String>
+
+                Voting.add(Suspect10)
                 judge()
             }
 
@@ -94,27 +100,27 @@ class Voting10 : abstractVoting() {
         }.apply {  }
         if (Suspect10 == jinrouname) {
             findNavController().navigate(R.id.action_voting10_to_trueresult1)
-
         } else {
             findNavController().navigate(R.id.action_voting10_to_falseresult1)
-
         }
     }
 
 }
-abstract class abstractVoting: Fragment() {
+abstract class OnlineabstractVoting: Fragment() {
 
-   lateinit var candidate1:String
-   lateinit var candidate2:String
-   lateinit var candidate3:String
-   lateinit var candidate4:String
-   lateinit var candidate5:String
-   lateinit var candidate6:String
-   lateinit var candidate7:String
-   lateinit var candidate8:String
-   lateinit var candidate9:String
-   lateinit var candidate10:String
-   abstract  fun judge()
+    lateinit var candidate1:String
+    lateinit var candidate2:String
+    lateinit var candidate3:String
+    lateinit var candidate4:String
+    lateinit var candidate5:String
+    lateinit var candidate6:String
+    lateinit var candidate7:String
+    lateinit var candidate8:String
+    lateinit var candidate9:String
+    lateinit var candidate10:String
 
+    lateinit var jinrouname:String
+    lateinit var members:MutableList<String>
 
+    abstract  fun judge()
 }

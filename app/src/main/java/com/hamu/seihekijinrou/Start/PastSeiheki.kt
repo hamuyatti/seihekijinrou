@@ -32,7 +32,7 @@ class PastSeiheki : AppCompatActivity() {
                     .get()
                     .addOnSuccessListener { document ->
                         if (document != null) {
-                            binding.numbertext.text = "${document.documents.size.toString()}回"
+                            binding.numbertext.text = "${document.documents.size}回"
 
                         }
                     }
