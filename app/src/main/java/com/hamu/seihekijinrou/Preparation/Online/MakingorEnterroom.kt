@@ -26,7 +26,10 @@ class MakingorEnterroom : AppCompatActivity() {
     private lateinit var binding: ActivityMakingorEnterroomBinding
     var db = Firebase.firestore
 
+
     override fun onCreate(savedInstanceState: Bundle?) {
+
+
         binding = ActivityMakingorEnterroomBinding.inflate(layoutInflater)
         super.onCreate(savedInstanceState)
         setContentView(binding.root)
@@ -45,10 +48,12 @@ class MakingorEnterroom : AppCompatActivity() {
                 var hostheki = binding.hostseiheki.text.toString()
 
                 var collection: CollectionReference = db.collection("$password")
+                val sameroomcheck = collection.document("$password")
                 val docRef = collection.document("gameinfo")
+                val samenamecheck = docRef.collection("namecheck")
 
                 binding.loading.visibility = View.VISIBLE
-                docRef.get()
+                sameroomcheck.get()
                         .addOnSuccessListener { document ->
                             if (document.exists()) {
                                 binding.loading.visibility = View.INVISIBLE
@@ -70,7 +75,14 @@ class MakingorEnterroom : AppCompatActivity() {
                                 val countmember = hashMapOf(
                                         "参加人数" to "参加しました"
                                 )
-
+                                var namecheck = hashMapOf(
+                                        "名前" to "$hostname"
+                                )
+                                var roomcheck = hashMapOf(
+                                        "部屋" to "のかぶりを確認して、ゲームが始まったら削除する"
+                                )
+                                sameroomcheck.set(roomcheck)
+                                samenamecheck.add(namecheck)
                                 docRef.set(gameinfo)
                                 docRef.collection("参加人数").add(countmember)
                                 var namelist = collection.document("名前情報")
@@ -81,9 +93,9 @@ class MakingorEnterroom : AppCompatActivity() {
 
                                 var pref = androidx.preference.PreferenceManager.getDefaultSharedPreferences(this)
                                 pref.edit {
-                                    putString("roomname", password)
-                                            .commit()
+                                    putString("roomname", password).commit()
                                 }
+
                                 startActivity(Intent(this, Waitingentry::class.java))
                             }
 
@@ -106,21 +118,22 @@ class MakingorEnterroom : AppCompatActivity() {
                 binding.loading.visibility = View.VISIBLE
                 val collection: CollectionReference = db.collection("$searchtext")
                 val docRef = collection.document("gameinfo")
+                val samenamecheck = docRef.collection("namecheck")
+                val sameroomcheck = collection.document("$searchtext")
                 val collection1 = docRef.collection("参加人数")
                 val namelist = collection.document("名前情報")
                 val seihekilist = collection.document("性癖情報")
-                docRef.get()
+                sameroomcheck.get()
                         .addOnSuccessListener {
                             if (!it.exists()) {
                                 binding.loading.visibility = View.INVISIBLE
                                 AlertDialog.Builder(this)
                                         .setMessage("部屋が見つかりませんでした。")
                                         .setPositiveButton("OK") { dialog, which ->
-
                                         }
                                         .show()
                             } else if (it.exists()) {
-                                collection
+                                samenamecheck
                                         .whereEqualTo("名前", "$guestname")
                                         .get()
                                         .addOnSuccessListener { it ->
@@ -239,6 +252,10 @@ class MakingorEnterroom : AppCompatActivity() {
                                                                                             seihekilist.set(heki, SetOptions.merge())
                                                                                             namelist.set(name, SetOptions.merge())
                                                                                         }
+                                                                                    var namecheck = hashMapOf(
+                                                                                            "名前" to "$guestname"
+                                                                                    )
+                                                                                    samenamecheck.add(namecheck)
                                                                                     collection.document("gameinfo")
                                                                                             .collection("参加人数").add(countmember)
                                                                                      startActivity(Intent(this, Waitingentry::class.java))
@@ -258,6 +275,11 @@ class MakingorEnterroom : AppCompatActivity() {
                         }
             }
         }
+
+    override fun onResume() {
+        super.onResume()
+        binding.loading.visibility = View.INVISIBLE
+    }
     }
 
 

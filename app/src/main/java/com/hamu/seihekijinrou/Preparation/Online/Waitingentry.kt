@@ -6,6 +6,7 @@ import android.os.Bundle
 import android.os.Handler
 import androidx.appcompat.app.AlertDialog
 import androidx.core.content.edit
+import com.google.common.collect.Collections2
 import com.google.firebase.firestore.CollectionReference
 import com.google.firebase.firestore.ktx.firestore
 import com.google.firebase.firestore.ktx.toObjects
@@ -21,6 +22,7 @@ class Waitingentry : AppCompatActivity() {
     var db = Firebase.firestore
 
 
+
     override fun onCreate(savedInstanceState: Bundle?) {
         binding = ActivityWaitingentryBinding.inflate(layoutInflater)
         super.onCreate(savedInstanceState)
@@ -29,6 +31,7 @@ class Waitingentry : AppCompatActivity() {
         var roomname = pref.getString("roomname", "")
         var collection1 = db.collection("$roomname").document("gameinfo").collection("参加人数")
         var collection2 = db.collection("$roomname").document("gameinfo").collection("ゲーム状況")
+        var sameroomcheck = db.collection("$roomname").document("$roomname")
         var docref = db.collection("$roomname").document("gameinfo")
 
         collection1.addSnapshotListener { it, tmp ->
@@ -40,9 +43,16 @@ class Waitingentry : AppCompatActivity() {
                 }
         }
 
-        collection2.addSnapshotListener { it, tmp ->
-            if (it?.isEmpty == false)
-                startActivity(Intent(this, CenterofOnlinegameprocess::class.java))
+
+        collection2.addSnapshotListener{it,tmp->
+            collection2
+                    .whereEqualTo("参加人数","参加しました")
+                    .get()
+                    .addOnSuccessListener {
+                        if(!it.isEmpty){
+                         startActivity(Intent(this, CenterofOnlinegameprocess::class.java))
+                        }
+                    }
         }
 
 
@@ -66,6 +76,7 @@ class Waitingentry : AppCompatActivity() {
                                     "ゲーム状況" to "開始"
                                 )
                                 docref.collection("ゲーム状況").add(gamesituation)
+                                sameroomcheck.delete()
                                 startActivity(Intent(this, CenterofOnlinegameprocess::class.java))
                             }
                             .setNegativeButton("もどる") { dialog, which ->
@@ -77,5 +88,6 @@ class Waitingentry : AppCompatActivity() {
 
         }
     }
+
 }
 

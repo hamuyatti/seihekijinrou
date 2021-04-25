@@ -73,7 +73,7 @@ class Voting9 : abstractVoting() {
 
                 R.id.name9 -> Suspect9 = candidate9
             }
-            binding.judge.setOnClickListener {
+            binding.voting.setOnClickListener {
                 members.remove(Suspect9)
                 remainmembers8 = members.toSet() as Set<String>
                 judge()

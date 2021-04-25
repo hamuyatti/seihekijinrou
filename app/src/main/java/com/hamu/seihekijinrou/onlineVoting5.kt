@@ -8,32 +8,38 @@ import android.view.ViewGroup
 import androidx.core.content.edit
 import androidx.navigation.fragment.findNavController
 import androidx.preference.PreferenceManager
+import com.google.firebase.firestore.SetOptions
 import com.google.firebase.firestore.ktx.firestore
 import com.google.firebase.ktx.Firebase
 import com.hamu.seihekijinrou.MeetingandVotingandResult.Voting.abstractVoting
 import com.hamu.seihekijinrou.databinding.FragmentOnlineVoting5Binding
+import com.hamu.seihekijinrou.databinding.FragmentOnlineVoting6Binding
 import com.hamu.seihekijinrou.databinding.FragmentVoting5Binding
 
 class onlineVoting5 : OnlineabstractVoting() {
-    private lateinit var Suspect5: String
-    private lateinit var remainmembers4: Set<String>
-
     private var _binding: FragmentOnlineVoting5Binding? = null
     private val binding get() = _binding!!
 
+    private lateinit var Voted: String
+    private lateinit var Suspect5: String
+    private lateinit var remainmembers4: Set<String>
+
 
     override fun onCreateView(
-        inflater: LayoutInflater, container: ViewGroup?,
-        savedInstanceState: Bundle?
+            inflater: LayoutInflater, container: ViewGroup?,
+            savedInstanceState: Bundle?
     ): View? {
         _binding = FragmentOnlineVoting5Binding.inflate(inflater, container, false)
         var pref = PreferenceManager.getDefaultSharedPreferences(context)
         var roomname = pref.getString("roomname", "")
+
         var db = Firebase.firestore
         var collection = db.collection("$roomname")
-        var Voting = collection.document("gameinfo").collection("投票5")
-        var jinrou = pref.getString("jinrou", "")
-        binding.jinrouseiheki.text = "$jinrou は誰の性癖？？"
+        var Voting = collection.document("投票5")
+
+        var jinrouseiheki = pref.getString("jinrouseiheki", "")
+        binding.jinrouseiheki.text = "$jinrouseiheki は誰の性癖？？"
+
 
         var tmp = pref.getStringSet("remainmembers5", setOf(""))
         if (tmp != null) {
@@ -51,31 +57,137 @@ class onlineVoting5 : OnlineabstractVoting() {
             binding.name4.text = candidate4
             binding.name5.text = candidate5
 
+
         }
         binding.radioGroup.setOnCheckedChangeListener { group, checkedId ->
             when (checkedId) {
-                R.id.name1 -> Suspect5 = candidate1
+                R.id.name1 -> Voted = candidate1
 
-                R.id.name2 -> Suspect5 = candidate2
+                R.id.name2 -> Voted= candidate2
 
-                R.id.name3 -> Suspect5 = candidate3
+                R.id.name3 -> Voted = candidate3
 
-                R.id.name4 -> Suspect5 = candidate4
+                R.id.name4 -> Voted = candidate4
 
-                R.id.name5 -> Suspect5= candidate5
+                R.id.name5 -> Voted = candidate5
 
 
             }
-            binding.judge.setOnClickListener {
-                members.remove(Suspect5)
-                remainmembers4 = members.toSet()
-                judge()
+            binding.voting.setOnClickListener {
+                Voting
+                        .get()
+                        .addOnSuccessListener {
+                            if (!it.contains("投票1")) {
+                                var vote = hashMapOf(
+                                        "投票1" to "$Voted"
+                                )
+                                Voting.set(vote, SetOptions.merge())
+                            } else if (!it.contains("投票2")) {
+                                var vote = hashMapOf(
+                                        "投票2" to "$Voted"
+                                )
+                                Voting.set(vote, SetOptions.merge())
+                            } else if (!it.contains("投票3")) {
+                                var vote = hashMapOf(
+                                        "投票3" to "$Voted"
+                                )
+                                Voting.set(vote, SetOptions.merge())
+                            } else if (!it.contains("投票4")) {
+                                var vote = hashMapOf(
+                                        "投票4" to "$Voted"
+                                )
+                                Voting.set(vote, SetOptions.merge())
+                            } else if (!it.contains("投票5")) {
+                                var vote = hashMapOf(
+                                        "投票5" to "$Voted"
+                                )
+                                Voting.set(vote, SetOptions.merge())
+                            }
+                        }
+            }
+
+            Voting.addSnapshotListener { tmp1, tmp2 ->
+                Voting
+                        .get()
+                        .addOnSuccessListener {
+                            if (it.contains("投票5")) {
+                                data class votedata(
+                                        val name: String,
+                                        val count: Int
+                                )
+
+
+                                var vote1 = it!!.data?.get("投票1")
+                                var vote2 = it!!.data?.get("投票2")
+                                var vote3 = it!!.data?.get("投票3")
+                                var vote4 = it!!.data?.get("投票4")
+                                var vote5 = it!!.data?.get("投票5")
+
+                                var list = listOf(vote1, vote2, vote3, vote4, vote5)
+
+                                var vote1count = list.count { it == vote1 }
+                                var vote2count = list.count { it == vote2 }
+                                var vote3count = list.count { it == vote3 }
+                                var vote4count = list.count { it == vote4 }
+                                var vote5count = list.count { it == vote5 }
+
+                                var list1 = mutableListOf<votedata>()
+                                list1.add(votedata(vote1 as String, vote1count))
+                                list1.add(votedata(vote2 as String, vote2count))
+                                list1.add(votedata(vote3 as String, vote3count))
+                                list1.add(votedata(vote4 as String, vote4count))
+                                list1.add(votedata(vote5 as String, vote5count))
+
+
+                                list1.sortByDescending { it.count }
+                                /* 同列一位を探します。
+
+                                 */
+                                if (list1[0].count == list1[1].count) {
+                                    /*2票*/
+                                    var Newcandidate = hashMapOf(
+                                            "candidate1" to list1[0].name,
+                                            "candidate2" to list1[1].name
+                                    )
+                                    Voting.set(Newcandidate, SetOptions.merge())
+                                    pref.edit {
+                                        putString("ThistimeMeeting", "5")
+                                    }
+                                    findNavController().navigate(R.id.action_onlineVoting4_to_whendisagree)
+
+                                }  else if (list1[0].count == 1) {
+                                    /*1票*/
+                                    var Newcandidate = hashMapOf(
+                                            "candidate1" to list1[0].name,
+                                            "candidate2" to list1[1].name,
+                                            "candidate3" to list1[2].name,
+                                            "candidate4" to list1[3].name,
+                                            "candidate5" to list1[4].name,
+                                    )
+                                    Voting.set(Newcandidate, SetOptions.merge())
+                                    pref.edit {
+                                        putString("ThistimeMeeting", "5")
+                                    }
+                                    findNavController().navigate(R.id.action_onlineVoting4_to_whendisagree)
+                                } else{
+                                    var Suspect = hashMapOf(
+                                            "Suspect5" to list1[0].name,
+
+                                            )
+                                    Voting.set(Suspect, SetOptions.merge())
+                                    pref.edit {
+                                        putString("ThistimeMeeting", "5")
+                                    }.apply {  }
+                                }
+
+                            }
+
+
+                        }
             }
         }
-
         return binding.root
     }
-
     override fun judge() {
         var pref = PreferenceManager.getDefaultSharedPreferences(context)
         var jinrouname = pref.getString("jinrouname", "")

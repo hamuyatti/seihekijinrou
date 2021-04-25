@@ -8,14 +8,17 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.appcompat.app.AlertDialog
 import androidx.core.content.edit
 import androidx.navigation.fragment.findNavController
 import androidx.preference.PreferenceManager
+import com.google.firebase.firestore.ktx.firestore
+import com.google.firebase.ktx.Firebase
 import com.hamu.seihekijinrou.Preparation.numberofpeople
-import com.hamu.seihekijinrou.databinding.FragmentOnlyFirstMeetingTimeBinding
+import com.hamu.seihekijinrou.databinding.FragmentOnlinefirstMeetingBinding
 
 class OnlinefirstMeeting : Fragment() {
-    private var _binding: FragmentOnlyFirstMeetingTimeBinding? = null
+    private var _binding: FragmentOnlinefirstMeetingBinding? = null
     private val binding get() = _binding!!
     private lateinit var soundPool: SoundPool
     private var soundResId = 0
@@ -40,8 +43,6 @@ class OnlinefirstMeeting : Fragment() {
     private lateinit var name8:String
     private lateinit var name9:String
 
-
-
     inner class MyCountDownTimer(millsInfuture: Long, countDownInterval: Long) :
         CountDownTimer(millsInfuture, countDownInterval) {
 
@@ -60,22 +61,21 @@ class OnlinefirstMeeting : Fragment() {
     }
 
 
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        arguments?.let {
-        }
-    }
-
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        _binding = FragmentOnlyFirstMeetingTimeBinding.inflate(inflater, container, false)
+        _binding = FragmentOnlinefirstMeetingBinding.inflate(inflater, container, false)
+        binding.loading.visibility = View.INVISIBLE
         var pref = PreferenceManager.getDefaultSharedPreferences(context)
+        var roomname = pref.getString("roomname", "")
+        var db = Firebase.firestore
+        var collection = db.collection("$roomname")
+        var Meeting = collection.document("gameinfo").collection("会議状況")
+        var docref = collection.document("gameinfo")
 
         var jinrou = pref.getString("jinrouseiheki", "")
         binding.gametitle.text = "「$jinrou」"
-
 
         binding.timertext.text = "2:00"
         var timer = MyCountDownTimer(2 * 60 * 1000, 100)
@@ -95,8 +95,42 @@ class OnlinefirstMeeting : Fragment() {
         numberofpeople = pref.getString("numberofpeople","" ).toString()
 
         binding.Meetingstop.setOnClickListener {
-            toVoting()
+            AlertDialog.Builder(requireContext())
+                .setMessage("会議を終了しますか？")
+                .setPositiveButton("はい") { dialog, which ->
+                    timer.cancel()
+                    pref.edit {
+                        putString("check","判別用").commit()
+                    }
+                    var finishMeeting= hashMapOf("会議状況" to "終了しました" )
+                    docref.collection("会議状況").add(finishMeeting)
+                    toVoting()
+                }
+                .setNegativeButton("もどる"){dialog,which->
+                    timer.start()
+                }
+                .show()
         }
+
+
+       Meeting.addSnapshotListener{it,tmp->
+         var check:String? =  pref.getString("check","")
+          if(check?.isEmpty()!!) {
+              Meeting
+                      .whereEqualTo("会議状況", "終了しました")
+                      .get()
+                      .addOnSuccessListener {
+                          if (!it!!.isEmpty) {
+                              timer.cancel()
+                              toVoting()
+                          }
+
+                      }
+          }
+
+        }
+
+
 
         return binding.root
     }
@@ -105,52 +139,51 @@ class OnlinefirstMeeting : Fragment() {
     fun toVoting() {
 
         var pref = PreferenceManager.getDefaultSharedPreferences(context)
-        if (numberofpeople == "3") {
+        if (numberofpeople =="3") {
             remainmembers3 = setOf(name1,name2,name3)
             pref.edit { putStringSet("remainmembers3", remainmembers3) }.apply { }
             findNavController().navigate(R.id.action_onlinefirstMeeting_to_onlineVoting3)
 
-        } else if (numberofpeople == "4") {
+        } else if (numberofpeople =="4") {
             remainmembers4 = setOf(name1, name2, name3, name4)
             pref.edit { putStringSet("remainmembers4", remainmembers4) }.apply { }
             findNavController().navigate(R.id.action_onlinefirstMeeting_to_onlineVoting4)
 
-        } else if (numberofpeople == "5") {
+        } else if (numberofpeople =="5") {
             remainmembers5 = setOf(name1, name2, name3, name4, name5)
             pref.edit { putStringSet("remainmembers5", remainmembers5) }.apply { }
 
 
             findNavController().navigate(R.id.action_onlinefirstMeeting_to_onlineVoting5)
 
-        } else if (numberofpeople == "6") {
+        } else if (numberofpeople =="6") {
             remainmembers6 = setOf(name1, name2, name3, name4, name5, name6)
             pref.edit { putStringSet("remainmembers6", remainmembers6) }.apply { }
 
 
             findNavController().navigate(R.id.action_onlinefirstMeeting_to_onlineVoting6)
 
-        } else if (numberofpeople == "7") {
+        } else if (numberofpeople =="7") {
             remainmembers7 = setOf(name1, name2, name3, name4, name5, name6, name7)
             pref.edit { putStringSet("remainmembers7", remainmembers7) }.apply { }
 
             findNavController().navigate(R.id.action_onlinefirstMeeting_to_onlineVoting7)
 
-        } else if (numberofpeople == "8") {
+        } else if (numberofpeople =="8") {
             remainmembers8 = setOf(name1, name2, name3, name4, name5, name6, name7, name8)
             pref.edit { putStringSet("remainmembers8", remainmembers8) }.apply { }
 
             findNavController().navigate(R.id.action_onlinefirstMeeting_to_onlineVoting8)
 
-        } else if (numberofpeople == "9") {
+        } else if (numberofpeople =="9") {
             remainmembers9 =
                 setOf(name1, name2, name3, name4, name5, name6, name7, name8, name9)
             pref.edit { putStringSet("remainmembers9", remainmembers9) }.apply { }
             findNavController().navigate(R.id.action_onlinefirstMeeting_to_onlineVoting9)
 
         } else {
-
             /*remainmembersは誰が残っているか特定するための配列なので、人数いっぱいの１０人の時は自明なので使いません*/
-            findNavController().navigate(R.id.action_onlinefirstMeeting_to_onlineVoting3)
+            findNavController().navigate(R.id.action_onlinefirstMeeting_to_onlineVoting10)
         }
     }
 
@@ -167,7 +200,13 @@ class OnlinefirstMeeting : Fragment() {
                 build()
             }
         soundResId = soundPool.load(context, R.raw.pigeon, 1)
-
-
     }
+
+    override fun onPause() {
+        super.onPause()
+
+        soundPool.release()
+    }
+
+
 }

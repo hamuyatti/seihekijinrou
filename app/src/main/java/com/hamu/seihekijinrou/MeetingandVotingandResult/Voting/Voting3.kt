@@ -52,7 +52,7 @@ class Voting3 : abstractVoting() {
 
 
             }
-            binding.judge.setOnClickListener {
+            binding.voting.setOnClickListener {
                 members.remove(Suspect3)
                 judge()
             }
