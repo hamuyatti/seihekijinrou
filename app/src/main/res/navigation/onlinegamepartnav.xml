@@ -158,6 +158,9 @@
         <action
             android:id="@+id/action_onlineVoting6_to_whenOpinionsAreUited"
             app:destination="@id/whenOpinionsAreUited" />
+        <action
+            android:id="@+id/action_onlineVoting6_to_whendisagree"
+            app:destination="@id/whendisagree" />
     </fragment>
     <fragment
         android:id="@+id/onlineVoting5"

@@ -35,13 +35,10 @@ class Waitingentry : AppCompatActivity() {
         var docref = db.collection("$roomname").document("gameinfo")
 
         collection1.addSnapshotListener { it, tmp ->
-            collection1
-                .get()
-                .addOnSuccessListener {
-                    var nownumberofmenber = it.size().toString()
+                    var nownumberofmenber = it?.size().toString()
                     binding.nownumberfmember.text = "$nownumberofmenber 人参加しています。"
                 }
-        }
+
 
 
         collection2.addSnapshotListener{it,tmp->

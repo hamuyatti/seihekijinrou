@@ -54,9 +54,9 @@ class onlineVoting3 : OnlineabstractVoting() {
         }
         binding.radioGroup.setOnCheckedChangeListener { group, checkedId ->
             when (checkedId) {
-                R.id.name1 -> Voted= candidate1
+                R.id.name1 -> Voted = candidate1
 
-                R.id.name2 ->Voted = candidate2
+                R.id.name2 -> Voted = candidate2
 
                 R.id.name3 -> Voted = candidate3
 
@@ -91,64 +91,68 @@ class onlineVoting3 : OnlineabstractVoting() {
                         .addOnSuccessListener {
                             if (it.contains("投票3")) {
                                 data class votedata(
-                                        val name: String,
-                                        val count: Int
+                                        val name: String?,
+                                        val count: Int?
                                 )
 
 
                                 var vote1 = it!!.data?.get("投票1")
                                 var vote2 = it!!.data?.get("投票2")
                                 var vote3 = it!!.data?.get("投票3")
+                                var vote4 = it!!.data?.get("投票4")
+
+                                var list1 = listOf(vote1, vote2, vote3, vote4)
+
+                                var vote1count = list1.count { it == candidate1 }
+                                var vote2count = list1.count { it == candidate2 }
+                                var vote3count = list1.count { it == candidate3 }
+                                var vote4count = list1.count { it == candidate4 }
+
+                                var list = mutableListOf<votedata>()
+                                list.add(votedata(candidate1, vote1count))
+                                list.add(votedata(candidate2, vote2count))
+                                list.add(votedata(candidate3, vote3count))
+                                list.add(votedata(candidate4, vote4count))
+
+                                var list2 = list.sortedByDescending { it.count }
+
+                                pref.edit {
+                                    putString("ThistimeMeeting", "3")
+                                }.apply { }
 
 
-                                var list = listOf(vote1, vote2, vote3)
 
-                                var vote1count = list.count { it == vote1 }
-                                var vote2count = list.count { it == vote2 }
-                                var vote3count = list.count { it == vote3 }
-
-
-                                var list1 = mutableListOf<votedata>()
-                                list1.add(votedata(vote1 as String, vote1count))
-                                list1.add(votedata(vote2 as String, vote2count))
-                                list1.add(votedata(vote3 as String, vote3count))
-
-                                list1.sortByDescending { it.count }
-                                /* 同列一位を探します。
-
-                                 */
-                                if (list1[0].count == 1) {
-                                    /*1票*/
+                                if (list2[0].count == list2[1].count && list2[1].count == list2[2].count && list2[2].count == list2[3].count) {
                                     var Newcandidate = hashMapOf(
-                                            "candidate1" to list1[0].name,
-                                            "candidate2" to list1[1].name,
-                                            "candidate3" to list1[2].name,
-                                            "candidate4" to list1[3].name,
-                                            "candidate5" to list1[4].name,
+                                            "candidate1" to candidate1,
+                                            "candidate2" to candidate2,
+                                            "candidate3" to candidate3,
+                                            "candidate4" to candidate4
                                     )
                                     Voting.set(Newcandidate, SetOptions.merge())
-                                    pref.edit {
-                                        putString("ThistimeMeeting", "3")
-                                    }
+
+                                    findNavController().navigate(R.id.action_onlineVoting4_to_whendisagree)
+                                } else if (list2[0].count == list2[1].count) {
+                                    var Newcandidate = hashMapOf(
+                                            "candidate1" to list2[0].name,
+                                            "candidate2" to list2[1].name
+                                    )
+                                    Voting.set(Newcandidate, SetOptions.merge())
+
                                     findNavController().navigate(R.id.action_onlineVoting4_to_whendisagree)
                                 } else {
-                                    var Suspect4 = hashMapOf(
-                                                "candidate1" to list1[0].name,
+                                    var Suspect = hashMapOf(
+                                            "Suspect4" to list2[0].name
+                                    )
+                                    Voting.set(Suspect, SetOptions.merge())
 
-                                                )
-                                        Voting.set(Suspect4, SetOptions.merge())
-
-                                    }
-                                    pref.edit {
-                                        putString("ThistimeMeeting", "3")
-                                    }.apply {  }
                                     findNavController().navigate(R.id.action_onlineVoting4_to_whenOpinionsAreUited)
+                                }
                             }
-
-
                         }
             }
         }
+
         return binding.root
     }
     override fun judge() {
