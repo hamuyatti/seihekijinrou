@@ -25,13 +25,8 @@ class OnlinefirstMeeting : Fragment() {
 
     lateinit var numberofpeople:String
 
-    private lateinit var remainmembers3: Set<String>
-    private lateinit var remainmembers4: Set<String>
-    private lateinit var remainmembers5: Set<String>
-    private lateinit var remainmembers6: Set<String>
-    private lateinit var remainmembers7: Set<String>
-    private lateinit var remainmembers8: Set<String>
-    private lateinit var remainmembers9: Set<String>
+    private lateinit var remainmembers: Set<String>
+
 
     private lateinit var name1:String
     private lateinit var name2:String
@@ -140,45 +135,45 @@ class OnlinefirstMeeting : Fragment() {
 
         var pref = PreferenceManager.getDefaultSharedPreferences(context)
         if (numberofpeople =="3") {
-            remainmembers3 = setOf(name1,name2,name3)
-            pref.edit { putStringSet("remainmembers3", remainmembers3) }.apply { }
+            remainmembers = setOf(name1,name2,name3)
+            pref.edit { putStringSet("remainmembers", remainmembers) }.apply { }
             findNavController().navigate(R.id.action_onlinefirstMeeting_to_onlineVoting3)
 
         } else if (numberofpeople =="4") {
-            remainmembers4 = setOf(name1, name2, name3, name4)
-            pref.edit { putStringSet("remainmembers4", remainmembers4) }.apply { }
+            remainmembers = setOf(name1, name2, name3, name4)
+            pref.edit { putStringSet("remainmembers", remainmembers) }.apply { }
             findNavController().navigate(R.id.action_onlinefirstMeeting_to_onlineVoting4)
 
         } else if (numberofpeople =="5") {
-            remainmembers5 = setOf(name1, name2, name3, name4, name5)
-            pref.edit { putStringSet("remainmembers5", remainmembers5) }.apply { }
+            remainmembers = setOf(name1, name2, name3, name4, name5)
+            pref.edit { putStringSet("remainmembers", remainmembers) }.apply { }
 
 
             findNavController().navigate(R.id.action_onlinefirstMeeting_to_onlineVoting5)
 
         } else if (numberofpeople =="6") {
-            remainmembers6 = setOf(name1, name2, name3, name4, name5, name6)
-            pref.edit { putStringSet("remainmembers6", remainmembers6) }.apply { }
+            remainmembers = setOf(name1, name2, name3, name4, name5, name6)
+            pref.edit { putStringSet("remainmembers", remainmembers) }.apply { }
 
 
             findNavController().navigate(R.id.action_onlinefirstMeeting_to_onlineVoting6)
 
         } else if (numberofpeople =="7") {
-            remainmembers7 = setOf(name1, name2, name3, name4, name5, name6, name7)
-            pref.edit { putStringSet("remainmembers7", remainmembers7) }.apply { }
+            remainmembers = setOf(name1, name2, name3, name4, name5, name6, name7)
+            pref.edit { putStringSet("remainmembers", remainmembers) }.apply { }
 
             findNavController().navigate(R.id.action_onlinefirstMeeting_to_onlineVoting7)
 
         } else if (numberofpeople =="8") {
-            remainmembers8 = setOf(name1, name2, name3, name4, name5, name6, name7, name8)
-            pref.edit { putStringSet("remainmembers8", remainmembers8) }.apply { }
+            remainmembers = setOf(name1, name2, name3, name4, name5, name6, name7, name8)
+            pref.edit { putStringSet("remainmembers", remainmembers) }.apply { }
 
             findNavController().navigate(R.id.action_onlinefirstMeeting_to_onlineVoting8)
 
         } else if (numberofpeople =="9") {
-            remainmembers9 =
+            remainmembers =
                 setOf(name1, name2, name3, name4, name5, name6, name7, name8, name9)
-            pref.edit { putStringSet("remainmembers9", remainmembers9) }.apply { }
+            pref.edit { putStringSet("remainmembers", remainmembers) }.apply { }
             findNavController().navigate(R.id.action_onlinefirstMeeting_to_onlineVoting9)
 
         } else {

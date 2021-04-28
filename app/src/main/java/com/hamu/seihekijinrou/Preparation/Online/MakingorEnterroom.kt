@@ -8,6 +8,7 @@ import android.util.Log
 import android.view.View
 import android.widget.AdapterView
 import android.widget.Spinner
+import android.widget.Toast
 import androidx.annotation.RequiresApi
 import androidx.appcompat.app.AlertDialog
 import androidx.core.content.edit
@@ -62,6 +63,12 @@ class MakingorEnterroom : AppCompatActivity() {
                                         .setPositiveButton("もどる") { dialog, which ->
                                         }.show()
                             } else {
+
+                                    val text = "部屋を作成しました。"
+                                    val duration = Toast.LENGTH_SHORT
+                                    val toast = Toast.makeText(this, text, duration)
+                                    toast.show()
+
                                 val gameinfo = hashMapOf(
                                         "主催" to hostname,
                                 )
@@ -165,102 +172,105 @@ class MakingorEnterroom : AppCompatActivity() {
                                                                         collection1
                                                                                 .get()
                                                                                 .addOnSuccessListener {
-                                                                                        var count = it.size()
-                                                                                        if (count == 10) {
-                                                                                            AlertDialog.Builder(this)
-                                                                                                    .setMessage("上限に達しています（１０人）。")
-                                                                                                    .setPositiveButton("参加する") { dialog, which -> }.show()
-                                                                                        } else if (count == 9) {
-                                                                                            var heki = hashMapOf(
+                                                                                    var count = it.size()
+                                                                                    if (count == 10) {
+                                                                                        AlertDialog.Builder(this)
+                                                                                                .setMessage("上限に達しています（１０人）。")
+                                                                                                .setPositiveButton("参加する") { dialog, which -> }.show()
+                                                                                    } else if (count == 9) {
+                                                                                        var heki = hashMapOf(
                                                                                                 "性癖10" to "$guestheki"
                                                                                         )
-                                                                                            var name = hashMapOf(
-                                                                                                    "名前10" to "$guestname"
-                                                                                            )
-                                                                                            seihekilist.set(heki, SetOptions.merge())
-                                                                                            namelist.set(name, SetOptions.merge())
-                                                                                        } else if (count == 8) {
-                                                                                            var heki = hashMapOf(
-                                                                                                    "性癖9" to "$guestheki"
-                                                                                            )
-                                                                                            var name = hashMapOf(
-                                                                                                    "名前9" to "$guestname"
-                                                                                            )
-                                                                                            seihekilist.set(heki, SetOptions.merge())
-                                                                                            namelist.set(name, SetOptions.merge())
-                                                                                        } else if (count == 7) {
-                                                                                            var heki = hashMapOf(
-                                                                                                    "性癖8" to "$guestheki"
-                                                                                            )
-                                                                                            var name = hashMapOf(
-                                                                                                    "名前8" to "$guestname"
-                                                                                            )
-                                                                                            seihekilist.set(heki, SetOptions.merge())
-                                                                                            namelist.set(name, SetOptions.merge())
-                                                                                        } else if (count == 6) {
-                                                                                            var heki = hashMapOf(
-                                                                                                    "性癖7" to "$guestheki"
-                                                                                            )
-                                                                                            var name = hashMapOf(
-                                                                                                    "名前7" to "$guestname"
-                                                                                            )
-                                                                                            seihekilist.set(heki, SetOptions.merge())
-                                                                                            namelist.set(name, SetOptions.merge())
-                                                                                        } else if (count == 5) {
-                                                                                            var heki = hashMapOf(
-                                                                                                    "性癖6" to "$guestheki"
-                                                                                            )
-                                                                                            var name = hashMapOf(
-                                                                                                    "名前6" to "$guestname"
-                                                                                            )
-                                                                                            seihekilist.set(heki, SetOptions.merge())
-                                                                                            namelist.set(name, SetOptions.merge())
-                                                                                        } else if (count == 4) {
-                                                                                            var heki = hashMapOf(
-                                                                                                    "性癖5" to "$guestheki"
-                                                                                            )
-                                                                                            var name = hashMapOf(
-                                                                                                    "名前5" to "$guestname"
-                                                                                            )
-                                                                                            seihekilist.set(heki, SetOptions.merge())
-                                                                                            namelist.set(name, SetOptions.merge())
-                                                                                        } else if (count== 3) {
-                                                                                            var heki = hashMapOf(
-                                                                                                    "性癖4" to "$guestheki"
-                                                                                            )
-                                                                                            var name = hashMapOf(
-                                                                                                    "名前4" to "$guestname"
-                                                                                            )
-                                                                                            seihekilist.set(heki, SetOptions.merge())
-                                                                                            namelist.set(name, SetOptions.merge())
-                                                                                        } else if (count == 2) {
-                                                                                            var heki = hashMapOf(
-                                                                                                    "性癖3" to "$guestheki"
-                                                                                            )
-                                                                                            var name = hashMapOf(
-                                                                                                    "名前3" to "$guestname"
-                                                                                            )
-                                                                                            seihekilist.set(heki, SetOptions.merge())
-                                                                                            namelist.set(name, SetOptions.merge())
-                                                                                        } else if (count == 1) {
-                                                                                            var heki = hashMapOf(
-                                                                                                    "性癖2" to "$guestheki"
-                                                                                            )
-                                                                                            var name = hashMapOf(
-                                                                                                    "名前2" to "$guestname"
-                                                                                            )
-                                                                                            seihekilist.set(heki, SetOptions.merge())
-                                                                                            namelist.set(name, SetOptions.merge())
-                                                                                        }
+                                                                                        var name = hashMapOf(
+                                                                                                "名前10" to "$guestname"
+                                                                                        )
+                                                                                        seihekilist.set(heki, SetOptions.merge())
+                                                                                        namelist.set(name, SetOptions.merge())
+                                                                                    } else if (count == 8) {
+                                                                                        var heki = hashMapOf(
+                                                                                                "性癖9" to "$guestheki"
+                                                                                        )
+                                                                                        var name = hashMapOf(
+                                                                                                "名前9" to "$guestname"
+                                                                                        )
+                                                                                        seihekilist.set(heki, SetOptions.merge())
+                                                                                        namelist.set(name, SetOptions.merge())
+                                                                                    } else if (count == 7) {
+                                                                                        var heki = hashMapOf(
+                                                                                                "性癖8" to "$guestheki"
+                                                                                        )
+                                                                                        var name = hashMapOf(
+                                                                                                "名前8" to "$guestname"
+                                                                                        )
+                                                                                        seihekilist.set(heki, SetOptions.merge())
+                                                                                        namelist.set(name, SetOptions.merge())
+                                                                                    } else if (count == 6) {
+                                                                                        var heki = hashMapOf(
+                                                                                                "性癖7" to "$guestheki"
+                                                                                        )
+                                                                                        var name = hashMapOf(
+                                                                                                "名前7" to "$guestname"
+                                                                                        )
+                                                                                        seihekilist.set(heki, SetOptions.merge())
+                                                                                        namelist.set(name, SetOptions.merge())
+                                                                                    } else if (count == 5) {
+                                                                                        var heki = hashMapOf(
+                                                                                                "性癖6" to "$guestheki"
+                                                                                        )
+                                                                                        var name = hashMapOf(
+                                                                                                "名前6" to "$guestname"
+                                                                                        )
+                                                                                        seihekilist.set(heki, SetOptions.merge())
+                                                                                        namelist.set(name, SetOptions.merge())
+                                                                                    } else if (count == 4) {
+                                                                                        var heki = hashMapOf(
+                                                                                                "性癖5" to "$guestheki"
+                                                                                        )
+                                                                                        var name = hashMapOf(
+                                                                                                "名前5" to "$guestname"
+                                                                                        )
+                                                                                        seihekilist.set(heki, SetOptions.merge())
+                                                                                        namelist.set(name, SetOptions.merge())
+                                                                                    } else if (count == 3) {
+                                                                                        var heki = hashMapOf(
+                                                                                                "性癖4" to "$guestheki"
+                                                                                        )
+                                                                                        var name = hashMapOf(
+                                                                                                "名前4" to "$guestname"
+                                                                                        )
+                                                                                        seihekilist.set(heki, SetOptions.merge())
+                                                                                        namelist.set(name, SetOptions.merge())
+                                                                                    } else if (count == 2) {
+                                                                                        var heki = hashMapOf(
+                                                                                                "性癖3" to "$guestheki"
+                                                                                        )
+                                                                                        var name = hashMapOf(
+                                                                                                "名前3" to "$guestname"
+                                                                                        )
+                                                                                        seihekilist.set(heki, SetOptions.merge())
+                                                                                        namelist.set(name, SetOptions.merge())
+                                                                                    } else if (count == 1) {
+                                                                                        var heki = hashMapOf(
+                                                                                                "性癖2" to "$guestheki"
+                                                                                        )
+                                                                                        var name = hashMapOf(
+                                                                                                "名前2" to "$guestname"
+                                                                                        )
+                                                                                        seihekilist.set(heki, SetOptions.merge())
+                                                                                        namelist.set(name, SetOptions.merge())
+                                                                                    }
+
+
+                                                                                    if (count != 10 ){
                                                                                     var namecheck = hashMapOf(
                                                                                             "名前" to "$guestname"
                                                                                     )
                                                                                     samenamecheck.add(namecheck)
                                                                                     collection.document("gameinfo")
                                                                                             .collection("参加人数").add(countmember)
-                                                                                     startActivity(Intent(this, Waitingentry::class.java))
+                                                                                    startActivity(Intent(this, Waitingentry::class.java))
 
-
+                                                                                }
                                                                                 }
                                                                                 }
                                                                                 .setNegativeButton("やり直す") { dialog, which -> }

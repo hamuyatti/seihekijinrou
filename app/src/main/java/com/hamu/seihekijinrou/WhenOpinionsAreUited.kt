@@ -1,59 +1,71 @@
 package com.hamu.seihekijinrou
 
+import android.content.Intent
 import android.os.Bundle
+import android.os.Handler
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.navigation.fragment.findNavController
+import androidx.preference.PreferenceManager
+import com.hamu.seihekijinrou.Start.explanation
+import com.hamu.seihekijinrou.databinding.FragmentOnlineVoting3Binding
+import com.hamu.seihekijinrou.databinding.FragmentOnlineVoting4Binding
+import com.hamu.seihekijinrou.databinding.FragmentWhenOpinionsAreUitedBinding
 
-// TODO: Rename parameter arguments, choose names that match
-// the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
-private const val ARG_PARAM1 = "param1"
-private const val ARG_PARAM2 = "param2"
-
-/**
- * A simple [Fragment] subclass.
- * Use the [WhenOpinionsAreUited.newInstance] factory method to
- * create an instance of this fragment.
- */
 class WhenOpinionsAreUited : Fragment() {
-    // TODO: Rename and change types of parameters
-    private var param1: String? = null
-    private var param2: String? = null
-
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        arguments?.let {
-            param1 = it.getString(ARG_PARAM1)
-            param2 = it.getString(ARG_PARAM2)
-        }
-    }
+    private var _binding: FragmentWhenOpinionsAreUitedBinding? = null
+    private val binding get() = _binding!!
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
+
     ): View? {
-        // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_when_opinions_are_uited, container, false)
+        _binding = FragmentWhenOpinionsAreUitedBinding.inflate(inflater, container, false)
+        var pref = PreferenceManager.getDefaultSharedPreferences(context)
+        var jinrou = pref.getString("jinrou","")
+        var jinrouseiheki = pref.getString("jinrouseiheki","")
+
+        var Suspect = arguments?.get("Suspect")as String?
+
+        if(Suspect==jinrou){
+            binding.text.text = "$Suspect さんは、、"
+            Handler().postDelayed(
+                {
+                    binding.text.text = "性癖「{$jinrouseiheki}」の持ち主です！"
+                    Handler().postDelayed(
+                        {
+                            findNavController().navigate(R.id.action_whenOpinionsAreUited_to_trueResult)
+                        },
+                        2000,
+                    )
+                },
+                2000,
+            )
+
+        }else{
+            binding.text.text = "$Suspect さんは、、"
+
+
+            Handler().postDelayed(
+                    {
+                        binding.text.text = "人狼ではありません！"
+                        Handler().postDelayed(
+                            {
+                                findNavController().navigate(R.id.action_whenOpinionsAreUited_to_onlineMeetingtime)
+                            },
+                            2000,
+                        )
+                    },
+                            2000,
+            )
+
+
+        }
+        return binding.root
     }
 
-    companion object {
-        /**
-         * Use this factory method to create a new instance of
-         * this fragment using the provided parameters.
-         *
-         * @param param1 Parameter 1.
-         * @param param2 Parameter 2.
-         * @return A new instance of fragment WhenOpinionsAreUited.
-         */
-        // TODO: Rename and change types and number of parameters
-        @JvmStatic
-        fun newInstance(param1: String, param2: String) =
-            WhenOpinionsAreUited().apply {
-                arguments = Bundle().apply {
-                    putString(ARG_PARAM1, param1)
-                    putString(ARG_PARAM2, param2)
-                }
-            }
-    }
+
 }

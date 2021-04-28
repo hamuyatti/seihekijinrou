@@ -27,11 +27,11 @@ class gamestart : AppCompatActivity() {
 
     fun loadingDelay(){
         Handler().postDelayed(
-                {
-                    val intent = Intent(this, explanation::class.java)
-                    startActivity(intent)
-                },
-                1000,
+            {
+                val intent = Intent(this, explanation::class.java)
+                startActivity(intent)
+            },
+            1000,
         )
     }
 }
