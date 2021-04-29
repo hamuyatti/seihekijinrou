@@ -30,6 +30,7 @@ class onlineVoting5 : OnlineabstractVoting() {
         var pref = PreferenceManager.getDefaultSharedPreferences(context)
         var roomname = pref.getString("roomname", "")
         var numberofpeople = pref.getString("numberofpeople","")
+        jinrouname = pref.getString("jinrou", "").toString()
 
         var db = Firebase.firestore
         var collection = db.collection("$roomname")
@@ -42,7 +43,7 @@ class onlineVoting5 : OnlineabstractVoting() {
         var tmp = pref.getStringSet("remainmembers", setOf(""))
         if (tmp != null) {
             members = tmp.toMutableList()
-            pref.edit().remove("remainmembers")
+            pref.edit().remove("remainmembers").apply()
             candidate1 = members[0]
             candidate2 = members[1]
             candidate3 = members[2]
@@ -163,28 +164,36 @@ class onlineVoting5 : OnlineabstractVoting() {
                                 var vote5count = list1.count { it == candidate5 }
 
 
-                                var list = mutableListOf<votedata>()
-                                list.add(votedata(candidate1, vote1count))
-                                list.add(votedata(candidate2, vote2count))
-                                list.add(votedata(candidate3, vote3count))
-                                list.add(votedata(candidate4, vote4count))
-                                list.add(votedata(candidate5, vote5count))
+                                var list2 = mutableListOf<votedata>()
+                                list2.add(votedata(candidate1, vote1count))
+                                list2.add(votedata(candidate2, vote2count))
+                                list2.add(votedata(candidate3, vote3count))
+                                list2.add(votedata(candidate4, vote4count))
+                                list2.add(votedata(candidate5, vote5count))
 
 
-                                var list2 = list.sortedByDescending { it.count }
-                                pref.edit {
-                                    putString("ThistimeMeeting", "5")
-                                }.apply { }
+                                var list = list2.sortedByDescending { it.count }
 
                                 /*再投票するかを決めます*/
-                                if (list2[0].count== list2[1].count && list2[1].count == list2[2].count && list2[2].count == list2[3].count
-                                        &&list2[3].count== list2[4].count  ){
-                                    remainmembers = members.toSet()
+                                if (list[0].count== list[1].count && list[1].count == list[2].count && list[2].count == list[3].count
+                                        &&list[3].count== list[4].count  ){
+                                    var remainmembers = members.toSet()
+                                    pref.edit{
+                                        putStringSet("remainmembers",remainmembers)
+                                    }.apply {  }
                                     Voting.delete()
                                     whensameNumVoting()
-                                 }else if(list2[0].count == list2[1].count) {
-                                    remainmembers = setOf(list2[2].name,list2[3].name,list[4].name)
-                                    Suspectmembers = setOf(list2[0].name, list2[1].name)
+
+                                 }else if(list[0].count == list[1].count) {
+                                    var remainmembers = setOf(list[2].name,list[3].name,list[4].name)
+                                    var Suspectmembers = setOf(list[0].name, list[1].name)
+
+                                    var pref = PreferenceManager.getDefaultSharedPreferences(context)
+                                    pref.edit {
+                                        putStringSet("remainmembers", remainmembers)
+                                        putStringSet("Suspectmembers",Suspectmembers)
+                                    }.apply {}
+
                                     if(Suspectmembers.contains(jinrouname)){
                                         whendisagreeBunContainjinrou()
                                     }else {
@@ -192,8 +201,13 @@ class onlineVoting5 : OnlineabstractVoting() {
                                     }
 
                                 }else{
-                                    Suspect = list2[0].name
-                                    remainmembers = setOf(list2[1].name,list2[2].name,list2[3].name,list2[4].name)
+                                    Suspect = list[0].name
+                                    var remainmembers = setOf(list[1].name,list[2].name,list[3].name,list[4].name)
+
+                                    var pref = PreferenceManager.getDefaultSharedPreferences(context)
+                                    pref.edit {
+                                        putStringSet("remainmembers", remainmembers)
+                                    }.apply { }
                                     whenOpinionsAreUnited()
                                 }
 
@@ -208,21 +222,13 @@ class onlineVoting5 : OnlineabstractVoting() {
         findNavController().navigate(R.id.action_onlineVoting5_to_equalvote2,bundle)
     }
     fun whendisagree(){
-        var pref = PreferenceManager.getDefaultSharedPreferences(context)
-        pref.edit {
-            putStringSet("remainmembers", remainmembers)
-            putStringSet("Suspectmembers",Suspectmembers)
-        }.apply {}
+
 
         findNavController().navigate(R.id.action_onlineVoting5_to_whendisagree)
     }
 
     fun whendisagreeBunContainjinrou(){
-        var pref = PreferenceManager.getDefaultSharedPreferences(context)
-        pref.edit {
-            putStringSet("remainmembers", remainmembers)
-            putStringSet("Suspectmembers",Suspectmembers)
-        }.apply {}
+
 
         findNavController().navigate(R.id.action_onlineVoting5_to_whendisagree)
 
@@ -230,11 +236,7 @@ class onlineVoting5 : OnlineabstractVoting() {
     }
 
     fun whenOpinionsAreUnited(){
-        var pref = PreferenceManager.getDefaultSharedPreferences(context)
-        pref.edit {
-            putStringSet("remainmembers", remainmembers)
-            putString("Suspect",Suspect)
-        }.apply { }
+
 
         var bundle = bundleOf("Suspect" to Suspect)
 

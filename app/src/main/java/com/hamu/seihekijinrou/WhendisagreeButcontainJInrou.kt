@@ -1,59 +1,131 @@
 package com.hamu.seihekijinrou
 
+import android.content.Intent
 import android.os.Bundle
+import android.os.Handler
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.core.content.edit
+import androidx.navigation.fragment.findNavController
+import androidx.preference.PreferenceManager
+import com.google.firebase.firestore.ktx.firestore
+import com.google.firebase.ktx.Firebase
+import com.hamu.seihekijinrou.EndofGame.End1ofBad
+import com.hamu.seihekijinrou.databinding.FragmentOnlineVoting3Binding
+import com.hamu.seihekijinrou.databinding.FragmentWhendisagreeButcontainJInrouBinding
 
-// TODO: Rename parameter arguments, choose names that match
-// the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
-private const val ARG_PARAM1 = "param1"
-private const val ARG_PARAM2 = "param2"
 
-/**
- * A simple [Fragment] subclass.
- * Use the [WhendisagreeButcontainJInrou.newInstance] factory method to
- * create an instance of this fragment.
- */
 class WhendisagreeButcontainJInrou : Fragment() {
-    // TODO: Rename and change types of parameters
-    private var param1: String? = null
-    private var param2: String? = null
+    private var _binding:FragmentWhendisagreeButcontainJInrouBinding? = null
+    private val binding get() = _binding!!
 
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        arguments?.let {
-            param1 = it.getString(ARG_PARAM1)
-            param2 = it.getString(ARG_PARAM2)
-        }
-    }
 
     override fun onCreateView(
             inflater: LayoutInflater, container: ViewGroup?,
             savedInstanceState: Bundle?,
     ): View? {
-        // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_whendisagree_butcontain_j_inrou, container, false)
+        _binding = FragmentWhendisagreeButcontainJInrouBinding.inflate(inflater, container, false)
+        var pref = PreferenceManager.getDefaultSharedPreferences(context)
+        var tmp=pref.getStringSet("Suspectmembers", setOf(""))
+        var Suspectmembers = tmp?.toList()
+        var Suspectmembersize = Suspectmembers?.size
+
+        pref.edit{
+            putStringSet("remainmembers",tmp)
+        }.apply {  }
+
+        if (Suspectmembersize == 2) {
+            var member1 = Suspectmembers?.get(0)
+            var member2 = Suspectmembers?.get(1)
+
+            binding.text.text = """
+                |$member1
+                |$member2
+                |が選ばれましたが、
+                |人狼が含まれています！
+            """.trimMargin()
+        } else if (Suspectmembersize == 3) {
+            var member1 = Suspectmembers?.get(0)
+            var member2 = Suspectmembers?.get(1)
+            var member3 = Suspectmembers?.get(2)
+
+            binding.text.text = """
+                |$member1
+                |$member2
+                |$member3
+                |が選ばれましたが、
+                |人狼が含まれています！
+            """.trimMargin()
+
+        } else if (Suspectmembersize == 4) {
+            var member1 = Suspectmembers?.get(0)
+            var member2 = Suspectmembers?.get(1)
+            var member3 = Suspectmembers?.get(2)
+            var member4 = Suspectmembers?.get(3)
+
+
+            binding.text.text = """
+                |$member1
+                |$member2
+                |$member3
+                |$member4
+                |が選ばれましたが、
+                |人狼が含まれています！
+            """.trimMargin()
+
+        }else if (Suspectmembersize == 4) {
+            var member1 = Suspectmembers?.get(0)
+            var member2 = Suspectmembers?.get(1)
+            var member3 = Suspectmembers?.get(2)
+            var member4 = Suspectmembers?.get(3)
+            var member5 = Suspectmembers?.get(4)
+
+
+            binding.text.text = """
+                |$member1
+                |$member2
+                |$member3
+                |$member4
+                |$member5
+                |が選ばれましたが、
+                |人狼が含まれています！
+            """.trimMargin()
+
+        }
+
+
+
+        Handler().postDelayed(
+            {
+                    binding.text.text = "再投票です。"
+                    Handler().postDelayed(
+                        {
+                            when (Suspectmembersize) {
+                                2 -> findNavController().navigate(R.id.action_whendisagreeButcontainJInrou_to_onlineVoting2)
+                                3 -> findNavController().navigate(R.id.action_whendisagreeButcontainJInrou_to_onlineVoting3)
+                                4 -> findNavController().navigate(R.id.action_whendisagreeButcontainJInrou_to_onlineVoting4)
+                                5 -> findNavController().navigate(R.id.action_whendisagreeButcontainJInrou_to_onlineVoting5)
+                                6 -> findNavController().navigate(R.id.action_whendisagreeButcontainJInrou_to_onlineVoting6)
+                                7 -> findNavController().navigate(R.id.action_whendisagreeButcontainJInrou_to_onlineVoting7)
+                                8 -> findNavController().navigate(R.id.action_whendisagreeButcontainJInrou_to_onlineVoting8)
+                                9 -> findNavController().navigate(R.id.action_whendisagreeButcontainJInrou_to_onlineVoting9)
+                                10-> findNavController().navigate(R.id.action_whendisagreeButcontainJInrou_to_onlineVoting10)
+
+
+                            }
+
+                        },
+                        2500,
+                    )
+            },
+            3000,
+        )
+
+
+        return binding.root
     }
 
-    companion object {
-        /**
-         * Use this factory method to create a new instance of
-         * this fragment using the provided parameters.
-         *
-         * @param param1 Parameter 1.
-         * @param param2 Parameter 2.
-         * @return A new instance of fragment WhendisagreeButcontainJInrou.
-         */
-        // TODO: Rename and change types and number of parameters
-        @JvmStatic
-        fun newInstance(param1: String, param2: String) =
-                WhendisagreeButcontainJInrou().apply {
-                    arguments = Bundle().apply {
-                        putString(ARG_PARAM1, param1)
-                        putString(ARG_PARAM2, param2)
-                    }
-                }
-    }
+
 }

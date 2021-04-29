@@ -75,6 +75,9 @@
         <action
             android:id="@+id/action_onlineMeetingtime_to_onlineVoting3"
             app:destination="@id/onlineVoting3" />
+        <action
+            android:id="@+id/action_onlineMeetingtime_to_onlineVoting2"
+            app:destination="@id/onlineVoting2" />
     </fragment>
     <fragment
         android:id="@+id/onlineVoting10"
@@ -127,6 +130,9 @@
         <action
             android:id="@+id/action_whendisagree_to_onlineVoting3"
             app:destination="@id/onlineVoting3" />
+        <action
+            android:id="@+id/action_whendisagree_to_onlineVoting2"
+            app:destination="@id/onlineVoting2" />
     </fragment>
     <fragment
         android:id="@+id/whenOpinionsAreUited"
@@ -137,17 +143,9 @@
             android:id="@+id/action_whenOpinionsAreUited_to_onlineMeetingtime"
             app:destination="@id/onlineMeetingtime" />
         <action
-            android:id="@+id/action_whenOpinionsAreUited_to_result"
-            app:destination="@id/result" />
-        <action
-            android:id="@+id/action_whenOpinionsAreUited_to_trueResult"
-            app:destination="@id/trueResult" />
+            android:id="@+id/action_whenOpinionsAreUited_to_equalvote2"
+            app:destination="@id/equalvote2" />
     </fragment>
-    <fragment
-        android:id="@+id/result"
-        android:name="com.hamu.seihekijinrou.Result"
-        android:label="fragment_result"
-        tools:layout="@layout/fragment_result" />
     <fragment
         android:id="@+id/onlineVoting9"
         android:name="com.hamu.seihekijinrou.onlineVoting9"
@@ -268,6 +266,9 @@
         <action
             android:id="@+id/action_onlineVoting4_to_equalvote2"
             app:destination="@id/equalvote2" />
+        <action
+            android:id="@+id/action_onlineVoting4_to_whendisagreeButcontainJInrou"
+            app:destination="@id/whendisagreeButcontainJInrou" />
     </fragment>
     <fragment
         android:id="@+id/onlineVoting3"
@@ -293,12 +294,35 @@
         android:id="@+id/whendisagreeButcontainJInrou"
         android:name="com.hamu.seihekijinrou.WhendisagreeButcontainJInrou"
         android:label="fragment_whendisagree_butcontain_j_inrou"
-        tools:layout="@layout/fragment_whendisagree_butcontain_j_inrou" />
-    <fragment
-        android:id="@+id/trueResult"
-        android:name="com.hamu.seihekijinrou.trueResult"
-        android:label="fragment_true_result"
-        tools:layout="@layout/fragment_true_result" />
+        tools:layout="@layout/fragment_whendisagree_butcontain_j_inrou" >
+        <action
+            android:id="@+id/action_whendisagreeButcontainJInrou_to_onlineVoting10"
+            app:destination="@id/onlineVoting10" />
+        <action
+            android:id="@+id/action_whendisagreeButcontainJInrou_to_onlineVoting9"
+            app:destination="@id/onlineVoting9" />
+        <action
+            android:id="@+id/action_whendisagreeButcontainJInrou_to_onlineVoting8"
+            app:destination="@id/onlineVoting8" />
+        <action
+            android:id="@+id/action_whendisagreeButcontainJInrou_to_onlineVoting7"
+            app:destination="@id/onlineVoting7" />
+        <action
+            android:id="@+id/action_whendisagreeButcontainJInrou_to_onlineVoting6"
+            app:destination="@id/onlineVoting6" />
+        <action
+            android:id="@+id/action_whendisagreeButcontainJInrou_to_onlineVoting5"
+            app:destination="@id/onlineVoting5" />
+        <action
+            android:id="@+id/action_whendisagreeButcontainJInrou_to_onlineVoting4"
+            app:destination="@id/onlineVoting4" />
+        <action
+            android:id="@+id/action_whendisagreeButcontainJInrou_to_onlineVoting3"
+            app:destination="@id/onlineVoting3" />
+        <action
+            android:id="@+id/action_whendisagreeButcontainJInrou_to_onlineVoting2"
+            app:destination="@id/onlineVoting2" />
+    </fragment>
     <fragment
         android:id="@+id/equalvote2"
         android:name="com.hamu.seihekijinrou.Equalvote"
@@ -331,5 +355,26 @@
         <action
             android:id="@+id/action_equalvote2_to_onlineVoting3"
             app:destination="@id/onlineVoting3" />
+        <action
+            android:id="@+id/action_equalvote2_to_onlineVoting2"
+            app:destination="@id/onlineVoting2" />
+    </fragment>
+    <fragment
+        android:id="@+id/onlineVoting2"
+        android:name="com.hamu.seihekijinrou.onlineVoting2"
+        android:label="fragment_online_voting2"
+        tools:layout="@layout/fragment_online_voting2" >
+        <action
+            android:id="@+id/action_onlineVoting2_to_whendisagreeButcontainJInrou"
+            app:destination="@id/whendisagreeButcontainJInrou" />
+        <action
+            android:id="@+id/action_onlineVoting2_to_whendisagree"
+            app:destination="@id/whendisagree" />
+        <action
+            android:id="@+id/action_onlineVoting2_to_whenOpinionsAreUited"
+            app:destination="@id/whenOpinionsAreUited" />
+        <action
+            android:id="@+id/action_onlineVoting2_to_equalvote2"
+            app:destination="@id/equalvote2" />
     </fragment>
 </navigation>

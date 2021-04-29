@@ -26,9 +26,11 @@ class onlineVoting7 :OnlineabstractVoting() {
             savedInstanceState: Bundle?
     ): View? {
         _binding = FragmentOnlineVoting7Binding.inflate(inflater, container, false)
+
         var pref = PreferenceManager.getDefaultSharedPreferences(context)
         var roomname = pref.getString("roomname", "")
         var numberofpeople = pref.getString("numberofpeople","")
+        jinrouname = pref.getString("jinrou", "").toString()
 
         var db = Firebase.firestore
         var collection = db.collection("$roomname")
@@ -41,7 +43,7 @@ class onlineVoting7 :OnlineabstractVoting() {
         var tmp = pref.getStringSet("remainmembers", setOf(""))
         if (tmp != null) {
             members = tmp.toMutableList()
-            pref.edit().remove("remainmembers")
+            pref.edit().remove("remainmembers").apply()
             candidate1 = members[0]
             candidate2 = members[1]
             candidate3 = members[2]
@@ -188,12 +190,21 @@ class onlineVoting7 :OnlineabstractVoting() {
                                 if (list2[0].count== list2[1].count && list2[1].count == list2[2].count && list2[2].count == list2[3].count
                                         &&list2[3].count== list2[4].count && list2[4].count == list2[5].count && list2[5].count == list2[6].count){
 
-                                    remainmembers = members.toSet()
+                                    var remainmembers = members.toSet()
+                                    pref.edit{
+                                        putStringSet("remainmembers",remainmembers)
+                                    }.apply{}
                                     whensameNumVoting()
 
                                 }  else if(list2[0].count == list2[1].count&&list2[1].count == list2[2].count){
-                                    remainmembers = setOf(list2[3].name,list[4].name,list2[5].name,list2[6].name)
-                                    Suspectmembers = setOf(list2[0].name, list2[1].name,list2[2].name)
+                                    var remainmembers = setOf(list2[3].name,list[4].name,list2[5].name,list2[6].name)
+                                    var Suspectmembers = setOf(list2[0].name, list2[1].name,list2[2].name)
+
+                                    var pref = PreferenceManager.getDefaultSharedPreferences(context)
+                                    pref.edit {
+                                        putStringSet("remainmembers", remainmembers)
+                                        putStringSet("Suspectmembers",Suspectmembers)
+                                    }.apply {}
                                     if(Suspectmembers.contains(jinrouname)){
                                         whendisagreeBunContainjinrou()
                                     }else {
@@ -201,8 +212,14 @@ class onlineVoting7 :OnlineabstractVoting() {
                                     }
 
                                 }else if(list2[0].count == list2[1].count) {
-                                    remainmembers = setOf(list2[2].name,list2[3].name,list[4].name,list2[5].name,list2[6].name)
-                                    Suspectmembers = setOf(list2[0].name, list2[1].name)
+                                    var remainmembers = setOf(list2[2].name,list2[3].name,list[4].name,list2[5].name,list2[6].name)
+                                    var  Suspectmembers = setOf(list2[0].name, list2[1].name)
+
+                                    var pref = PreferenceManager.getDefaultSharedPreferences(context)
+                                    pref.edit {
+                                        putStringSet("remainmembers", remainmembers)
+                                        putStringSet("Suspectmembers",Suspectmembers)
+                                    }.apply {}
                                     if(Suspectmembers.contains(jinrouname)){
                                         whendisagreeBunContainjinrou()
                                     }else {
@@ -211,7 +228,12 @@ class onlineVoting7 :OnlineabstractVoting() {
 
                                 }else{
                                     Suspect = list2[0].name
-                                    remainmembers = setOf(list2[1].name,list2[2].name,list2[3].name,list2[4].name,list2[5].name,list2[6].name)
+                                    var remainmembers = setOf(list2[1].name,list2[2].name,list2[3].name,list2[4].name,list2[5].name,list2[6].name)
+
+                                    var pref = PreferenceManager.getDefaultSharedPreferences(context)
+                                    pref.edit {
+                                        putStringSet("remainmembers", remainmembers)
+                                    }.apply {}
                                     whenOpinionsAreUnited()
                                 }
 
@@ -226,21 +248,13 @@ class onlineVoting7 :OnlineabstractVoting() {
         findNavController().navigate(R.id.action_onlineVoting7_to_equalvote2,bundle)
     }
     fun whendisagree(){
-        var pref = PreferenceManager.getDefaultSharedPreferences(context)
-        pref.edit {
-            putStringSet("remainmembers", remainmembers)
-            putStringSet("Suspectmembers",Suspectmembers)
-        }.apply {}
+
 
         findNavController().navigate(R.id.action_onlineVoting7_to_whendisagree)
     }
 
     fun whendisagreeBunContainjinrou(){
-        var pref = PreferenceManager.getDefaultSharedPreferences(context)
-        pref.edit {
-            putStringSet("remainmembers", remainmembers)
-            putStringSet("Suspectmembers",Suspectmembers)
-        }.apply {}
+
 
         findNavController().navigate(R.id.action_onlineVoting7_to_whendisagree)
 
@@ -248,11 +262,6 @@ class onlineVoting7 :OnlineabstractVoting() {
     }
 
     fun whenOpinionsAreUnited(){
-        var pref = PreferenceManager.getDefaultSharedPreferences(context)
-        pref.edit {
-            putStringSet("remainmembers", remainmembers)
-            putString("Suspect",Suspect)
-        }.apply { }
 
         var bundle = bundleOf("Suspect" to Suspect)
 

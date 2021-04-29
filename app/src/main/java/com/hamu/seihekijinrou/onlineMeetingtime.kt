@@ -24,14 +24,9 @@ class onlineMeetingtime : Fragment() {
     private val binding get() = _binding!!
     private lateinit var soundPool: SoundPool
     private var soundResId = 0
+    var db = Firebase.firestore
 
-    private lateinit var Suspect9:String
-    private lateinit var Suspect8:String
-    private lateinit var Suspect7:String
-    private lateinit var Suspect6:String
-    private lateinit var Suspect5:String
-    private lateinit var Suspect4:String
-    private lateinit var Suspect3:String
+
 
     inner class MyCountDownTimer(millsInfuture: Long, countDownInterval: Long) :
             CountDownTimer(millsInfuture, countDownInterval) {
@@ -44,32 +39,9 @@ class onlineMeetingtime : Fragment() {
         }
 
         override fun onFinish() {
-            var pref = PreferenceManager.getDefaultSharedPreferences(context)
             binding.timertext.text = "0:00"
             soundPool.play(soundResId,1.0f,1.0f,0,0,1.0f)
-            Suspect9 =  pref.getString("Suspect9","") as String
-            Suspect8 =  pref.getString("Suspect8","") as String
-            Suspect7 =  pref.getString("Suspect7","") as String
-            Suspect6 =  pref.getString("Suspect6","") as String
-            Suspect5 =  pref.getString("Suspect5","") as String
-            Suspect4 =  pref.getString("Suspect4","") as String
-            Suspect3 =  pref.getString("Suspect3","") as String
-
-            var remainmembers = pref.getStringSet("remainmembers", setOf(""))
-
-            var wheretogo= remainmembers?.size
-
-            when(wheretogo){
-                3->findNavController().navigate(R.id.action_onlineMeetingtime_to_onlineVoting3)
-                4->findNavController().navigate(R.id.action_onlineMeetingtime_to_onlineVoting4)
-                5->findNavController().navigate(R.id.action_onlineMeetingtime_to_onlineVoting5)
-                6->findNavController().navigate(R.id.action_onlineMeetingtime_to_onlineVoting6)
-                7->findNavController().navigate(R.id.action_onlineMeetingtime_to_onlineVoting7)
-                8->findNavController().navigate(R.id.action_onlineMeetingtime_to_onlineVoting8)
-                9->findNavController().navigate(R.id.action_onlineMeetingtime_to_onlineVoting9)
-               10->findNavController().navigate(R.id.action_onlineMeetingtime_to_onlineVoting10)
-            }
-
+            toVoting()
         }
 
     }
@@ -80,51 +52,58 @@ class onlineMeetingtime : Fragment() {
     ): View? {
         _binding = FragmentOnlineMeetingtimeBinding.inflate(layoutInflater,container,false)
         var pref = PreferenceManager.getDefaultSharedPreferences(context)
-        pref.edit{
-            remove("ThistimeSuspect").apply()
-        }
+        var roomname = pref.getString("roomname", "")
+        var collection = db.collection("$roomname")
+        var MeetingStop = collection.document("会議終了")
 
-        Suspect9 =  pref.getString("Suspect9","") as String
-        Suspect8 =  pref.getString("Suspect8","") as String
-        Suspect7 =  pref.getString("Suspect7","") as String
-        Suspect6 =  pref.getString("Suspect6","") as String
-        Suspect5 =  pref.getString("Suspect5","") as String
-        Suspect4 =  pref.getString("Suspect4","") as String
-        Suspect3 =  pref.getString("Suspect3","") as String
 
         var jinrou = pref.getString("jinrou", "")
         binding.gametitle.text =  "「$jinrou」"
-        binding.timertext.text = "2:00"
-        var timer = MyCountDownTimer(2*60*1000,100)
+        binding.timertext.text = "30"
+        var timer = MyCountDownTimer(30*1000,100)
         timer.start()
 
         binding.Meetingstop.setOnClickListener {
+            var stop = hashMapOf("会議" to "終了しました")
+            pref.edit {
+                putString("check2","判別用")
+            }.apply {}
+            MeetingStop.set(stop)
             toVoting()
         }
+
+        MeetingStop
+                .addSnapshotListener{it,tmp->
+                    var check:String? =  pref.getString("check2","")
+                    if(check?.isEmpty()!!) {
+                        if(it?.exists()!=false){
+                            MeetingStop
+                            toVoting()
+                        }
+
+                    }
+                }
+
         return binding.root
     }
 
     fun toVoting(){
-        if (Suspect4.isNotEmpty() && Suspect3.length == 0) {
-            findNavController().navigate(R.id.action_meetingtime_to_voting3)
-        } else if (Suspect5.isNotEmpty() && Suspect4.length == 0) {
-            findNavController().navigate(R.id.action_meetingtime_to_voting4)
+        var pref = PreferenceManager.getDefaultSharedPreferences(context)
+        var remainmembers = pref.getStringSet("remainmembers", setOf(""))
 
-        } else if (Suspect6.isNotEmpty() && Suspect5.length == 0) {
-            findNavController().navigate(R.id.action_meetingtime_to_voting5)
+        var timer = MyCountDownTimer(30*1000,100)
+        timer.cancel()
 
-        } else if (Suspect7.isNotEmpty() && Suspect6.length == 0) {
-            findNavController().navigate(R.id.action_meetingtime_to_voting6)
-
-        } else if (Suspect8.isNotEmpty() && Suspect7.length == 0) {
-            findNavController().navigate(R.id.action_meetingtime_to_voting7)
-
-        } else if (Suspect9.isNotEmpty() && Suspect8.length == 0) {
-            findNavController().navigate(R.id.action_meetingtime_to_voting8)
-
-        } else {
-            findNavController().navigate(R.id.action_meetingtime_to_voting9)
-
+        var wheretogo= remainmembers?.size
+        when(wheretogo){
+            3->findNavController().navigate(R.id.action_onlineMeetingtime_to_onlineVoting3)
+            4->findNavController().navigate(R.id.action_onlineMeetingtime_to_onlineVoting4)
+            5->findNavController().navigate(R.id.action_onlineMeetingtime_to_onlineVoting5)
+            6->findNavController().navigate(R.id.action_onlineMeetingtime_to_onlineVoting6)
+            7->findNavController().navigate(R.id.action_onlineMeetingtime_to_onlineVoting7)
+            8->findNavController().navigate(R.id.action_onlineMeetingtime_to_onlineVoting8)
+            9->findNavController().navigate(R.id.action_onlineMeetingtime_to_onlineVoting9)
+            10->findNavController().navigate(R.id.action_onlineMeetingtime_to_onlineVoting10)
         }
 
 

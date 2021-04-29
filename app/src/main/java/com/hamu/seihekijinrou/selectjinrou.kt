@@ -49,14 +49,14 @@ class selectjinrou : Fragment() {
 
 
                     pref.edit {
-                        putString("heki1", heki1 as String?);putString("heki2", heki2 as String?)
-                        putString("heki3", heki3 as String?);putString("heki4", heki4 as String?)
-                        putString("heki5", heki5 as String?);putString("heki6", heki6 as String?)
-                        putString("heki7", heki7 as String?);putString("heki8", heki8 as String?)
-                        putString("heki9", heki9 as String?);putString("heki10", heki10 as String?)
+                        putString("seiheki1", heki1 as String?);putString("seiheki2", heki2 as String?)
+                        putString("seiheki3", heki3 as String?);putString("seiheki4", heki4 as String?)
+                        putString("seiheki5", heki5 as String?);putString("seiheki6", heki6 as String?)
+                        putString("seiheki7", heki7 as String?);putString("seiheki8", heki8 as String?)
+                        putString("seiheki9", heki9 as String?);putString("seiheki10", heki10 as String?)
                         putString("jinrouseiheki",heki1 )
 
-                    }
+                    }.apply {  }
                 }
         collection.document("名前情報")
                 .get()
@@ -81,7 +81,7 @@ class selectjinrou : Fragment() {
                         putString("name7", name7 as String?);putString("name8", name8 as String?)
                         putString("name9", name9 as String?);putString("name10", name10 as String?)
                         putString("jinrou",name1 )
-                    }
+                    }.apply {  }
                 }
         binding.stop.setOnClickListener {
             tmp = "押されました"

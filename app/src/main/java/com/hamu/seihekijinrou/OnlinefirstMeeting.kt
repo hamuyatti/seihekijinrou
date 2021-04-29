@@ -37,6 +37,7 @@ class OnlinefirstMeeting : Fragment() {
     private lateinit var name7:String
     private lateinit var name8:String
     private lateinit var name9:String
+    private lateinit var name10:String
 
     inner class MyCountDownTimer(millsInfuture: Long, countDownInterval: Long) :
         CountDownTimer(millsInfuture, countDownInterval) {
@@ -85,6 +86,7 @@ class OnlinefirstMeeting : Fragment() {
         name7 = pref.getString("name7", "").toString()
         name8 = pref.getString("name8", "").toString()
         name9 = pref.getString("name9", "").toString()
+        name10 = pref.getString("name10", "").toString()
 
 
         numberofpeople = pref.getString("numberofpeople","" ).toString()
@@ -177,7 +179,9 @@ class OnlinefirstMeeting : Fragment() {
             findNavController().navigate(R.id.action_onlinefirstMeeting_to_onlineVoting9)
 
         } else {
-            /*remainmembersは誰が残っているか特定するための配列なので、人数いっぱいの１０人の時は自明なので使いません*/
+            remainmembers =
+                    setOf(name1, name2, name3, name4, name5, name6, name7, name8, name9,name10)
+            pref.edit { putStringSet("remainmembers", remainmembers) }.apply { }
             findNavController().navigate(R.id.action_onlinefirstMeeting_to_onlineVoting10)
         }
     }
