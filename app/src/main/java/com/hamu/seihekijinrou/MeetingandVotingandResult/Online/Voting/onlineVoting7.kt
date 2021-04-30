@@ -1,7 +1,6 @@
-package com.hamu.seihekijinrou
+package com.hamu.seihekijinrou.MeetingandVotingandResult.Online.Voting
 
 import android.os.Bundle
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -12,20 +11,23 @@ import androidx.preference.PreferenceManager
 import com.google.firebase.firestore.SetOptions
 import com.google.firebase.firestore.ktx.firestore
 import com.google.firebase.ktx.Firebase
-import com.hamu.seihekijinrou.MeetingandVotingandResult.Voting.abstractVoting
-import com.hamu.seihekijinrou.databinding.FragmentOnlineVoting6Binding
+import com.hamu.seihekijinrou.Preparation.numberofpeople
+import com.hamu.seihekijinrou.R
 import com.hamu.seihekijinrou.databinding.FragmentOnlineVoting7Binding
-import com.hamu.seihekijinrou.databinding.FragmentVoting6Binding
+import com.hamu.seihekijinrou.databinding.FragmentOnlineVoting9Binding
 
-class onlineVoting6 : OnlineabstractVoting() {
-    private var _binding: FragmentOnlineVoting6Binding? = null
+
+class onlineVoting7 :OnlineabstractVoting() {
+    private var _binding: FragmentOnlineVoting7Binding? = null
     private val binding get() = _binding!!
+
 
     override fun onCreateView(
             inflater: LayoutInflater, container: ViewGroup?,
             savedInstanceState: Bundle?
     ): View? {
-        _binding = FragmentOnlineVoting6Binding.inflate(inflater, container, false)
+        _binding = FragmentOnlineVoting7Binding.inflate(inflater, container, false)
+
         var pref = PreferenceManager.getDefaultSharedPreferences(context)
         var roomname = pref.getString("roomname", "")
         var numberofpeople = pref.getString("numberofpeople","")
@@ -33,7 +35,7 @@ class onlineVoting6 : OnlineabstractVoting() {
 
         var db = Firebase.firestore
         var collection = db.collection("$roomname")
-        var Voting = collection.document("投票6")
+        var Voting = collection.document("投票7")
 
         var jinrouseiheki = pref.getString("jinrouseiheki", "")
         binding.jinrouseiheki.text = "$jinrouseiheki は誰の性癖？？"
@@ -49,6 +51,7 @@ class onlineVoting6 : OnlineabstractVoting() {
             candidate4 = members[3]
             candidate5 = members[4]
             candidate6 = members[5]
+            candidate7 = members[6]
 
             binding.name1.text = candidate1
             binding.name2.text = candidate2
@@ -56,7 +59,7 @@ class onlineVoting6 : OnlineabstractVoting() {
             binding.name4.text = candidate4
             binding.name5.text = candidate5
             binding.name6.text = candidate6
-
+            binding.name7.text = candidate7
 
         }
         binding.radioGroup.setOnCheckedChangeListener { group, checkedId ->
@@ -72,6 +75,8 @@ class onlineVoting6 : OnlineabstractVoting() {
                 R.id.name5 -> Voted = candidate5
 
                 R.id.name6 -> Voted = candidate6
+
+                R.id.name7 -> Voted = candidate7
 
 
             }
@@ -165,6 +170,7 @@ class onlineVoting6 : OnlineabstractVoting() {
                                 var vote4count = list1.count { it == candidate4 }
                                 var vote5count = list1.count { it == candidate5 }
                                 var vote6count = list1.count { it == candidate6 }
+                                var vote7count = list1.count { it == candidate7 }
 
                                 var list = mutableListOf<votedata>()
                                 list.add(votedata(candidate1, vote1count))
@@ -173,22 +179,26 @@ class onlineVoting6 : OnlineabstractVoting() {
                                 list.add(votedata(candidate4, vote4count))
                                 list.add(votedata(candidate5, vote5count))
                                 list.add(votedata(candidate6, vote6count))
+                                list.add(votedata(candidate7, vote7count))
 
 
                                 var list2 = list.sortedByDescending { it.count }
+                                pref.edit {
+                                    putString("ThistimeMeeting", "7")
+                                }.apply { }
 
                                 /*再投票するかを決めます*/
                                 if (list2[0].count== list2[1].count && list2[1].count == list2[2].count && list2[2].count == list2[3].count
-                                        &&list2[3].count== list2[4].count && list2[4].count == list2[5].count ){
+                                        &&list2[3].count== list2[4].count && list2[4].count == list2[5].count && list2[5].count == list2[6].count){
 
                                     var remainmembers = members.toSet()
                                     pref.edit{
                                         putStringSet("remainmembers",remainmembers)
                                     }.apply{}
-                                    Voting.delete()
-                                   whensameNumVoting()
+                                    whensameNumVoting()
+
                                 }  else if(list2[0].count == list2[1].count&&list2[1].count == list2[2].count){
-                                    var remainmembers = setOf(list2[3].name,list[4].name,list2[5].name)
+                                    var remainmembers = setOf(list2[3].name,list[4].name,list2[5].name,list2[6].name)
                                     var Suspectmembers = setOf(list2[0].name, list2[1].name,list2[2].name)
 
                                     var pref = PreferenceManager.getDefaultSharedPreferences(context)
@@ -196,7 +206,6 @@ class onlineVoting6 : OnlineabstractVoting() {
                                         putStringSet("remainmembers", remainmembers)
                                         putStringSet("Suspectmembers",Suspectmembers)
                                     }.apply {}
-
                                     if(Suspectmembers.contains(jinrouname)){
                                         whendisagreeBunContainjinrou()
                                     }else {
@@ -204,8 +213,8 @@ class onlineVoting6 : OnlineabstractVoting() {
                                     }
 
                                 }else if(list2[0].count == list2[1].count) {
-                                    var remainmembers = setOf(list2[2].name,list2[3].name,list[4].name,list2[5].name)
-                                    var Suspectmembers = setOf(list2[0].name, list2[1].name)
+                                    var remainmembers = setOf(list2[2].name,list2[3].name,list[4].name,list2[5].name,list2[6].name)
+                                    var  Suspectmembers = setOf(list2[0].name, list2[1].name)
 
                                     var pref = PreferenceManager.getDefaultSharedPreferences(context)
                                     pref.edit {
@@ -217,53 +226,47 @@ class onlineVoting6 : OnlineabstractVoting() {
                                     }else {
                                         whendisagree()
                                     }
+
                                 }else{
                                     Suspect = list2[0].name
-                                    var remainmembers = setOf(list2[1].name,list2[2].name,list2[3].name,list2[4].name,list2[5].name)
+                                    var remainmembers = setOf(list2[1].name,list2[2].name,list2[3].name,list2[4].name,list2[5].name,list2[6].name)
 
                                     var pref = PreferenceManager.getDefaultSharedPreferences(context)
                                     pref.edit {
                                         putStringSet("remainmembers", remainmembers)
-                                        putString("Suspect",Suspect)
-                                    }.apply { }
+                                    }.apply {}
                                     whenOpinionsAreUnited()
                                 }
 
-
-                            }
-
+            }
         }
-
         return binding.root
     }
 
-
-
     fun whensameNumVoting() {
-        var bundle = bundleOf("where" to 6)
+        var bundle = bundleOf("where" to 7)
 
-        findNavController().navigate(R.id.action_onlineVoting6_to_equalvote2,bundle)
+        findNavController().navigate(R.id.action_onlineVoting7_to_equalvote2,bundle)
     }
     fun whendisagree(){
 
 
-        findNavController().navigate(R.id.action_onlineVoting6_to_whendisagree)
+        findNavController().navigate(R.id.action_onlineVoting7_to_whendisagree)
     }
 
     fun whendisagreeBunContainjinrou(){
 
 
-        findNavController().navigate(R.id.action_onlineVoting6_to_whendisagree)
+        findNavController().navigate(R.id.action_onlineVoting7_to_whendisagree)
 
 
     }
 
     fun whenOpinionsAreUnited(){
 
-
         var bundle = bundleOf("Suspect" to Suspect)
 
-        findNavController().navigate(R.id.action_onlineVoting6_to_whenOpinionsAreUited,bundle,)
+        findNavController().navigate(R.id.action_onlineVoting7_to_whenOpinionsAreUited,bundle,)
     }
 
 

@@ -1,4 +1,4 @@
-package com.hamu.seihekijinrou
+package com.hamu.seihekijinrou.MeetingandVotingandResult.Online.ResultofVoting
 
 import android.content.Intent
 import android.media.AudioAttributes
@@ -13,6 +13,7 @@ import androidx.navigation.fragment.findNavController
 import androidx.preference.PreferenceManager
 import com.hamu.seihekijinrou.EndofGame.End1ofBad
 import com.hamu.seihekijinrou.EndofGame.End1ofTrue
+import com.hamu.seihekijinrou.R
 import com.hamu.seihekijinrou.Start.explanation
 import com.hamu.seihekijinrou.databinding.FragmentOnlineVoting3Binding
 import com.hamu.seihekijinrou.databinding.FragmentOnlineVoting4Binding

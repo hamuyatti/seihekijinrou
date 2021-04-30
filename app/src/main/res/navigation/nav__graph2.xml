@@ -7,7 +7,7 @@
 
     <fragment
         android:id="@+id/voting10"
-        android:name="com.hamu.seihekijinrou.MeetingandVotingandResult.Voting.Voting10"
+        android:name="com.hamu.seihekijinrou.MeetingandVotingandResult.Ofline.Voting.Voting10"
         android:label="fragment_voting10"
         tools:layout="@layout/fragment_voting10" >
         <action
@@ -22,7 +22,7 @@
     </fragment>
     <fragment
         android:id="@+id/voting9"
-        android:name="com.hamu.seihekijinrou.MeetingandVotingandResult.Voting.Voting9"
+        android:name="com.hamu.seihekijinrou.MeetingandVotingandResult.Ofline.Voting.Voting9"
         android:label="fragment_voting9"
         tools:layout="@layout/fragment_voting9" >
         <action
@@ -37,7 +37,7 @@
     </fragment>
     <fragment
         android:id="@+id/voting8"
-        android:name="com.hamu.seihekijinrou.MeetingandVotingandResult.Voting.Voting8"
+        android:name="com.hamu.seihekijinrou.MeetingandVotingandResult.Ofline.Voting.Voting8"
         android:label="fragment_voting8"
         tools:layout="@layout/fragment_voting8" >
         <action
@@ -52,7 +52,7 @@
     </fragment>
     <fragment
         android:id="@+id/voting7"
-        android:name="com.hamu.seihekijinrou.MeetingandVotingandResult.Voting.Voting7"
+        android:name="com.hamu.seihekijinrou.MeetingandVotingandResult.Ofline.Voting.Voting7"
         android:label="fragment_voting7"
         tools:layout="@layout/fragment_voting7" >
         <action
@@ -67,7 +67,7 @@
     </fragment>
     <fragment
         android:id="@+id/voting6"
-        android:name="com.hamu.seihekijinrou.MeetingandVotingandResult.Voting.Voting6"
+        android:name="com.hamu.seihekijinrou.MeetingandVotingandResult.Ofline.Voting.Voting6"
         android:label="fragment_voting6"
         tools:layout="@layout/fragment_voting6" >
         <action
@@ -82,7 +82,7 @@
     </fragment>
     <fragment
         android:id="@+id/voting5"
-        android:name="com.hamu.seihekijinrou.MeetingandVotingandResult.Voting.Voting5"
+        android:name="com.hamu.seihekijinrou.MeetingandVotingandResult.Ofline.Voting.Voting5"
         android:label="fragment_voting5"
         tools:layout="@layout/fragment_voting5" >
         <action
@@ -97,7 +97,7 @@
     </fragment>
     <fragment
         android:id="@+id/voting4"
-        android:name="com.hamu.seihekijinrou.MeetingandVotingandResult.Voting.Voting4"
+        android:name="com.hamu.seihekijinrou.MeetingandVotingandResult.Ofline.Voting.Voting4"
         android:label="fragment_voting4"
         tools:layout="@layout/fragment_voting4" >
         <action
@@ -112,7 +112,7 @@
     </fragment>
     <fragment
         android:id="@+id/voting3"
-        android:name="com.hamu.seihekijinrou.MeetingandVotingandResult.Voting.Voting3"
+        android:name="com.hamu.seihekijinrou.MeetingandVotingandResult.Ofline.Voting.Voting3"
         android:label="fragment_voting3"
         tools:layout="@layout/fragment_voting3" >
         <action
@@ -124,7 +124,7 @@
     </fragment>
     <fragment
         android:id="@+id/meetingtime"
-        android:name="com.hamu.seihekijinrou.MeetingandVotingandResult.Meeting.Meetingtime"
+        android:name="com.hamu.seihekijinrou.MeetingandVotingandResult.Ofline.Meeting.Meetingtime"
         android:label="fragment_meetingtime"
         tools:layout="@layout/fragment_meetingtime" >
         <action
@@ -154,7 +154,7 @@
     </fragment>
     <fragment
         android:id="@+id/onlyFirstMeetingTime"
-        android:name="com.hamu.seihekijinrou.MeetingandVotingandResult.Meeting.OnlyFirstMeetingTime"
+        android:name="com.hamu.seihekijinrou.MeetingandVotingandResult.Ofline.Meeting.OnlyFirstMeetingTime"
         android:label="fragment_only_first_meeting_time"
         tools:layout="@layout/fragment_only_first_meeting_time" >
         <action
@@ -184,7 +184,7 @@
     </fragment>
     <fragment
         android:id="@+id/falseresult1"
-        android:name="com.hamu.seihekijinrou.MeetingandVotingandResult.ResultofVoting.falseresult1"
+        android:name="com.hamu.seihekijinrou.MeetingandVotingandResult.Ofline.ResultofVoting.falseresult1"
         android:label="fragment_falseresult1"
         tools:layout="@layout/fragment_falseresult1" >
         <action
@@ -194,7 +194,7 @@
     </fragment>
     <fragment
         android:id="@+id/trueresult1"
-        android:name="com.hamu.seihekijinrou.MeetingandVotingandResult.ResultofVoting.trueresult1"
+        android:name="com.hamu.seihekijinrou.MeetingandVotingandResult.Ofline.ResultofVoting.trueresult1"
         android:label="fragment_trueresult1"
         tools:layout="@layout/fragment_trueresult1" >
         <action
@@ -203,7 +203,7 @@
     </fragment>
     <fragment
         android:id="@+id/trueresult2"
-        android:name="com.hamu.seihekijinrou.MeetingandVotingandResult.ResultofVoting.trueresult2"
+        android:name="com.hamu.seihekijinrou.MeetingandVotingandResult.Ofline.ResultofVoting.trueresult2"
         android:label="fragment_trueresult2"
         tools:layout="@layout/fragment_trueresult2" >
         <action
@@ -212,7 +212,7 @@
     </fragment>
     <fragment
         android:id="@+id/openseiheki"
-        android:name="com.hamu.seihekijinrou.MeetingandVotingandResult.ResultofVoting.openseiheki"
+        android:name="com.hamu.seihekijinrou.MeetingandVotingandResult.Ofline.ResultofVoting.openseiheki"
         android:label="fragment_openseiheki"
         tools:layout="@layout/fragment_openseiheki" >
         <action
@@ -221,7 +221,7 @@
     </fragment>
     <fragment
         android:id="@+id/falseresult2"
-        android:name="com.hamu.seihekijinrou.MeetingandVotingandResult.ResultofVoting.falseresult2"
+        android:name="com.hamu.seihekijinrou.MeetingandVotingandResult.Ofline.ResultofVoting.falseresult2"
         android:label="fragment_falseresult2"
         tools:layout="@layout/fragment_falseresult2" >
         <action

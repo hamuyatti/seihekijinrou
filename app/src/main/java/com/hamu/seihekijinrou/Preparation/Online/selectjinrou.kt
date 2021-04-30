@@ -1,4 +1,4 @@
-package com.hamu.seihekijinrou
+package com.hamu.seihekijinrou.Preparation.Online
 
 
 import android.os.Bundle
@@ -12,6 +12,7 @@ import androidx.navigation.fragment.findNavController
 import androidx.preference.PreferenceManager
 import com.google.firebase.firestore.ktx.firestore
 import com.google.firebase.ktx.Firebase
+import com.hamu.seihekijinrou.R
 import com.hamu.seihekijinrou.databinding.FragmentSelectjinrouBinding
 
 

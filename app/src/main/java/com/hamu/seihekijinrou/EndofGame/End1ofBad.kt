@@ -4,6 +4,8 @@ import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import androidx.preference.PreferenceManager
+import com.google.firebase.firestore.ktx.firestore
+import com.google.firebase.ktx.Firebase
 import com.hamu.seihekijinrou.Start.gamestart
 import com.hamu.seihekijinrou.databinding.ActivityEnd1ofbadBinding
 
@@ -14,7 +16,13 @@ class End1ofBad : AppCompatActivity() {
         binding = ActivityEnd1ofbadBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
+        var db = Firebase.firestore
         var pref = PreferenceManager.getDefaultSharedPreferences(this)
+        var roomname = pref.getString("roomname", "")
+        var collection = db.collection("$roomname")
+
+
+
         var name1 = pref.getString("name1", "").toString()
         var name2 = pref.getString("name2", "").toString()
         var name3 = pref.getString("name3", "").toString()

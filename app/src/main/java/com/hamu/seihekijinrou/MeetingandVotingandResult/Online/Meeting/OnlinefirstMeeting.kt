@@ -1,4 +1,4 @@
-package com.hamu.seihekijinrou
+package com.hamu.seihekijinrou.MeetingandVotingandResult.Online.Meeting
 
 import android.media.AudioAttributes
 import android.media.SoundPool
@@ -15,6 +15,7 @@ import androidx.preference.PreferenceManager
 import com.google.firebase.firestore.ktx.firestore
 import com.google.firebase.ktx.Firebase
 import com.hamu.seihekijinrou.Preparation.numberofpeople
+import com.hamu.seihekijinrou.R
 import com.hamu.seihekijinrou.databinding.FragmentOnlinefirstMeetingBinding
 
 class OnlinefirstMeeting : Fragment() {

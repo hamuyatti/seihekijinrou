@@ -1,4 +1,4 @@
-package com.hamu.seihekijinrou
+package com.hamu.seihekijinrou.MeetingandVotingandResult.Online.Voting
 
 import android.os.Bundle
 import android.os.Handler
@@ -15,6 +15,7 @@ import com.google.firebase.firestore.SetOptions
 import com.google.firebase.firestore.ktx.firestore
 import com.google.firebase.ktx.Firebase
 import com.hamu.seihekijinrou.Preparation.numberofpeople
+import com.hamu.seihekijinrou.R
 import com.hamu.seihekijinrou.databinding.FragmentOnlineVoting10Binding
 
 class OnlineVoting10 :OnlineabstractVoting() {

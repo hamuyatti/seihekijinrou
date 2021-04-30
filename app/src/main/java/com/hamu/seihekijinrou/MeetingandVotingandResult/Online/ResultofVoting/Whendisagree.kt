@@ -1,4 +1,4 @@
-package com.hamu.seihekijinrou
+package com.hamu.seihekijinrou.MeetingandVotingandResult.Online.ResultofVoting
 
 import android.content.Intent
 import android.media.AudioAttributes
@@ -14,6 +14,7 @@ import androidx.preference.PreferenceManager
 import com.google.firebase.firestore.ktx.firestore
 import com.google.firebase.ktx.Firebase
 import com.hamu.seihekijinrou.EndofGame.End1ofBad
+import com.hamu.seihekijinrou.R
 import com.hamu.seihekijinrou.Start.explanation
 import com.hamu.seihekijinrou.databinding.FragmentWhendisagreeBinding
 

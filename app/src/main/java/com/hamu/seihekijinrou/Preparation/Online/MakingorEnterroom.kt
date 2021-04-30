@@ -17,9 +17,8 @@ import com.google.firebase.firestore.SetOptions
 import com.google.firebase.firestore.ktx.firestore
 import com.google.firebase.firestore.ktx.toObjects
 import com.google.firebase.ktx.Firebase
-import com.hamu.seihekijinrou.MeetingandVotingandResult.Online.CenterofOnlinegameprocess
 import com.hamu.seihekijinrou.databinding.ActivityMakingorEnterroomBinding
-import com.hamu.seihekijinrou.selectjinrou
+import com.hamu.seihekijinrou.Preparation.Online.selectjinrou
 import java.time.LocalDate
 import java.time.LocalDateTime
 

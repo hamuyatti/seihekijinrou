@@ -5,8 +5,7 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.os.Handler
 import androidx.preference.PreferenceManager
-import com.hamu.seihekijinrou.MeetingandVotingandResult.CenterofMeetingandVoting
-import com.hamu.seihekijinrou.R
+import com.hamu.seihekijinrou.MeetingandVotingandResult.Ofline.CenterofMeetingandVoting
 import com.hamu.seihekijinrou.databinding.ActivityOpenjinrou2Binding
 
 

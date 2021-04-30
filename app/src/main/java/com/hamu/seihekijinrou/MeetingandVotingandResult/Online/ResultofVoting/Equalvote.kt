@@ -1,4 +1,4 @@
-package com.hamu.seihekijinrou
+package com.hamu.seihekijinrou.MeetingandVotingandResult.Online.ResultofVoting
 
 import android.content.Intent
 import android.os.Bundle
@@ -9,6 +9,7 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.navigation.fragment.findNavController
 import androidx.navigation.ui.navigateUp
+import com.hamu.seihekijinrou.R
 import com.hamu.seihekijinrou.Start.explanation
 import com.hamu.seihekijinrou.databinding.FragmentEqualvoteBinding
 import com.hamu.seihekijinrou.databinding.FragmentOnlineVoting10Binding

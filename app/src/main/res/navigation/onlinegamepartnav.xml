@@ -7,7 +7,7 @@
 
     <fragment
         android:id="@+id/selectjinrou"
-        android:name="com.hamu.seihekijinrou.selectjinrou"
+        android:name="com.hamu.seihekijinrou.Preparation.Online.selectjinrou"
         android:label="fragment_selectjinrou"
         tools:layout="@layout/fragment_selectjinrou"
         app:startDestination="@id/action_selectjinrou_to_onlinefirstMeeting">
@@ -17,7 +17,7 @@
     </fragment>
     <fragment
         android:id="@+id/onlinefirstMeeting"
-        android:name="com.hamu.seihekijinrou.OnlinefirstMeeting"
+        android:name="com.hamu.seihekijinrou.MeetingandVotingandResult.Online.Meeting.OnlinefirstMeeting"
         android:label="fragment_onlinefirst_meeting"
         tools:layout="@layout/fragment_onlinefirst_meeting"
         app:startDestination="@id/action_onlinefirstMeeting_to_onlineVoting10">
@@ -48,7 +48,7 @@
     </fragment>
     <fragment
         android:id="@+id/onlineMeetingtime"
-        android:name="com.hamu.seihekijinrou.onlineMeetingtime"
+        android:name="com.hamu.seihekijinrou.MeetingandVotingandResult.Online.Meeting.onlineMeetingtime"
         android:label="fragment_online_meetingtime"
         tools:layout="@layout/fragment_online_meetingtime" >
         <action
@@ -81,7 +81,7 @@
     </fragment>
     <fragment
         android:id="@+id/onlineVoting10"
-        android:name="com.hamu.seihekijinrou.OnlineVoting10"
+        android:name="com.hamu.seihekijinrou.MeetingandVotingandResult.Online.Voting.OnlineVoting10"
         android:label="fragment_online_voting10"
         tools:layout="@layout/fragment_online_voting10" >
         <action
@@ -99,11 +99,11 @@
             android:defaultValue="from10" />
         <action
             android:id="@+id/action_onlineVoting10_to_equalvote2"
-            app:destination="@id/equalvote2" />
+            app:destination="@id/equalvote" />
     </fragment>
     <fragment
         android:id="@+id/whendisagree"
-        android:name="com.hamu.seihekijinrou.Whendisagree"
+        android:name="com.hamu.seihekijinrou.MeetingandVotingandResult.Online.ResultofVoting.Whendisagree"
         android:label="fragment_whendisagree"
         tools:layout="@layout/fragment_whendisagree" >
         <action
@@ -136,7 +136,7 @@
     </fragment>
     <fragment
         android:id="@+id/whenOpinionsAreUited"
-        android:name="com.hamu.seihekijinrou.WhenOpinionsAreUited"
+        android:name="com.hamu.seihekijinrou.MeetingandVotingandResult.Online.ResultofVoting.WhenOpinionsAreUited"
         android:label="fragment_when_opinions_are_uited"
         tools:layout="@layout/fragment_when_opinions_are_uited" >
         <action
@@ -144,11 +144,11 @@
             app:destination="@id/onlineMeetingtime" />
         <action
             android:id="@+id/action_whenOpinionsAreUited_to_equalvote2"
-            app:destination="@id/equalvote2" />
+            app:destination="@id/equalvote" />
     </fragment>
     <fragment
         android:id="@+id/onlineVoting9"
-        android:name="com.hamu.seihekijinrou.onlineVoting9"
+        android:name="com.hamu.seihekijinrou."
         android:label="fragment_online_voting9"
         tools:layout="@layout/fragment_online_voting9" >
         <action
@@ -166,11 +166,11 @@
             android:defaultValue="from9" />
         <action
             android:id="@+id/action_onlineVoting9_to_equalvote2"
-            app:destination="@id/equalvote2" />
+            app:destination="@id/equalvote" />
     </fragment>
     <fragment
         android:id="@+id/onlineVoting8"
-        android:name="com.hamu.seihekijinrou.onlineVoting8"
+        android:name="com.hamu.seihekijinrou.MeetingandVotingandResult.Online.Voting.onlineVoting8"
         android:label="fragment_online_voting8"
         tools:layout="@layout/fragment_online_voting8" >
         <action
@@ -188,11 +188,11 @@
             android:defaultValue="from8" />
         <action
             android:id="@+id/action_onlineVoting8_to_equalvote2"
-            app:destination="@id/equalvote2" />
+            app:destination="@id/equalvote" />
     </fragment>
     <fragment
         android:id="@+id/onlineVoting7"
-        android:name="com.hamu.seihekijinrou.onlineVoting7"
+        android:name="com.hamu.seihekijinrou.MeetingandVotingandResult.Online.Voting.onlineVoting7"
         android:label="fragment_online_voting7"
         tools:layout="@layout/fragment_online_voting7" >
         <action
@@ -208,11 +208,11 @@
             android:defaultValue="from7" />
         <action
             android:id="@+id/action_onlineVoting7_to_equalvote2"
-            app:destination="@id/equalvote2" />
+            app:destination="@id/equalvote" />
     </fragment>
     <fragment
         android:id="@+id/onlineVoting6"
-        android:name="com.hamu.seihekijinrou.onlineVoting6"
+        android:name="com.hamu.seihekijinrou.MeetingandVotingandResult.Online.Voting.onlineVoting6"
         android:label="fragment_online_voting6"
         tools:layout="@layout/fragment_online_voting6" >
         <action
@@ -228,11 +228,11 @@
             android:defaultValue="from6" />
         <action
             android:id="@+id/action_onlineVoting6_to_equalvote2"
-            app:destination="@id/equalvote2" />
+            app:destination="@id/equalvote" />
     </fragment>
     <fragment
         android:id="@+id/onlineVoting5"
-        android:name="com.hamu.seihekijinrou.onlineVoting5"
+        android:name="com.hamu.seihekijinrou.MeetingandVotingandResult.Online.Voting.onlineVoting5"
         android:label="fragment_online_voting5"
         tools:layout="@layout/fragment_online_voting5" >
         <action
@@ -248,11 +248,11 @@
             android:defaultValue="from5" />
         <action
             android:id="@+id/action_onlineVoting5_to_equalvote2"
-            app:destination="@id/equalvote2" />
+            app:destination="@id/equalvote" />
     </fragment>
     <fragment
         android:id="@+id/onlineVoting4"
-        android:name="com.hamu.seihekijinrou.onlineVoting4"
+        android:name="com.hamu.seihekijinrou.MeetingandVotingandResult.Online.Voting.onlineVoting4"
         android:label="fragment_online_voting4"
         tools:layout="@layout/fragment_online_voting4" >
         <action
@@ -265,14 +265,14 @@
             android:defaultValue="from4" />
         <action
             android:id="@+id/action_onlineVoting4_to_equalvote2"
-            app:destination="@id/equalvote2" />
+            app:destination="@id/equalvote" />
         <action
             android:id="@+id/action_onlineVoting4_to_whendisagreeButcontainJInrou"
             app:destination="@id/whendisagreeButcontainJInrou" />
     </fragment>
     <fragment
         android:id="@+id/onlineVoting3"
-        android:name="com.hamu.seihekijinrou.onlineVoting3"
+        android:name="com.hamu.seihekijinrou.MeetingandVotingandResult.Online.Voting.onlineVoting3"
         android:label="fragment_online_voting3"
         tools:layout="@layout/fragment_online_voting3" >
         <action
@@ -288,11 +288,11 @@
             android:defaultValue="from3" />
         <action
             android:id="@+id/action_onlineVoting3_to_equalvote2"
-            app:destination="@id/equalvote2" />
+            app:destination="@id/equalvote" />
     </fragment>
     <fragment
         android:id="@+id/whendisagreeButcontainJInrou"
-        android:name="com.hamu.seihekijinrou.WhendisagreeButcontainJInrou"
+        android:name="com.hamu.seihekijinrou.MeetingandVotingandResult.Online.ResultofVoting.WhendisagreeButcontainJInrou"
         android:label="fragment_whendisagree_butcontain_j_inrou"
         tools:layout="@layout/fragment_whendisagree_butcontain_j_inrou" >
         <action
@@ -324,8 +324,8 @@
             app:destination="@id/onlineVoting2" />
     </fragment>
     <fragment
-        android:id="@+id/equalvote2"
-        android:name="com.hamu.seihekijinrou.Equalvote"
+        android:id="@+id/equalvote"
+        android:name="com.hamu.seihekijinrou.MeetingandVotingandResult.Online.ResultofVoting.Equalvote"
         android:label="fragment_equalvote"
         tools:layout="@layout/fragment_equalvote" >
         <action
@@ -361,7 +361,7 @@
     </fragment>
     <fragment
         android:id="@+id/onlineVoting2"
-        android:name="com.hamu.seihekijinrou.onlineVoting2"
+        android:name="com.hamu.seihekijinrou.MeetingandVotingandResult.Online.Voting.onlineVoting2"
         android:label="fragment_online_voting2"
         tools:layout="@layout/fragment_online_voting2" >
         <action
@@ -375,6 +375,6 @@
             app:destination="@id/whenOpinionsAreUited" />
         <action
             android:id="@+id/action_onlineVoting2_to_equalvote2"
-            app:destination="@id/equalvote2" />
+            app:destination="@id/equalvote" />
     </fragment>
 </navigation>

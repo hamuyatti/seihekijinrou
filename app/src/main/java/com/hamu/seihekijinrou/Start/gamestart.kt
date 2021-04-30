@@ -4,6 +4,8 @@ import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.os.Handler
+import android.view.View
+import androidx.compose.ui.graphics.Color
 import androidx.core.content.edit
 import androidx.preference.PreferenceManager
 import com.hamu.seihekijinrou.R
@@ -12,6 +14,8 @@ class gamestart : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_gamestart)
+
+
         var pref = PreferenceManager.getDefaultSharedPreferences(this)
         pref.edit{
             clear()
