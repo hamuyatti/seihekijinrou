@@ -185,10 +185,9 @@ class onlineVoting3 : OnlineabstractVoting() {
                         whendisagree()
                     }
 
-
                 } else {
                     Suspect = list[0].name
-                    var remainmembers = setOf(list[1].name, list[2].name, list[3].name)
+                    var remainmembers = setOf(list[1].name, list[2].name)
 
                     var pref = PreferenceManager.getDefaultSharedPreferences(context)
                     pref.edit {

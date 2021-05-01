@@ -68,8 +68,8 @@ class OnlinefirstMeeting : Fragment() {
         var roomname = pref.getString("roomname", "")
         var db = Firebase.firestore
         var collection = db.collection("$roomname")
-        var Meeting = collection.document("gameinfo").collection("会議状況")
-        var docref = collection.document("gameinfo")
+        var Meeting = collection.document("会議状況")
+
 
         var jinrou = pref.getString("jinrouseiheki", "")
         binding.gametitle.text = "「$jinrou」"
@@ -101,7 +101,7 @@ class OnlinefirstMeeting : Fragment() {
                         putString("check","判別用").commit()
                     }
                     var finishMeeting= hashMapOf("会議状況" to "終了しました" )
-                    docref.collection("会議状況").add(finishMeeting)
+                    Meeting.set(finishMeeting)
                     toVoting()
                 }
                 .setNegativeButton("もどる"){dialog,which->
@@ -114,7 +114,7 @@ class OnlinefirstMeeting : Fragment() {
        Meeting.addSnapshotListener{it,tmp->
          var check:String? =  pref.getString("check","")
           if(check?.isEmpty()!!) {
-              Meeting
+             collection
                       .whereEqualTo("会議状況", "終了しました")
                       .get()
                       .addOnSuccessListener {
@@ -127,6 +127,19 @@ class OnlinefirstMeeting : Fragment() {
           }
 
         }
+
+        super.onResume()
+        soundPool =
+                SoundPool.Builder().run {
+                    val audioAttributes = AudioAttributes.Builder().run {
+                        setUsage(AudioAttributes.USAGE_MEDIA)
+                        build()
+                    }
+                    setMaxStreams(1)
+                    setAudioAttributes(audioAttributes)
+                    build()
+                }
+        soundResId = soundPool.load(context, R.raw.pigeon, 1)
 
 
 
@@ -179,30 +192,16 @@ class OnlinefirstMeeting : Fragment() {
             pref.edit { putStringSet("remainmembers", remainmembers) }.apply { }
             findNavController().navigate(R.id.action_onlinefirstMeeting_to_onlineVoting9)
 
-        } else {
-            remainmembers =
-                    setOf(name1, name2, name3, name4, name5, name6, name7, name8, name9,name10)
+        } else {remainmembers =
+                setOf(name1, name2, name3, name4, name5, name6, name7, name8, name9,name10)
             pref.edit { putStringSet("remainmembers", remainmembers) }.apply { }
             findNavController().navigate(R.id.action_onlinefirstMeeting_to_onlineVoting10)
         }
     }
 
-    override fun onResume() {
-        super.onResume()
-        soundPool =
-            SoundPool.Builder().run {
-                val audioAttributes = AudioAttributes.Builder().run {
-                    setUsage(AudioAttributes.USAGE_MEDIA)
-                    build()
-                }
-                setMaxStreams(1)
-                setAudioAttributes(audioAttributes)
-                build()
-            }
-        soundResId = soundPool.load(context, R.raw.pigeon, 1)
-    }
 
     override fun onPause() {
+
         super.onPause()
 
         soundPool.release()

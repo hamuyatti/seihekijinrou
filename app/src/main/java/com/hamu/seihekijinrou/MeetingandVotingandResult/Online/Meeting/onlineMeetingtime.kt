@@ -55,7 +55,7 @@ class onlineMeetingtime : Fragment() {
         var pref = PreferenceManager.getDefaultSharedPreferences(context)
         var roomname = pref.getString("roomname", "")
         var collection = db.collection("$roomname")
-        var MeetingStop = collection.document("会議終了")
+        var MeetingStop = collection.document("会議状況")
 
 
         var jinrou = pref.getString("jinrou", "")
@@ -97,6 +97,7 @@ class onlineMeetingtime : Fragment() {
 
         var wheretogo= remainmembers?.size
         when(wheretogo){
+            2->findNavController().navigate(R.id.action_onlineMeetingtime_to_onlineVoting2)
             3->findNavController().navigate(R.id.action_onlineMeetingtime_to_onlineVoting3)
             4->findNavController().navigate(R.id.action_onlineMeetingtime_to_onlineVoting4)
             5->findNavController().navigate(R.id.action_onlineMeetingtime_to_onlineVoting5)

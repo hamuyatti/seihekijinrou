@@ -58,8 +58,8 @@ dependencies {
     implementation 'androidx.constraintlayout:constraintlayout:2.0.4'
     implementation 'androidx.preference:preference-ktx:1.1.1'
     implementation 'androidx.legacy:legacy-support-v4:1.0.0'
-    implementation 'androidx.navigation:navigation-fragment-ktx:2.3.2'
-    implementation 'androidx.navigation:navigation-ui-ktx:2.3.2'
+    implementation 'androidx.navigation:navigation-fragment-ktx:2.3.5'
+    implementation 'androidx.navigation:navigation-ui-ktx:2.3.5'
     implementation "com.airbnb.android:lottie:3.6.1"
     implementation  'io.realm:android-adapters:2.1.1'
     implementation 'com.google.firebase:firebase-firestore:22.1.2'
@@ -72,15 +72,15 @@ dependencies {
     implementation 'com.firebaseui:firebase-ui-auth:6.4.0'
     implementation 'com.firebaseui:firebase-ui-firestore:7.1.1'
     implementation 'com.algolia:algoliasearch-android:3.+'
-    implementation 'com.github.agorabuilder:native-full-sdk:3.4.0'
+    implementation 'com.github.agorabuilder:native-voice-sdk:3.4.0'
 
 
 
     def nav_version = "2.3.3"
 
         // Java language implementation
-        implementation "androidx.navigation:navigation-fragment:$nav_version"
-        implementation "androidx.navigation:navigation-ui:$nav_version"
+        implementation "androidx.navigation:navigation-fragment-ktx:$nav_version"
+        implementation "androidx.navigation:navigation-ui-ktx:$nav_version"
 
         // Kotlin
         implementation "androidx.navigation:navigation-fragment-ktx:$nav_version"

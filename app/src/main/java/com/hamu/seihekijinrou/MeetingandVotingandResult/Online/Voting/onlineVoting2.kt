@@ -34,7 +34,7 @@ class onlineVoting2 : OnlineabstractVoting() {
 
         var db = Firebase.firestore
         var collection = db.collection("$roomname")
-        var Voting = collection.document("投票3")
+        var Voting = collection.document("投票2")
 
         var jinrouseiheki = pref.getString("jinrouseiheki", "")
         binding.jinrouseiheki.text = "$jinrouseiheki は誰の性癖？？"
@@ -127,9 +127,9 @@ class onlineVoting2 : OnlineabstractVoting() {
         Voting.addSnapshotListener { it, tmp ->
 
             if (it?.contains("$numberofpeople") == true) {
-                data class votedata(
-                        val name: String,
-                        val count: Int
+                    data class votedata(
+                            val name: String,
+                            val count: Int
                 )
 
                 var vote1 = it!!.data?.get("1")

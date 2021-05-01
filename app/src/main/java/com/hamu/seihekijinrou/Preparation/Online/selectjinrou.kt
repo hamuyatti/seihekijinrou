@@ -30,7 +30,6 @@ class selectjinrou : Fragment() {
         var pref = PreferenceManager.getDefaultSharedPreferences(context)
         var roomname = pref.getString("roomname", "")
         var collection = db.collection("$roomname")
-        var collection1 = db.collection("$roomname").document("gameinfo").collection("参加人数")
 
         collection.document("性癖情報")
                 .get()
@@ -88,18 +87,6 @@ class selectjinrou : Fragment() {
             tmp = "押されました"
             findNavController().navigate(R.id.action_selectjinrou_to_onlinefirstMeeting)
         }
-
-
-        /*while(tmp.isEmpty()){
-            Handler().postDelayed(
-                    {
-                        jinrou =
-                    },
-                    1000,
-
-         */
-
-
 
         return binding.root
     }
