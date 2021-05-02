@@ -73,12 +73,12 @@ class onlineMeetingtime : Fragment() {
             toVoting()
         }
 
-        MeetingStop
+        collection
+                .whereEqualTo("会議","終了しました")
                 .addSnapshotListener{it,tmp->
                     var check:String? =  pref.getString("check2","")
                     if(check?.isEmpty()!!) {
-                        if(it?.exists()!=false){
-                            MeetingStop
+                        if(it?.isEmpty()==false){
                             toVoting()
                         }
 
@@ -104,7 +104,7 @@ class onlineMeetingtime : Fragment() {
             6->findNavController().navigate(R.id.action_onlineMeetingtime_to_onlineVoting6)
             7->findNavController().navigate(R.id.action_onlineMeetingtime_to_onlineVoting7)
             8->findNavController().navigate(R.id.action_onlineMeetingtime_to_onlineVoting8)
-            9->findNavController().navigate(R.id.action_onlineMeetingtime_to_onlineVoting9)
+            9->findNavController().navigate(R.id.action_onlineMeetingtime_to_onlineVoting92)
             10->findNavController().navigate(R.id.action_onlineMeetingtime_to_onlineVoting10)
         }
 

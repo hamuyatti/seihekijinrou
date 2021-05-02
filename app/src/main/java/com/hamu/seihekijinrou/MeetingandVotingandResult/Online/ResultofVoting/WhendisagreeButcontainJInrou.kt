@@ -25,7 +25,7 @@ class WhendisagreeButcontainJInrou : Fragment() {
 
     override fun onCreateView(
             inflater: LayoutInflater, container: ViewGroup?,
-            savedInstanceState: Bundle?,
+            savedInstanceState: Bundle?
     ): View? {
         _binding = FragmentWhendisagreeButcontainJInrouBinding.inflate(inflater, container, false)
         var pref = PreferenceManager.getDefaultSharedPreferences(context)
@@ -118,10 +118,10 @@ class WhendisagreeButcontainJInrou : Fragment() {
                             }
 
                         },
-                        2500,
+                        2500
                     )
             },
-            3000,
+            3000
         )
 
 

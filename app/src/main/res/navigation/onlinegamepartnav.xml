@@ -25,9 +25,6 @@
             android:id="@+id/action_onlinefirstMeeting_to_onlineVoting10"
             app:destination="@id/onlineVoting10" />
         <action
-            android:id="@+id/action_onlinefirstMeeting_to_onlineVoting9"
-            app:destination="@id/onlineVoting9" />
-        <action
             android:id="@+id/action_onlinefirstMeeting_to_onlineVoting8"
             app:destination="@id/onlineVoting8" />
         <action
@@ -45,6 +42,9 @@
         <action
             android:id="@+id/action_onlinefirstMeeting_to_onlineVoting3"
             app:destination="@id/onlineVoting3" />
+        <action
+            android:id="@+id/action_onlinefirstMeeting_to_onlineVoting9"
+            app:destination="@id/onlineVoting9" />
     </fragment>
     <fragment
         android:id="@+id/onlineMeetingtime"
@@ -54,9 +54,6 @@
         <action
             android:id="@+id/action_onlineMeetingtime_to_onlineVoting10"
             app:destination="@id/onlineVoting10" />
-        <action
-            android:id="@+id/action_onlineMeetingtime_to_onlineVoting9"
-            app:destination="@id/onlineVoting9" />
         <action
             android:id="@+id/action_onlineMeetingtime_to_onlineVoting8"
             app:destination="@id/onlineVoting8" />
@@ -78,6 +75,9 @@
         <action
             android:id="@+id/action_onlineMeetingtime_to_onlineVoting2"
             app:destination="@id/onlineVoting2" />
+        <action
+            android:id="@+id/action_onlineMeetingtime_to_onlineVoting92"
+            app:destination="@id/onlineVoting9" />
     </fragment>
     <fragment
         android:id="@+id/onlineVoting10"
@@ -110,9 +110,6 @@
             android:id="@+id/action_whendisagree_to_onlineVoting10"
             app:destination="@id/onlineVoting10" />
         <action
-            android:id="@+id/action_whendisagree_to_onlineVoting9"
-            app:destination="@id/onlineVoting9" />
-        <action
             android:id="@+id/action_whendisagree_to_onlineVoting8"
             app:destination="@id/onlineVoting8" />
         <action
@@ -133,6 +130,9 @@
         <action
             android:id="@+id/action_whendisagree_to_onlineVoting2"
             app:destination="@id/onlineVoting2" />
+        <action
+            android:id="@+id/action_whendisagree_to_onlineVoting9"
+            app:destination="@id/onlineVoting9" />
     </fragment>
     <fragment
         android:id="@+id/whenOpinionsAreUited"
@@ -144,28 +144,6 @@
             app:destination="@id/onlineMeetingtime" />
         <action
             android:id="@+id/action_whenOpinionsAreUited_to_equalvote2"
-            app:destination="@id/equalvote" />
-    </fragment>
-    <fragment
-        android:id="@+id/onlineVoting9"
-        android:name="com.hamu.seihekijinrou."
-        android:label="fragment_online_voting9"
-        tools:layout="@layout/fragment_online_voting9" >
-        <action
-            android:id="@+id/action_onlineVoting9_to_whendisagree"
-            app:destination="@id/whendisagree" />
-        <action
-            android:id="@+id/action_onlineVoting9_to_whenOpinionsAreUited"
-            app:destination="@id/whenOpinionsAreUited" />
-        <action
-            android:id="@+id/action_onlineVoting9_to_whendisagreeButcontainJInrou"
-            app:destination="@id/whendisagreeButcontainJInrou" />
-        <argument
-            android:name="Suspect"
-            app:argType="string"
-            android:defaultValue="from9" />
-        <action
-            android:id="@+id/action_onlineVoting9_to_equalvote2"
             app:destination="@id/equalvote" />
     </fragment>
     <fragment
@@ -183,9 +161,7 @@
             android:id="@+id/action_onlineVoting8_to_whendisagreeButcontainJInrou"
             app:destination="@id/whendisagreeButcontainJInrou" />
         <argument
-            android:name="Suspect"
-            app:argType="string"
-            android:defaultValue="from8" />
+            android:name="Suspect" />
         <action
             android:id="@+id/action_onlineVoting8_to_equalvote2"
             app:destination="@id/equalvote" />
@@ -299,9 +275,6 @@
             android:id="@+id/action_whendisagreeButcontainJInrou_to_onlineVoting10"
             app:destination="@id/onlineVoting10" />
         <action
-            android:id="@+id/action_whendisagreeButcontainJInrou_to_onlineVoting9"
-            app:destination="@id/onlineVoting9" />
-        <action
             android:id="@+id/action_whendisagreeButcontainJInrou_to_onlineVoting8"
             app:destination="@id/onlineVoting8" />
         <action
@@ -322,6 +295,9 @@
         <action
             android:id="@+id/action_whendisagreeButcontainJInrou_to_onlineVoting2"
             app:destination="@id/onlineVoting2" />
+        <action
+            android:id="@+id/action_whendisagreeButcontainJInrou_to_onlineVoting9"
+            app:destination="@id/onlineVoting9" />
     </fragment>
     <fragment
         android:id="@+id/equalvote"
@@ -329,35 +305,32 @@
         android:label="fragment_equalvote"
         tools:layout="@layout/fragment_equalvote" >
         <action
-            android:id="@+id/action_equalvote2_to_onlineVoting10"
-            app:destination="@id/onlineVoting10" />
+            android:id="@+id/action_equalvote_to_onlineVoting2"
+            app:destination="@id/onlineVoting2" />
         <action
-            android:id="@+id/action_equalvote2_to_onlineVoting9"
-            app:destination="@id/onlineVoting9" />
-        <action
-            android:id="@+id/action_equalvote2_to_onlineVoting4"
-            app:destination="@id/onlineVoting4" />
-        <action
-            android:id="@+id/action_equalvote2_to_onlineVoting8"
-            app:destination="@id/onlineVoting8" />
-        <action
-            android:id="@+id/action_equalvote2_to_onlineVoting7"
-            app:destination="@id/onlineVoting7" />
-        <action
-            android:id="@+id/action_equalvote2_to_onlineVoting6"
-            app:destination="@id/onlineVoting6" />
-        <action
-            android:id="@+id/action_equalvote2_to_onlineVoting5"
-            app:destination="@id/onlineVoting5" />
-        <action
-            android:id="@+id/action_equalvote2_to_onlineVoting42"
-            app:destination="@id/onlineVoting4" />
-        <action
-            android:id="@+id/action_equalvote2_to_onlineVoting3"
+            android:id="@+id/action_equalvote_to_onlineVoting3"
             app:destination="@id/onlineVoting3" />
         <action
-            android:id="@+id/action_equalvote2_to_onlineVoting2"
-            app:destination="@id/onlineVoting2" />
+            android:id="@+id/action_equalvote_to_onlineVoting4"
+            app:destination="@id/onlineVoting4" />
+        <action
+            android:id="@+id/action_equalvote_to_onlineVoting5"
+            app:destination="@id/onlineVoting5" />
+        <action
+            android:id="@+id/action_equalvote_to_onlineVoting6"
+            app:destination="@id/onlineVoting6" />
+        <action
+            android:id="@+id/action_equalvote_to_onlineVoting7"
+            app:destination="@id/onlineVoting7" />
+        <action
+            android:id="@+id/action_equalvote_to_onlineVoting8"
+            app:destination="@id/onlineVoting8" />
+        <action
+            android:id="@+id/action_equalvote_to_onlineVoting92"
+            app:destination="@id/onlineVoting9" />
+        <action
+            android:id="@+id/action_equalvote_to_onlineVoting10"
+            app:destination="@id/onlineVoting10" />
     </fragment>
     <fragment
         android:id="@+id/onlineVoting2"
@@ -376,5 +349,26 @@
         <action
             android:id="@+id/action_onlineVoting2_to_equalvote2"
             app:destination="@id/equalvote" />
+        <argument android:name="Suspect" />
+    </fragment>
+    <fragment
+        android:id="@+id/onlineVoting9"
+        android:name="com.hamu.seihekijinrou.MeetingandVotingandResult.Online.Voting.onlineVoting9"
+        android:label="fragment_online_voting9"
+        tools:layout="@layout/fragment_online_voting9" >
+        <action
+            android:id="@+id/action_onlineVoting9_to_whendisagreeButcontainJInrou"
+            app:destination="@id/whendisagreeButcontainJInrou" />
+        <action
+            android:id="@+id/action_onlineVoting9_to_whendisagree"
+            app:destination="@id/whendisagree" />
+        <action
+            android:id="@+id/action_onlineVoting9_to_whenOpinionsAreUited"
+            app:destination="@id/whenOpinionsAreUited" />
+        <action
+            android:id="@+id/action_onlineVoting9_to_equalvote"
+            app:destination="@id/equalvote" />
+        <argument
+            android:name="Suspect" />
     </fragment>
 </navigation>

@@ -32,21 +32,21 @@ class Equalvote : Fragment() {
             {
               Wheretogo()
             },
-            1000,
+            1000
         )
         return binding.root
     }
 
     fun Wheretogo(){
         when(wheretogo){
-            3->findNavController().navigate(R.id.action_equalvote2_to_onlineVoting3)
-            4->findNavController().navigate(R.id.action_equalvote2_to_onlineVoting4)
-            5->findNavController().navigate(R.id.action_equalvote2_to_onlineVoting5)
-            6->findNavController().navigate(R.id.action_equalvote2_to_onlineVoting6)
-            7->findNavController().navigate(R.id.action_equalvote2_to_onlineVoting7)
-            8->findNavController().navigate(R.id.action_equalvote2_to_onlineVoting8)
-            9->findNavController().navigate(R.id.action_equalvote2_to_onlineVoting9)
-            10->findNavController().navigate(R.id.action_equalvote2_to_onlineVoting10)
+            3->findNavController().navigate(R.id.action_equalvote_to_onlineVoting3)
+            4->findNavController().navigate(R.id.action_equalvote_to_onlineVoting4)
+            5->findNavController().navigate(R.id.action_equalvote_to_onlineVoting5)
+            6->findNavController().navigate(R.id.action_equalvote_to_onlineVoting6)
+            7->findNavController().navigate(R.id.action_equalvote_to_onlineVoting7)
+            8->findNavController().navigate(R.id.action_equalvote_to_onlineVoting8)
+            9->findNavController().navigate(R.id.action_equalvote_to_onlineVoting92)
+            10->findNavController().navigate(R.id.action_equalvote_to_onlineVoting10)
 
         }
 

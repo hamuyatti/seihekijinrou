@@ -170,7 +170,9 @@ class onlineVoting3 : OnlineabstractVoting() {
                         putStringSet("remainmembers", remainmembers)
                     }.apply {}
                     Voting.delete()
+
                     whensameNumVoting()
+
                 } else if (list[0].count == list[1].count) {
                     var remainmembers = setOf(list[2].name)
                     var Suspectmembers = setOf(list[0].name, list[1].name)
@@ -195,12 +197,14 @@ class onlineVoting3 : OnlineabstractVoting() {
                         putString("Suspect", Suspect)
                     }.apply { }
 
-                    whenOpinionsAreUnited()
+                     whenOpinionsAreUnited()
+
                 }
             }
         }
         return binding.root
     }
+
 
     fun whensameNumVoting() {
         var bundle = bundleOf("where" to 3)
