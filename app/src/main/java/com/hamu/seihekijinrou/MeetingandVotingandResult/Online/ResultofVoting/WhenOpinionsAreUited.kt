@@ -67,7 +67,7 @@ class WhenOpinionsAreUited : Fragment() {
                                     {
                                         startActivity(Intent(context, End1ofTrue::class.java))
                                     },
-                                    1500,
+                                    1500
                             )
                         } else {
                             Handler().postDelayed(
@@ -83,12 +83,12 @@ class WhenOpinionsAreUited : Fragment() {
                                                     }
                                                 }
                                                 },
-                                                1500,
+                                                1500
 
 
                                                 )
                                     },
-                                    1500,
+                                    1500
                             )
                         }
 

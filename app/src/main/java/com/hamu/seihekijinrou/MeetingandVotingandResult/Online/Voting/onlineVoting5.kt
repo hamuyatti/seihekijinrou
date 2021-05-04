@@ -5,6 +5,7 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.appcompat.app.AlertDialog
 import androidx.core.content.edit
 import androidx.core.os.bundleOf
 import androidx.navigation.fragment.findNavController
@@ -177,12 +178,13 @@ class onlineVoting5 : OnlineabstractVoting() {
                                 /*再投票するかを決めます*/
                                 if (list[0].count== list[1].count && list[1].count == list[2].count && list[2].count == list[3].count
                                         &&list[3].count== list[4].count  ){
-                                    var remainmembers = members.toSet()
-                                    pref.edit{
-                                        putStringSet("remainmembers",remainmembers)
-                                    }.apply {  }
+
+                                    AlertDialog.Builder(requireContext())
+                                        .setMessage("同数投票です。")
+                                        .setPositiveButton("もどる") { dialog, which ->
+                                        }.show()
+
                                     Voting.delete()
-                                    whensameNumVoting()
 
                                  }else if(list[0].count == list[1].count) {
                                     var remainmembers = setOf(list[2].name,list[3].name,list[4].name)
@@ -216,11 +218,7 @@ class onlineVoting5 : OnlineabstractVoting() {
         }
         return binding.root
     }
-    fun whensameNumVoting() {
-        var bundle = bundleOf("where" to 5)
 
-        findNavController().navigate(R.id.action_onlineVoting5_to_equalvote2,bundle)
-    }
     fun whendisagree(){
 
 
@@ -240,7 +238,7 @@ class onlineVoting5 : OnlineabstractVoting() {
 
         var bundle = bundleOf("Suspect" to Suspect)
 
-        findNavController().navigate(R.id.action_onlineVoting5_to_whenOpinionsAreUited,bundle,)
+        findNavController().navigate(R.id.action_onlineVoting5_to_whenOpinionsAreUited,bundle)
     }
 
 

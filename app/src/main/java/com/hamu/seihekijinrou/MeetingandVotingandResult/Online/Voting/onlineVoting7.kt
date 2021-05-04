@@ -1,5 +1,6 @@
 package com.hamu.seihekijinrou.MeetingandVotingandResult.Online.Voting
 
+import android.app.AlertDialog
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -191,11 +192,13 @@ class onlineVoting7 :OnlineabstractVoting() {
                                 if (list2[0].count== list2[1].count && list2[1].count == list2[2].count && list2[2].count == list2[3].count
                                         &&list2[3].count== list2[4].count && list2[4].count == list2[5].count && list2[5].count == list2[6].count){
 
-                                    var remainmembers = members.toSet()
-                                    pref.edit{
-                                        putStringSet("remainmembers",remainmembers)
-                                    }.apply{}
-                                    whensameNumVoting()
+
+                                    AlertDialog.Builder(requireContext())
+                                        .setMessage("同数投票です。")
+                                        .setPositiveButton("もどる") { dialog, which ->
+                                        }.show()
+
+                                    Voting.delete()
 
                                 }  else if(list2[0].count == list2[1].count&&list2[1].count == list2[2].count){
                                     var remainmembers = setOf(list2[3].name,list[4].name,list2[5].name,list2[6].name)
@@ -243,11 +246,7 @@ class onlineVoting7 :OnlineabstractVoting() {
         return binding.root
     }
 
-    fun whensameNumVoting() {
-        var bundle = bundleOf("where" to 7)
 
-        findNavController().navigate(R.id.action_onlineVoting7_to_equalvote2,bundle)
-    }
     fun whendisagree(){
 
 
@@ -266,7 +265,7 @@ class onlineVoting7 :OnlineabstractVoting() {
 
         var bundle = bundleOf("Suspect" to Suspect)
 
-        findNavController().navigate(R.id.action_onlineVoting7_to_whenOpinionsAreUited,bundle,)
+        findNavController().navigate(R.id.action_onlineVoting7_to_whenOpinionsAreUited,bundle)
     }
 
 

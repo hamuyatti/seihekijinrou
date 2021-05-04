@@ -1,5 +1,6 @@
 package com.hamu.seihekijinrou.MeetingandVotingandResult.Online.Voting
 
+import android.app.AlertDialog
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
@@ -197,11 +198,13 @@ class onlineVoting8: OnlineabstractVoting(){
                                         &&list2[3].count== list2[4].count && list2[4].count == list2[5].count && list2[5].count == list2[6].count
                                         &&list2[6].count== list2[7].count ){
                                     /*全員に一票*/
-                                    var remainmembers = members.toSet()
-                                    pref.edit{
-                                        putStringSet("remainmembers",remainmembers)
-                                    }.apply{}
-                                    whensameNumVoting()
+
+                                    AlertDialog.Builder(requireContext())
+                                        .setMessage("同数投票です。")
+                                        .setPositiveButton("もどる") { dialog, which ->
+                                        }.show()
+
+                                    Voting.delete()
 
                                 } else if(list2[0].count == list2[1].count&&list2[1].count == list2[2].count&&list2[2].count == list2[3].count){
                                     var remainmembers = setOf(list2[2].name,list2[3].name,list[4].name,list2[5].name,list2[6].name,list2[7].name)
@@ -222,17 +225,13 @@ class onlineVoting8: OnlineabstractVoting(){
                                     var remainmembers = setOf(list2[3].name,list[4].name,list2[5].name,list2[6].name,list2[7].name)
                                     var Suspectmembers = setOf(list2[0].name, list2[1].name,list2[2].name)
 
-                                    var pref = PreferenceManager.getDefaultSharedPreferences(context)
-                                    pref.edit {
-                                        putStringSet("remainmembers", remainmembers)
-                                        putStringSet("Suspectmembers",Suspectmembers)
-                                    }.apply {}
-                                    if(Suspectmembers.contains(jinrouname)){
-                                        whendisagreeBunContainjinrou()
-                                    }else {
-                                        whendisagree()
-                                    }
 
+                                    AlertDialog.Builder(requireContext())
+                                        .setMessage("同数投票です。")
+                                        .setPositiveButton("もどる") { dialog, which ->
+                                        }.show()
+
+                                    Voting.delete()
 
                                 }else if(list2[0].count == list2[1].count) {
                                     var remainmembers = setOf(list2[2].name,list2[3].name,list[4].name,list2[5].name,list2[6].name,list2[7].name)
@@ -267,11 +266,6 @@ class onlineVoting8: OnlineabstractVoting(){
     }
 
 
-    fun whensameNumVoting() {
-        var bundle = bundleOf("where" to 8)
-
-        findNavController().navigate(R.id.action_onlineVoting8_to_equalvote2,bundle)
-    }
     fun whendisagree(){
 
 
@@ -290,7 +284,7 @@ class onlineVoting8: OnlineabstractVoting(){
 
         var bundle = bundleOf("Suspect" to Suspect)
 
-        findNavController().navigate(R.id.action_onlineVoting8_to_whenOpinionsAreUited,bundle,)
+        findNavController().navigate(R.id.action_onlineVoting8_to_whenOpinionsAreUited,bundle)
     }
 
 

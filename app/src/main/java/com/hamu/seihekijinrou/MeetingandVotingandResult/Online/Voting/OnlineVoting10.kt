@@ -6,6 +6,7 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.appcompat.app.AlertDialog
 import androidx.core.content.edit
 import androidx.core.os.bundleOf
 import androidx.navigation.Navigation.findNavController
@@ -207,11 +208,13 @@ class OnlineVoting10 :OnlineabstractVoting() {
                                     &&list2[3].count== list2[4].count && list2[4].count == list2[5].count && list2[5].count == list2[6].count
                                     &&list2[6].count== list2[7].count && list2[7].count == list2[8].count && list2[8].count == list2[9].count){
                                         /*全員に一票*/
-                                var remainmembers = members.toSet()
-                                pref.edit{
-                                    putStringSet("remainmembers",remainmembers)
-                                }.apply{}
-                                 whensameNumVoting()
+
+                                AlertDialog.Builder(requireContext())
+                                    .setMessage("同数投票です。")
+                                    .setPositiveButton("もどる") { dialog, which ->
+                                    }.show()
+
+                                Voting.delete()
 
                             } else if (list2[0].count == list2[1].count&&list2[1].count == list2[2].count
                                     &&list2[2].count == list2[3].count&&list2[3].count == list2[4].count) {
@@ -276,11 +279,6 @@ class OnlineVoting10 :OnlineabstractVoting() {
         return binding.root
     }
 
-    fun whensameNumVoting() {
-        var bundle = bundleOf("where" to 10)
-
-        findNavController().navigate(R.id.action_onlineVoting10_to_equalvote2,bundle)
-    }
     fun whendisagree(){
 
 
@@ -300,7 +298,7 @@ class OnlineVoting10 :OnlineabstractVoting() {
 
         var bundle = bundleOf("Suspect" to Suspect)
 
-        findNavController().navigate(R.id.action_onlineVoting10_to_whenOpinionsAreUited,bundle,)
+        findNavController().navigate(R.id.action_onlineVoting10_to_whenOpinionsAreUited,bundle)
     }
 
 

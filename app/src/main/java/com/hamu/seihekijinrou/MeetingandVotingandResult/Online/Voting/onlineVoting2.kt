@@ -5,6 +5,7 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.appcompat.app.AlertDialog
 import androidx.core.content.edit
 import androidx.core.os.bundleOf
 import androidx.navigation.fragment.findNavController
@@ -24,7 +25,7 @@ class onlineVoting2 : OnlineabstractVoting() {
 
     override fun onCreateView(
             inflater: LayoutInflater, container: ViewGroup?,
-            savedInstanceState: Bundle?,
+            savedInstanceState: Bundle?
     ): View? {
         _binding = FragmentOnlineVoting2Binding.inflate(inflater, container, false)
         var pref = PreferenceManager.getDefaultSharedPreferences(context)
@@ -160,12 +161,13 @@ class onlineVoting2 : OnlineabstractVoting() {
 
 
                 if (list[0].count == list[1].count ) {
-                    var remainmembers = members.toSet()
-                    pref.edit {
-                        putStringSet("remainmembers", remainmembers)
-                    }.apply {}
+
+                    AlertDialog.Builder(requireContext())
+                        .setMessage("同数投票です。")
+                        .setPositiveButton("もどる") { dialog, which ->
+                        }.show()
+
                     Voting.delete()
-                    whensameNumVoting()
                 } else {
                     Suspect = list[0].name
                     var remainmembers = setOf(list[1].name)
@@ -183,11 +185,7 @@ class onlineVoting2 : OnlineabstractVoting() {
         return binding.root
     }
 
-    fun whensameNumVoting() {
-        var bundle = bundleOf("where" to 2)
 
-        findNavController().navigate(R.id.action_onlineVoting2_to_equalvote2, bundle)
-    }
     fun whenOpinionsAreUnited() {
 
 

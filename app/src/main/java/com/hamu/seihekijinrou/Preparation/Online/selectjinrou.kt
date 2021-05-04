@@ -27,23 +27,23 @@ class selectjinrou : Fragment() {
             savedInstanceState: Bundle?,
     ): View? {
         _binding = FragmentSelectjinrouBinding.inflate(layoutInflater, container, false)
-        var pref = PreferenceManager.getDefaultSharedPreferences(context)
-        var roomname = pref.getString("roomname", "")
-        var collection = db.collection("$roomname")
+        val pref = PreferenceManager.getDefaultSharedPreferences(context)
+        val roomname = pref.getString("roomname", "")
+        val collection = db.collection("$roomname")
 
         collection.document("性癖情報")
                 .get()
                 .addOnSuccessListener {
-                    var heki1 = it.data?.get("性癖1")
-                    var heki2 = it.data?.get("性癖2")
-                    var heki3 = it.data?.get("性癖3")
-                    var heki4 = it.data?.get("性癖4")
-                    var heki5 = it.data?.get("性癖5")
-                    var heki6 = it.data?.get("性癖6")
-                    var heki7 = it.data?.get("性癖7")
-                    var heki8 = it.data?.get("性癖8")
-                    var heki9 = it.data?.get("性癖9")
-                    var heki10 = it.data?.get("性癖10")
+                    val heki1 = it.data?.get("性癖1")
+                    val heki2 = it.data?.get("性癖2")
+                    val heki3 = it.data?.get("性癖3")
+                    val heki4 = it.data?.get("性癖4")
+                    val heki5 = it.data?.get("性癖5")
+                    val heki6 = it.data?.get("性癖6")
+                    val heki7 = it.data?.get("性癖7")
+                    val heki8 = it.data?.get("性癖8")
+                    val heki9 = it.data?.get("性癖9")
+                    val heki10 = it.data?.get("性癖10")
 
                     binding.jinrou.text = "${heki6}"
 
@@ -61,16 +61,16 @@ class selectjinrou : Fragment() {
         collection.document("名前情報")
                 .get()
                 .addOnSuccessListener {
-                    var name1 = it.data?.get("名前1")
-                    var name2 = it.data?.get("名前2")
-                    var name3 = it.data?.get("名前3")
-                    var name4 = it.data?.get("名前4")
-                    var name5 = it.data?.get("名前5")
-                    var name6 = it.data?.get("名前6")
-                    var name7 = it.data?.get("名前7")
-                    var name8 = it.data?.get("名前8")
-                    var name9 = it.data?.get("名前9")
-                    var name10 = it.data?.get("名前10")
+                    val name1 = it.data?.get("名前1")
+                    val name2 = it.data?.get("名前2")
+                    val name3 = it.data?.get("名前3")
+                    val name4 = it.data?.get("名前4")
+                    val name5 = it.data?.get("名前5")
+                    val name6 = it.data?.get("名前6")
+                    val name7 = it.data?.get("名前7")
+                    val name8 = it.data?.get("名前8")
+                    val name9 = it.data?.get("名前9")
+                    val name10 = it.data?.get("名前10")
 
                     binding.textView5.text = "${name6}"
 

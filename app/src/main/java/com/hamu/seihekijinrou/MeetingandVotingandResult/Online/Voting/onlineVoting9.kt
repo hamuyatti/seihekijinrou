@@ -1,5 +1,6 @@
 package com.hamu.seihekijinrou.MeetingandVotingandResult.Online.Voting
 
+import android.app.AlertDialog
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
@@ -202,11 +203,13 @@ class onlineVoting9: OnlineabstractVoting() {
                     && list2[6].count == list2[7].count && list2[7].count == list2[8].count
                 ) {
                     /*全員に一票*/
-                    var remainmembers = members.toSet()
-                    pref.edit {
-                        putStringSet("remainmembers", remainmembers)
-                    }.apply {}
-                    whensameNumVoting()
+
+                    AlertDialog.Builder(requireContext())
+                        .setMessage("同数投票です。")
+                        .setPositiveButton("もどる") { dialog, which ->
+                        }.show()
+
+                    Voting.delete()
 
                 } else if (list2[0].count == list2[1].count && list2[1].count == list2[2].count && list2[2].count == list2[3].count) {
                     var remainmembers = setOf(
@@ -297,11 +300,6 @@ class onlineVoting9: OnlineabstractVoting() {
         return binding.root
     }
 
-    fun whensameNumVoting() {
-        var bundle = bundleOf("where" to 9)
-
-        findNavController().navigate(R.id.action_onlineVoting9_to_equalvote, bundle)
-    }
 
     fun whendisagree() {
 

@@ -1,10 +1,12 @@
 package com.hamu.seihekijinrou.MeetingandVotingandResult.Online.Voting
 
+import android.content.Intent
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.appcompat.app.AlertDialog
 import androidx.core.content.edit
 import androidx.core.os.bundleOf
 import androidx.navigation.fragment.findNavController
@@ -12,6 +14,7 @@ import androidx.preference.PreferenceManager
 import com.google.firebase.firestore.SetOptions
 import com.google.firebase.firestore.ktx.firestore
 import com.google.firebase.ktx.Firebase
+import com.hamu.seihekijinrou.EndofGame.End1ofBad
 import com.hamu.seihekijinrou.R
 import com.hamu.seihekijinrou.databinding.FragmentOnlineVoting3Binding
 
@@ -165,13 +168,14 @@ class onlineVoting3 : OnlineabstractVoting() {
 
 
                 if (list[0].count == list[1].count && list[1].count == list[2].count) {
-                    var remainmembers = members.toSet()
-                    pref.edit {
-                        putStringSet("remainmembers", remainmembers)
-                    }.apply {}
-                    Voting.delete()
 
-                    whensameNumVoting()
+                    AlertDialog.Builder(requireContext())
+                        .setMessage("同数投票です。")
+                        .setPositiveButton("もどる") { dialog, which ->
+                        }.show()
+
+                  Voting.delete()
+
 
                 } else if (list[0].count == list[1].count) {
                     var remainmembers = setOf(list[2].name)
@@ -181,10 +185,13 @@ class onlineVoting3 : OnlineabstractVoting() {
                         putStringSet("remainmembers", remainmembers)
                         putStringSet("Suspectmembers", Suspectmembers)
                     }.apply {}
+
                     if (Suspectmembers.contains(jinrouname)) {
-                        whendisagreeButContainjinrou()
+
+                        findNavController().navigate(R.id.action_onlineVoting3_to_whendisagreeButcontainJInrou)
+
                     } else {
-                        whendisagree()
+                        findNavController().navigate(R.id.action_onlineVoting3_to_whendisagree)
                     }
 
                 } else {
@@ -197,7 +204,9 @@ class onlineVoting3 : OnlineabstractVoting() {
                         putString("Suspect", Suspect)
                     }.apply { }
 
-                     whenOpinionsAreUnited()
+                    var bundle = bundleOf("Suspect" to Suspect)
+
+                    findNavController().navigate(R.id.action_onlineVoting3_to_whenOpinionsAreUited, bundle)
 
                 }
             }
@@ -206,28 +215,5 @@ class onlineVoting3 : OnlineabstractVoting() {
     }
 
 
-    fun whensameNumVoting() {
-        var bundle = bundleOf("where" to 3)
 
-        findNavController().navigate(R.id.action_onlineVoting3_to_equalvote2, bundle)
-    }
-
-    fun whendisagree() {
-
-        findNavController().navigate(R.id.action_onlineVoting3_to_whendisagree)
-    }
-
-    fun whendisagreeButContainjinrou() {
-
-        findNavController().navigate(R.id.action_onlineVoting3_to_whendisagreeButcontainJInrou)
-
-    }
-
-    fun whenOpinionsAreUnited() {
-
-
-        var bundle = bundleOf("Suspect" to Suspect)
-
-        findNavController().navigate(R.id.action_onlineVoting3_to_whenOpinionsAreUited, bundle)
-    }
 }
