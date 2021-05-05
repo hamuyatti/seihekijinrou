@@ -33,6 +33,11 @@ class WhenOpinionsAreUited : Fragment() {
 
     ): View? {
         _binding = FragmentWhenOpinionsAreUitedBinding.inflate(inflater, container, false)
+        return binding.root
+    }
+
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
         var pref = PreferenceManager.getDefaultSharedPreferences(context)
         var jinrou = pref.getString("jinrou","")
         var jinrouseiheki = pref.getString("jinrouseiheki","")
@@ -57,43 +62,42 @@ class WhenOpinionsAreUited : Fragment() {
         var Suspect = arguments?.get("Suspect")as String?
 
 
-            binding.text.text = "$Suspect さんは、、"
-            Handler().postDelayed(
-                    {
-                        if (Suspect == jinrou) {
-                            binding.text.text = "性癖「$jinrouseiheki」の持ち主です！"
-                            soundPool.play(soundResId1, 1.0f, 1.0f, 0, 0, 1.0f)
-                            Handler().postDelayed(
-                                    {
-                                        startActivity(Intent(context, End1ofTrue::class.java))
-                                    },
-                                    1500
-                            )
-                        } else {
-                            Handler().postDelayed(
-                                    {
-                                        binding.text.text = "人狼ではありません！"
-                                        soundPool.play(soundResId2, 1.0f, 1.0f, 0, 0, 1.0f)
-                                        Handler().postDelayed(
-                                                { if (remainmemberssize != null) {
-                                                    if (remainmemberssize >= 2) {
-                                                        findNavController().navigate(R.id.action_whenOpinionsAreUited_to_onlineMeetingtime)
-                                                    } else {
-                                                        startActivity(Intent(context, End1ofBad::class.java))
-                                                    }
+        binding.text.text = "$Suspect さんは、、"
+        Handler().postDelayed(
+                {
+                    if (Suspect == jinrou) {
+                        binding.text.text = "性癖「$jinrouseiheki」の持ち主です！"
+                        soundPool.play(soundResId1, 1.0f, 1.0f, 0, 0, 1.0f)
+                        Handler().postDelayed(
+                                {
+                                    startActivity(Intent(context, End1ofTrue::class.java))
+                                },
+                                1500
+                        )
+                    } else {
+                        Handler().postDelayed(
+                                {
+                                    binding.text.text = "人狼ではありません！"
+                                    soundPool.play(soundResId2, 1.0f, 1.0f, 0, 0, 1.0f)
+                                    Handler().postDelayed(
+                                            { if (remainmemberssize != null) {
+                                                if (remainmemberssize >= 2) {
+                                                    findNavController().navigate(R.id.action_whenOpinionsAreUited_to_onlineMeetingtime)
+                                                } else {
+                                                    startActivity(Intent(context, End1ofBad::class.java))
                                                 }
-                                                },
-                                                1500
+                                            }
+                                            },
+                                            1500
 
 
-                                                )
-                                    },
-                                    1500
-                            )
-                        }
+                                    )
+                                },
+                                1500
+                        )
+                    }
 
-                    },1500)
-        return binding.root
+                },1500)
     }
 
 

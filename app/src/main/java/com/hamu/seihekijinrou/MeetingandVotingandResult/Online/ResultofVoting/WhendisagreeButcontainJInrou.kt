@@ -28,6 +28,11 @@ class WhendisagreeButcontainJInrou : Fragment() {
             savedInstanceState: Bundle?
     ): View? {
         _binding = FragmentWhendisagreeButcontainJInrouBinding.inflate(inflater, container, false)
+        return binding.root
+    }
+
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
         var pref = PreferenceManager.getDefaultSharedPreferences(context)
         var tmp=pref.getStringSet("Suspectmembers", setOf(""))
         var Suspectmembers = tmp?.toList()
@@ -99,33 +104,32 @@ class WhendisagreeButcontainJInrou : Fragment() {
 
 
         Handler().postDelayed(
-            {
+                {
                     binding.text.text = "再投票です。"
                     Handler().postDelayed(
-                        {
-                            when (Suspectmembersize) {
-                                2 -> findNavController().navigate(R.id.action_whendisagreeButcontainJInrou_to_onlineVoting2)
-                                3 -> findNavController().navigate(R.id.action_whendisagreeButcontainJInrou_to_onlineVoting3)
-                                4 -> findNavController().navigate(R.id.action_whendisagreeButcontainJInrou_to_onlineVoting4)
-                                5 -> findNavController().navigate(R.id.action_whendisagreeButcontainJInrou_to_onlineVoting5)
-                                6 -> findNavController().navigate(R.id.action_whendisagreeButcontainJInrou_to_onlineVoting6)
-                                7 -> findNavController().navigate(R.id.action_whendisagreeButcontainJInrou_to_onlineVoting7)
-                                8 -> findNavController().navigate(R.id.action_whendisagreeButcontainJInrou_to_onlineVoting8)
-                                9 -> findNavController().navigate(R.id.action_whendisagreeButcontainJInrou_to_onlineVoting9)
-                                10-> findNavController().navigate(R.id.action_whendisagreeButcontainJInrou_to_onlineVoting10)
+                            {
+                                when (Suspectmembersize) {
+                                    2 -> findNavController().navigate(R.id.action_whendisagreeButcontainJInrou_to_onlineVoting2)
+                                    3 -> findNavController().navigate(R.id.action_whendisagreeButcontainJInrou_to_onlineVoting3)
+                                    4 -> findNavController().navigate(R.id.action_whendisagreeButcontainJInrou_to_onlineVoting4)
+                                    5 -> findNavController().navigate(R.id.action_whendisagreeButcontainJInrou_to_onlineVoting5)
+                                    6 -> findNavController().navigate(R.id.action_whendisagreeButcontainJInrou_to_onlineVoting6)
+                                    7 -> findNavController().navigate(R.id.action_whendisagreeButcontainJInrou_to_onlineVoting7)
+                                    8 -> findNavController().navigate(R.id.action_whendisagreeButcontainJInrou_to_onlineVoting8)
+                                    9 -> findNavController().navigate(R.id.action_whendisagreeButcontainJInrou_to_onlineVoting9)
+                                    10-> findNavController().navigate(R.id.action_whendisagreeButcontainJInrou_to_onlineVoting10)
 
 
-                            }
+                                }
 
-                        },
-                        2500
+                            },
+                            2500
                     )
-            },
-            3000
+                },
+                3000
         )
 
 
-        return binding.root
     }
 
 

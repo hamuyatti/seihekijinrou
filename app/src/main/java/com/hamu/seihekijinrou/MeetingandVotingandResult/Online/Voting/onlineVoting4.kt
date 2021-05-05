@@ -27,6 +27,11 @@ class onlineVoting4 : OnlineabstractVoting() {
             savedInstanceState: Bundle?
     ): View? {
         _binding = FragmentOnlineVoting4Binding.inflate(inflater, container, false)
+        return binding.root
+    }
+
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
         var pref = PreferenceManager.getDefaultSharedPreferences(context)
         var roomname = pref.getString("roomname", "")
         var numberofpeople = pref.getString("numberofpeople", "")
@@ -173,11 +178,11 @@ class onlineVoting4 : OnlineabstractVoting() {
                 if (list[0].count == list[1].count && list[1].count == list[2].count && list[2].count == list[3].count) {
 
                     AlertDialog.Builder(requireContext())
-                        .setMessage("同数投票です。")
-                        .setPositiveButton("もどる") { dialog, which ->
-                        }.show()
+                            .setMessage("同数投票です。")
+                            .setPositiveButton("もどる") { dialog, which ->
+                            }.show()
 
-                     Voting.delete()
+                    Voting.delete()
                 } else if (list[0].count == list[1].count) {
                     var remainmembers = setOf(list[2].name, list[3].name)
                     var Suspectmembers = setOf(list[0].name, list[1].name)
@@ -206,7 +211,6 @@ class onlineVoting4 : OnlineabstractVoting() {
                 }
             }
         }
-        return binding.root
     }
 
 

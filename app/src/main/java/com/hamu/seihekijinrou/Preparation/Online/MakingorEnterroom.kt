@@ -69,14 +69,13 @@ class MakingorEnterroom : AppCompatActivity() {
                                 toast.show()
 
 
-                                val heki = hashMapOf(
-                                        "性癖1" to hostheki
-                                )
+
                                 val hekicheck = hashMapOf(
                                         "性癖" to hostheki
                                 )
-                                val name = hashMapOf(
-                                        "名前1" to hostname
+                                val info = hashMapOf(
+                                        "名前1" to hostname,
+                                        "性癖1" to hostheki
                                 )
                                 var namecheck = hashMapOf(
                                         "名前" to "$hostname"
@@ -90,12 +89,10 @@ class MakingorEnterroom : AppCompatActivity() {
                                 sameroomcheck.set(roomcheck)
 
                                 var membernumber = collection.document("参加人数")
-                                var namelist = collection.document("名前情報")
-                                var seihekilist = collection.document("性癖情報")
+                                var playerinfo = collection.document("名前と性癖")
 
                                 membernumber.set(countmember)
-                                namelist.set(name)
-                                seihekilist.set(heki)
+                                playerinfo.set(info)
                                 collection.document("名前1").set(namecheck)
                                 collection.document("性癖1").set(hekicheck)
 
@@ -127,8 +124,8 @@ class MakingorEnterroom : AppCompatActivity() {
                 val collection: CollectionReference = db.collection("$searchtext")
                 val sameroomcheck = collection.document("$searchtext")
                 val membernumber =collection.document("参加人数")
-                val namelist = collection.document("名前情報")
-                val seihekilist = collection.document("性癖情報")
+                val playerinfo = collection.document("名前と性癖")
+
                 sameroomcheck.get()
                         .addOnSuccessListener {
                             if (!it.exists()) {
@@ -161,7 +158,7 @@ class MakingorEnterroom : AppCompatActivity() {
                                                                         .setPositiveButton("もどる") { dialog, which ->
                                                                         }.show()
                                                             } else {
-                                                                namelist
+                                                                playerinfo
                                                                         .get()
                                                                         .addOnSuccessListener {
                                                                             var hostname = it.data?.get("名前1")!!
@@ -192,138 +189,115 @@ class MakingorEnterroom : AppCompatActivity() {
                                                                                                                 .setMessage("上限に達しています（１０人）。")
                                                                                                                 .setPositiveButton("参加する") { dialog, which -> }.show()
                                                                                                     } else if (count == 9) {
-                                                                                                        var heki = hashMapOf(
-                                                                                                                "性癖10" to "$guestheki"
-                                                                                                        )
-                                                                                                        var name = hashMapOf(
+                                                                                                        var info = hashMapOf(
+                                                                                                                "性癖10" to "$guestheki",
                                                                                                                 "名前10" to "$guestname"
                                                                                                         )
+
                                                                                                         val countmember = hashMapOf(
                                                                                                                 "10" to "10"
                                                                                                         )
-                                                                                                        seihekilist.set(heki, SetOptions.merge())
-                                                                                                        namelist.set(name, SetOptions.merge())
+                                                                                                        playerinfo.set(info, SetOptions.merge())
                                                                                                         collection.document("名前10").set(namecheck)
                                                                                                         collection.document("性癖10").set(hekicheck)
                                                                                                         membernumber.set(countmember, SetOptions.merge())
                                                                                                     } else if (count == 8) {
-                                                                                                        var heki = hashMapOf(
-                                                                                                                "性癖9" to "$guestheki"
-                                                                                                        )
-                                                                                                        var name = hashMapOf(
+                                                                                                        var info = hashMapOf(
+                                                                                                                "性癖9" to "$guestheki",
                                                                                                                 "名前9" to "$guestname"
-
                                                                                                         )
+
                                                                                                         val countmember = hashMapOf(
                                                                                                                 "9" to "9"
                                                                                                         )
-                                                                                                        seihekilist.set(heki, SetOptions.merge())
-                                                                                                        namelist.set(name, SetOptions.merge())
+                                                                                                        playerinfo.set(info, SetOptions.merge())
                                                                                                         collection.document("名前9").set(namecheck)
                                                                                                         collection.document("性癖9").set(hekicheck)
                                                                                                         membernumber.set(countmember, SetOptions.merge())
                                                                                                     } else if (count == 7) {
-                                                                                                        var heki = hashMapOf(
-                                                                                                                "性癖8" to "$guestheki"
-                                                                                                        )
-                                                                                                        var name = hashMapOf(
+                                                                                                        var info= hashMapOf(
+                                                                                                                "性癖8" to "$guestheki",
                                                                                                                 "名前8" to "$guestname"
                                                                                                         )
                                                                                                         val countmember = hashMapOf(
                                                                                                                 "8" to "8"
                                                                                                         )
-                                                                                                        seihekilist.set(heki, SetOptions.merge())
-                                                                                                        namelist.set(name, SetOptions.merge())
+                                                                                                        playerinfo.set(info, SetOptions.merge())
                                                                                                         collection.document("名前8").set(namecheck)
                                                                                                         collection.document("性癖8").set(hekicheck)
                                                                                                         membernumber.set(countmember, SetOptions.merge())
                                                                                                     } else if (count == 6) {
-                                                                                                        var heki = hashMapOf(
-                                                                                                                "性癖7" to "$guestheki"
-                                                                                                        )
-                                                                                                        var name = hashMapOf(
+                                                                                                        var info = hashMapOf(
+                                                                                                                "性癖7" to "$guestheki",
                                                                                                                 "名前7" to "$guestname"
                                                                                                         )
+
                                                                                                         val countmember = hashMapOf(
                                                                                                                 "7" to "7"
                                                                                                         )
-                                                                                                        seihekilist.set(heki, SetOptions.merge())
-                                                                                                        namelist.set(name, SetOptions.merge())
+                                                                                                        playerinfo.set(info, SetOptions.merge())
                                                                                                         collection.document("名前7").set(namecheck)
                                                                                                         collection.document("性癖7").set(hekicheck)
                                                                                                         membernumber.set(countmember, SetOptions.merge())
                                                                                                     } else if (count == 5) {
-                                                                                                        var heki = hashMapOf(
-                                                                                                                "性癖6" to "$guestheki"
-                                                                                                        )
-                                                                                                        var name = hashMapOf(
+                                                                                                        var info = hashMapOf(
+                                                                                                                "性癖6" to "$guestheki",
                                                                                                                 "名前6" to "$guestname"
                                                                                                         )
+
                                                                                                         val countmember = hashMapOf(
                                                                                                                 "6" to "6"
                                                                                                         )
-                                                                                                        seihekilist.set(heki, SetOptions.merge())
-                                                                                                        namelist.set(name, SetOptions.merge())
+                                                                                                        playerinfo.set(info, SetOptions.merge())
                                                                                                         collection.document("名前6").set(namecheck)
                                                                                                         collection.document("性癖6").set(hekicheck)
                                                                                                         membernumber.set(countmember, SetOptions.merge())
                                                                                                     } else if (count == 4) {
-                                                                                                        var heki = hashMapOf(
-                                                                                                                "性癖5" to "$guestheki"
-                                                                                                        )
-                                                                                                        var name = hashMapOf(
+                                                                                                        var info = hashMapOf(
+                                                                                                                "性癖5" to "$guestheki",
                                                                                                                 "名前5" to "$guestname"
                                                                                                         )
                                                                                                         val countmember = hashMapOf(
                                                                                                                 "5" to "5"
                                                                                                         )
-                                                                                                        seihekilist.set(heki, SetOptions.merge())
-                                                                                                        namelist.set(name, SetOptions.merge())
+                                                                                                        playerinfo.set(info, SetOptions.merge())
                                                                                                         collection.document("名前5").set(namecheck)
                                                                                                         collection.document("性癖5").set(hekicheck)
                                                                                                         membernumber.set(countmember, SetOptions.merge())
                                                                                                     } else if (count == 3) {
-                                                                                                        var heki = hashMapOf(
-                                                                                                                "性癖4" to "$guestheki"
-                                                                                                        )
-                                                                                                        var name = hashMapOf(
+                                                                                                        var info = hashMapOf(
+                                                                                                                "性癖4" to "$guestheki",
                                                                                                                 "名前4" to "$guestname"
                                                                                                         )
+
                                                                                                         val countmember = hashMapOf(
                                                                                                                 "4" to "4"
                                                                                                         )
-                                                                                                        seihekilist.set(heki, SetOptions.merge())
-                                                                                                        namelist.set(name, SetOptions.merge())
+                                                                                                        playerinfo.set(info, SetOptions.merge())
                                                                                                         collection.document("名前4").set(namecheck)
                                                                                                         collection.document("性癖4").set(hekicheck)
                                                                                                         membernumber.set(countmember, SetOptions.merge())
                                                                                                     } else if (count == 2) {
-                                                                                                        var heki = hashMapOf(
-                                                                                                                "性癖3" to "$guestheki"
-                                                                                                        )
-                                                                                                        var name = hashMapOf(
+                                                                                                        var info = hashMapOf(
+                                                                                                                "性癖3" to "$guestheki",
                                                                                                                 "名前3" to "$guestname"
                                                                                                         )
                                                                                                         val countmember = hashMapOf(
                                                                                                                 "3" to "3"
                                                                                                         )
-                                                                                                        seihekilist.set(heki, SetOptions.merge())
-                                                                                                        namelist.set(name, SetOptions.merge())
+                                                                                                        playerinfo.set(info, SetOptions.merge())
                                                                                                         collection.document("名前3").set(namecheck)
                                                                                                         collection.document("性癖3").set(hekicheck)
                                                                                                         membernumber.set(countmember, SetOptions.merge())
                                                                                                     } else if (count == 1) {
-                                                                                                        var heki = hashMapOf(
-                                                                                                                "性癖2" to "$guestheki"
-                                                                                                        )
-                                                                                                        var name = hashMapOf(
+                                                                                                        var info = hashMapOf(
+                                                                                                                "性癖2" to "$guestheki",
                                                                                                                 "名前2" to "$guestname"
                                                                                                         )
                                                                                                         val countmember = hashMapOf(
                                                                                                                 "2" to "2"
                                                                                                         )
-                                                                                                        seihekilist.set(heki, SetOptions.merge())
-                                                                                                        namelist.set(name, SetOptions.merge())
+                                                                                                        playerinfo.set(info, SetOptions.merge())
                                                                                                         collection.document("名前2").set(namecheck)
                                                                                                         collection.document("性癖2").set(hekicheck)
                                                                                                         membernumber.set(countmember, SetOptions.merge())
@@ -354,6 +328,7 @@ class MakingorEnterroom : AppCompatActivity() {
         super.onResume()
         binding.loading.visibility = View.INVISIBLE
     }
+
  }
 
 

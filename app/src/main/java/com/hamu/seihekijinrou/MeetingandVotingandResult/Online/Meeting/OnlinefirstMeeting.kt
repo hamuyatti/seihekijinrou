@@ -63,6 +63,11 @@ class OnlinefirstMeeting : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
         _binding = FragmentOnlinefirstMeetingBinding.inflate(inflater, container, false)
+        return binding.root
+    }
+
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
         binding.loading.visibility = View.INVISIBLE
         var pref = PreferenceManager.getDefaultSharedPreferences(context)
         var roomname = pref.getString("roomname", "")
@@ -94,37 +99,37 @@ class OnlinefirstMeeting : Fragment() {
 
         binding.Meetingstop.setOnClickListener {
             AlertDialog.Builder(requireContext())
-                .setMessage("会議を終了しますか？")
-                .setPositiveButton("はい") { dialog, which ->
-                    timer.cancel()
-                    pref.edit {
-                        putString("check","判別用").commit()
+                    .setMessage("会議を終了しますか？")
+                    .setPositiveButton("はい") { dialog, which ->
+                        timer.cancel()
+                        pref.edit {
+                            putString("check","判別用").commit()
+                        }
+                        var finishMeeting= hashMapOf("会議状況" to "終了しました" )
+                        Meeting.set(finishMeeting)
+                        toVoting()
                     }
-                    var finishMeeting= hashMapOf("会議状況" to "終了しました" )
-                    Meeting.set(finishMeeting)
-                    toVoting()
-                }
-                .setNegativeButton("もどる"){dialog,which->
-                    timer.start()
-                }
-                .show()
+                    .setNegativeButton("もどる"){dialog,which->
+                        timer.start()
+                    }
+                    .show()
         }
 
 
-       Meeting.addSnapshotListener{it,tmp->
-         var check:String? =  pref.getString("check","")
-          if(check?.isEmpty()!!) {
-             collection
-                      .whereEqualTo("会議状況", "終了しました")
-                      .get()
-                      .addOnSuccessListener {
-                          if (!it!!.isEmpty) {
-                              timer.cancel()
-                              toVoting()
-                          }
+        Meeting.addSnapshotListener{it,tmp->
+            var check:String? =  pref.getString("check","")
+            if(check?.isEmpty()!!) {
+                collection
+                        .whereEqualTo("会議状況", "終了しました")
+                        .get()
+                        .addOnSuccessListener {
+                            if (!it!!.isEmpty) {
+                                timer.cancel()
+                                toVoting()
+                            }
 
-                      }
-          }
+                        }
+            }
 
         }
 
@@ -143,8 +148,8 @@ class OnlinefirstMeeting : Fragment() {
 
 
 
-        return binding.root
     }
+
 
 
     fun toVoting() {

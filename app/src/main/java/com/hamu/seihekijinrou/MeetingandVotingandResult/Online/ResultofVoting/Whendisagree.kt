@@ -30,6 +30,11 @@ class Whendisagree : Fragment() {
             savedInstanceState: Bundle?
     ): View? {
         _binding = FragmentWhendisagreeBinding.inflate(inflater, container, false)
+        return binding.root
+    }
+
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
         var pref = PreferenceManager.getDefaultSharedPreferences(context)
 
         var remainmembersize = pref.getStringSet("remainmembers", setOf(""))?.toMutableList()?.size
@@ -134,7 +139,6 @@ class Whendisagree : Fragment() {
 
 
 
-        return binding.root
     }
 
 }

@@ -52,6 +52,11 @@ class onlineMeetingtime : Fragment() {
             savedInstanceState: Bundle?
     ): View? {
         _binding = FragmentOnlineMeetingtimeBinding.inflate(layoutInflater,container,false)
+        return binding.root
+    }
+
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
         var pref = PreferenceManager.getDefaultSharedPreferences(context)
         var roomname = pref.getString("roomname", "")
         var collection = db.collection("$roomname")
@@ -84,8 +89,6 @@ class onlineMeetingtime : Fragment() {
 
                     }
                 }
-
-        return binding.root
     }
 
     fun toVoting(){

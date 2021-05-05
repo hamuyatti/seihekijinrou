@@ -26,7 +26,11 @@ class onlineVoting9: OnlineabstractVoting() {
         savedInstanceState: Bundle?
     ): View? {
         _binding = FragmentOnlineVoting9Binding.inflate(inflater, container, false)
+        return binding.root
+    }
 
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
         var pref = PreferenceManager.getDefaultSharedPreferences(context)
         var roomname = pref.getString("roomname", "")
         var numberofpeople = pref.getString("numberofpeople", "")
@@ -87,73 +91,73 @@ class onlineVoting9: OnlineabstractVoting() {
             }
             binding.voting.setOnClickListener {
                 Voting
-                    .get()
-                    .addOnSuccessListener {
-                        if (!it.contains("1")) {
-                            var vote = hashMapOf(
-                                "1" to "$Voted"
-                            )
-                            Voting.set(vote, SetOptions.merge())
-                        } else if (!it.contains("2")) {
-                            var vote = hashMapOf(
-                                "2" to "$Voted"
-                            )
-                            Voting.set(vote, SetOptions.merge())
-                        } else if (!it.contains("3")) {
-                            var vote = hashMapOf(
-                                "3" to "$Voted"
-                            )
-                            Voting.set(vote, SetOptions.merge())
-                        } else if (!it.contains("4")) {
-                            var vote = hashMapOf(
-                                "4" to "$Voted"
-                            )
-                            Voting.set(vote, SetOptions.merge())
-                        } else if (!it.contains("5")) {
-                            var vote = hashMapOf(
-                                "5" to "$Voted"
-                            )
-                            Voting.set(vote, SetOptions.merge())
-                        } else if (!it.contains("6")) {
-                            var vote = hashMapOf(
-                                "6" to "$Voted"
-                            )
-                            Voting.set(vote, SetOptions.merge())
-                        } else if (!it.contains("7")) {
-                            var vote = hashMapOf(
-                                "7" to "$Voted"
-                            )
-                            Voting.set(vote, SetOptions.merge())
-                        } else if (!it.contains("8")) {
-                            var vote = hashMapOf(
-                                "8" to "$Voted"
-                            )
-                            Voting.set(vote, SetOptions.merge())
-                        } else if (!it.contains("8")) {
-                            var vote = hashMapOf(
-                                "8" to "$Voted"
-                            )
-                            Voting.set(vote, SetOptions.merge())
-                        } else if (!it.contains("9")) {
-                            var vote = hashMapOf(
-                                "9" to "$Voted"
-                            )
-                            Voting.set(vote, SetOptions.merge())
-                        } else if (!it.contains("10")) {
-                            var vote = hashMapOf(
-                                "10" to "$Voted"
-                            )
-                            Voting.set(vote, SetOptions.merge())
+                        .get()
+                        .addOnSuccessListener {
+                            if (!it.contains("1")) {
+                                var vote = hashMapOf(
+                                        "1" to "$Voted"
+                                )
+                                Voting.set(vote, SetOptions.merge())
+                            } else if (!it.contains("2")) {
+                                var vote = hashMapOf(
+                                        "2" to "$Voted"
+                                )
+                                Voting.set(vote, SetOptions.merge())
+                            } else if (!it.contains("3")) {
+                                var vote = hashMapOf(
+                                        "3" to "$Voted"
+                                )
+                                Voting.set(vote, SetOptions.merge())
+                            } else if (!it.contains("4")) {
+                                var vote = hashMapOf(
+                                        "4" to "$Voted"
+                                )
+                                Voting.set(vote, SetOptions.merge())
+                            } else if (!it.contains("5")) {
+                                var vote = hashMapOf(
+                                        "5" to "$Voted"
+                                )
+                                Voting.set(vote, SetOptions.merge())
+                            } else if (!it.contains("6")) {
+                                var vote = hashMapOf(
+                                        "6" to "$Voted"
+                                )
+                                Voting.set(vote, SetOptions.merge())
+                            } else if (!it.contains("7")) {
+                                var vote = hashMapOf(
+                                        "7" to "$Voted"
+                                )
+                                Voting.set(vote, SetOptions.merge())
+                            } else if (!it.contains("8")) {
+                                var vote = hashMapOf(
+                                        "8" to "$Voted"
+                                )
+                                Voting.set(vote, SetOptions.merge())
+                            } else if (!it.contains("8")) {
+                                var vote = hashMapOf(
+                                        "8" to "$Voted"
+                                )
+                                Voting.set(vote, SetOptions.merge())
+                            } else if (!it.contains("9")) {
+                                var vote = hashMapOf(
+                                        "9" to "$Voted"
+                                )
+                                Voting.set(vote, SetOptions.merge())
+                            } else if (!it.contains("10")) {
+                                var vote = hashMapOf(
+                                        "10" to "$Voted"
+                                )
+                                Voting.set(vote, SetOptions.merge())
+                            }
                         }
-                    }
             }
         }
 
         Voting.addSnapshotListener { it, tmp ->
             if (it?.contains("$numberofpeople") == true) {
                 data class votedata(
-                    val name: String,
-                    val count: Int
+                        val name: String,
+                        val count: Int
                 )
 
 
@@ -169,7 +173,7 @@ class onlineVoting9: OnlineabstractVoting() {
                 var vote10 = it!!.data?.get("10")
 
                 var list1 =
-                    listOf(vote1, vote2, vote3, vote4, vote5, vote6, vote7, vote8, vote9, vote10)
+                        listOf(vote1, vote2, vote3, vote4, vote5, vote6, vote7, vote8, vote9, vote10)
 
 
                 var vote1count = list1.count { it == candidate1 }
@@ -199,28 +203,28 @@ class onlineVoting9: OnlineabstractVoting() {
 
                 /*再投票するかを決めます*/
                 if (list2[0].count == list2[1].count && list2[1].count == list2[2].count && list2[2].count == list2[3].count
-                    && list2[3].count == list2[4].count && list2[4].count == list2[5].count && list2[5].count == list2[6].count
-                    && list2[6].count == list2[7].count && list2[7].count == list2[8].count
+                        && list2[3].count == list2[4].count && list2[4].count == list2[5].count && list2[5].count == list2[6].count
+                        && list2[6].count == list2[7].count && list2[7].count == list2[8].count
                 ) {
                     /*全員に一票*/
 
                     AlertDialog.Builder(requireContext())
-                        .setMessage("同数投票です。")
-                        .setPositiveButton("もどる") { dialog, which ->
-                        }.show()
+                            .setMessage("同数投票です。")
+                            .setPositiveButton("もどる") { dialog, which ->
+                            }.show()
 
                     Voting.delete()
 
                 } else if (list2[0].count == list2[1].count && list2[1].count == list2[2].count && list2[2].count == list2[3].count) {
                     var remainmembers = setOf(
-                        list[4].name,
-                        list2[5].name,
-                        list2[6].name,
-                        list2[7].name,
-                        list2[8].name
+                            list[4].name,
+                            list2[5].name,
+                            list2[6].name,
+                            list2[7].name,
+                            list2[8].name
                     )
                     var Suspectmembers =
-                        setOf(list2[0].name, list2[1].name, list2[2].name, list2[3].name)
+                            setOf(list2[0].name, list2[1].name, list2[2].name, list2[3].name)
                     if (Suspectmembers.contains(jinrouname)) {
                         whendisagreeBunContainjinrou()
                     } else {
@@ -230,12 +234,12 @@ class onlineVoting9: OnlineabstractVoting() {
 
                 } else if (list2[0].count == list2[1].count && list2[1].count == list2[2].count) {
                     var remainmembers = setOf(
-                        list2[3].name,
-                        list[4].name,
-                        list2[5].name,
-                        list2[6].name,
-                        list2[7].name,
-                        list2[8].name
+                            list2[3].name,
+                            list[4].name,
+                            list2[5].name,
+                            list2[6].name,
+                            list2[7].name,
+                            list2[8].name
                     )
                     var Suspectmembers = setOf(list2[0].name, list2[1].name, list2[2].name)
 
@@ -252,13 +256,7 @@ class onlineVoting9: OnlineabstractVoting() {
 
                 } else if (list2[0].count == list2[1].count) {
                     var remainmembers = setOf(
-                        list2[2].name,
-                        list2[3].name,
-                        list[4].name,
-                        list2[5].name,
-                        list2[6].name,
-                        list2[7].name,
-                        list2[8].name
+                            list2[2].name, list2[3].name, list[4].name, list2[5].name, list2[6].name, list2[7].name, list2[8].name
                     )
                     var Suspectmembers = setOf(list2[0].name, list2[1].name)
 
@@ -276,14 +274,14 @@ class onlineVoting9: OnlineabstractVoting() {
                 } else {
                     Suspect = list2[0].name
                     var remainmembers = setOf(
-                        list2[1].name,
-                        list2[2].name,
-                        list2[3].name,
-                        list2[4].name,
-                        list2[5].name,
-                        list2[6].name,
-                        list2[7].name,
-                        list2[8].name
+                            list2[1].name,
+                            list2[2].name,
+                            list2[3].name,
+                            list2[4].name,
+                            list2[5].name,
+                            list2[6].name,
+                            list2[7].name,
+                            list2[8].name
                     )
 
                     var pref = PreferenceManager.getDefaultSharedPreferences(context)
@@ -297,7 +295,6 @@ class onlineVoting9: OnlineabstractVoting() {
                 }
             }
         }
-        return binding.root
     }
 
 
