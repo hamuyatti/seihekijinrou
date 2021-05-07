@@ -30,6 +30,7 @@ class onlineVoting9: OnlineabstractVoting() {
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        binding.loading.visibility = View.INVISIBLE
         super.onViewCreated(view, savedInstanceState)
         var pref = PreferenceManager.getDefaultSharedPreferences(context)
         var roomname = pref.getString("roomname", "")
@@ -90,6 +91,8 @@ class onlineVoting9: OnlineabstractVoting() {
                 R.id.name9 -> Voted = candidate9
             }
             binding.voting.setOnClickListener {
+                binding.voting.visibility = View.GONE
+                binding.loading.visibility = View.VISIBLE
                 Voting
                         .get()
                         .addOnSuccessListener {

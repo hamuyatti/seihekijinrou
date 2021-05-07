@@ -1,34 +1,23 @@
 package com.hamu.seihekijinrou.Preparation.Online
 
+
 import android.content.Intent
-import android.content.pm.PackageManager
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.util.Log
 import androidx.appcompat.app.AlertDialog
-import androidx.core.app.ActivityCompat
-import androidx.core.content.ContextCompat
+import androidx.appcompat.app.AppCompatActivity
 import androidx.core.content.edit
 import com.google.firebase.firestore.SetOptions
 import com.google.firebase.firestore.ktx.firestore
 import com.google.firebase.ktx.Firebase
 import com.hamu.seihekijinrou.MeetingandVotingandResult.Online.CenterofOnlinegameprocess
 import com.hamu.seihekijinrou.databinding.ActivityWaitingentryBinding
-import io.agora.rtc.IRtcEngineEventHandler
-import io.agora.rtc.RtcEngine
-import java.util.jar.Manifest
+
 
 class Waitingentry : AppCompatActivity() {
     private lateinit var binding: ActivityWaitingentryBinding
     var db = Firebase.firestore
     lateinit var jinrou: Any
     lateinit var jinrouseiheki: Any
-
-
-    /* private var mRtcEngine: RtcEngine? = null
-    private val mRtcEventHandler = object : IRtcEngineEventHandler()
-
-   */
 
     override fun onCreate(savedInstanceState: Bundle?) {
         binding = ActivityWaitingentryBinding.inflate(layoutInflater)
@@ -51,8 +40,8 @@ class Waitingentry : AppCompatActivity() {
                 .whereEqualTo("ゲーム状況", "開始")
                 .addSnapshotListener { it, tmp ->
                     if (!it?.isEmpty!!) {
-                        var check = pref.getString("check","")
-                        if(check?.isEmpty()!!) {
+                        var check = pref.getString("check", "")
+                        if (check?.isEmpty()!!) {
                             membernumber
                                     .get()
                                     .addOnSuccessListener {
@@ -125,9 +114,9 @@ class Waitingentry : AppCompatActivity() {
                             AlertDialog.Builder(this)
                                     .setMessage("進むとメンバーの変更が出来ません。よろしいですか？")
                                     .setPositiveButton("進む") { dialog, which ->
-                                        pref.edit{
-                                            putString("check","確認")
-                                        }.apply {  }
+                                        pref.edit {
+                                            putString("check", "確認")
+                                        }.apply { }
                                         var numberofpeople = it.data?.size
 
                                         val gamesituation = hashMapOf(
@@ -195,12 +184,11 @@ class Waitingentry : AppCompatActivity() {
                                                     }
 
 
-
                                                     var jinrouinfo = hashMapOf(
                                                             "人狼" to "$jinrou",
                                                             "人狼性癖" to "$jinrouseiheki"
                                                     )
-                                                   collection.document("名前と性癖").set(jinrouinfo, SetOptions.merge())
+                                                    collection.document("名前と性癖").set(jinrouinfo, SetOptions.merge())
 
 
                                                     pref.edit {
@@ -229,79 +217,10 @@ class Waitingentry : AppCompatActivity() {
                     }
 
         }
-
-        /* binding.Getoutoftheroom.setOnClickListener{
-            AlertDialog.Builder(this)
-                    .setMessage("全画面にもどりますか？")
-                    .setPositiveButton("もどる") { dialog, which ->
-
-
-
-                    }
-                    .setNegativeButton("やめる") { dialog, which ->
-
-                    }.show()
-
-        */
     }
 }
 
 
- /*       if (checkSelfPermission(Manifest.permission.RECORD_AUDIO, PERMISSION_REQ_ID_RECORD_AUDIO) ) {
-            initAgoraEngineAndJoinChannel()
-        }
-    }
-
-    private fun initAgoraEngineAndJoinChannel() {
-        initializeAgoraEngine()
-        joinChannel()
-    }
-
-    private fun checkSelfPermission(permission: String, requestCode: Int): Boolean {
-        Log.i(LOG_TAG, "checkSelfPermission $permission $requestCode")
-        if (ContextCompat.checkSelfPermission(this,
-                permission) != PackageManager.PERMISSION_GRANTED) {
-
-            ActivityCompat.requestPermissions(this,
-                arrayOf(permission),
-                requestCode)
-            return false
-        }
-        return true
-    }
-
-    override fun onUserOffline(uid: Int, reason: Int) {
-        runOnUiThread { onRemoteUserLeft() }
-    }
-
-    // Listen for the onUserMuterAudio callback.
-    // This callback occurs when a remote user stops sending the audio stream.
-    override fun onUserMuteAudio(uid: Int, muted: Boolean) {
-        runOnUiThread { onRemoteUserVoiceMuted(uid, muted)}
-    }
-    private fun initializeAgoraEngine() {
-        try {
-            mRtcEngine = RtcEngine.create(baseContext, getString(R.string.agora_app_id), mRtcEventHandler)
-        } catch (e: Exception) {
-            Log.e(LOG_TAG, Log.getStackTraceString(e))
-
-            throw RuntimeException("NEED TO check rtc sdk init fatal error\n" + Log.getStackTraceString(e))
-        }
-    }
-
-    private fun joinChannel() {
-
-        // Call the joinChannel method to join a channel.
-        // The uid is not specified. The SDK will assign one automatically.
-        mRtcEngine!!.joinChannel(token, "demoChannel1", "Extra Optional Data", 0)
-    }
-    private fun leaveChannel() {
-        mRtcEngine!!.leaveChannel()
-    }
-
-}
-
-  */
 
 
 

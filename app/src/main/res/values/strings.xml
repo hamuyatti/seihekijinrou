@@ -15,4 +15,7 @@
     <string name="hello_second_fragment">Hello second fragment. Arg: %1$s</string>
 
     <string name="Tellme">あなたのお名前と性癖を教えて！</string>
+    <string name="agora_app_id">d82d5a7d13fb4df8ae39eaa02ca5a704</string>
+
+
 </resources>
