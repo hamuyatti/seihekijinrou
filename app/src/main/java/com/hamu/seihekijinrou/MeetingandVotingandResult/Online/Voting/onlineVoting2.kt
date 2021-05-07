@@ -175,6 +175,8 @@ class onlineVoting2 : OnlineabstractVoting() {
                             }.show()
 
                     Voting.delete()
+                    binding.voting.visibility = View.VISIBLE
+                    binding.loading.visibility = View.INVISIBLE
                 } else {
                     Suspect = list[0].name
                     var remainmembers = setOf(list[1].name)

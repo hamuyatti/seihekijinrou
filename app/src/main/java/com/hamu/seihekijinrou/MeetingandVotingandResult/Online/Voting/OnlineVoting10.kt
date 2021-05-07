@@ -220,9 +220,11 @@ class OnlineVoting10 :OnlineabstractVoting() {
                     AlertDialog.Builder(requireContext())
                             .setMessage("同数投票です。")
                             .setPositiveButton("もどる") { dialog, which ->
-                            }.show()
+                            }.show() 
 
                     Voting.delete()
+                    binding.voting.visibility = View.VISIBLE
+                    binding.loading.visibility = View.INVISIBLE
 
                 } else if (list2[0].count == list2[1].count&&list2[1].count == list2[2].count
                         &&list2[2].count == list2[3].count&&list2[3].count == list2[4].count) {

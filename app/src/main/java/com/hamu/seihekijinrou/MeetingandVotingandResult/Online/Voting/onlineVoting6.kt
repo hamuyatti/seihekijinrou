@@ -197,6 +197,8 @@ class onlineVoting6 : OnlineabstractVoting() {
                             }.show()
 
                     Voting.delete()
+                    binding.voting.visibility = View.VISIBLE
+                    binding.loading.visibility = View.INVISIBLE
 
                 }  else if(list2[0].count == list2[1].count&&list2[1].count == list2[2].count){
                     var remainmembers = setOf(list2[3].name,list[4].name,list2[5].name)
