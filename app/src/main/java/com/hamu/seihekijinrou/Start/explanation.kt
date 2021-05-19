@@ -28,24 +28,19 @@ class explanation : AppCompatActivity() {
 
         binding.start.setOnClickListener {
             tmp ="オフライン"
-            /*binding.start.visibility = View.INVISIBLE
-            binding.button.visibility = View.INVISIBLE
-             */
-            val strList = arrayOf("この携帯で皆と遊ぶ","対面で複数の携帯を使う","オンラインで通話して遊ぶ")
+            val strList = arrayOf("この携帯で皆と遊ぶ","対面で複数の携帯を使う")
             AlertDialog.Builder(this)
                     .setTitle("遊び方")
                     .setSingleChoiceItems(strList, 0) { dialog, which:Int ->
                         when(which) {
                             0->tmp = "オフライン"
                             1->tmp = "オフライン（複数端末）"
-                            2->tmp = "オンライン"
                         }
                     }
                     .setPositiveButton("進む") { dialog, which: Int ->
                         when (tmp) {
                             "オフライン" -> startActivity(Intent(this, numberofpeople::class.java))
                             "オフライン（複数端末）" -> startActivity(Intent(this, MakingorEnterroom::class.java))
-                            "オンライン" -> startActivity(Intent(this, MakingorEnterroom::class.java))
                                     }
                         }
                     .show()

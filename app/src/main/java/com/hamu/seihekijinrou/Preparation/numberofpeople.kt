@@ -47,52 +47,9 @@ class numberofpeople : AppCompatActivity() {
         }
 
         binding.gamestart.setOnClickListener {
-
-            if (item == "３人") {
-                putnumber()
-                var intent = Intent(this, CenterofHekientry::class.java)
-                startActivity(intent)
-
-            } else if (item == "４人") {
-                putnumber()
-                var intent = Intent(this, CenterofHekientry::class.java)
-                startActivity(intent)
-
-            } else if (item == "５人") {
-                putnumber()
-                var intent = Intent(this,CenterofHekientry::class.java)
-                startActivity(intent)
-
-            } else if (item == "６人") {
-                putnumber()
-                var intent = Intent(this,CenterofHekientry::class.java)
-                startActivity(intent)
-                putnumber()
-
-            } else if (item == "７人") {
-                putnumber()
-                var intent = Intent(this,CenterofHekientry::class.java)
-                startActivity(intent)
-
-            } else if (item == "８人") {
-                putnumber()
-                var intent = Intent(this,CenterofHekientry::class.java)
-                startActivity(intent)
-
-
-            } else if (item == "９人") {
-                putnumber()
-                var intent = Intent(this, CenterofHekientry::class.java)
-                startActivity(intent)
-
-
-            } else {
-                putnumber()
-                var intent = Intent(this, CenterofHekientry::class.java)
-                startActivity(intent)
-
-
-            }
+            putnumber()
+            var intent = Intent(this, CenterofHekientry::class.java)
+            startActivity(intent)
         }
 
 
