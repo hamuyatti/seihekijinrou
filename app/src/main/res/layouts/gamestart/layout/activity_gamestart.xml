@@ -7,7 +7,6 @@
     tools:context=".gameReady.gamestart">
 
 
-
     <ImageView
         android:id="@+id/imageView2"
         android:layout_width="254dp"

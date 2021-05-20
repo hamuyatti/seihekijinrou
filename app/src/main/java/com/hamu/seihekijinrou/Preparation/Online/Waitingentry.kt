@@ -41,6 +41,7 @@ class Waitingentry : AppCompatActivity() {
                 .addSnapshotListener { it, tmp ->
                     if (!it?.isEmpty!!) {
                         var check = pref.getString("check", "")
+                        //次へ進むをおした端末での誤作動を防いでいます。
                         if (check?.isEmpty()!!) {
                             membernumber
                                     .get()
@@ -74,7 +75,7 @@ class Waitingentry : AppCompatActivity() {
                                                     jinrou = it.data?.get("人狼")!!
                                                     jinrouseiheki = it.data?.get("人狼性癖")!!
 
-
+                                                    //動作を軽くするために、データは逐次通信を行うのではなく共有プリファレンスで保持することにしました。
                                                     pref.edit {
                                                         putString("name1", name1 as String?);putString("name2", name2 as String?)
                                                         putString("name3", name3 as String?);putString("name4", name4 as String?)
@@ -117,19 +118,25 @@ class Waitingentry : AppCompatActivity() {
                                         pref.edit {
                                             putString("check", "確認")
                                         }.apply { }
+                                        //参加している人数をカウントしています。人狼を決める時の乱数の上限にします。
                                         var numberofpeople = it.data?.size
 
+                                        //この値をリッスンして待機している人の画面も連動させます。
                                         val gamesituation = hashMapOf(
                                                 "ゲーム状況" to "開始"
                                         )
+
                                         meetingsituation.set(gamesituation)
+
+                                        //もう部屋に入れないようにします。
                                         sameroomcheck.delete()
+
                                         collection.document("名前と性癖")
                                                 .get()
                                                 .addOnSuccessListener {
-                                                    var heki1 = it.data?.get("性癖1")!!
-                                                    var heki2 = it.data?.get("性癖2")!!
-                                                    var heki3 = it.data?.get("性癖3")!!
+                                                    var heki1 = it.data?.get("性癖1")
+                                                    var heki2 = it.data?.get("性癖2")
+                                                    var heki3 = it.data?.get("性癖3")
                                                     var heki4 = it.data?.get("性癖4")
                                                     var heki5 = it.data?.get("性癖5")
                                                     var heki6 = it.data?.get("性癖6")
@@ -138,9 +145,9 @@ class Waitingentry : AppCompatActivity() {
                                                     var heki9 = it.data?.get("性癖9")
                                                     var heki10 = it.data?.get("性癖10")
 
-                                                    var name1 = it.data?.get("名前1")!!
-                                                    var name2 = it.data?.get("名前2")!!
-                                                    var name3 = it.data?.get("名前3")!!
+                                                    var name1 = it.data?.get("名前1")
+                                                    var name2 = it.data?.get("名前2")
+                                                    var name3 = it.data?.get("名前3")
                                                     var name4 = it.data?.get("名前4")
                                                     var name5 = it.data?.get("名前5")
                                                     var name6 = it.data?.get("名前6")
@@ -151,36 +158,47 @@ class Waitingentry : AppCompatActivity() {
 
                                                     var number = (1..numberofpeople!!).random()
 
-                                                    if (number == 1) {
-                                                        jinrou = heki1!!
-                                                        jinrouseiheki = name1!!
-                                                    } else if (number == 2) {
-                                                        jinrou = heki2!!
-                                                        jinrouseiheki = name2!!
-                                                    } else if (number == 3) {
-                                                        jinrou = heki3!!
-                                                        jinrouseiheki = name3!!
-                                                    } else if (number == 4) {
-                                                        jinrou = heki4!!
-                                                        jinrouseiheki = name4!!
-                                                    } else if (number == 5) {
-                                                        jinrou = heki5!!
-                                                        jinrouseiheki = name5!!
-                                                    } else if (number == 6) {
-                                                        jinrou = heki6!!
-                                                        jinrouseiheki = name6!!
-                                                    } else if (number == 7) {
-                                                        jinrou = heki7!!
-                                                        jinrouseiheki = name7!!
-                                                    } else if (number == 8) {
-                                                        jinrou = heki8!!
-                                                        jinrouseiheki = name8!!
-                                                    } else if (number == 9) {
-                                                        jinrou = heki9!!
-                                                        jinrouseiheki = name9!!
-                                                    } else if (number == 10) {
-                                                        jinrou = heki10!!
-                                                        jinrouseiheki = name10!!
+                                                    when (number) {
+                                                        1 -> {
+                                                            jinrou = heki1!!
+                                                            jinrouseiheki = name1!!
+                                                        }
+                                                        2 -> {
+                                                            jinrou = heki2!!
+                                                            jinrouseiheki = name2!!
+                                                        }
+                                                        3 -> {
+                                                            jinrou = heki3!!
+                                                            jinrouseiheki = name3!!
+                                                        }
+                                                        4 -> {
+                                                            jinrou = heki4!!
+                                                            jinrouseiheki = name4!!
+                                                        }
+                                                        5 -> {
+                                                            jinrou = heki5!!
+                                                            jinrouseiheki = name5!!
+                                                        }
+                                                        6 -> {
+                                                            jinrou = heki6!!
+                                                            jinrouseiheki = name6!!
+                                                        }
+                                                        7 -> {
+                                                            jinrou = heki7!!
+                                                            jinrouseiheki = name7!!
+                                                        }
+                                                        8 -> {
+                                                            jinrou = heki8!!
+                                                            jinrouseiheki = name8!!
+                                                        }
+                                                        9 -> {
+                                                            jinrou = heki9!!
+                                                            jinrouseiheki = name9!!
+                                                        }
+                                                        10 -> {
+                                                            jinrou = heki10!!
+                                                            jinrouseiheki = name10!!
+                                                        }
                                                     }
 
 
@@ -190,7 +208,7 @@ class Waitingentry : AppCompatActivity() {
                                                     )
                                                     collection.document("名前と性癖").set(jinrouinfo, SetOptions.merge())
 
-
+                                                    //動作を軽くするために、データは逐次通信を行うのではなく共有プリファレンスで保持することにしました。
                                                     pref.edit {
                                                         putString("name1", name1 as String?);putString("name2", name2 as String?)
                                                         putString("name3", name3 as String?);putString("name4", name4 as String?)

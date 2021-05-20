@@ -37,6 +37,7 @@ class MakingorEnterroom : AppCompatActivity() {
         binding.loading.visibility = View.INVISIBLE
 
         binding.makebutton.setOnClickListener {
+            //入力が完了しているかどうかのバリデーションです。
             if (binding.passwordtext.text.isEmpty() || binding.hostname.text.isEmpty() || binding.hostseiheki.text.isEmpty()) {
                 AlertDialog.Builder(this)
                         .setMessage("入力が完了していません。")
@@ -55,6 +56,7 @@ class MakingorEnterroom : AppCompatActivity() {
                 collection
                         .get()
                         .addOnSuccessListener { document ->
+                            //現在同じ合言葉を使っている部屋がないか確認しています
                             if (!document.isEmpty()) {
                                 binding.loading.visibility = View.INVISIBLE
                                 AlertDialog.Builder(this)
@@ -67,8 +69,6 @@ class MakingorEnterroom : AppCompatActivity() {
                                 val duration = Toast.LENGTH_SHORT
                                 val toast = Toast.makeText(this, text, duration)
                                 toast.show()
-
-
 
                                 val hekicheck = hashMapOf(
                                         "性癖" to hostheki
@@ -114,6 +114,7 @@ class MakingorEnterroom : AppCompatActivity() {
             var guestheki = binding.guestseiheki.text
             var guestname = binding.guestname.text
 
+            //入力が完了しているかどうかのバリデーションです。
             if (searchtext.isEmpty() || guestheki.isEmpty() || guestname.isEmpty()) {
                 AlertDialog.Builder(this)
                         .setMessage("入力が完了していません。")
@@ -140,6 +141,7 @@ class MakingorEnterroom : AppCompatActivity() {
                                         .whereEqualTo("名前", "$guestname")
                                         .get()
                                         .addOnSuccessListener { it ->
+                                            //名前のかぶりをチェックしています
                                             if (!it.isEmpty) {
                                                 binding.loading.visibility = View.INVISIBLE
                                                 AlertDialog.Builder(this)
@@ -151,6 +153,7 @@ class MakingorEnterroom : AppCompatActivity() {
                                                         .whereEqualTo("性癖", "$guestheki")
                                                         .get()
                                                         .addOnSuccessListener {
+                                                            //性癖のかぶりをチェックしています
                                                             if (!it.isEmpty) {
                                                                 binding.loading.visibility = View.INVISIBLE
                                                                 AlertDialog.Builder(this)
@@ -173,7 +176,7 @@ class MakingorEnterroom : AppCompatActivity() {
                                                                                                     .commit()
                                                                                         }
 
-
+                                                                                        //参加している人数に合わせて、名前と性癖に数字をつけて登録しています
                                                                                         membernumber
                                                                                                 .get()
                                                                                                 .addOnSuccessListener {

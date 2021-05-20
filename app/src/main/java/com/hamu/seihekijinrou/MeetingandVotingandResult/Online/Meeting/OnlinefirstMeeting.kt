@@ -155,52 +155,61 @@ class OnlinefirstMeeting : Fragment() {
     fun toVoting() {
 
         var pref = PreferenceManager.getDefaultSharedPreferences(context)
-        if (numberofpeople =="3") {
-            remainmembers = setOf(name1,name2,name3)
-            pref.edit { putStringSet("remainmembers", remainmembers) }.apply { }
-            findNavController().navigate(R.id.action_onlinefirstMeeting_to_onlineVoting3)
+        when (numberofpeople) {
+            "3" -> {
+                remainmembers = setOf(name1,name2,name3)
+                pref.edit { putStringSet("remainmembers", remainmembers) }.apply { }
+                findNavController().navigate(R.id.action_onlinefirstMeeting_to_onlineVoting3)
 
-        } else if (numberofpeople =="4") {
-            remainmembers = setOf(name1, name2, name3, name4)
-            pref.edit { putStringSet("remainmembers", remainmembers) }.apply { }
-            findNavController().navigate(R.id.action_onlinefirstMeeting_to_onlineVoting4)
+            }
+            "4" -> {
+                remainmembers = setOf(name1, name2, name3, name4)
+                pref.edit { putStringSet("remainmembers", remainmembers) }.apply { }
+                findNavController().navigate(R.id.action_onlinefirstMeeting_to_onlineVoting4)
 
-        } else if (numberofpeople =="5") {
-            remainmembers = setOf(name1, name2, name3, name4, name5)
-            pref.edit { putStringSet("remainmembers", remainmembers) }.apply { }
-
-
-            findNavController().navigate(R.id.action_onlinefirstMeeting_to_onlineVoting5)
-
-        } else if (numberofpeople =="6") {
-            remainmembers = setOf(name1, name2, name3, name4, name5, name6)
-            pref.edit { putStringSet("remainmembers", remainmembers) }.apply { }
+            }
+            "5" -> {
+                remainmembers = setOf(name1, name2, name3, name4, name5)
+                pref.edit { putStringSet("remainmembers", remainmembers) }.apply { }
 
 
-            findNavController().navigate(R.id.action_onlinefirstMeeting_to_onlineVoting6)
+                findNavController().navigate(R.id.action_onlinefirstMeeting_to_onlineVoting5)
 
-        } else if (numberofpeople =="7") {
-            remainmembers = setOf(name1, name2, name3, name4, name5, name6, name7)
-            pref.edit { putStringSet("remainmembers", remainmembers) }.apply { }
+            }
+            "6" -> {
+                remainmembers = setOf(name1, name2, name3, name4, name5, name6)
+                pref.edit { putStringSet("remainmembers", remainmembers) }.apply { }
 
-            findNavController().navigate(R.id.action_onlinefirstMeeting_to_onlineVoting7)
 
-        } else if (numberofpeople =="8") {
-            remainmembers = setOf(name1, name2, name3, name4, name5, name6, name7, name8)
-            pref.edit { putStringSet("remainmembers", remainmembers) }.apply { }
+                findNavController().navigate(R.id.action_onlinefirstMeeting_to_onlineVoting6)
 
-            findNavController().navigate(R.id.action_onlinefirstMeeting_to_onlineVoting8)
+            }
+            "7" -> {
+                remainmembers = setOf(name1, name2, name3, name4, name5, name6, name7)
+                pref.edit { putStringSet("remainmembers", remainmembers) }.apply { }
 
-        } else if (numberofpeople =="9") {
-            remainmembers =
-                setOf(name1, name2, name3, name4, name5, name6, name7, name8, name9)
-            pref.edit { putStringSet("remainmembers", remainmembers) }.apply { }
-            findNavController().navigate(R.id.action_onlinefirstMeeting_to_onlineVoting9)
+                findNavController().navigate(R.id.action_onlinefirstMeeting_to_onlineVoting7)
 
-        } else {remainmembers =
+            }
+            "8" -> {
+                remainmembers = setOf(name1, name2, name3, name4, name5, name6, name7, name8)
+                pref.edit { putStringSet("remainmembers", remainmembers) }.apply { }
+
+                findNavController().navigate(R.id.action_onlinefirstMeeting_to_onlineVoting8)
+
+            }
+            "9" -> {
+                remainmembers =
+                    setOf(name1, name2, name3, name4, name5, name6, name7, name8, name9)
+                pref.edit { putStringSet("remainmembers", remainmembers) }.apply { }
+                findNavController().navigate(R.id.action_onlinefirstMeeting_to_onlineVoting9)
+
+            }
+            else -> {remainmembers =
                 setOf(name1, name2, name3, name4, name5, name6, name7, name8, name9,name10)
-            pref.edit { putStringSet("remainmembers", remainmembers) }.apply { }
-            findNavController().navigate(R.id.action_onlinefirstMeeting_to_onlineVoting10)
+                pref.edit { putStringSet("remainmembers", remainmembers) }.apply { }
+                findNavController().navigate(R.id.action_onlinefirstMeeting_to_onlineVoting10)
+            }
         }
     }
 

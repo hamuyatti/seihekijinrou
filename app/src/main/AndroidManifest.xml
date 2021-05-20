@@ -15,9 +15,6 @@
         <activity android:name=".MeetingandVotingandResult.Ofline.CenterofMeetingandVoting" />
         <activity android:name=".Preparation.Online.Waitingentry" />
         <activity android:name=".Preparation.Online.MakingorEnterroom" />
-        <activity
-            android:name=".Start.PastSeiheki"
-            android:windowSoftInputMode="adjustPan" />
         <activity android:name=".Preparation.SeiHekientry.CenterofHekientry" />
         <activity android:name=".EndofGame.End3" />
         <activity android:name=".EndofGame.End2" />
